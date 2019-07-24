@@ -23,9 +23,8 @@
 &lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;: 您可能认为本章完全可以跳过，但除非你是一个 Swift 天才，否则你应该读到最后再确定。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://github.com/CoderXDLee/MX_WEBSITE/blob/master/content/post/SwiftUI/1-Text_And_Image/img/swiftui_project_template.png?raw=true&#34; alt=&#34;swiftui_project_template&#34; title=&#34;SwiftUI Project Template Files&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如图，自 Xcode 11 之后，基本的 &lt;em&gt;Single View App&lt;/em&gt; 模板为我们提供以下内容:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/swiftui_project_template.png&#34; alt=&#34;swiftui_project_template&#34; /&gt;
+如图，自 Xcode 11 之后，基本的 &lt;em&gt;Single View App&lt;/em&gt; 模板为我们提供以下内容:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;AppDelegate.swift&lt;/code&gt;

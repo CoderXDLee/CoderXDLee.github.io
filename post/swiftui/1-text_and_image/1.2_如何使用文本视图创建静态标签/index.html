@@ -574,7 +574,7 @@ Text(&quot;Hello World&quot;) .lineLimit(nil)   注意: 这里设置 lineLimit(0
     <div class="article-style" itemprop="articleBody">
       
 
-<h2 id="1-基本用法">1. 基本用法</h2>
+<h3 id="1-基本用法">1. 基本用法</h3>
 
 <p>文本视图 <code>Text</code> 主要用于在屏幕上显示静态文本，相当于 UIKit 中的 UILabel。最基本的用法如下:</p>
 
@@ -583,7 +583,7 @@ Text(&quot;Hello World&quot;) .lineLimit(nil)   注意: 这里设置 lineLimit(0
 
 <p>在内容视图的预览窗口中，您可能会看到 <code>Automatic preview updating paused</code>， 继续按 Resume 以让 Swift 开始构建代码并向您展示其外观的实时预览。</p>
 
-<h2 id="2-设置显示行数">2. 设置显示行数</h2>
+<h3 id="2-设置显示行数">2. 设置显示行数</h3>
 
 <p>默认情况下，Text 只显示一行 - 如果空间不足，字符将被剪切并替换为 <code>...</code>。因此如果我们要显示的文本很长，就会看到这种情况发生。如果要改变这种行为 - 比如你希望  Text 可以显示多行文本，那么可以这样做，使其具有特定的行数:</p>
 
@@ -605,7 +605,7 @@ Text(&quot;Hello World&quot;) .lineLimit(nil)   注意: 这里设置 lineLimit(0
 <p><strong>注意:</strong> 这里设置 <code>lineLimit(0)</code> 不能实现多行显示，这一点跟 UIKit 中是不一样的。</p>
 </blockquote>
 
-<h2 id="3-文本截断">3. 文本截断</h2>
+<h3 id="3-文本截断">3. 文本截断</h3>
 
 <p>我们也可以调整 SwiftUI 截断文本的方式，而不是调整行数。默认情况下，从末尾删除文本并显示省略号，但也可以将省略号放在中间或开头，具体取决于字符串各个部分的重要程度。</p>
 

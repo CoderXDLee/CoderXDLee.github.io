@@ -71,7 +71,72 @@
       <pubDate>Wed, 24 Jul 2019 15:42:28 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%A1%8C%E8%B7%9D%E7%AD%89%E8%AE%BE%E7%BD%AE%E6%96%87%E6%9C%AC%E8%A7%86%E5%9B%BE%E7%9A%84%E6%A0%B7%E5%BC%8F/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;文本视图不仅在外观方面给了我们一个可预见的广泛控制，而且还设计成与苹果的核心技术（如 &lt;code&gt;Dynamic Type&lt;/code&gt;）无缝配合。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-字体&#34;&gt;1. 字体&lt;/h3&gt;
+
+&lt;p&gt;默认情况下，文本视图有一个 &lt;code&gt;Body&lt;/code&gt; 动态类型样式，但是我们可以通过以下方式调用 &lt;code&gt;.font()&lt;/code&gt;，从其它 &lt;em&gt;sizes&lt;/em&gt; 和 &lt;em&gt;weights&lt;/em&gt; 进行选择:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
+    .lineLimit(nil)
+    .font(.largeTitle)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/large_title_font.png&#34; alt=&#34;large_title_font_text&#34; title=&#34;largeTitle font&#34; /&gt;
+我们现在在文本视图下面使用了两个修饰符，这没关系 - 你可以将它们堆叠起来，并且它们都会生效。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-文本对齐&#34;&gt;2. 文本对齐&lt;/h3&gt;
+
+&lt;p&gt;特别是，现在我们有多行文本，我们需要调整文本的对齐方式，使其居中，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
+    .lineLimit(nil)
+    .font(.largeTitle)
+    .multilineTextAlignment(.center)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/center_alignment.png&#34; alt=&#34;center_alignment_text&#34; title=&#34;center alignment&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-字体颜色&#34;&gt;3. 字体颜色&lt;/h3&gt;
+
+&lt;p&gt;我们可以通过 &lt;code&gt;.foregroundColor()&lt;/code&gt; 修饰符来设置文本颜色，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;The best laid plans&amp;quot;)
+    .foregroundColor(Color.red)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/foregroundcolor_text.png&#34; alt=&#34;foregroundcolor_text&#34; title=&#34;foreground color&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-背景&#34;&gt;4. 背景&lt;/h3&gt;
+
+&lt;p&gt;我们可以使用 &lt;code&gt;.background()&lt;/code&gt; 来设置背景颜色，但是它不仅仅可以用来设置背景颜色，也可以设置背景视图。无论如何，为了给我们的文本视图设置一个黄色背景，代码如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;The best laid plans&amp;quot;)
+    .foregroundColor(Color.red)
+    .background(Color.yellow)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/backgroundcolor_text.png&#34; alt=&#34;backgroundcolor_text&#34; title=&#34;background color&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;5-行间距&#34;&gt;5. 行间距&lt;/h3&gt;
+
+&lt;p&gt;我们可以设置多行文本的行间距，行间距默认值为0，表示没有额外的行间距，但是我们可以通过以下方式在行与行之间指定一个值来添加额外的行间距。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
+    .lineLimit(nil)
+    .font(.largeTitle)
+    .lineSpacing(50)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/line_spacing_text.png&#34; alt=&#34;line_spacing_text&#34; title=&#34;line spacing&#34; /&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -82,7 +147,7 @@
       <guid>https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%96%87%E6%9C%AC%E8%A7%86%E5%9B%BE%E5%88%9B%E5%BB%BA%E9%9D%99%E6%80%81%E6%A0%87%E7%AD%BE/</guid>
       <description>
 
-&lt;h2 id=&#34;1-基本用法&#34;&gt;1. 基本用法&lt;/h2&gt;
+&lt;h3 id=&#34;1-基本用法&#34;&gt;1. 基本用法&lt;/h3&gt;
 
 &lt;p&gt;文本视图 &lt;code&gt;Text&lt;/code&gt; 主要用于在屏幕上显示静态文本，相当于 UIKit 中的 UILabel。最基本的用法如下:&lt;/p&gt;
 
@@ -91,7 +156,7 @@
 
 &lt;p&gt;在内容视图的预览窗口中，您可能会看到 &lt;code&gt;Automatic preview updating paused&lt;/code&gt;， 继续按 Resume 以让 Swift 开始构建代码并向您展示其外观的实时预览。&lt;/p&gt;
 
-&lt;h2 id=&#34;2-设置显示行数&#34;&gt;2. 设置显示行数&lt;/h2&gt;
+&lt;h3 id=&#34;2-设置显示行数&#34;&gt;2. 设置显示行数&lt;/h3&gt;
 
 &lt;p&gt;默认情况下，Text 只显示一行 - 如果空间不足，字符将被剪切并替换为 &lt;code&gt;...&lt;/code&gt;。因此如果我们要显示的文本很长，就会看到这种情况发生。如果要改变这种行为 - 比如你希望  Text 可以显示多行文本，那么可以这样做，使其具有特定的行数:&lt;/p&gt;
 
@@ -113,7 +178,7 @@
 &lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; 这里设置 &lt;code&gt;lineLimit(0)&lt;/code&gt; 不能实现多行显示，这一点跟 UIKit 中是不一样的。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;3-文本截断&#34;&gt;3. 文本截断&lt;/h2&gt;
+&lt;h3 id=&#34;3-文本截断&#34;&gt;3. 文本截断&lt;/h3&gt;
 
 &lt;p&gt;我们也可以调整 SwiftUI 截断文本的方式，而不是调整行数。默认情况下，从末尾删除文本并显示省略号，但也可以将省略号放在中间或开头，具体取决于字符串各个部分的重要程度。&lt;/p&gt;
 

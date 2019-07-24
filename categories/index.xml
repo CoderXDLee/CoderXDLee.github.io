@@ -2,21 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on M X</title>
-    <link>/categories/</link>
+    <link>https://coderxdlee.github.io/categories/</link>
     <description>Recent content in Categories on M X</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Jul 2019 15:51:58 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jul 2019 13:35:01 +0800</lastBuildDate>
     
-	    <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://coderxdlee.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>SwiftUI</title>
+      <link>https://coderxdlee.github.io/categories/swiftui/</link>
+      <pubDate>Wed, 24 Jul 2019 13:35:01 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/categories/swiftui/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>SwfitUI</title>
-      <link>/categories/swfitui/</link>
+      <link>https://coderxdlee.github.io/categories/swfitui/</link>
       <pubDate>Tue, 23 Jul 2019 15:51:58 +0800</pubDate>
       
-      <guid>/categories/swfitui/</guid>
+      <guid>https://coderxdlee.github.io/categories/swfitui/</guid>
       <description></description>
     </item>
     

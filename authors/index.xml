@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors on M X</title>
-    <link>/authors/</link>
+    <link>https://coderxdlee.github.io/authors/</link>
     <description>Recent content in Authors on M X</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Jul 2019 15:51:58 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jul 2019 13:35:01 +0800</lastBuildDate>
     
-	    <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://coderxdlee.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>/authors/admin/</link>
-      <pubDate>Tue, 23 Jul 2019 15:51:58 +0800</pubDate>
+      <link>https://coderxdlee.github.io/authors/admin/</link>
+      <pubDate>Wed, 24 Jul 2019 13:35:01 +0800</pubDate>
       
-      <guid>/authors/admin/</guid>
+      <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;Avoiding Knowledge&lt;/li&gt;
 &lt;li&gt;Respect for knowledge&lt;/li&gt;

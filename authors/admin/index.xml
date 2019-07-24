@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>M X</title>
+    <link>/authors/admin/</link>
+    <description>Recent content on M X</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Jul 2019 15:51:58 +0800</lastBuildDate>
+    
+	    <atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1.1 工程模板介绍</title>
+      <link>/post/swiftui/1-text_and_image/1.1_%E5%B7%A5%E7%A8%8B%E6%A8%A1%E6%9D%BF%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Tue, 23 Jul 2019 15:51:58 +0800</pubDate>
+      
+      <guid>/post/swiftui/1-text_and_image/1.1_%E5%B7%A5%E7%A8%8B%E6%A8%A1%E6%9D%BF%E4%BB%8B%E7%BB%8D/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;: 您可能认为本章完全可以跳过，但除非你是一个 Swift 天才，否则你应该读到最后再确定。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/CoderXDLee/MX_WEBSITE/blob/master/content/post/SwiftUI/1-Text_And_Image/img/swiftui_project_template.png?raw=true&#34; alt=&#34;swiftui_project_template&#34; title=&#34;SwiftUI Project Template Files&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如图，自 Xcode 11 之后，基本的 &lt;em&gt;Single View App&lt;/em&gt; 模板为我们提供以下内容:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;AppDelegate.swift&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这个文件负责监视外部事件。例如，如果另一个应用程序试图向您发送要打开的文件。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SceneDelegate.swift&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这个文件负责管理应用程序的显示方式。例如让多个实例同时运行，或者当一个实例移动到后台时采取操作。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ContentView.swift&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这个文件是我们的初始用户界面。如果这是一个 UIKit 项目，这个文件相当于是 Xcode 提供给我们的 &lt;em&gt;ViewController&lt;/em&gt; 类。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Assets.xcassets&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这个文件是项目的资产目录。存储着我们项目中使用的所有图像和颜色。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LaunchScreen.storyboard&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这是应用加载时显示的屏幕。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Info.plist&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这是一个属性列表文件，在本例中，它用于存储应用程序的系统级设置。例如，应该在 iOS 主屏幕的图标下面显示什么名称。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Preview content&lt;/code&gt;&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个名为 &lt;em&gt;Preview content&lt;/em&gt; 的组，其中包含另一个名为 &lt;em&gt;Preview Assests&lt;/em&gt; 的资产目录。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;就是这样 - 这是一个令人愉快的少量代码和资源，这意味着我们可以在此基础上进行构建。&lt;/p&gt;
+
+&lt;p&gt;我们真正关心的是 &lt;code&gt;ContentView.swift&lt;/code&gt;，  事实上，这是唯一重要的部分。这是我们应用程序的主要功能，在这里我们可以立即开始尝试各种 &lt;code&gt;SwiftUI&lt;/code&gt; 代码。&lt;/p&gt;
+
+&lt;p&gt;首先，是什么让 &lt;code&gt;ContentView.swift&lt;/code&gt; 显示在屏幕上？&lt;br /&gt;
+好吧，如果你还记得我说过 &lt;code&gt;SceneDelegate.swift&lt;/code&gt;  负责管理应用程序的显示方式。那么，继续打开 &lt;code&gt;SceneDelegate.swift&lt;/code&gt;，您会看到下面的代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;let window = UIWindow(windowScene: windowScene)
+window.rootViewController = UIHostingController(rootView: ContentView())
+self.window = window
+window.makeKeyAndVisible()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这段代码创建了一个新的 &lt;code&gt;ContentView&lt;/code&gt; 实例（这是我们即将看到的主要功能），并将其放在 &lt;code&gt;window&lt;/code&gt; 中，以便在屏幕上显示。它通过显示 &lt;code&gt;ContentView&lt;/code&gt; 的第一个实例，可以有效地引导我们的应用程序，并从那里结束 - 你想做什么？&lt;/p&gt;
+
+&lt;p&gt;打开  &lt;code&gt;ContentView.swift&lt;/code&gt; ，让我们看看实际的 SwiftUI 代码。您应该看到这样的代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;import SwiftUI
+
+struct ContentView : View {
+    var body: some View {
+        Text(&amp;quot;Hello World&amp;quot;)
+    }
+}
+
+#if DEBUG
+struct ContentView_Previews : PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这不是很多代码，但它确实包含了大量代码。&lt;/p&gt;
+
+&lt;p&gt;首先，请注意，&lt;code&gt;ContentView&lt;/code&gt; 是一个结构体（struct）。熟悉 UIKit 的开发人员知道 - 我们从用户界面的所有值类型的不可变性和简单性中获益巨大！不熟悉 UIKit 的人&amp;hellip; 嗯，只是点头微笑 - 你从来不知道我们曾经的痛苦。&lt;/p&gt;
+
+&lt;p&gt;其次，&lt;code&gt;ContentView&lt;/code&gt; 符合 &lt;code&gt;View&lt;/code&gt; 协议。你想在 SwiftUI 中显示的所有内容都需要符合 &lt;code&gt;View&lt;/code&gt;，这实际上只意味着一件事: 你需要一个名为 body 的属性来返回某种 View。&lt;/p&gt;
+
+&lt;p&gt;第三，&lt;code&gt;body&lt;/code&gt; 的返回类型是 &lt;code&gt;some View&lt;/code&gt;。&lt;code&gt;some&lt;/code&gt; 关键字是在 Swift 5.1 中新增的，是一个名为 &lt;em&gt;不透明返回类型（opaque return types）&lt;/em&gt; 的功能的一部分，在这种情况下，它的意思是 &lt;em&gt;将返回某种视图，但 SwiftUI 不需要知道（或关心）什么。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;重要说明:&lt;/strong&gt; 返回 &lt;code&gt;some View&lt;/code&gt; 意味着 &lt;code&gt;body&lt;/code&gt; 属性将返回符合 &lt;code&gt;View&lt;/code&gt; 协议的内容。你不能返回很多东西或忘记返回任何东西 &amp;ndash; Swift 编译器将拒绝构建你的代码。要清楚，您的视图正文必须返回一个子视图。&lt;/p&gt;
+
+&lt;p&gt;第四，body属性中有 &lt;code&gt;Text(&amp;quot;hello world&amp;quot;)&lt;/code&gt;，它创建了文本内容为 “hello world”的标签。&lt;/p&gt;
+
+&lt;p&gt;最后，在 ContentView 下面的是一个类似但不同的 struct，称为 &lt;code&gt;ContentView_Previews&lt;/code&gt;。它不符合 &lt;code&gt;View&lt;/code&gt; 协议，因为它专门用于在 Xcode 中显示 视图预览（Preview），而不是在真实 app 中显示在屏幕上。这就是为什么你会看到它在 &lt;code&gt;#if DEBUG&lt;/code&gt; 和 &lt;code&gt;#endif&lt;/code&gt; 之间 - 当我们的应用程序在调试环境中运行时，这段代码只构建在 *成品（finished product）*中，因为它在生产应用程序（Production app）中没有意义。&lt;/p&gt;
+
+&lt;p&gt;我们很快就会更详细地看一下这些组件（components），但首先让我们看一下 &lt;code&gt;Text&lt;/code&gt; 组件。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/authors/admin/</link>
+      <pubDate>Tue, 23 Jul 2019 15:51:58 +0800</pubDate>
+      
+      <guid>/authors/admin/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Avoiding Knowledge&lt;/li&gt;
+&lt;li&gt;Respect for knowledge&lt;/li&gt;
+&lt;li&gt;Absorbing knowledge&lt;/li&gt;
+&lt;li&gt;Master knowledge&lt;/li&gt;
+&lt;li&gt;Spread knowledge&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.  --&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

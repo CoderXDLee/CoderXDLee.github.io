@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content=" ">
 
   
   <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E8%A7%86%E5%9B%BE%E7%BB%98%E5%88%B6%E5%9B%BE%E5%83%8F/">
@@ -110,7 +110,7 @@
   <meta property="og:site_name" content="M X">
   <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E8%A7%86%E5%9B%BE%E7%BB%98%E5%88%B6%E5%9B%BE%E5%83%8F/">
   <meta property="og:title" content="1.5_如何使用图像视图绘制图像 | M X">
-  <meta property="og:description" content=""><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
+  <meta property="og:description" content=" "><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://coderxdlee.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-07-24T15:44:15&#43;08:00">
@@ -424,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -559,6 +559,67 @@
 
     <div class="article-style" itemprop="articleBody">
       
+
+<p>使用图像视图 <code>Image</code> 可以在 SwiftUI 布局中渲染图像（images）。我们可以从 <code>Bundle</code>、<code>System icons</code>、<code>UIImage</code> 等中加载图像，但这三个将是最常见的。</p>
+
+<h3 id="1-从-bundle-加载">1. 从 Bundle 加载</h3>
+
+<p>要从 Bundle 中加载图像并将其显示在图像视图中，只需使用以下代码:</p>
+
+<pre><code class="language-swift">var body: some View {
+    Image(&quot;example-image&quot;)
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/load_image_from_bundle.png" alt="load_image_from_bundle" title="load image from buldle" /></p>
+
+<h3 id="2-从-system-icons-加载">2. 从 System icons 加载</h3>
+
+<p>要从苹果旧金山符号集(Apple’s San Francisco Symbol set)中加载图标，请使用 <code>Image(systemName: )</code> 初始化器，传入图标字符串进行加载，如下所示:</p>
+
+<pre><code class="language-swift">Image(systemName: &quot;cloud.heavyrain.fill&quot;)
+</code></pre>
+
+<p>运行效果:
+<img src="img/load_image_from_systemicon.png" alt="load_image_from_systemicon" title="load image from system icons" /></p>
+
+<h3 id="3-从-uiimage-加载">3. 从 UIImage 加载</h3>
+
+<p>最后，可以从现有的 UIImage 创建一个图像视图。因为这需要更多的代码，所以需要显式地使用 return 关键字。</p>
+
+<pre><code class="language-swift">guard let image = UIImage(named: &quot;example-image&quot;) else {
+    fatalError(&quot;Unable to load image&quot;)
+}
+
+return Image(uiImage: image)
+</code></pre>
+
+<p>运行效果:
+<img src="img/load_image_from_uiimage.png" alt="load_image_from_uiimage" title="load image from uiimage" /></p>
+
+<h3 id="4-foregroundcolor">4. foregroundColor</h3>
+
+<p>如果你使用的是 系统图标集，则返回的图像是 <code>可缩放</code> 和 <code>可着色</code> 的，这意味着你可以使用 <code>foregroundColor()</code> 修改器对图像着色。</p>
+
+<pre><code class="language-swift">Image(systemName: &quot;cloud.heavyrain.fill&quot;)
+    .foregroundColor(.red)
+</code></pre>
+
+<p>运行效果:
+<img src="img/foreground_color_image.png" alt="foreground_color_image" title="set foreground color for system icon" /></p>
+
+<h3 id="5-动态文本样式">5. 动态文本样式</h3>
+
+<p>这意味着你可以要求 SwiftUI 放大图像，以匹配随附的任何 <code>Dynamic Type</code> 文本样式:</p>
+
+<pre><code class="language-swift">Image(systemName: &quot;cloud.heavyrain.fill&quot;)
+    .font(.largeTitle)
+</code></pre>
+
+<p>运行效果:
+<img src="img/font_largetitle_image.png" alt="font_largetitle_image" title="set font as largeTitle for system icons" /></p>
+
     </div>
 
     

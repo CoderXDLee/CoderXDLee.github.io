@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content=" ">
 
   
   <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.4_%E5%A6%82%E4%BD%95%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%87%E6%9C%AC%E8%A7%86%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC/">
@@ -110,7 +110,7 @@
   <meta property="og:site_name" content="M X">
   <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.4_%E5%A6%82%E4%BD%95%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%87%E6%9C%AC%E8%A7%86%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC/">
   <meta property="og:title" content="1.4_如何格式化文本视图中的文本 | M X">
-  <meta property="og:description" content=""><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
+  <meta property="og:description" content=" "><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://coderxdlee.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-07-24T15:43:29&#43;08:00">
@@ -424,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -558,7 +558,39 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
+      <p>SwiftUI 的文本视图有一个可选的 <code>formatter</code> 参数，可以让我们用来自定义数据在标签（label）内的显示方式。这一点很重要，因为在我们的程序中发生某些事情时，通常会为我们更新值，因此通过附加 <code>formatter</code>， SwiftUI 可以确保我们的数据以我们期望的方式来正确显示。</p>
+
+<p>例如，这定义了一个日期格式（date formatter）化程序，并使用它来确保 任务日期 以人类可读的形式显示:</p>
+
+<pre><code class="language-swift">import SwiftUI
+
+struct ContentView : View {
+    
+    static let taskDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
+    
+    var dueDate = Date()
+    
+    var body: some View {
+        Text(&quot;Task due date: \(dueDate, formatter: Self.taskDateFormatter)&quot;)
+    }
+}
+
+#if DEBUG
+struct ContentView_Previews : PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+#endif
+</code></pre>
+
+<p>运行效果:
+<img src="img/date_formatter_text.png" alt="date_formatter" title="date formatter" /></p>
+
     </div>
 
     

@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content=" ">
 
   
   <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/2-view_layout/2.5_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/">
@@ -110,7 +110,7 @@
   <meta property="og:site_name" content="M X">
   <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/2-view_layout/2.5_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/">
   <meta property="og:title" content="2.5_如何返回不同的视图类型 | M X">
-  <meta property="og:description" content=""><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
+  <meta property="og:description" content=" "><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://coderxdlee.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-07-25T13:47:21&#43;08:00">
@@ -396,6 +396,18 @@
 
   
   
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">M X</a></span>
+
+  </div>
+  
+  
 
   
   <span class="article-date">
@@ -412,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -425,6 +437,11 @@
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/swiftui/">SwiftUI</a></span>
   
 
   
@@ -542,12 +559,71 @@
 
     <div class="article-style" itemprop="articleBody">
       
+
+<p>当我们从视图的 body 返回 <code>some View</code> 的时候，Swift 理解这意味着我们有一个特定的返回类型。</p>
+
+<p>例如: 如果我们想掷硬币并显示 &ldquo;你赢了!&ldquo;，但是我们不能这样写: 要么返回一个 Image，要么返回一个 Text，写着 &ldquo;下次祝你好运&rdquo;:</p>
+
+<pre><code class="language-swift">var body: some View {
+    if Bool.random() {
+        Image(&quot;example-image&quot;)
+    } else {
+        Text(&quot;Better luck next time&quot;)
+    }
+}
+</code></pre>
+
+<p>这段代码会报错:
+<img src="img/error_return_view_type.png" alt="error_return_view_type" title="Compilation error" />
+因为它可能返回 <em>Image</em> 或者 <em>Text</em> ，这是不允许的 &ndash;  我们<code>必须精确返回一种类型</code>。
+有两种方法可以解决这个问题。</p>
+
+<h3 id="1-group">1. Group</h3>
+
+<p>第一种方法是将输出包装在一个 <code>group</code> 中，这样无论我们发送图像视图还是文本视图，它们都将返回到一个 <code>group</code> 中:</p>
+
+<pre><code class="language-swift">var body: some View {
+    Group {
+        if Bool.random() {
+            Image(&quot;example-image&quot;)
+        } else {
+            Text(&quot;Better luck next time&quot;)
+        }
+    }
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/return_image.png" alt="return_image" title="Return an image or a text" /></p>
+
+<h3 id="2-anyview">2. AnyView</h3>
+
+<p>第二种方法，SwiftUI 提供了一个名为 <code>AnyView</code> 的类型，我们可以返回这种类型:</p>
+
+<pre><code class="language-swift">var body: AnyView {
+    if Bool.random() {
+        return AnyView(Image(&quot;example-image&quot;))
+    } else {
+        return AnyView(Text(&quot;Better luck next time&quot;))
+    }
+}
+</code></pre>
+
+<p>如果你还没有听说过这个概念，它会强制让 Swift 忘记 <code>AnyView</code> 中包含的特定类型，让它们看起来像是一样的东西。但这有性能成本，所以不要经常使用它。
+尽管 <code>Group</code> 和 <code>AnyView</code> 都为我们的布局实现了相同的结果，但通常最好使用 <code>Group</code>，因为它对 SwiftUI 更有效。</p>
+
     </div>
 
     
 
 
     
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/swiftui/">SwiftUI</a>
+  
+</div>
 
 
 
@@ -561,6 +637,10 @@
 
 
 
+  
+  
+    
+  
   
 
 
@@ -659,12 +739,37 @@
 
       
       
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/swiftui/2-view_layout/2.4_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8zstack%E5%B0%86%E8%A7%86%E5%9B%BE%E5%8F%A0%E5%8A%A0%E5%9C%A8%E4%B8%80%E8%B5%B7/">2.4_如何使用ZStack将视图叠加在一起</a></li>
+          
+          <li><a href="/post/swiftui/2-view_layout/2.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8padding%E6%8E%A7%E5%88%B6%E5%8D%95%E4%B8%AA%E8%A7%86%E5%9B%BE%E5%91%A8%E5%9B%B4%E7%9A%84%E9%97%B4%E8%B7%9D/">2.3_如何使用padding控制单个视图周围的间距</a></li>
+          
+          <li><a href="/post/swiftui/2-view_layout/2.2_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/">2.2_如何通过alignment和spacing自定义stack布局</a></li>
+          
+          <li><a href="/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vstack%E5%92%8Chstack%E5%88%9B%E5%BB%BAstacks/">2.1_如何使用VStack和HStack创建stacks</a></li>
+          
+          <li><a href="/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/">1.9_如何使用图像和其它视图作为背景</a></li>
+          
+        </ul>
+      </div>
+      
     
 
     
     <div class="article-widget">
       
 <div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/post/swiftui/2-view_layout/2.6_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8foreach%E5%9C%A8%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE/" rel="next">2.6_如何使用ForEach在循环中创建视图</a>
+  </div>
   
   
   

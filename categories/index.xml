@@ -6,7 +6,8 @@
     <description>Recent content in Categories on M X</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jul 2019 11:39:45 +0800</lastBuildDate>
+    <copyright>M X ©{year}</copyright>
+    <lastBuildDate>Thu, 25 Jul 2019 13:26:52 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +15,7 @@
     <item>
       <title>SwiftUI</title>
       <link>https://coderxdlee.github.io/categories/swiftui/</link>
-      <pubDate>Thu, 25 Jul 2019 11:39:45 +0800</pubDate>
+      <pubDate>Thu, 25 Jul 2019 13:26:52 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/categories/swiftui/</guid>
       <description></description>

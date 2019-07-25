@@ -6,10 +6,71 @@
     <description>Recent content in Posts on M X</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jul 2019 11:39:45 +0800</lastBuildDate>
+    <copyright>M X ©{year}</copyright>
+    <lastBuildDate>Thu, 25 Jul 2019 13:47:21 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2.5_如何返回不同的视图类型</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.5_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Thu, 25 Jul 2019 13:47:21 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.5_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2.4_如何使用ZStack将视图叠加在一起</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.4_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8zstack%E5%B0%86%E8%A7%86%E5%9B%BE%E5%8F%A0%E5%8A%A0%E5%9C%A8%E4%B8%80%E8%B5%B7/</link>
+      <pubDate>Thu, 25 Jul 2019 13:26:52 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.4_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8zstack%E5%B0%86%E8%A7%86%E5%9B%BE%E5%8F%A0%E5%8A%A0%E5%9C%A8%E4%B8%80%E8%B5%B7/</guid>
+      <description>
+
+&lt;p&gt;SwiftUI 有一个专用的 &lt;em&gt;stack&lt;/em&gt; 类型，用于创建重叠内容，例如，如果我们想在图片上放置一些文本，它就很有用。它被称为 &lt;code&gt;ZStack&lt;/code&gt;，其工作原理与其他两种 &lt;em&gt;stack&lt;/em&gt; 类型相同。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-在文本下面放置图片&#34;&gt;1. 在文本下面放置图片&lt;/h3&gt;
+
+&lt;p&gt;例如: 我们可以在如下文本下面放置一个大图像:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    ZStack() {
+        Image(&amp;quot;example-image&amp;quot;)
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .font(.largeTitle)
+            .background(Color.black)
+            .foregroundColor(.white)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/zstack_image_text.png&#34; alt=&#34;zstack_image_text&#34; title=&#34;Set zstack with a image and a text, image is below text&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-对齐&#34;&gt;2. 对齐&lt;/h3&gt;
+
+&lt;p&gt;与其它 &lt;em&gt;stack&lt;/em&gt; 类型一样，&lt;code&gt;ZStack&lt;/code&gt; 也可以设置对齐方式，这样它就不会总是将事物置于自身的中心位置:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    ZStack(alignment: .leading) {
+        Image(&amp;quot;example-image&amp;quot;)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .font(.largeTitle)
+            .background(Color.black)
+            .foregroundColor(.white)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行方式:
+&lt;img src=&#34;img/zstack_alignment_leading.png&#34; alt=&#34;zstack_alignment_leading&#34; title=&#34;Set zstack&#39;s alignment as .leading&#34; /&gt;
+但是，它没有 &lt;em&gt;spacing&lt;/em&gt; 属性，因为它实际上没有意义。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2.3_如何使用padding控制单个视图周围的间距</title>
@@ -23,7 +84,7 @@
 
 &lt;h3 id=&#34;1-系统默认-padding&#34;&gt;1. 系统默认 padding&lt;/h3&gt;
 
-&lt;p&gt;如果在没有参数的情况下使用此选项，您将在所有边上获得系统默认填充，如下所示:&lt;/p&gt;
+&lt;p&gt;如果在不传参数的情况下使用 &lt;em&gt;padding()&lt;/em&gt; ，您将在所有边上获得系统默认填充，如下所示:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
     VStack {
@@ -57,7 +118,7 @@
 
 &lt;p&gt;运行效果:
 &lt;img src=&#34;img/padding_system_bottom.png&#34; alt=&#34;padding_system_bottom&#34; title=&#34;Set bottom padding with system default&#34; /&gt;
-注意: 这里只设置了底部填充，以上面的例子不同。&lt;/p&gt;
+注意: 这里只设置了底部填充，与上面的例子不同。&lt;/p&gt;
 
 &lt;h3 id=&#34;3-用具体数值来设置-padding&#34;&gt;3. 用具体数值来设置 padding&lt;/h3&gt;
 

@@ -35,7 +35,68 @@
       <pubDate>Wed, 24 Jul 2019 15:45:29 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.7_%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93%E6%B8%90%E5%8F%98/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;SwiftUI 为我们提供了各种渐变选项（gradient options），所有这些选项都可以以各种方式来使用。例如:&lt;/p&gt;
+
+&lt;h3 id=&#34;1-垂直线性渐变&#34;&gt;1.垂直线性渐变&lt;/h3&gt;
+
+&lt;p&gt;可以使用从白色到黑色的线性渐变来渲染文本视图，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello World&amp;quot;)
+        .padding()
+        .foregroundColor(.white)
+        .background(LinearGradient(gradient: Gradient(colors: [.white, .black]), startPoint: .top, endPoint: .bottom), cornerRadius: 0)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/gradient_vertical_white_black.png&#34; alt=&#34;gradient_vertical_white_black&#34; title=&#34;vertical gradient: white -&amp;gt; black&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;颜色被指定为一个数组，你可以拥有任意多你想要的颜色 - 默认情况下，SwiftUI 将会平均分配这些颜色。所以，我们可以这样从 白色 -&amp;gt; 红色 -&amp;gt; 黑色:
+运行效果:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello World&amp;quot;)
+        .padding()
+        .foregroundColor(.white)
+        .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .top, endPoint: .bottom), cornerRadius: 0)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/gradient_vertical_white_red_black.png&#34; alt=&#34;gradient_vertical_white_red_black&#34; title=&#34;vertical gradient: white -&amp;gt; red -&amp;gt; black&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-水平线性渐变&#34;&gt;2.水平线性渐变&lt;/h3&gt;
+
+&lt;p&gt;要实现一个水平渐变（a horizontal gradient）而不是一个垂直渐变（a vertical one），使用 &lt;code&gt;.leading&lt;/code&gt; 和 &lt;code&gt;.trailing&lt;/code&gt; 来作为 startPoint 和 endPoint：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello World&amp;quot;)
+       .padding()
+       .foregroundColor(.white)
+       .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .leading, endPoint: .trailing), cornerRadius: 0)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/gradient_horizontal_white_red_black.png&#34; alt=&#34;gradient_horizontal_white_red_black&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-对角线线性渐变&#34;&gt;3.对角线线性渐变&lt;/h3&gt;
+
+&lt;p&gt;要实现对角线渐变，可以使用 .topLeading 和 .bottomTrailing 作为 startPoint 和 endPoint：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello World&amp;quot;)
+        .padding()
+        .foregroundColor(.white)
+        .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .topLeading, endPoint: .bottomTrailing), cornerRadius: 0)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/gradient_diagonal.png&#34; alt=&#34;gradient_diagonal&#34; title=&#34;gradient diagonal&#34; /&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>

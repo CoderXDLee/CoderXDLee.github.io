@@ -295,7 +295,7 @@ return Image(uiImage: image)
 
 &lt;h3 id=&#34;5-动态文本样式&#34;&gt;5. 动态文本样式&lt;/h3&gt;
 
-&lt;p&gt;这意味着你可以要求 SwiftUI 放大图像，以匹配随附的任何 &lt;code&gt;Dynamic Type&lt;/code&gt; 文本样式:&lt;/p&gt;
+&lt;p&gt;这意味着你可以通过匹配任何 &lt;code&gt;Dynamic Type&lt;/code&gt; 文本样式，来要求 SwiftUI 放大图像:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Image(systemName: &amp;quot;cloud.heavyrain.fill&amp;quot;)
     .font(.largeTitle)

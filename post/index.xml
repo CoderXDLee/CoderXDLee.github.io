@@ -6,10 +6,180 @@
     <description>Recent content in Posts on M X</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Jul 2019 15:46:29 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jul 2019 10:54:52 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2.1_如何通过alignment和spacing自定义stack布局</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Thu, 25 Jul 2019 10:54:52 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/</guid>
+      <description>
+
+&lt;h3 id=&#34;1-spacing&#34;&gt;1. &lt;code&gt;spacing&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们可以通过在 SwiftUI stacks 的构造方法中填一个值来设置间距，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(spacing: 50) {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_spacing.png&#34; alt=&#34;stack_spacing&#34; title=&#34;Set a spacing for stack&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-divider&#34;&gt;2. &lt;code&gt;Divider&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们可以在项目之间创建分隔符，以便 SwiftUI 在 &lt;em&gt;stack&lt;/em&gt; 中的每个项目之间进行小的视觉区分，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+        Divider()
+        Text(&amp;quot;Hello M X&amp;quot;)
+           .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_divider.png&#34; alt=&#34;stack_divider&#34; title=&#34;Set a divider for stack&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-alignment&#34;&gt;3. &lt;code&gt;alignment&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;默认情况下，&lt;em&gt;stacks&lt;/em&gt; 中的项目居中对齐。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 &lt;em&gt;HStack&lt;/em&gt; 中: 项目在中间垂直对齐，因此如果有两个不同高度的文本视图，它们都将与垂直中心对齐。&lt;/li&gt;
+&lt;li&gt;在 &lt;em&gt;VStack&lt;/em&gt; 中: 项目在中间水平对齐，因此如果有两个长度不同的文本视图，它们都将与水平中心对齐。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;要调整这种情况，请在创建 &lt;em&gt;stack&lt;/em&gt; 时按以下方式传递一个 &lt;em&gt;alignment&lt;/em&gt; 参数:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(alignment: .leading) {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_alignment_leading.png&#34; alt=&#34;stack_alignment_leading&#34; title=&#34;Set alignment to .leading&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这将使 &lt;code&gt;Hello SwiftUI&lt;/code&gt; 和 &lt;code&gt;Hello M X&lt;/code&gt; 左对齐，但它们最终将位于屏幕的中间，因为 stack 只占用所需的空间。&lt;/p&gt;
+
+&lt;h3 id=&#34;4-同时设置-alignment-和-spacing&#34;&gt;4.同时设置 &lt;code&gt;alignment&lt;/code&gt; 和 &lt;code&gt;spacing&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们可以同时使用 &lt;em&gt;alignment&lt;/em&gt; 和 &lt;em&gt;spacing&lt;/em&gt; ，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(alignment: .leading, spacing: 20) {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_alignment_spacing.png&#34; alt=&#34;stack_alignment_spacing&#34; title=&#34;Using alignment and spacing in stack&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这将使两个文本视图水平对齐到 &lt;code&gt;leading&lt;/code&gt;（对于从左到右的语言是左对齐），并在它们之间放置20个点的垂直间距。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.1_如何使用VStack和HStack创建stacks</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vstack%E5%92%8Chstack%E5%88%9B%E5%BB%BAstacks/</link>
+      <pubDate>Thu, 25 Jul 2019 10:10:50 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vstack%E5%92%8Chstack%E5%88%9B%E5%BB%BAstacks/</guid>
+      <description>
+
+&lt;p&gt;SwiftUI 的内容视图 &lt;em&gt;content views&lt;/em&gt; 必须返回一个视图，即我们希望它们显示的视图。当我们想要一次在屏幕上显示多个视图时，我们需要告诉 SwiftUI 如何排列它们，这就是 &lt;code&gt;堆栈（stacks）&lt;/code&gt;的来源。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;堆栈（Stacks）&lt;/code&gt; 相当于 UIKit 中的 &lt;em&gt;UIStackView&lt;/em&gt; 。有三种形式:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;水平（HStack）&lt;/li&gt;
+&lt;li&gt;垂直（VStack）&lt;/li&gt;
+&lt;li&gt;基于深度（ZStack）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;当我们想放置子视图以便它们重叠时可以使用后者。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-vstack&#34;&gt;1. VStack&lt;/h3&gt;
+
+&lt;p&gt;让我们从一些简单的事情开始，先创建一个文本视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello SwiftUI&amp;quot;)
+        .background(Color.red)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/single_text.png&#34; alt=&#34;single_text&#34; title=&#34;A single text&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;有了一个文本视图，如果我们想在下面再写一个，我们不能只写:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello SwiftUI&amp;quot;)
+    Text(&amp;quot;Hello M X&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样的话，编译器会直接报错。
+记住，我们只能返回一个视图，否则代码就不会工作。&lt;/p&gt;
+
+&lt;p&gt;那么怎么办呢？我们需要将其放置在 &lt;code&gt;VStack&lt;/code&gt; 中，以便将文本视图放置在彼此上方:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+       Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+       Text(&amp;quot;Hello M X&amp;quot;)   
+           .background(Color.blue)         
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/two_text_in_vstack.png&#34; alt=&#34;two_text_in_vstack&#34; title=&#34;Two text in VStack&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;您会注意到 &lt;code&gt;VStack&lt;/code&gt; 放置在屏幕的中心，标签也居中，它们之间有一些自动空间。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-hstack&#34;&gt;2. HStack&lt;/h3&gt;
+
+&lt;p&gt;如果我们希望文本视图并排水平放置，请使用如下方式将 &lt;code&gt;VStack&lt;/code&gt; 替换为 &lt;code&gt;HStack&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    HStack {
+       Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+       Text(&amp;quot;Hello M X&amp;quot;)   
+           .background(Color.blue)         
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/two_text_in_hstack.png&#34; alt=&#34;two_text_in_hstack&#34; title=&#34;Two text in HStack&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>1.9_如何使用图像和其它视图作为背景</title>
@@ -295,7 +465,7 @@ return Image(uiImage: image)
 
 &lt;h3 id=&#34;5-动态文本样式&#34;&gt;5. 动态文本样式&lt;/h3&gt;
 
-&lt;p&gt;这意味着你可以要求 SwiftUI 放大图像，以匹配随附的任何 &lt;code&gt;Dynamic Type&lt;/code&gt; 文本样式:&lt;/p&gt;
+&lt;p&gt;这意味着你可以通过匹配任何 &lt;code&gt;Dynamic Type&lt;/code&gt; 文本样式，来要求 SwiftUI 放大图像:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Image(systemName: &amp;quot;cloud.heavyrain.fill&amp;quot;)
     .font(.largeTitle)

@@ -31,7 +31,7 @@
   <meta name="description" content=" ">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/">
+  <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/">
 
   
 
@@ -96,7 +96,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/">
+  <link rel="canonical" href="https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/">
 
   
   
@@ -108,26 +108,26 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="M X">
-  <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/">
-  <meta property="og:title" content="1.9_如何使用图像和其它视图作为背景 | M X">
+  <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/">
+  <meta property="og:title" content="2.1_如何通过alignment和spacing自定义stack布局 | M X">
   <meta property="og:description" content=" "><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://coderxdlee.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-07-24T15:46:29&#43;08:00">
+  <meta property="article:published_time" content="2019-07-25T10:54:52&#43;08:00">
   
-  <meta property="article:modified_time" content="2019-07-24T15:46:29&#43;08:00">
+  <meta property="article:modified_time" content="2019-07-25T10:54:52&#43;08:00">
   
-
-  
-
 
   
 
 
+  
 
 
 
-  <title>1.9_如何使用图像和其它视图作为背景 | M X</title>
+
+
+  <title>2.1_如何通过alignment和spacing自定义stack布局 | M X</title>
 
 </head>
 
@@ -380,7 +380,7 @@
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">1.9_如何使用图像和其它视图作为背景</h1>
+  <h1 itemprop="name">2.1_如何通过alignment和spacing自定义stack布局</h1>
 
   
 
@@ -389,23 +389,11 @@
 
 
 
-<meta content="2019-07-24 15:46:29 &#43;0800 CST" itemprop="datePublished">
-<meta content="2019-07-24 15:46:29 &#43;0800 CST" itemprop="dateModified">
+<meta content="2019-07-25 10:54:52 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-25 10:54:52 &#43;0800 CST" itemprop="dateModified">
 
 <div class="article-metadata">
 
-  
-  
-  
-  
-  <div>
-    
-
-
-
-  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">M X</a></span>
-
-  </div>
   
   
 
@@ -415,7 +403,7 @@
     
       
     
-    <time>Jul 24, 2019</time>
+    <time>Jul 25, 2019</time>
   </span>
   
 
@@ -432,16 +420,11 @@
   
   
   <span class="middot-divider"></span>
-  <a href="/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/#disqus_thread"></a>
+  <a href="/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/#disqus_thread"></a>
   <script id="dsq-count-scr" src="https://M%20X.disqus.com/count.js" async></script>
   
 
   
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder"></i>
-    <a href="/categories/swiftui/">SwiftUI</a></span>
   
 
   
@@ -457,7 +440,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/&amp;text=1.9_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e5%9b%be%e5%83%8f%e5%92%8c%e5%85%b6%e5%ae%83%e8%a7%86%e5%9b%be%e4%bd%9c%e4%b8%ba%e8%83%8c%e6%99%af" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/&amp;text=2.1_%e5%a6%82%e4%bd%95%e9%80%9a%e8%bf%87alignment%e5%92%8cspacing%e8%87%aa%e5%ae%9a%e4%b9%89stack%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -470,7 +453,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/&amp;t=1.9_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e5%9b%be%e5%83%8f%e5%92%8c%e5%85%b6%e5%ae%83%e8%a7%86%e5%9b%be%e4%bd%9c%e4%b8%ba%e8%83%8c%e6%99%af" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/&amp;t=2.1_%e5%a6%82%e4%bd%95%e9%80%9a%e8%bf%87alignment%e5%92%8cspacing%e8%87%aa%e5%ae%9a%e4%b9%89stack%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
       </li>
@@ -483,7 +466,7 @@
       
       
       <li>
-        <a href="mailto:?subject=1.9_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e5%9b%be%e5%83%8f%e5%92%8c%e5%85%b6%e5%ae%83%e8%a7%86%e5%9b%be%e4%bd%9c%e4%b8%ba%e8%83%8c%e6%99%af&amp;body=https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=2.1_%e5%a6%82%e4%bd%95%e9%80%9a%e8%bf%87alignment%e5%92%8cspacing%e8%87%aa%e5%ae%9a%e4%b9%89stack%e5%b8%83%e5%b1%80&amp;body=https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -496,7 +479,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/&amp;title=1.9_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e5%9b%be%e5%83%8f%e5%92%8c%e5%85%b6%e5%ae%83%e8%a7%86%e5%9b%be%e4%bd%9c%e4%b8%ba%e8%83%8c%e6%99%af" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/&amp;title=2.1_%e5%a6%82%e4%bd%95%e9%80%9a%e8%bf%87alignment%e5%92%8cspacing%e8%87%aa%e5%ae%9a%e4%b9%89stack%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -509,7 +492,7 @@
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=1.9_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e5%9b%be%e5%83%8f%e5%92%8c%e5%85%b6%e5%ae%83%e8%a7%86%e5%9b%be%e4%bd%9c%e4%b8%ba%e8%83%8c%e6%99%af%20https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=2.1_%e5%a6%82%e4%bd%95%e9%80%9a%e8%bf%87alignment%e5%92%8cspacing%e8%87%aa%e5%ae%9a%e4%b9%89stack%e5%b8%83%e5%b1%80%20https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -522,7 +505,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/&amp;title=1.9_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e5%9b%be%e5%83%8f%e5%92%8c%e5%85%b6%e5%ae%83%e8%a7%86%e5%9b%be%e4%bd%9c%e4%b8%ba%e8%83%8c%e6%99%af" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/&amp;title=2.1_%e5%a6%82%e4%bd%95%e9%80%9a%e8%bf%87alignment%e5%92%8cspacing%e8%87%aa%e5%ae%9a%e4%b9%89stack%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -560,63 +543,85 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<p>我们可以使用相同的 <code>background()</code> 修饰符来设置背景图像，而不是设置背景颜色。</p>
+<h3 id="1-spacing">1. <code>spacing</code></h3>
 
-<h3 id="1-给文本视图设置图像背景">1. 给文本视图设置图像背景</h3>
-
-<p>例如: 现在，我们要创建一个大字体的文本视图，然后在其后面放置一个 <code>100x100 的图像</code>:</p>
+<p>我们可以通过在 SwiftUI stacks 的构造方法中填一个值来设置间距，如下所示:</p>
 
 <pre><code class="language-swift">var body: some View {
+    VStack(spacing: 50) {
         Text(&quot;Hello SwiftUI&quot;)
-            .font(.largeTitle)
-            .background(
-                Image(&quot;example-image&quot;)
-                    .resizable()
-                    .frame(width: 100, height: 100)
-            )
+            .background(Color.red)
+        Text(&quot;Hello M X&quot;)
+            .background(Color.blue)
     }
 }
 </code></pre>
 
 <p>运行效果:
-<img src="img/background_image.png" alt="background_image" title="Set background with image" /></p>
+<img src="img/stack_spacing.png" alt="stack_spacing" title="Set a spacing for stack" /></p>
 
-<h3 id="2-给文本视图设置一个红色圆圈作为背景">2. 给文本视图设置一个红色圆圈作为背景</h3>
+<h3 id="2-divider">2. <code>Divider</code></h3>
 
-<p>在 SwiftUI 中，背景 View 并不一定是一个图像，实际上我们可以使用任何类型的视图作为背景。
-例如: 现在将创建相同的文本视图，然后在其后面放置一个 <code>200x200 的红色圆圈</code>:</p>
-
-<pre><code class="language-swift">var body: some View {
-    // 红色圆圈作背景
-    Text(&quot;Hello SwiftUI&quot;)
-        .font(.largeTitle)
-        .background(
-            Circle()
-                .fill(Color.red)
-                .frame(width: 200, height: 200)
-        )
-}
-</code></pre>
-
-<p>默认情况下，背景视图会自动占用尽可能多的空间以完全可见，但如果需要，可以使用 <code>clipped(</code>) 修饰符将其剪裁为父视图的大小：</p>
+<p>我们可以在项目之间创建分隔符，以便 SwiftUI 在 <em>stack</em> 中的每个项目之间进行小的视觉区分，如下所示:</p>
 
 <pre><code class="language-swift">var body: some View {
-    // 红色圆圈作背景
-    Text(&quot;Hello SwiftUI&quot;)
-        .font(.largeTitle)
-        .background(
-            Circle()
-                .fill(Color.red)
-                .frame(width: 200, height: 200)
-                .clipped()
-        )
+    VStack {
+        Text(&quot;Hello SwiftUI&quot;)
+           .background(Color.red)
+        Divider()
+        Text(&quot;Hello M X&quot;)
+           .background(Color.blue)
+    }
 }
 </code></pre>
 
 <p>运行效果:
-<img src="img/background_red_circle.png" alt="background_red_circle" title="Set background with a red circle" /></p>
+<img src="img/stack_divider.png" alt="stack_divider" title="Set a divider for stack" /></p>
 
-<p>明确地说，您可以使用任何视图作为背景，例如，如果需要，可以使用另一个文本视图。</p>
+<h3 id="3-alignment">3. <code>alignment</code></h3>
+
+<p>默认情况下，<em>stacks</em> 中的项目居中对齐。</p>
+
+<ul>
+<li>在 <em>HStack</em> 中: 项目在中间垂直对齐，因此如果有两个不同高度的文本视图，它们都将与垂直中心对齐。</li>
+<li>在 <em>VStack</em> 中: 项目在中间水平对齐，因此如果有两个长度不同的文本视图，它们都将与水平中心对齐。</li>
+</ul>
+
+<p>要调整这种情况，请在创建 <em>stack</em> 时按以下方式传递一个 <em>alignment</em> 参数:</p>
+
+<pre><code class="language-swift">var body: some View {
+    VStack(alignment: .leading) {
+        Text(&quot;Hello SwiftUI&quot;)
+           .background(Color.red)
+        Text(&quot;Hello M X&quot;)
+            .background(Color.blue)
+    }
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/stack_alignment_leading.png" alt="stack_alignment_leading" title="Set alignment to .leading" /></p>
+
+<p>这将使 <code>Hello SwiftUI</code> 和 <code>Hello M X</code> 左对齐，但它们最终将位于屏幕的中间，因为 stack 只占用所需的空间。</p>
+
+<h3 id="4-同时设置-alignment-和-spacing">4.同时设置 <code>alignment</code> 和 <code>spacing</code></h3>
+
+<p>我们可以同时使用 <em>alignment</em> 和 <em>spacing</em> ，如下所示:</p>
+
+<pre><code class="language-swift">var body: some View {
+    VStack(alignment: .leading, spacing: 20) {
+        Text(&quot;Hello SwiftUI&quot;)
+            .background(Color.red)
+        Text(&quot;Hello M X&quot;)
+            .background(Color.blue)
+    }
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/stack_alignment_spacing.png" alt="stack_alignment_spacing" title="Using alignment and spacing in stack" /></p>
+
+<p>这将使两个文本视图水平对齐到 <code>leading</code>（对于从左到右的语言是左对齐），并在它们之间放置20个点的垂直间距。</p>
 
     </div>
 
@@ -624,12 +629,6 @@
 
 
     
-
-<div class="article-tags">
-  
-  <a class="badge badge-light" href="/tags/swiftui/">SwiftUI</a>
-  
-</div>
 
 
 
@@ -643,10 +642,6 @@
 
 
 
-  
-  
-    
-  
   
 
 
@@ -745,24 +740,6 @@
 
       
       
-      <div class="article-widget">
-        <div class="hr-light"></div>
-        <h3>Related</h3>
-        <ul>
-          
-          <li><a href="/post/swiftui/1-text_and_image/1.8_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E5%87%A0%E4%BD%95%E5%BD%A2%E7%8A%B6/">1.8_如何显示几何形状</a></li>
-          
-          <li><a href="/post/swiftui/1-text_and_image/1.7_%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93%E6%B8%90%E5%8F%98/">1.7_如何渲染渐变</a></li>
-          
-          <li><a href="/post/swiftui/1-text_and_image/1.6_%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E5%9B%BE%E5%83%8F%E8%A7%86%E5%9B%BE%E7%9A%84%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/">1.6_如何调整图像视图的填充模式</a></li>
-          
-          <li><a href="/post/swiftui/1-text_and_image/1.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E8%A7%86%E5%9B%BE%E7%BB%98%E5%88%B6%E5%9B%BE%E5%83%8F/">1.5_如何使用图像视图绘制图像</a></li>
-          
-          <li><a href="/post/swiftui/1-text_and_image/1.4_%E5%A6%82%E4%BD%95%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%87%E6%9C%AC%E8%A7%86%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC/">1.4_如何格式化文本视图中的文本</a></li>
-          
-        </ul>
-      </div>
-      
     
 
     
@@ -773,15 +750,8 @@
   
   
   <div class="post-nav-item">
-    <div class="meta-nav">Next</div>
-    <a href="/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vstack%E5%92%8Chstack%E5%88%9B%E5%BB%BAstacks/" rel="next">2.1_如何使用VStack和HStack创建stacks</a>
-  </div>
-  
-  
-  
-  <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="/post/swiftui/1-text_and_image/1.8_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E5%87%A0%E4%BD%95%E5%BD%A2%E7%8A%B6/" rel="prev">1.8_如何显示几何形状</a>
+    <a href="/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vstack%E5%92%8Chstack%E5%88%9B%E5%BB%BAstacks/" rel="prev">2.1_如何使用VStack和HStack创建stacks</a>
   </div>
   
 </div>

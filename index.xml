@@ -158,7 +158,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/two_text_in_vstack.png&#34; alt=&#34;two_text_in_vstack&#34; title=&#34;Two text in VStack&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/two_text_in_vstack.png&#34; alt=&#34;two_text_in_vstack&#34; title=&#34;Two texts in VStack&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;您会注意到 &lt;code&gt;VStack&lt;/code&gt; 放置在屏幕的中心，标签也居中，它们之间有一些自动空间。&lt;/p&gt;
 
@@ -177,7 +177,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/two_text_in_hstack.png&#34; alt=&#34;two_text_in_hstack&#34; title=&#34;Two text in HStack&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/two_text_in_hstack.png&#34; alt=&#34;two_text_in_hstack&#34; title=&#34;Two texts in HStack&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

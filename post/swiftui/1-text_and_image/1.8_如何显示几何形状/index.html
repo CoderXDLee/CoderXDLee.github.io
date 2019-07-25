@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content=" ">
 
   
   <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.8_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E5%87%A0%E4%BD%95%E5%BD%A2%E7%8A%B6/">
@@ -110,7 +110,7 @@
   <meta property="og:site_name" content="M X">
   <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.8_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E5%87%A0%E4%BD%95%E5%BD%A2%E7%8A%B6/">
   <meta property="og:title" content="1.8_如何显示几何形状 | M X">
-  <meta property="og:description" content=""><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
+  <meta property="og:description" content=" "><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://coderxdlee.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-07-24T15:46:01&#43;08:00">
@@ -424,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -559,6 +559,37 @@
 
     <div class="article-style" itemprop="articleBody">
       
+
+<p>如果我们想在应用程序中使用简单地几何形状，我们可以直接创建它们，然后根据需要对它们进行着色和定位。</p>
+
+<h3 id="1-矩形">1. 矩形</h3>
+
+<p>例如，如果我们想要一个 <code>200x200</code> 红色矩形，可以使用如下代码:</p>
+
+<pre><code class="language-swift">var body: some View {
+    Rectangle()
+        .fill(Color.red)
+        .frame(width: 200, height: 200)
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/square_red_wh200.png" alt="square_red_wh200" title="Square: 200 x 200" /></p>
+
+<h3 id="2-圆">2. 圆</h3>
+
+<p>同样，如果你想要一个 <code>50x50</code> 的蓝色圆圈，您可以使用如下代码:</p>
+
+<pre><code class="language-swift">var body: some View {
+    Circle()
+        .fill(Color.blue)
+        .frame(width: 50, height: 50)
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/circle_blue_r50.png" alt="circle_blue_r50" title="Circle: 50 x 50" /></p>
+
     </div>
 
     

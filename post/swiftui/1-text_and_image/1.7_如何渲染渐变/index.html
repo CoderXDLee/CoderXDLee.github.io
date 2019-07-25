@@ -562,9 +562,9 @@
 
 <p>SwiftUI 为我们提供了各种渐变选项（gradient options），所有这些选项都可以以各种方式来使用。例如:</p>
 
-<h3 id="1-垂直线性渐变">1.垂直线性渐变</h3>
+<h3 id="1-垂直线性渐变">1. 垂直线性渐变</h3>
 
-<p>可以使用从白色到黑色的线性渐变来渲染文本视图，如下所示:</p>
+<p>我们使用从白色到黑色的线性渐变来渲染文本视图，如下所示:</p>
 
 <pre><code class="language-swift">var body: some View {
     Text(&quot;Hello World&quot;)
@@ -577,8 +577,7 @@
 <p>运行效果:
 <img src="img/gradient_vertical_white_black.png" alt="gradient_vertical_white_black" title="vertical gradient: white -&gt; black" /></p>
 
-<p>颜色被指定为一个数组，你可以拥有任意多你想要的颜色 - 默认情况下，SwiftUI 将会平均分配这些颜色。所以，我们可以这样从 白色 -&gt; 红色 -&gt; 黑色:
-运行效果:</p>
+<p>颜色被指定为一个数组，我们可以设置任意多我们想要的颜色 - 默认情况下，SwiftUI 将会平均分配这些颜色。所以，我们也可以这样从 白色 -&gt; 红色 -&gt; 黑色 来设置:</p>
 
 <pre><code class="language-swift">var body: some View {
     Text(&quot;Hello World&quot;)
@@ -588,11 +587,12 @@
 }
 </code></pre>
 
-<p><img src="img/gradient_vertical_white_red_black.png" alt="gradient_vertical_white_red_black" title="vertical gradient: white -&gt; red -&gt; black" /></p>
+<p>运行效果:
+<img src="img/gradient_vertical_white_red_black.png" alt="gradient_vertical_white_red_black" title="vertical gradient: white -&gt; red -&gt; black" /></p>
 
-<h3 id="2-水平线性渐变">2.水平线性渐变</h3>
+<h3 id="2-水平线性渐变">2. 水平线性渐变</h3>
 
-<p>要实现一个水平渐变（a horizontal gradient）而不是一个垂直渐变（a vertical one），使用 <code>.leading</code> 和 <code>.trailing</code> 来作为 startPoint 和 endPoint：</p>
+<p>要实现一个水平渐变（a horizontal gradient）而不是一个垂直渐变（a vertical one），使用 <code>.leading</code> 和 <code>.trailing</code> 来作为 <em>startPoint</em> 和 <em>endPoint</em>:</p>
 
 <pre><code class="language-swift">var body: some View {
     Text(&quot;Hello World&quot;)
@@ -605,9 +605,9 @@
 <p>运行效果:
 <img src="img/gradient_horizontal_white_red_black.png" alt="gradient_horizontal_white_red_black" /></p>
 
-<h3 id="3-对角线线性渐变">3.对角线线性渐变</h3>
+<h3 id="3-对角线线性渐变">3. 对角线线性渐变</h3>
 
-<p>要实现对角线渐变，可以使用 .topLeading 和 .bottomTrailing 作为 startPoint 和 endPoint：</p>
+<p>要实现对角线渐变，可以使用 <code>.topLeading</code> 和 <code>.bottomTrailing</code> 作为 <em>startPoint</em> 和 <em>endPoint</em>:</p>
 
 <pre><code class="language-swift">var body: some View {
     Text(&quot;Hello World&quot;)
@@ -618,7 +618,7 @@
 </code></pre>
 
 <p>运行效果:
-<img src="img/gradient_diagonal.png" alt="gradient_diagonal" title="gradient diagonal" /></p>
+<img src="img/gradient_diagonal.png" alt="gradient_diagonal" title="diagonal gradient: white -&gt; red -&gt; black " /></p>
 
     </div>
 

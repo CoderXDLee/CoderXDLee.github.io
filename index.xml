@@ -17,7 +17,66 @@
       <pubDate>Wed, 24 Jul 2019 15:46:29 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;我们可以使用相同的 &lt;code&gt;background()&lt;/code&gt; 修饰符来设置背景图像，而不是设置背景颜色。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-给文本视图设置图像背景&#34;&gt;1. 给文本视图设置图像背景&lt;/h3&gt;
+
+&lt;p&gt;例如: 现在，我们要创建一个大字体的文本视图，然后在其后面放置一个 &lt;code&gt;100x100 的图像&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .font(.largeTitle)
+            .background(
+                Image(&amp;quot;example-image&amp;quot;)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+            )
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/background_image.png&#34; alt=&#34;background_image&#34; title=&#34;Set background with image&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-给文本视图设置一个红色圆圈作为背景&#34;&gt;2. 给文本视图设置一个红色圆圈作为背景&lt;/h3&gt;
+
+&lt;p&gt;在 SwiftUI 中，背景 View 并不一定是一个图像，实际上我们可以使用任何类型的视图作为背景。
+例如: 现在将创建相同的文本视图，然后在其后面放置一个 &lt;code&gt;200x200 的红色圆圈&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    // 红色圆圈作背景
+    Text(&amp;quot;Hello SwiftUI&amp;quot;)
+        .font(.largeTitle)
+        .background(
+            Circle()
+                .fill(Color.red)
+                .frame(width: 200, height: 200)
+        )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;默认情况下，背景视图会自动占用尽可能多的空间以完全可见，但如果需要，可以使用 &lt;code&gt;clipped(&lt;/code&gt;) 修饰符将其剪裁为父视图的大小：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    // 红色圆圈作背景
+    Text(&amp;quot;Hello SwiftUI&amp;quot;)
+        .font(.largeTitle)
+        .background(
+            Circle()
+                .fill(Color.red)
+                .frame(width: 200, height: 200)
+                .clipped()
+        )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/background_red_circle.png&#34; alt=&#34;background_red_circle&#34; title=&#34;Set background with a red circle&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;明确地说，您可以使用任何视图作为背景，例如，如果需要，可以使用另一个文本视图。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +85,38 @@
       <pubDate>Wed, 24 Jul 2019 15:46:01 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.8_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E5%87%A0%E4%BD%95%E5%BD%A2%E7%8A%B6/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;如果我们想在应用程序中使用简单地几何形状，我们可以直接创建它们，然后根据需要对它们进行着色和定位。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-矩形&#34;&gt;1. 矩形&lt;/h3&gt;
+
+&lt;p&gt;例如，如果我们想要一个 &lt;code&gt;200x200&lt;/code&gt; 红色矩形，可以使用如下代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Rectangle()
+        .fill(Color.red)
+        .frame(width: 200, height: 200)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/square_red_wh200.png&#34; alt=&#34;square_red_wh200&#34; title=&#34;Square: 200 x 200&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-圆&#34;&gt;2. 圆&lt;/h3&gt;
+
+&lt;p&gt;同样，如果你想要一个 &lt;code&gt;50x50&lt;/code&gt; 的蓝色圆圈，您可以使用如下代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Circle()
+        .fill(Color.blue)
+        .frame(width: 50, height: 50)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/circle_blue_r50.png&#34; alt=&#34;circle_blue_r50&#34; title=&#34;Circle: 50 x 50&#34; /&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -39,9 +129,9 @@
 
 &lt;p&gt;SwiftUI 为我们提供了各种渐变选项（gradient options），所有这些选项都可以以各种方式来使用。例如:&lt;/p&gt;
 
-&lt;h3 id=&#34;1-垂直线性渐变&#34;&gt;1.垂直线性渐变&lt;/h3&gt;
+&lt;h3 id=&#34;1-垂直线性渐变&#34;&gt;1. 垂直线性渐变&lt;/h3&gt;
 
-&lt;p&gt;可以使用从白色到黑色的线性渐变来渲染文本视图，如下所示:&lt;/p&gt;
+&lt;p&gt;我们使用从白色到黑色的线性渐变来渲染文本视图，如下所示:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
     Text(&amp;quot;Hello World&amp;quot;)
@@ -54,8 +144,7 @@
 &lt;p&gt;运行效果:
 &lt;img src=&#34;img/gradient_vertical_white_black.png&#34; alt=&#34;gradient_vertical_white_black&#34; title=&#34;vertical gradient: white -&amp;gt; black&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;颜色被指定为一个数组，你可以拥有任意多你想要的颜色 - 默认情况下，SwiftUI 将会平均分配这些颜色。所以，我们可以这样从 白色 -&amp;gt; 红色 -&amp;gt; 黑色:
-运行效果:&lt;/p&gt;
+&lt;p&gt;颜色被指定为一个数组，我们可以设置任意多我们想要的颜色 - 默认情况下，SwiftUI 将会平均分配这些颜色。所以，我们也可以这样从 白色 -&amp;gt; 红色 -&amp;gt; 黑色 来设置:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
     Text(&amp;quot;Hello World&amp;quot;)
@@ -65,11 +154,12 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;img/gradient_vertical_white_red_black.png&#34; alt=&#34;gradient_vertical_white_red_black&#34; title=&#34;vertical gradient: white -&amp;gt; red -&amp;gt; black&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/gradient_vertical_white_red_black.png&#34; alt=&#34;gradient_vertical_white_red_black&#34; title=&#34;vertical gradient: white -&amp;gt; red -&amp;gt; black&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;2-水平线性渐变&#34;&gt;2.水平线性渐变&lt;/h3&gt;
+&lt;h3 id=&#34;2-水平线性渐变&#34;&gt;2. 水平线性渐变&lt;/h3&gt;
 
-&lt;p&gt;要实现一个水平渐变（a horizontal gradient）而不是一个垂直渐变（a vertical one），使用 &lt;code&gt;.leading&lt;/code&gt; 和 &lt;code&gt;.trailing&lt;/code&gt; 来作为 startPoint 和 endPoint：&lt;/p&gt;
+&lt;p&gt;要实现一个水平渐变（a horizontal gradient）而不是一个垂直渐变（a vertical one），使用 &lt;code&gt;.leading&lt;/code&gt; 和 &lt;code&gt;.trailing&lt;/code&gt; 来作为 &lt;em&gt;startPoint&lt;/em&gt; 和 &lt;em&gt;endPoint&lt;/em&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
     Text(&amp;quot;Hello World&amp;quot;)
@@ -82,9 +172,9 @@
 &lt;p&gt;运行效果:
 &lt;img src=&#34;img/gradient_horizontal_white_red_black.png&#34; alt=&#34;gradient_horizontal_white_red_black&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;3-对角线线性渐变&#34;&gt;3.对角线线性渐变&lt;/h3&gt;
+&lt;h3 id=&#34;3-对角线线性渐变&#34;&gt;3. 对角线线性渐变&lt;/h3&gt;
 
-&lt;p&gt;要实现对角线渐变，可以使用 .topLeading 和 .bottomTrailing 作为 startPoint 和 endPoint：&lt;/p&gt;
+&lt;p&gt;要实现对角线渐变，可以使用 &lt;code&gt;.topLeading&lt;/code&gt; 和 &lt;code&gt;.bottomTrailing&lt;/code&gt; 作为 &lt;em&gt;startPoint&lt;/em&gt; 和 &lt;em&gt;endPoint&lt;/em&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
     Text(&amp;quot;Hello World&amp;quot;)
@@ -95,7 +185,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/gradient_diagonal.png&#34; alt=&#34;gradient_diagonal&#34; title=&#34;gradient diagonal&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/gradient_diagonal.png&#34; alt=&#34;gradient_diagonal&#34; title=&#34;diagonal gradient: white -&amp;gt; red -&amp;gt; black &#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

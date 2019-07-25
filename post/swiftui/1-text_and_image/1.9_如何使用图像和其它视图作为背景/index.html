@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content=" ">
 
   
   <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/">
@@ -110,7 +110,7 @@
   <meta property="og:site_name" content="M X">
   <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E5%92%8C%E5%85%B6%E5%AE%83%E8%A7%86%E5%9B%BE%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF/">
   <meta property="og:title" content="1.9_如何使用图像和其它视图作为背景 | M X">
-  <meta property="og:description" content=""><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
+  <meta property="og:description" content=" "><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://coderxdlee.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-07-24T15:46:29&#43;08:00">
@@ -424,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -559,6 +559,65 @@
 
     <div class="article-style" itemprop="articleBody">
       
+
+<p>我们可以使用相同的 <code>background()</code> 修饰符来设置背景图像，而不是设置背景颜色。</p>
+
+<h3 id="1-给文本视图设置图像背景">1. 给文本视图设置图像背景</h3>
+
+<p>例如: 现在，我们要创建一个大字体的文本视图，然后在其后面放置一个 <code>100x100 的图像</code>:</p>
+
+<pre><code class="language-swift">var body: some View {
+        Text(&quot;Hello SwiftUI&quot;)
+            .font(.largeTitle)
+            .background(
+                Image(&quot;example-image&quot;)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+            )
+    }
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/background_image.png" alt="background_image" title="Set background with image" /></p>
+
+<h3 id="2-给文本视图设置一个红色圆圈作为背景">2. 给文本视图设置一个红色圆圈作为背景</h3>
+
+<p>在 SwiftUI 中，背景 View 并不一定是一个图像，实际上我们可以使用任何类型的视图作为背景。
+例如: 现在将创建相同的文本视图，然后在其后面放置一个 <code>200x200 的红色圆圈</code>:</p>
+
+<pre><code class="language-swift">var body: some View {
+    // 红色圆圈作背景
+    Text(&quot;Hello SwiftUI&quot;)
+        .font(.largeTitle)
+        .background(
+            Circle()
+                .fill(Color.red)
+                .frame(width: 200, height: 200)
+        )
+}
+</code></pre>
+
+<p>默认情况下，背景视图会自动占用尽可能多的空间以完全可见，但如果需要，可以使用 <code>clipped(</code>) 修饰符将其剪裁为父视图的大小：</p>
+
+<pre><code class="language-swift">var body: some View {
+    // 红色圆圈作背景
+    Text(&quot;Hello SwiftUI&quot;)
+        .font(.largeTitle)
+        .background(
+            Circle()
+                .fill(Color.red)
+                .frame(width: 200, height: 200)
+                .clipped()
+        )
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/background_red_circle.png" alt="background_red_circle" title="Set background with a red circle" /></p>
+
+<p>明确地说，您可以使用任何视图作为背景，例如，如果需要，可以使用另一个文本视图。</p>
+
     </div>
 
     

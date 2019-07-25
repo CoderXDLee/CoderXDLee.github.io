@@ -6,10 +6,185 @@
     <description>Recent content on M X</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jul 2019 10:10:50 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jul 2019 11:39:45 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2.3_如何使用padding控制单个视图周围的间距</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8padding%E6%8E%A7%E5%88%B6%E5%8D%95%E4%B8%AA%E8%A7%86%E5%9B%BE%E5%91%A8%E5%9B%B4%E7%9A%84%E9%97%B4%E8%B7%9D/</link>
+      <pubDate>Thu, 25 Jul 2019 11:39:45 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8padding%E6%8E%A7%E5%88%B6%E5%8D%95%E4%B8%AA%E8%A7%86%E5%9B%BE%E5%91%A8%E5%9B%B4%E7%9A%84%E9%97%B4%E8%B7%9D/</guid>
+      <description>
+
+&lt;p&gt;SwiftUI 允许我们使用 &lt;code&gt;padding()&lt;/code&gt; 修饰符在视图周围设置单独的填充。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-系统默认-padding&#34;&gt;1. 系统默认 padding&lt;/h3&gt;
+
+&lt;p&gt;如果在没有参数的情况下使用此选项，您将在所有边上获得系统默认填充，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+            .padding()
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/padding_system_default.png&#34; alt=&#34;padding_system_default&#34; title=&#34;Set padding with system default&#34; /&gt;
+注意: 这里默认设置了视图四周的填充。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-只设置一侧系统默认-padding&#34;&gt;2. 只设置一侧系统默认 padding&lt;/h3&gt;
+
+&lt;p&gt;我们也可以自定义要 apply 的 &lt;em&gt;padding&lt;/em&gt; 和位置。因此，我们只希望将系统填充应用于一侧:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+            .padding(.bottom)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/padding_system_bottom.png&#34; alt=&#34;padding_system_bottom&#34; title=&#34;Set bottom padding with system default&#34; /&gt;
+注意: 这里只设置了底部填充，以上面的例子不同。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-用具体数值来设置-padding&#34;&gt;3. 用具体数值来设置 padding&lt;/h3&gt;
+
+&lt;p&gt;我们可能希望控制对所有边应用了多少填充:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+            .padding(100)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/padding_100.png&#34; alt=&#34;padding_100&#34; title=&#34;Set padding as 100&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-在视图一侧添加特定数量的填充&#34;&gt;4. 在视图一侧添加特定数量的填充&lt;/h3&gt;
+
+&lt;p&gt;我们也可以将这两者结合起来，在视图的一侧添加特定数量的填充：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+  VStack {
+      Text(&amp;quot;Hello SwiftUI&amp;quot;)
+          .background(Color.red)
+          .padding(.bottom, 100)
+      Text(&amp;quot;Hello M X&amp;quot;)
+          .background(Color.blue)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/padding_bottom_100.png&#34; alt=&#34;padding_bottom_100&#34; title=&#34;Set bottom padding as 100&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.2_如何通过alignment和spacing自定义stack布局</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.2_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Thu, 25 Jul 2019 10:54:52 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.2_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/</guid>
+      <description>
+
+&lt;h3 id=&#34;1-spacing&#34;&gt;1. &lt;code&gt;spacing&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们可以通过在 SwiftUI stacks 的构造方法中填一个值来设置间距，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(spacing: 50) {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_spacing.png&#34; alt=&#34;stack_spacing&#34; title=&#34;Set a spacing for stack&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-divider&#34;&gt;2. &lt;code&gt;Divider&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们可以在项目之间创建分隔符，以便 SwiftUI 在 &lt;em&gt;stack&lt;/em&gt; 中的每个项目之间进行小的视觉区分，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+        Divider()
+        Text(&amp;quot;Hello M X&amp;quot;)
+           .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_divider.png&#34; alt=&#34;stack_divider&#34; title=&#34;Set a divider for stack&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-alignment&#34;&gt;3. &lt;code&gt;alignment&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;默认情况下，&lt;em&gt;stacks&lt;/em&gt; 中的项目居中对齐。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 &lt;em&gt;HStack&lt;/em&gt; 中: 项目在中间垂直对齐，因此如果有两个不同高度的文本视图，它们都将与垂直中心对齐。&lt;/li&gt;
+&lt;li&gt;在 &lt;em&gt;VStack&lt;/em&gt; 中: 项目在中间水平对齐，因此如果有两个长度不同的文本视图，它们都将与水平中心对齐。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;要调整这种情况，请在创建 &lt;em&gt;stack&lt;/em&gt; 时按以下方式传递一个 &lt;em&gt;alignment&lt;/em&gt; 参数:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(alignment: .leading) {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_alignment_leading.png&#34; alt=&#34;stack_alignment_leading&#34; title=&#34;Set alignment to .leading&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这将使 &lt;code&gt;Hello SwiftUI&lt;/code&gt; 和 &lt;code&gt;Hello M X&lt;/code&gt; 左对齐，但它们最终将位于屏幕的中间，因为 stack 只占用所需的空间。&lt;/p&gt;
+
+&lt;h3 id=&#34;4-同时设置-alignment-和-spacing&#34;&gt;4.同时设置 &lt;code&gt;alignment&lt;/code&gt; 和 &lt;code&gt;spacing&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们可以同时使用 &lt;em&gt;alignment&lt;/em&gt; 和 &lt;em&gt;spacing&lt;/em&gt; ，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(alignment: .leading, spacing: 20) {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_alignment_spacing.png&#34; alt=&#34;stack_alignment_spacing&#34; title=&#34;Using alignment and spacing in stack&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这将使两个文本视图水平对齐到 &lt;code&gt;leading&lt;/code&gt;（对于从左到右的语言是左对齐），并在它们之间放置20个点的垂直间距。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2.1_如何使用VStack和HStack创建stacks</title>
@@ -666,7 +841,7 @@ struct ContentView_Previews : PreviewProvider {
     <item>
       <title></title>
       <link>https://coderxdlee.github.io/authors/admin/</link>
-      <pubDate>Thu, 25 Jul 2019 10:10:50 +0800</pubDate>
+      <pubDate>Thu, 25 Jul 2019 11:39:45 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;

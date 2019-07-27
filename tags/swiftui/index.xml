@@ -7,10 +7,80 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Sat, 27 Jul 2019 16:21:22 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 22:42:34 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/swiftui/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>3.5_如何给TextField添加边框</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.5_%E5%A6%82%E4%BD%95%E7%BB%99textfield%E6%B7%BB%E5%8A%A0%E8%BE%B9%E6%A1%86/</link>
+      <pubDate>Sat, 27 Jul 2019 22:42:34 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.5_%E5%A6%82%E4%BD%95%E7%BB%99textfield%E6%B7%BB%E5%8A%A0%E8%BE%B9%E6%A1%86/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 的 &lt;code&gt;TextField&lt;/code&gt; 视图默认没有样式，这意味着在屏幕上它是一个空白区域。如果这样就符合你想要的风格，那就太好了，你已经完成了。但是，我们大多时候更愿意在 &lt;code&gt;TextField&lt;/code&gt; 周围添加边框，以使其更清晰。
+如果想获得我们习惯使用的 UITextField 的圆角矩形样式，我们应该使用 &lt;code&gt;.textFieldStyle(.roundedBorder)&lt;/code&gt; 修饰符，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State var text = &amp;quot;&amp;quot;
+    var body: some View {
+        TextField($text, placeholder: Text(&amp;quot;Enter some text&amp;quot;))
+            .padding()
+            .textFieldStyle(.roundedBorder)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/textfield_style_rounded_border.png&#34; alt=&#34;textfield_style_rounded_border&#34; title=&#34;textFieldStyle is roundedBorder style&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.4_如何从TextField中读取文本</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.4_%E5%A6%82%E4%BD%95%E4%BB%8Etextfield%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%96%87%E6%9C%AC/</link>
+      <pubDate>Sat, 27 Jul 2019 21:42:21 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.4_%E5%A6%82%E4%BD%95%E4%BB%8Etextfield%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%96%87%E6%9C%AC/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 的 &lt;code&gt;TextField&lt;/code&gt; 视图类似于 UIkit 中的 &lt;code&gt;UITextField&lt;/code&gt;，但是，在默认情况下 &lt;code&gt;TextField&lt;/code&gt; 看起来有点不同，并且它非常依赖于 &lt;strong&gt;状态绑定（binding to state）&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-创建-textfield&#34;&gt;2. 创建 TextField&lt;/h3&gt;
+
+&lt;p&gt;那么，要创建一个 TextField，我们应该给在 &lt;em&gt;text field&lt;/em&gt; 传入一个 &lt;code&gt;placeholder&lt;/code&gt;，再加上它应该绑定到的状态属性。&lt;/p&gt;
+
+&lt;p&gt;例如: 现在，我们要创建一个 &lt;strong&gt;绑定到本地字符串的 TextField&lt;/strong&gt;，然后在其下面放置一个文本视图，在键入时显示 TextField 的输出:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State var name = &amp;quot;Devin&amp;quot;
+    
+    var body: some View {
+        VStack {
+            TextField($name, placeholder: Text(&amp;quot;Enter your name&amp;quot;))
+            Text(&amp;quot;Hello, \(name)&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行后，您应该能够在 TextField 中键入内容，并看到下面直接显示一条问候语。
+运行效果:
+&lt;img src=&#34;img/textfield_enter_your_name.gif&#34; alt=&#34;textfield_enter_your_name&#34; title=&#34;Enter your name&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;提示: 在 beta1 和 beta2 中，应该改用 TextField($name)。
+使用 TextField 时有两个重要的限制条件。首先，默认情况下，它没有边框，因此你可能看不到任何内容 &amp;ndash; 你需要大致点击其所在位置，以激活键盘。
+其次，您可能会发现无法在布局的画布预览中键入内容。如果遇到这个问题，请按Cmd+R在模拟器中构建和运行代码。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>3.3_如何创建一个可点击的按钮</title>

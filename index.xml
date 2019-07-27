@@ -7,10 +7,87 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Sat, 27 Jul 2019 22:59:59 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 23:40:23 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>3.8_如何创建Slider并从中读取值</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.8_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BAslider%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/</link>
+      <pubDate>Sat, 27 Jul 2019 23:40:23 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.8_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BAslider%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 的 &lt;code&gt;Slider&lt;/code&gt; 视图的工作原理与 &lt;code&gt;UISlider&lt;/code&gt; 非常相似，尽管您需要将其绑定到某个地方，以便存储其值。
+当我们创建它时，可以提供多种参数，但我们可能最关心的是:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Value&lt;/code&gt;:  要绑定到的值是多少&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;From and To&lt;/code&gt;: 滑块的范围&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;By&lt;/code&gt;: 移动滑块时要更改多少值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
+
+&lt;p&gt;例如: 我们创建一个绑定到  Celsius 属性的滑块，然后在滑块移动时更新文本视图，以便在 &lt;strong&gt;Celsius(摄氏温度)&lt;/strong&gt; 和 &lt;strong&gt;Fahrenheit(华氏温度)&lt;/strong&gt; 之间进行转换:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State var celsius: Double = 0
+    
+    var body: some View {
+        VStack {
+            Slider(value: $celsius, from: -100, through: 100, by: 0.1)
+                .padding()
+            Text(&amp;quot;\(celsius) Celsius is \(celsius * 9 / 5 + 32) Fahrenheit&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/slider_celsius_to_fahrenheit.gif&#34; alt=&#34;slider_celsius_to_fahrenheit&#34; title=&#34;celsius to fahrenheit&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.7_如何使用SecureField创建一个安全的文本输入框</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.7_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8securefield%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%AE%89%E5%85%A8%E7%9A%84%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5%E6%A1%86/</link>
+      <pubDate>Sat, 27 Jul 2019 23:33:00 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.7_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8securefield%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%AE%89%E5%85%A8%E7%9A%84%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5%E6%A1%86/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 的 &lt;code&gt;SecureTextField&lt;/code&gt; 的工作方式与常规的 &lt;code&gt;TextField&lt;/code&gt; 完全相同，只是为了保护隐私而屏蔽了字符。当然，它绑定的底层值（underlying value）仍然是一个普通的字符串，因此你可以根据需要检查它。
+下面是一个示例，创建了一个绑定到本地 &lt;code&gt;@State&lt;/code&gt;  属性的 &lt;code&gt;SecureField&lt;/code&gt;，以便我们显示键入的内容:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State private var password = &amp;quot;&amp;quot;
+    
+    var body: some View {
+        VStack {
+            SecureField($password, placeholder: Text(&amp;quot;Enter your password:&amp;quot;))
+                .padding()
+            Text(&amp;quot;Your entered: \(password)&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/securefield_enter_password.gif&#34; alt=&#34;securefield_enter_password&#34; title=&#34;enter a password&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;提示: 在 beta1 和 beta2 中，你应该使用:
+SecureField($password)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>3.6_如何给TextField添加占位符</title>

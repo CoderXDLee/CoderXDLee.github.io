@@ -7,10 +7,185 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Fri, 26 Jul 2019 22:12:50 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 16:21:22 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>3.3_如何创建一个可点击的按钮</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.3_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8F%AF%E7%82%B9%E5%87%BB%E7%9A%84%E6%8C%89%E9%92%AE/</link>
+      <pubDate>Sat, 27 Jul 2019 16:21:22 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.3_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8F%AF%E7%82%B9%E5%87%BB%E7%9A%84%E6%8C%89%E9%92%AE/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-button-vs-uibutton&#34;&gt;1. Button vs UIButton&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 的 &lt;code&gt;按钮(Button)&lt;/code&gt; 类似于 UIKit 中的 &lt;code&gt;UIButton&lt;/code&gt;，跟 UIButton 的区别在于:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在显示内容方面 SwiftUI 的按钮更为灵活&lt;/li&gt;
+&lt;li&gt;SwiftUI 的按钮使用 &lt;code&gt;闭包&lt;/code&gt; 来实现其 action，而 UIButton 使用的是 &lt;code&gt;target/action&lt;/code&gt; 系统&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-button-初体验&#34;&gt;2. Button 初体验&lt;/h3&gt;
+
+&lt;p&gt;那么，如何创建一个 SwiftUI 的按钮呢?，我们可以从以下代码开始:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Button(action: {
+    // your action here
+            
+}) {
+    Text(&amp;quot;Button title&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;由以上代码可以看到，创建 Button 的的方法有两个参数，都是闭包，第一个闭包负责传入 action，第二个闭包负责传入按钮上的文本。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-button-简单用例&#34;&gt;3. Button 简单用例&lt;/h3&gt;
+
+&lt;p&gt;例如: 我们可以创建一个按钮，在点击按钮时显示或隐藏一些详细信息:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State var showDetails = false
+    
+    var body: some View {
+        VStack {
+            Button(action: {
+               self.showDetails.toggle()
+            }) {
+                Text(&amp;quot;Show detail information&amp;quot;)
+            }
+            
+            if showDetails {
+                Text(&amp;quot;You should follow me on M X Website&amp;quot;)
+                    .font(.largeTitle)
+                    .lineLimit(nil)
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/button_show_detail_information.gif&#34; alt=&#34;button_show_detail_information&#34; title=&#34;Click button to show detail information&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-提示&#34;&gt;4. 提示&lt;/h3&gt;
+
+&lt;p&gt;在学习框架时最常做的事情是分散调用 &lt;code&gt;print()&lt;/code&gt;，这样我们就可以看到什么时候发生了什么事情。 如果我们想通过按钮 action 来尝试，首先应右键单击预览画布中的播放按钮，然后选择 &lt;strong&gt;调试预览&lt;/strong&gt;，以便调用 &lt;code&gt;print()&lt;/code&gt; 工作。
+按钮内的标题可以是任何类型的视图，因此您可以创建这样的图像按钮:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Button(action: {
+    self.showDetails.toggle()
+}) {
+    Image(&amp;quot;example-image&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/button_image_show_detail.gif&#34; alt=&#34;button_image_show_detail&#34; title=&#34;Set an image for button&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.2_如何创建拨动开关</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E6%8B%A8%E5%8A%A8%E5%BC%80%E5%85%B3/</link>
+      <pubDate>Sat, 27 Jul 2019 15:55:42 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E6%8B%A8%E5%8A%A8%E5%BC%80%E5%85%B3/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 中的 &lt;code&gt;toggle&lt;/code&gt; 允许用户在 &lt;strong&gt;true&lt;/strong&gt; 和 &lt;strong&gt;false&lt;/strong&gt; 之间移动，就像 UIKit 中的 &lt;code&gt;UISwitch&lt;/code&gt; 一样。&lt;/p&gt;
+
+&lt;p&gt;例如:&lt;/p&gt;
+
+&lt;p&gt;我们可以创建一个 &lt;em&gt;toggle&lt;/em&gt; ，然后根据 &lt;em&gt;toggle&lt;/em&gt; 是否启动来决定显示或者不显示消息。但是我们不希望手动跟踪 &lt;em&gt;toggle&lt;/em&gt; 的状态 &amp;ndash; 我们希望 SwiftUI 为我们做这件事。
+与以往不同，在这里，我们应该定义一个 &lt;code&gt;@State Boolean&lt;/code&gt; 属性，用于存储 toggle 的当前值。然后我们可以使用它来显示或隐藏其它视图。&lt;/p&gt;
+
+&lt;p&gt;例如:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State var showGreeting = true
+    
+    var body: some View {
+        VStack {
+            Toggle(isOn: $showGreeting) {
+                Text(&amp;quot;Show welcome message!&amp;quot;)
+            }.padding()
+            
+            if showGreeting {
+                Text(&amp;quot;Hello world&amp;quot;)
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/toggle_show_welcomemessage.gif&#34; alt=&#34;toggle_show_welcomemessage&#34; title=&#34;Show welcome message&#34; /&gt;
+这段代码，只有当 &lt;code&gt;showGreeting&lt;/code&gt; 为 &lt;em&gt;true&lt;/em&gt; 时才会返回文本视图，这意味着当 &lt;code&gt;showGreeting&lt;/code&gt; 为 &lt;em&gt;false&lt;/em&gt; 时，&lt;code&gt;VStack&lt;/code&gt; 的大小会减小 - 它的堆栈中没有第二个视图。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.1_使用 state</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.1_%E4%BD%BF%E7%94%A8state/</link>
+      <pubDate>Fri, 26 Jul 2019 22:48:19 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.1_%E4%BD%BF%E7%94%A8state/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-概念&#34;&gt;1. 概念&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;所有应用程序都会改变状态。&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;例如:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用户可能点击了一个按钮来显示更多信息&lt;/li&gt;
+&lt;li&gt;用户可能已经在文本框中输入了一些文本&lt;/li&gt;
+&lt;li&gt;用户从日期选择器中选择了一个日期&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所有涉及应用程序 &lt;strong&gt;从一种状态转变到另一种状态&lt;/strong&gt; 的事情，都叫做应用程序改变状态。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-问题所在&#34;&gt;2. 问题所在&lt;/h3&gt;
+
+&lt;p&gt;状态的问题在于它是混乱的: &lt;strong&gt;当它发生变化时，我们需要发现变化并更新我们的布局来匹配变化&lt;/strong&gt;。 这个一开始听起来可能很简单，但是随着我们的状态的不断增长，它就会变得越来越难 - 因为这个时候，我们很容易忘记更新一件事，或者更新顺序出错，以致于用户界面状态达不到预期效果。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-swiftui-如何破解&#34;&gt;3. SwiftUI 如何破解？&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 通过 &lt;strong&gt;从控件中移除状态&lt;/strong&gt; 来解决这个问题。&lt;/p&gt;
+
+&lt;p&gt;当我们向视图添加属性时，这些属性实际上是惰性的 - 当然，它们有值，但是更改这些值并不会做任何事情。 但是如果我们在这些属性之前添加了特殊的&lt;code&gt;@State&lt;/code&gt; 来包装属性，SwiftUI将自动监视属性变化并更新使用该属性的视图的任何部分。&lt;/p&gt;
+
+&lt;p&gt;示例代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;@state var name: String = &amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;: &lt;code&gt;@state&lt;/code&gt; 这种语法称为 属性包装器，这里不作详细介绍，可以自行查找文档。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;当涉及到某种状态时 - 例如，当切换开关（toggle switch）改变时告诉状态属性改变。
+&lt;strong&gt;这里需要注意的是&lt;/strong&gt;: 我们不能直接引用这个属性属性。这是因为 Swift 会认为我们现在所指的是&lt;code&gt;&amp;quot;属性当前的值&amp;quot;&lt;/code&gt;，而不是说 &lt;code&gt;&amp;quot;请注意这件事情(属性状态变化)&amp;quot;&lt;/code&gt;。幸运的是，SwiftUI 的解决方案是在属性名称前放置一个&lt;code&gt;美元符号($)&lt;/code&gt;，这样的话，我们就可以引用属性本身而不是它当前的值。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;当然，这里一开始理解起有点令人困惑，但在当我们学习一两个示例之后就会理解，非常简单。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最后，请记住，SwiftUI 是声明性的，这意味着我们预先告诉它所有可能状态的所有布局，并让它知道当属性发生变化时如何在它们之间移动。我们称之为 &lt;strong&gt;&lt;em&gt;绑定（binding）&lt;/em&gt;&lt;/strong&gt; - 要求 SwiftUI 同步UI控件和底层属性之间的更改。
+如果你已经习惯了一种更为迫切的编程风格，那么使用 state 一开始会让你头疼一些，但不要担心 - 一旦你完成了它，你就很明确了。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2.8_如何将视图放到安全区域之外</title>
@@ -19,6 +194,21 @@
       
       <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.8_%E5%A6%82%E4%BD%95%E5%B0%86%E8%A7%86%E5%9B%BE%E6%94%BE%E5%88%B0%E5%AE%89%E5%85%A8%E5%8C%BA%E5%9F%9F%E4%B9%8B%E5%A4%96/</guid>
       <description>&lt;!-- more --&gt;
+
+&lt;p&gt;默认情况下，我们的 SwiftUI 视图将主要位于安全区域内 - 它将会到达屏幕底部，但不会靠近设备顶部的任何凹口。
+如果我们想改变它 - 想让视图真正全屏，即使这意味着被一个缺口或其他硬件切口部分遮挡 - 那么我们应该使用 &lt;code&gt;edgesIgnoringSafeArea()&lt;/code&gt; 修饰符。
+例如，这会创建一个红色文本视图，要求填充所有可用空间，然后将其设置为忽略任何安全区域，以使其真正边缘到边缘。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello World&amp;quot;)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)    
+        .background(Color.red)
+        .edgesIgnoringSafeArea(.all)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/edgesIgnoringSafeArea.png&#34; alt=&#34;edgesIgnoringSafeArea&#34; title=&#34;edgesIgnoringSafeArea all&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

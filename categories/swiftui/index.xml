@@ -7,10 +7,46 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Sat, 27 Jul 2019 23:40:23 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 23:56:24 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/categories/swiftui/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>3.9_如何创建选择器Picker并从中读取值</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%80%89%E6%8B%A9%E5%99%A8picker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/</link>
+      <pubDate>Sat, 27 Jul 2019 23:56:24 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%80%89%E6%8B%A9%E5%99%A8picker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 的 Picker 视图将 UIPicker 和 UITableView 结合在一起。同时也适应其它操作系统上的其它样式。最棒的是我们真的不需要关系它是如何工作的 &amp;ndash; SwiftUI 可以很好的自动适应它的环境。
+与大多数其它控件一样，必须将 picker 附加到某种 state，以跟踪 picker 的选择。例如: 这会创建一个 colors 数组和一个存储所选颜色的整数，然后将其与 picker，Text 视图一起使用，以便您可以看到正在读取的值:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    var colors = [&amp;quot;Red&amp;quot;, &amp;quot;Orange&amp;quot;, &amp;quot;Yellow&amp;quot;, &amp;quot;Green&amp;quot;]
+    @State private var selectedColor = 0
+    
+    var body: some View {
+        VStack {
+            Picker(selection: $selectedColor, label: Text(&amp;quot;Please choose a color&amp;quot;)) {
+                ForEach(0..&amp;lt;colors.count) {
+                    Text(self.colors[$0]).tag($0)
+                }
+            }
+            Text(&amp;quot;You selected: \(colors[selectedColor]) &amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/picker_select_color.gif&#34; alt=&#34;picker_select_color&#34; title=&#34;Selected color&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注意: 将选择器视图放在某个内容中非常重要，以确保它在iOS上以默认的轮子样式显示。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>3.8_如何创建Slider并从中读取值</title>

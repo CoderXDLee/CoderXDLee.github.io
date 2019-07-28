@@ -7,17 +7,255 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Sun, 28 Jul 2019 18:38:38 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jul 2019 00:09:24 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>3.12_如何阅读tap和double Tap手势</title>
-      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BBtap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</link>
+      <title>4.2_如何使用@ObjectBinding创建对象绑定</title>
+      <link>https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/</link>
+      <pubDate>Mon, 29 Jul 2019 00:09:24 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/</guid>
+      <description>&lt;!-- more --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>4.1_@ObjectBinding、@State 和 @EnvironmentObject三者之间的区别</title>
+      <link>https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.1_objectbinding_state_environmentobject%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Sun, 28 Jul 2019 22:31:35 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.1_objectbinding_state_environmentobject%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-state&#34;&gt;1. &lt;code&gt;@State&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;在任何现代应用程序中，&lt;strong&gt;状态（State）&lt;/strong&gt;都是不可避免的。&lt;/p&gt;
+
+&lt;p&gt;但是对于 SwiftUI 来说，重要的是要记住:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;我们所有的视图都只是它们的状态的函数&lt;/li&gt;
+&lt;li&gt;我们不会直接改变视图，而是操纵状态并让它决定结果&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;SwiftUI 为我们提供了几种在应用程序中存储状态的方法，但是它们之间略有不同，理解它们之间的区别对于正确使用框架是很重要的。&lt;/p&gt;
+
+&lt;p&gt;到目前为止，在我们所有的状态示例中，我们都使用 &lt;code&gt;@State&lt;/code&gt; 来创建如下属性:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    @State var score = 0
+    // more code
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这段代码在视图中创建了一个属性，但它使用 &lt;code&gt;@State&lt;/code&gt; 属性包装器（property wrapper）来请求 SwiftUI 来管理内存。这一点很重要: 我们所有的视图都是结构体（structs），这意味着它们不能被改变，如果我们不能在一场比赛中给一个分数加1，那么这就不是一场比赛了。&lt;/p&gt;
+
+&lt;p&gt;因此，当我们使用 &lt;code&gt;@State&lt;/code&gt; 创建一个属性时，就意味着将该属性的控制权交给了 SwiftUI，这样的话，只要视图存在，它就在内存中保持不变。当该状态发生变化时，SwiftUI 知道用最新的变化自动重新加载视图，以便反映其新信息。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;@State&lt;/code&gt; 对于属于特定视图且从未在该视图之外使用的简单属性非常有用，因此通常最好将这些属性标记为私有属性，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;@State private var score = 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这再次强化了这样一种观点，即这种状态是专门设计的，永远不会脱离它的视图。简单理解，就是在视图内部使用的。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-objectbinding&#34;&gt;2. &lt;code&gt;@ObjectBinding&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;对于更复杂的属性:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当你有一个要使用的自定义类型，该类型可能具有多个属性和方法&lt;/li&gt;
+&lt;li&gt;可能在多个视图中共享时&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;那么，你应该使用 &lt;code&gt;@ObjectBinding&lt;/code&gt;。
+这与 &lt;code&gt;@State&lt;/code&gt; 非常相似，只是现在我们使用的是外部引用类型，而不是简单地本地属性，如字符串或整数。我们仍然可以说视图取决于要更改的数据，除了我们负责管理自己的数据: 我们需要创建类的实例，创建自己的属性，等等。&lt;/p&gt;
+
+&lt;p&gt;与 &lt;code&gt;@ObjectBinding&lt;/code&gt; 一起使用的任何类型都应该遵循 &lt;code&gt;BindableObject&lt;/code&gt; 协议，该协议只有一个要求: 您的类型必须实现某种类型的 &lt;code&gt;didchange&lt;/code&gt; 属性，该属性在数据发生更改时通知视图。&lt;/p&gt;
+
+&lt;p&gt;这就是我的意思，当我说这是你负责管理自己的数据时——当你在绑定对象上设置一个属性时，你就可以决定是否应该强制视图刷新。你通常会的，但不是必须的。&lt;/p&gt;
+
+&lt;p&gt;一个可绑定的对象可以使用 &lt;code&gt;Combine&lt;/code&gt; 框架中 &lt;em&gt;publisher&lt;/em&gt;  通知其视图重要数据已经更改。如果碰巧有几个视图使用可绑定对象的数据，那么它将自动通知所有这些视图。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;警告:&lt;/strong&gt; 当你使用 &lt;em&gt;publisher&lt;/em&gt; 宣布你的对象已更改，这个动作必须在主线程上执行。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;3-environmentobject&#34;&gt;3. &lt;code&gt;@EnvironmentObject&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们已经了解了如何通过 &lt;code&gt;@State&lt;/code&gt; 声明一个类型的简单属性，该类型数据在发生更改时自动导致视图更新，以及如何通过 &lt;code&gt;@Objectbinding&lt;/code&gt; 声明外部类型的属性，该属性在更改时可能会或可能不会导致视图更新。这两个都必须由我们的视图设置，但是 &lt;code&gt;@Objectbinding&lt;/code&gt; 可能与其他视图共享。&lt;/p&gt;
+
+&lt;p&gt;针对这种情况，我们还有第三种类型的属性可供使用，即 &lt;code&gt;@EnvironmentObject&lt;/code&gt;。这是一个通过应用程序本身对视图可用的值 -&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;它是每个视图都可以读取的共享数据，因此，如果你的应用程序有一些重要的模型数据，所有视图都需要读取，你可以把它从一个视图传递到另一个视图，或者把它放到每个视图都可以即时访问的环境中。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;当我们需要在应用程序中传递大量数据时，可以将 &lt;code&gt;@Environmentobject&lt;/code&gt; 视为一种极大的便利。由于所有视图都指向同一模型，因此如果一个视图更改模型，则所有视图都会立即更新 - 不会有使应用程序的不同部分不同的风险。&lt;/p&gt;
+
+&lt;h3 id=&#34;4-总结差异&#34;&gt;4. 总结差异&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;将 &lt;code&gt;@State&lt;/code&gt; 用于属于单个视图的简单属性。 它们通常应标记为 &lt;code&gt;private&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;将 &lt;code&gt;@ObjectBinding&lt;/code&gt; 用于可能属于多个视图的复杂属性。 无论何时使用引用类型，都应该使用&lt;code&gt;@ObjectBinding&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;将 &lt;code&gt;@EnvironmentObject&lt;/code&gt; 用于在应用程序中其他位置创建的属性，例如共享数据。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在这三种方法中，您会发现 &lt;code&gt;@objectbinding&lt;/code&gt; 是最有用和最常用的，因此如果您不确定要使用哪种方法，请从那里开始。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.14_如何响应视图生命周期事件_appear_and_disappear</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.14_%E5%A6%82%E4%BD%95%E5%93%8D%E5%BA%94%E8%A7%86%E5%9B%BE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%BA%8B%E4%BB%B6_appear_and_disappear/</link>
+      <pubDate>Sun, 28 Jul 2019 20:37:20 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.14_%E5%A6%82%E4%BD%95%E5%93%8D%E5%BA%94%E8%A7%86%E5%9B%BE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%BA%8B%E4%BB%B6_appear_and_disappear/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 以 &lt;code&gt;onAppear()&lt;/code&gt; 和 &lt;code&gt;onDisappear()&lt;/code&gt; 的形式为我们提供了 UIKit 的&lt;code&gt;viewDidAppear()&lt;/code&gt; 和 &lt;code&gt;viewDidDisappear()&lt;/code&gt; 的等价物。 您可以将任何代码附加到您想要的这两个事件，SwiftUI 将在它们发生时执行它们。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
+
+&lt;p&gt;注意：在当前的beta版本， onAppear() 工作得很好，但 onDisappear() 似乎没有被调用。
+例如: 我们创建两个使用 onAppear() 和 onDisappear() 来打印消息的视图，并使用导航按钮在两者之间移动：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    var body: some View {
+        NavigationView {
+            NavigationLink(destination: DetailView()) {
+                Text(&amp;quot;Hello World&amp;quot;)
+            }
+        }.onAppear {
+            print(&amp;quot;ContentView appeared!&amp;quot;)
+        }.onDisappear {
+            print(&amp;quot;ContentView disappeared!&amp;quot;)
+        }
+    }
+}
+
+struct DetailView : View {
+    var body: some View {
+        VStack {
+            Text(&amp;quot;Second View&amp;quot;)
+        }.onAppear {
+            print(&amp;quot;DetailView appeared!&amp;quot;)
+        }.onDisappear {
+            print(&amp;quot;DetailView disappeared!&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/3_14_live_event_appear_disappear.gif&#34; alt=&#34;3_14_live_event_appear_disappear&#34; title=&#34;onAppear and onDisappear&#34; /&gt;
+当代码运行时，我们应该能够在两个视图之间移动，并看到 Xcode 调试控制台中打印的消息。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.13_如何给视图添加手势识别器</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.13_%E5%A6%82%E4%BD%95%E7%BB%99%E8%A7%86%E5%9B%BE%E6%B7%BB%E5%8A%A0%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB%E5%99%A8/</link>
+      <pubDate>Sun, 28 Jul 2019 19:59:32 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.13_%E5%A6%82%E4%BD%95%E7%BB%99%E8%A7%86%E5%9B%BE%E6%B7%BB%E5%8A%A0%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB%E5%99%A8/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;任何 SwiftUI  视图都可以附加手势识别器，而这些手势识别器又可以附加闭包，在识别器被激活时执行闭包。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
+
+&lt;p&gt;有几个手势识别器可供使用，这里我们提供其中几个的代码示例，以帮助入门 - 我们将看到它们有多相似。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-1-tapgesture-点击手势&#34;&gt;2.1 &lt;code&gt;TapGesture&lt;/code&gt; 点击手势&lt;/h4&gt;
+
+&lt;p&gt;创建 TapGesture 时，可以指定触发手势所需的 点击次数，然后附加将在手势发生时运行的 &lt;code&gt;onEnded&lt;/code&gt; 闭包。&lt;/p&gt;
+
+&lt;p&gt;例如，我们来创建一个每次点击时都会变大的图像:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State private var scale: Length = 1
+    
+    var body: some View {
+        Image(&amp;quot;example-image&amp;quot;)
+            .scaleEffect(scale)
+            .gesture(
+                TapGesture()
+                    .onEnded({ (_) in
+                        self.scale += 0.1
+                    })
+            )
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/3_13_tap_gesture_scale_image.gif&#34; alt=&#34;3_13_tap_gesture_scale_image&#34; title=&#34;Tap to scale a image&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;2-2-longpressgesture-长按手势&#34;&gt;2.2 &lt;code&gt;LongPressGesture&lt;/code&gt; 长按手势&lt;/h4&gt;
+
+&lt;p&gt;LongPressGesture 可识别用户何时按下视图并保持至少一段用户指定的时间。
+因此，我们创建一个图像视图，在按下该消息至少两秒时打印该消息:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+
+    var body: some View {
+        Image(&amp;quot;example-image&amp;quot;)
+            .gesture(
+                LongPressGesture(minimumDuration: 2.0)
+                    .onEnded({ (_) in
+                            print(&amp;quot;LongPressed!&amp;quot;)
+                    })
+            )
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/3_13_long_press_gesture_duration_2s.gif&#34; alt=&#34;3_13_long_press_gesture_duration_2s&#34; title=&#34;Long pressed!&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;2-3-draggesture-拖拽手势&#34;&gt;2.3 &lt;code&gt;DragGesture&lt;/code&gt; 拖拽手势&lt;/h4&gt;
+
+&lt;p&gt;最后，当用户按下视图并移动至少一定距离时，DragGesture 会触发。因此，我们创建一个带有拖动手势的图像，当它们移动至少50个点时会触发:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+ 
+    var body: some View {
+        Image(&amp;quot;example-image&amp;quot;)
+            .gesture(
+                DragGesture(minimumDistance: 50)
+                    .onEnded({ (_) in
+                        print(&amp;quot;Dragged!&amp;quot;)
+                    })
+            )
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/3_13_drag_gesture_distance_50.gif&#34; alt=&#34;3_13_drag_gesture_distance_50&#34; title=&#34;Drag gesture&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.12_如何设置tap和double Tap手势</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEtap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</link>
       <pubDate>Sun, 28 Jul 2019 18:38:38 +0800</pubDate>
       
-      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BBtap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</guid>
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEtap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</guid>
       <description>
 
 &lt;!-- more --&gt;
@@ -1665,7 +1903,7 @@ struct ContentView_Previews : PreviewProvider {
     <item>
       <title></title>
       <link>https://coderxdlee.github.io/authors/admin/</link>
-      <pubDate>Sun, 28 Jul 2019 18:38:38 +0800</pubDate>
+      <pubDate>Mon, 29 Jul 2019 00:09:24 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;

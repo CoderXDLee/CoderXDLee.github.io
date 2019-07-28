@@ -18,7 +18,81 @@
       <pubDate>Mon, 29 Jul 2019 00:09:24 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/</guid>
-      <description>&lt;!-- more --&gt;
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-两件重要的事情&#34;&gt;1. 两件重要的事情&lt;/h3&gt;
+
+&lt;p&gt;当使用对象绑定时，我们需要处理两个细微不同的东西:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;BindableObject 协议，用于一些可以存储数据的类。&lt;/li&gt;
+&lt;li&gt;@ObjectBinding 属性包装器，在视图中用于存储可绑定对象实例。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
+
+&lt;p&gt;举个例子，这是一个遵循 &lt;code&gt;BindableObject&lt;/code&gt; 协议的 &lt;code&gt;UserSettings&lt;/code&gt; 类:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;import Combine
+import SwiftUI
+
+class UserSettings: BindableObject {
+    var didChange = PassthroughSubject&amp;lt;Void, Never&amp;gt;()
+    
+    var score = 0 {
+        didSet {
+            didChange.send(())
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这段代码代码量很小，但是却包含了相当多的知识点，接下来我们逐一解释:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;第一: &lt;code&gt;didChange&lt;/code&gt;是 &lt;code&gt;PassthroughSubject&lt;/code&gt; 的一个实例。
+
+&lt;ul&gt;
+&lt;li&gt;这个类来自 &lt;code&gt;Combine&lt;/code&gt; 框架，我们需要添加 &lt;code&gt;import Combine&lt;/code&gt; 以使我们的代码能够编译。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;passthrough subject&lt;/em&gt; 的工作很简单: 每当我们想要告诉世界我们的对象发生了变化，我们就要求  &lt;em&gt;passthrough subject&lt;/em&gt; 为我们做这件事情。它被称为 &lt;em&gt;pass through&lt;/em&gt; ，因为我们传递给它的值实际上会传递给任何正在观察变化对象的视图。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PassthroughSubject&lt;/code&gt; 在技术上被称为 &lt;em&gt;publisher&lt;/em&gt; ，因为它对世界发布了变化的公告。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;第二: &lt;code&gt;PassthroughSubject&lt;/code&gt; 是 &lt;code&gt;Void&lt;/code&gt; 和 &lt;code&gt;Never&lt;/code&gt; 的泛型。
+
+&lt;ul&gt;
+&lt;li&gt;第一个参数 &lt;code&gt;Void&lt;/code&gt; 意味着 &amp;ldquo;&lt;strong&gt;我不发送任何值&lt;/strong&gt;&amp;ldquo;。在 SwiftUI 的情况下，我们不需要发送值，因为我们想要的是视图刷新 - 它将自动从 &lt;code&gt;@ObjectBinding&lt;/code&gt; 状态中获取新数据。&lt;/li&gt;
+&lt;li&gt;第二个参数 &lt;code&gt;Never&lt;/code&gt;，意味着 &amp;ldquo;&lt;strong&gt;我永远不会抛出错误&lt;/strong&gt;&amp;ldquo;。如果你想，你可以定义一个自定义的错误类型，如 &lt;code&gt;NetworkError&lt;/code&gt;，并将其发送，但是通常会发现在可绑定对象内部本地处理错误。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;第三: 我们在 &lt;code&gt;UserSettings&lt;/code&gt; 的 &lt;em&gt;score&lt;/em&gt; 属性上附加了一个 &lt;code&gt;didSet&lt;/code&gt; 属性观察器，这样我们就可以在该值发生变化时运行代码。 在我们的示例代码中，每当得分发生变化时，我们都会调用 &lt;code&gt;didChange.send(())&lt;/code&gt;，这就是告诉 &lt;code&gt;didChange&lt;/code&gt; 发布者发布我们的数据已更改的消息，以便任何订阅的视图都可以刷新。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我们可以在这样的视图中使用 &lt;code&gt;UserSettings&lt;/code&gt;类:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @ObjectBinding var settings = UserSettings()
+    
+    var body: some View {
+        VStack {
+            Text(&amp;quot;Your score is \(settings.score)&amp;quot;)
+            Button(action: {
+                self.settings.score += 1
+            }) {
+                Text(&amp;quot;Increase Score&amp;quot;)
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;正如你所看到的，除了使用带有 &lt;code&gt;@ObjectBinding&lt;/code&gt; 属性包装器的 &lt;em&gt;settings&lt;/em&gt; 之外，其他所有内容都或多或少看起来相同 - SwiftUI 负责处理我们的所有实现细节。
+但是有一个重要区别: &lt;em&gt;settings&lt;/em&gt; 属性未声明为 &lt;code&gt;private&lt;/code&gt;。 这是因为绑定对象可以被多个视图使用，因此通常会公开共享它。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;警告: 当您使用 publisher 宣布您的对象已更改时，这必须在主线程上发生。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     

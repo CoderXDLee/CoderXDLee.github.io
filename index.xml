@@ -7,10 +7,57 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Sun, 28 Jul 2019 10:16:45 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jul 2019 18:38:38 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>3.12_如何阅读tap和double Tap手势</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BBtap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</link>
+      <pubDate>Sun, 28 Jul 2019 18:38:38 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BBtap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
+
+&lt;p&gt;任何 SwiftUI 视图都可以附加 &lt;code&gt;点击操作(tap action)&lt;/code&gt;，我们可以指定在触发操作之前应该接收多少次点击。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
+
+&lt;p&gt;例如: 我们创建一个文本视图，在点击时将打印消息:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    var body: some View {
+        Text(&amp;quot;Tap me!&amp;quot;)
+            .tapAction {
+                print(&amp;quot;Tapped&amp;quot;)
+            }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/tap_gesture_tap_text.gif&#34; alt=&#34;tap_gesture_tap_text&#34; title=&#34;Tap a text&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;再创建一个图像视图，当双击时将打印消息:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    var body: some View {
+        Image(&amp;quot;example-img&amp;quot;)
+            .tapAction(count: 2) {
+                print(&amp;quot;Double tapped!&amp;quot;)
+            }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/tap_gesture_double_tap_image.gif&#34; alt=&#34;tap_gesture_double_tap_image&#34; title=&#34;Double tapped!&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>3.11_如何创建分段控件并从中读取值</title>
@@ -18,7 +65,60 @@
       <pubDate>Sun, 28 Jul 2019 10:16:45 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.11_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%88%86%E6%AE%B5%E6%8E%A7%E4%BB%B6%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/</guid>
-      <description>&lt;!-- more --&gt;
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI中 的 &lt;code&gt;SegmentedControl&lt;/code&gt; 与 UIKit中的 &lt;code&gt;UISegmentedControl&lt;/code&gt; 的工作方式类似，但是它需要绑定到某种状态（state），并且必须确保为每个分段（segment）提供一个 tag 标记，以便能够识别它。&lt;strong&gt;分段(Segments) 可以是文本或者图片，其它任何东西都会自动失败&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
+
+&lt;p&gt;我们将创建一个分段控件，该控件使用 &lt;code&gt;favoriteColor&lt;/code&gt; 作为状态属性，并且在下面添加一个文本视图，用于显示所选的任何值:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State private var favoriteColor = 0
+    
+    var body: some View {
+        VStack {
+            SegmentedControl(selection: $favoriteColor) {
+                Text(&amp;quot;Red&amp;quot;).tag(0)
+                Text(&amp;quot;Green&amp;quot;).tag(1)
+                Text(&amp;quot;Blue&amp;quot;).tag(2)
+            }
+            Text(&amp;quot;Value: \(favoriteColor)&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/segmented_control_favoritecolor.gif&#34; alt=&#34;segmented_control_favoritecolor&#34; title=&#34;Select a favorite color&#34; /&gt;
+不过，在本例中，我们最好创建一个数组来存储各种颜色，然后使用 &lt;em&gt;foreach&lt;/em&gt; 在内部使用循环创建文本视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State private var favoriteColor = 0
+
+    var colors = [&amp;quot;Red&amp;quot;, &amp;quot;Green&amp;quot;, &amp;quot;Blue&amp;quot;]
+    
+    var body: some View {
+        VStack {
+            SegmentedControl(selection: $favoriteColor) {
+                ForEach(0..&amp;lt;colors.count) { index in
+                    Text(self.colors[index]).tag(index)
+                }
+            }
+            Text(&amp;quot;Value: \(colors[favoriteColor])&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/segmented_control_favoritecolor_string.gif&#34; alt=&#34;segmented_control_favoritecolor_string&#34; title=&#34;select a favorite color, display with string&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

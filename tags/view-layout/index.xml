@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>View layout on M X</title>
+    <link>https://coderxdlee.github.io/tags/view-layout/</link>
+    <description>Recent content in View layout on M X</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>M X ©{year}</copyright>
+    <lastBuildDate>Fri, 26 Jul 2019 22:12:50 +0800</lastBuildDate>
+    
+	    <atom:link href="https://coderxdlee.github.io/tags/view-layout/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2.8_如何将视图放到安全区域之外</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.8_%E5%A6%82%E4%BD%95%E5%B0%86%E8%A7%86%E5%9B%BE%E6%94%BE%E5%88%B0%E5%AE%89%E5%85%A8%E5%8C%BA%E5%9F%9F%E4%B9%8B%E5%A4%96/</link>
+      <pubDate>Fri, 26 Jul 2019 22:12:50 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.8_%E5%A6%82%E4%BD%95%E5%B0%86%E8%A7%86%E5%9B%BE%E6%94%BE%E5%88%B0%E5%AE%89%E5%85%A8%E5%8C%BA%E5%9F%9F%E4%B9%8B%E5%A4%96/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;默认情况下，我们的 SwiftUI 视图将主要位于安全区域内 - 它将会到达屏幕底部，但不会靠近设备顶部的任何凹口。
+如果我们想改变它 - 想让视图真正全屏，即使这意味着被一个缺口或其他硬件切口部分遮挡 - 那么我们应该使用 &lt;code&gt;edgesIgnoringSafeArea()&lt;/code&gt; 修饰符。
+例如，这会创建一个红色文本视图，要求填充所有可用空间，然后将其设置为忽略任何安全区域，以使其真正边缘到边缘。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello World&amp;quot;)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)    
+        .background(Color.red)
+        .edgesIgnoringSafeArea(.all)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/edgesIgnoringSafeArea.png&#34; alt=&#34;edgesIgnoringSafeArea&#34; title=&#34;edgesIgnoringSafeArea all&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.7_如何使用size_classes创建不同的布局</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.7_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8size_classes%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Fri, 26 Jul 2019 16:52:17 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.7_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8size_classes%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B8%83%E5%B1%80/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 通过在环境中暴露 &lt;em&gt;size classes&lt;/em&gt; 来原生支持它。如果要使用它，我们首先需要创建一个 &lt;code&gt;@Environment&lt;/code&gt; 对象来存储其值，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;@Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在我们需要时检查该属性的值，查找 &lt;code&gt;.compact&lt;/code&gt; 或 &lt;code&gt;.regular&lt;/code&gt;，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;if horizontalSizeClass == .compact {
+    return Text(&amp;quot;Compact&amp;quot;)
+} else {
+    return Text(&amp;quot;Regular&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将所有代码组合在一起，可以创建这样的视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
+    var body: some View {
+        if horizontalSizeClass == .compact {
+            return Text(&amp;quot;Compact&amp;quot;)
+        } else {
+            return Text(&amp;quot;Regular&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:&lt;/p&gt;
+
+&lt;p&gt;(1) 正向竖屏
+&lt;img src=&#34;img/size_classes_compact.png&#34; alt=&#34;size_classes_compact&#34; title=&#34;Text - Compact&#34; /&gt;
+(2) 横屏 - 刘海在右侧
+&lt;img src=&#34;img/size_classes_regular01.png&#34; alt=&#34;size_classes_regular01&#34; title=&#34;Text - Regular01&#34; /&gt;
+(3) 横屏 - 刘海在左侧
+&lt;img src=&#34;img/size_classes_regular02.png&#34; alt=&#34;size_classes_regular02&#34; title=&#34;Text - Regular02&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.6_如何使用ForEach在循环中创建视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.6_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8foreach%E5%9C%A8%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Fri, 26 Jul 2019 00:21:40 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.6_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8foreach%E5%9C%A8%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE/</guid>
+      <description>
+
+&lt;p&gt;我们通常会发现，我们需要循环一个序列来创建视图，而在 SwiftUI 中，这是通过 &lt;code&gt;ForEach&lt;/code&gt; 来完成的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;重要提示&lt;/strong&gt;:
+我们很容易一看到 &lt;em&gt;ForEach&lt;/em&gt; 就认为它与 Swift 序列中的 &lt;em&gt;forEach()&lt;/em&gt; 方法相同，但事实并非如你所见。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SwiftUI 中的 &lt;code&gt;ForEach&lt;/code&gt; 本身是一个视图结构，这就意味着我们可以根据需要直接从视图 &lt;em&gt;Body&lt;/em&gt; 返回它。&lt;/li&gt;
+&lt;li&gt;我们为它提供一系列项目，可能还需要告诉 SwiftUI 它如何唯一地标识每个项目，以便 SwiftUI 知道如何在值更改时更新它们。&lt;/li&gt;
+&lt;li&gt;我们还传递一个要运行的闭包，来为循环中的每个项创建一个视图。&lt;/li&gt;
+&lt;li&gt;对于范围内的简单循环，您可以将范围直接传递给ForEach。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-循环-1-10-创建文本视图&#34;&gt;1. 循环 1&amp;hellip;10 创建文本视图&lt;/h3&gt;
+
+&lt;p&gt;例如，这从10减少到1然后在最后添加一条消息：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(alignment: .leading) {
+        ForEach((1...10).reversed()) {
+            Text(&amp;quot;\($0)…&amp;quot;)
+        }
+            
+        Text(&amp;quot;Ready or not, here I come!&amp;quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/foreach_create_views.png&#34; alt=&#34;foreach_create_views&#34; title=&#34;Create views using ForEach&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-foreach-colors&#34;&gt;2. ForEach colors&lt;/h3&gt;
+
+&lt;p&gt;对于简单类型数组（如字符串、整数、颜色等）的循环，可以在数组上使用 &lt;code&gt;.identified(by: \.self)&lt;/code&gt;，让 SwiftUI  使用值本身作为标识符。因此，如果您的数组是 &lt;code&gt;[&amp;quot;cat&amp;quot;, &amp;quot;Dog&amp;quot;, &amp;quot;monkey&amp;quot;]&lt;/code&gt;，那么 SwiftUI 会将这些字符串本身作为您的视图的标识符。
+因此，此代码创建一个包含三种颜色的数组，在它们上面循环，并使用每个颜色名称和颜色值创建文本视图：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;let colors: [Color] = [.red, .green, .blue]
+    
+var body: some View {
+        
+    VStack {
+        ForEach(colors.identified(by: \.self)) { color in
+            Text(color.description.capitalized)
+                .padding()
+                .background(color)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/foreach_colors_array.png&#34; alt=&#34;foreach_colors_array&#34; title=&#34;foreach colors&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-foreach-custom-type&#34;&gt;3. ForEach custom type&lt;/h3&gt;
+
+&lt;p&gt;如果您的数组中有自定义类型，则应使用  &lt;code&gt;.identified(by:)&lt;/code&gt; 与您的类型中的任何属性唯一标识它。
+例如，这是一个存储测试结果的结构，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct Result {
+    var id = UUID()
+    var score: Int
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;它有一个带有 &lt;code&gt;UUID&lt;/code&gt; 的 &lt;code&gt;id&lt;/code&gt; 属性，这意味着它保证是唯一的 - 完美的用于我们的目的。 如果我们想循环一个结果数组，创建一个显示 &lt;code&gt;VStack&lt;/code&gt; 中每个结果的文本视图，那么我们将使用它：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;let results = [Result(score: 8), Result(score: 5), Result(score: 10)]
+    
+var body: some View {
+    VStack {
+        ForEach(results.identified(by: \.id)) { result in
+            Text(&amp;quot;Result: \(result.score)&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/foreach_custom_type.png&#34; alt=&#34;foreach_custom_type&#34; title=&#34;ForEach custom type&#34; /&gt;
+这告诉 SwiftUI 它可以通过查看它们的 &lt;code&gt;id&lt;/code&gt; 属性来区分 &lt;code&gt;ForEach&lt;/code&gt; 中的视图。
+&lt;strong&gt;提示&lt;/strong&gt;：如果您使 &lt;code&gt;Result&lt;/code&gt; 符合 &lt;code&gt;Identifiable&lt;/code&gt; protocol，您只需编写 &lt;code&gt;ForEach（Result）&lt;/code&gt;。 符合此协议意味着添加唯一标识每个对象的 &lt;code&gt;id&lt;/code&gt; 属性，在我们的示例中我们已经拥有，因此您只需编写 &lt;code&gt;struct Result：Identifiable {&lt;/code&gt;！&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.5_如何返回不同的视图类型</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.5_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Thu, 25 Jul 2019 13:47:21 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.5_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/</guid>
+      <description>
+
+&lt;p&gt;当我们从视图的 body 返回 &lt;code&gt;some View&lt;/code&gt; 的时候，Swift 理解这意味着我们有一个特定的返回类型。&lt;/p&gt;
+
+&lt;p&gt;例如: 如果我们想掷硬币并显示 &amp;ldquo;你赢了!&amp;ldquo;，但是我们不能这样写: 要么返回一个 Image，要么返回一个 Text，写着 &amp;ldquo;下次祝你好运&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    if Bool.random() {
+        Image(&amp;quot;example-image&amp;quot;)
+    } else {
+        Text(&amp;quot;Better luck next time&amp;quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这段代码会报错:
+&lt;img src=&#34;img/error_return_view_type.png&#34; alt=&#34;error_return_view_type&#34; title=&#34;Compilation error&#34; /&gt;
+因为它可能返回 &lt;em&gt;Image&lt;/em&gt; 或者 &lt;em&gt;Text&lt;/em&gt; ，这是不允许的 &amp;ndash;  我们&lt;code&gt;必须精确返回一种类型&lt;/code&gt;。
+有两种方法可以解决这个问题。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-group&#34;&gt;1. Group&lt;/h3&gt;
+
+&lt;p&gt;第一种方法是将输出包装在一个 &lt;code&gt;group&lt;/code&gt; 中，这样无论我们发送图像视图还是文本视图，它们都将返回到一个 &lt;code&gt;group&lt;/code&gt; 中:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Group {
+        if Bool.random() {
+            Image(&amp;quot;example-image&amp;quot;)
+        } else {
+            Text(&amp;quot;Better luck next time&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/return_image.png&#34; alt=&#34;return_image&#34; title=&#34;Return an image or a text&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-anyview&#34;&gt;2. AnyView&lt;/h3&gt;
+
+&lt;p&gt;第二种方法，SwiftUI 提供了一个名为 &lt;code&gt;AnyView&lt;/code&gt; 的类型，我们可以返回这种类型:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: AnyView {
+    if Bool.random() {
+        return AnyView(Image(&amp;quot;example-image&amp;quot;))
+    } else {
+        return AnyView(Text(&amp;quot;Better luck next time&amp;quot;))
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果你还没有听说过这个概念，它会强制让 Swift 忘记 &lt;code&gt;AnyView&lt;/code&gt; 中包含的特定类型，让它们看起来像是一样的东西。但这有性能成本，所以不要经常使用它。
+尽管 &lt;code&gt;Group&lt;/code&gt; 和 &lt;code&gt;AnyView&lt;/code&gt; 都为我们的布局实现了相同的结果，但通常最好使用 &lt;code&gt;Group&lt;/code&gt;，因为它对 SwiftUI 更有效。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.4_如何使用ZStack将视图叠加在一起</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.4_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8zstack%E5%B0%86%E8%A7%86%E5%9B%BE%E5%8F%A0%E5%8A%A0%E5%9C%A8%E4%B8%80%E8%B5%B7/</link>
+      <pubDate>Thu, 25 Jul 2019 13:26:52 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.4_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8zstack%E5%B0%86%E8%A7%86%E5%9B%BE%E5%8F%A0%E5%8A%A0%E5%9C%A8%E4%B8%80%E8%B5%B7/</guid>
+      <description>
+
+&lt;p&gt;SwiftUI 有一个专用的 &lt;em&gt;stack&lt;/em&gt; 类型，用于创建重叠内容，例如，如果我们想在图片上放置一些文本，它就很有用。它被称为 &lt;code&gt;ZStack&lt;/code&gt;，其工作原理与其他两种 &lt;em&gt;stack&lt;/em&gt; 类型相同。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-在文本下面放置图片&#34;&gt;1. 在文本下面放置图片&lt;/h3&gt;
+
+&lt;p&gt;例如: 我们可以在如下文本下面放置一个大图像:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    ZStack() {
+        Image(&amp;quot;example-image&amp;quot;)
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .font(.largeTitle)
+            .background(Color.black)
+            .foregroundColor(.white)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/zstack_image_text.png&#34; alt=&#34;zstack_image_text&#34; title=&#34;Set zstack with a image and a text, image is below text&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-对齐&#34;&gt;2. 对齐&lt;/h3&gt;
+
+&lt;p&gt;与其它 &lt;em&gt;stack&lt;/em&gt; 类型一样，&lt;code&gt;ZStack&lt;/code&gt; 也可以设置对齐方式，这样它就不会总是将事物置于自身的中心位置:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    ZStack(alignment: .leading) {
+        Image(&amp;quot;example-image&amp;quot;)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .font(.largeTitle)
+            .background(Color.black)
+            .foregroundColor(.white)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/zstack_alignment_leading.png&#34; alt=&#34;zstack_alignment_leading&#34; title=&#34;Set zstack&#39;s alignment as .leading&#34; /&gt;
+但是，它没有 &lt;em&gt;spacing&lt;/em&gt; 属性，因为它实际上没有意义。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.3_如何使用padding控制单个视图周围的间距</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8padding%E6%8E%A7%E5%88%B6%E5%8D%95%E4%B8%AA%E8%A7%86%E5%9B%BE%E5%91%A8%E5%9B%B4%E7%9A%84%E9%97%B4%E8%B7%9D/</link>
+      <pubDate>Thu, 25 Jul 2019 11:39:45 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8padding%E6%8E%A7%E5%88%B6%E5%8D%95%E4%B8%AA%E8%A7%86%E5%9B%BE%E5%91%A8%E5%9B%B4%E7%9A%84%E9%97%B4%E8%B7%9D/</guid>
+      <description>
+
+&lt;p&gt;SwiftUI 允许我们使用 &lt;code&gt;padding()&lt;/code&gt; 修饰符在视图周围设置单独的填充。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-系统默认-padding&#34;&gt;1. 系统默认 padding&lt;/h3&gt;
+
+&lt;p&gt;如果在不传参数的情况下使用 &lt;em&gt;padding()&lt;/em&gt; ，您将在所有边上获得系统默认填充，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+            .padding()
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/padding_system_default.png&#34; alt=&#34;padding_system_default&#34; title=&#34;Set padding with system default&#34; /&gt;
+注意: 这里默认设置了视图四周的填充。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-只设置一侧系统默认-padding&#34;&gt;2. 只设置一侧系统默认 padding&lt;/h3&gt;
+
+&lt;p&gt;我们也可以自定义要 apply 的 &lt;em&gt;padding&lt;/em&gt; 和位置。因此，我们只希望将系统填充应用于一侧:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+            .padding(.bottom)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/padding_system_bottom.png&#34; alt=&#34;padding_system_bottom&#34; title=&#34;Set bottom padding with system default&#34; /&gt;
+注意: 这里只设置了底部填充，与上面的例子不同。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-用具体数值来设置-padding&#34;&gt;3. 用具体数值来设置 padding&lt;/h3&gt;
+
+&lt;p&gt;我们可能希望控制对所有边应用了多少填充:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+            .padding(100)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/padding_100.png&#34; alt=&#34;padding_100&#34; title=&#34;Set padding as 100&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-在视图一侧添加特定数量的填充&#34;&gt;4. 在视图一侧添加特定数量的填充&lt;/h3&gt;
+
+&lt;p&gt;我们也可以将这两者结合起来，在视图的一侧添加特定数量的填充：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+  VStack {
+      Text(&amp;quot;Hello SwiftUI&amp;quot;)
+          .background(Color.red)
+          .padding(.bottom, 100)
+      Text(&amp;quot;Hello M X&amp;quot;)
+          .background(Color.blue)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/padding_bottom_100.png&#34; alt=&#34;padding_bottom_100&#34; title=&#34;Set bottom padding as 100&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.2_如何通过alignment和spacing自定义stack布局</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.2_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Thu, 25 Jul 2019 10:54:52 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.2_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87alignment%E5%92%8Cspacing%E8%87%AA%E5%AE%9A%E4%B9%89stack%E5%B8%83%E5%B1%80/</guid>
+      <description>
+
+&lt;h3 id=&#34;1-spacing&#34;&gt;1. &lt;code&gt;spacing&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们可以通过在 SwiftUI stacks 的构造方法中填一个值来设置间距，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(spacing: 50) {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_spacing.png&#34; alt=&#34;stack_spacing&#34; title=&#34;Set a spacing for stack&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-divider&#34;&gt;2. &lt;code&gt;Divider&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们可以在项目之间创建分隔符，以便 SwiftUI 在 &lt;em&gt;stack&lt;/em&gt; 中的每个项目之间进行小的视觉区分，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+        Divider()
+        Text(&amp;quot;Hello M X&amp;quot;)
+           .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_divider.png&#34; alt=&#34;stack_divider&#34; title=&#34;Set a divider for stack&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-alignment&#34;&gt;3. &lt;code&gt;alignment&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;默认情况下，&lt;em&gt;stacks&lt;/em&gt; 中的项目居中对齐。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 &lt;em&gt;HStack&lt;/em&gt; 中: 项目在中间垂直对齐，因此如果有两个不同高度的文本视图，它们都将与垂直中心对齐。&lt;/li&gt;
+&lt;li&gt;在 &lt;em&gt;VStack&lt;/em&gt; 中: 项目在中间水平对齐，因此如果有两个长度不同的文本视图，它们都将与水平中心对齐。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;要调整这种情况，请在创建 &lt;em&gt;stack&lt;/em&gt; 时按以下方式传递一个 &lt;em&gt;alignment&lt;/em&gt; 参数:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(alignment: .leading) {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_alignment_leading.png&#34; alt=&#34;stack_alignment_leading&#34; title=&#34;Set alignment to .leading&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这将使 &lt;code&gt;Hello SwiftUI&lt;/code&gt; 和 &lt;code&gt;Hello M X&lt;/code&gt; 左对齐，但它们最终将位于屏幕的中间，因为 stack 只占用所需的空间。&lt;/p&gt;
+
+&lt;h3 id=&#34;4-同时设置-alignment-和-spacing&#34;&gt;4.同时设置 &lt;code&gt;alignment&lt;/code&gt; 和 &lt;code&gt;spacing&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;我们可以同时使用 &lt;em&gt;alignment&lt;/em&gt; 和 &lt;em&gt;spacing&lt;/em&gt; ，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack(alignment: .leading, spacing: 20) {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.red)
+        Text(&amp;quot;Hello M X&amp;quot;)
+            .background(Color.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/stack_alignment_spacing.png&#34; alt=&#34;stack_alignment_spacing&#34; title=&#34;Using alignment and spacing in stack&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这将使两个文本视图水平对齐到 &lt;code&gt;leading&lt;/code&gt;（对于从左到右的语言是左对齐），并在它们之间放置20个点的垂直间距。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.1_如何使用VStack和HStack创建stacks</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vstack%E5%92%8Chstack%E5%88%9B%E5%BB%BAstacks/</link>
+      <pubDate>Thu, 25 Jul 2019 10:10:50 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vstack%E5%92%8Chstack%E5%88%9B%E5%BB%BAstacks/</guid>
+      <description>
+
+&lt;p&gt;SwiftUI 的内容视图 &lt;em&gt;content views&lt;/em&gt; 必须返回一个视图，即我们希望它们显示的视图。当我们想要一次在屏幕上显示多个视图时，我们需要告诉 SwiftUI 如何排列它们，这就是 &lt;code&gt;堆栈（stacks）&lt;/code&gt;的来源。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;堆栈（Stacks）&lt;/code&gt; 相当于 UIKit 中的 &lt;em&gt;UIStackView&lt;/em&gt; 。有三种形式:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;水平（HStack）&lt;/li&gt;
+&lt;li&gt;垂直（VStack）&lt;/li&gt;
+&lt;li&gt;基于深度（ZStack）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;当我们想放置子视图以便它们重叠时可以使用后者。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-vstack&#34;&gt;1. VStack&lt;/h3&gt;
+
+&lt;p&gt;让我们从一些简单的事情开始，先创建一个文本视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello SwiftUI&amp;quot;)
+        .background(Color.red)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/single_text.png&#34; alt=&#34;single_text&#34; title=&#34;A single text&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;有了一个文本视图，如果我们想在下面再写一个，我们不能只写:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    Text(&amp;quot;Hello SwiftUI&amp;quot;)
+    Text(&amp;quot;Hello M X&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样的话，编译器会直接报错。
+记住，我们只能返回一个视图，否则代码就不会工作。&lt;/p&gt;
+
+&lt;p&gt;那么怎么办呢？我们需要将其放置在 &lt;code&gt;VStack&lt;/code&gt; 中，以便将文本视图放置在彼此上方:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    VStack {
+       Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+       Text(&amp;quot;Hello M X&amp;quot;)   
+           .background(Color.blue)         
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/two_text_in_vstack.png&#34; alt=&#34;two_text_in_vstack&#34; title=&#34;Two texts in VStack&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;您会注意到 &lt;code&gt;VStack&lt;/code&gt; 放置在屏幕的中心，标签也居中，它们之间有一些自动空间。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-hstack&#34;&gt;2. HStack&lt;/h3&gt;
+
+&lt;p&gt;如果我们希望文本视图并排水平放置，请使用如下方式将 &lt;code&gt;VStack&lt;/code&gt; 替换为 &lt;code&gt;HStack&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
+    HStack {
+       Text(&amp;quot;Hello SwiftUI&amp;quot;)
+           .background(Color.red)
+       Text(&amp;quot;Hello M X&amp;quot;)   
+           .background(Color.blue)         
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/two_text_in_hstack.png&#34; alt=&#34;two_text_in_hstack&#34; title=&#34;Two texts in HStack&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

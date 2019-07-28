@@ -7,17 +7,35 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Sun, 28 Jul 2019 00:28:44 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jul 2019 10:16:45 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>SwiftUI</title>
-      <link>https://coderxdlee.github.io/tags/swiftui/</link>
-      <pubDate>Sun, 28 Jul 2019 00:28:44 +0800</pubDate>
+      <title>Responding to events</title>
+      <link>https://coderxdlee.github.io/tags/responding-to-events/</link>
+      <pubDate>Sun, 28 Jul 2019 10:16:45 +0800</pubDate>
       
-      <guid>https://coderxdlee.github.io/tags/swiftui/</guid>
+      <guid>https://coderxdlee.github.io/tags/responding-to-events/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>View layout</title>
+      <link>https://coderxdlee.github.io/tags/view-layout/</link>
+      <pubDate>Fri, 26 Jul 2019 22:12:50 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/tags/view-layout/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Text and image</title>
+      <link>https://coderxdlee.github.io/tags/text-and-image/</link>
+      <pubDate>Wed, 24 Jul 2019 15:46:29 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/tags/text-and-image/</guid>
       <description></description>
     </item>
     

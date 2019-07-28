@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>List on M X</title>
+    <link>https://coderxdlee.github.io/tags/list/</link>
+    <description>Recent content in List on M X</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>M X ©{year}</copyright>
+    <lastBuildDate>Mon, 29 Jul 2019 01:40:08 +0800</lastBuildDate>
+    
+	    <atom:link href="https://coderxdlee.github.io/tags/list/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>5.1_使用List</title>
+      <link>https://coderxdlee.github.io/post/swiftui/5-list/5.1_%E4%BD%BF%E7%94%A8list/</link>
+      <pubDate>Mon, 29 Jul 2019 01:40:08 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.1_%E4%BD%BF%E7%94%A8list/</guid>
+      <description>&lt;!-- more --&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

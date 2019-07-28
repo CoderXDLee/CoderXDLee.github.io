@@ -7,10 +7,20 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 29 Jul 2019 01:17:25 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jul 2019 01:40:08 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>5.1_使用List</title>
+      <link>https://coderxdlee.github.io/post/swiftui/5-list/5.1_%E4%BD%BF%E7%94%A8list/</link>
+      <pubDate>Mon, 29 Jul 2019 01:40:08 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.1_%E4%BD%BF%E7%94%A8list/</guid>
+      <description>&lt;!-- more --&gt;
+</description>
+    </item>
     
     <item>
       <title>4.3_如何使用@EnvironmentObject在视图之间共享数据</title>

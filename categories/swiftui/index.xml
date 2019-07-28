@@ -7,10 +7,126 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 29 Jul 2019 00:09:24 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jul 2019 01:17:25 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/categories/swiftui/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>4.3_如何使用@EnvironmentObject在视图之间共享数据</title>
+      <link>https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Mon, 29 Jul 2019 01:17:25 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;对于应该与整个应用程序中所有视图共享的数据，SwiftUI 为我们提供了 &lt;code&gt;@EnvironmentObject&lt;/code&gt; 。这使我们可以在任何需要的地方共享模型数据，同时确保当模型数据发生变化时，我们的视图自动保持更新。&lt;/p&gt;
+
+&lt;p&gt;可以将 &lt;code&gt;@EnvironmentObject&lt;/code&gt; 看作是在多个视图中使用 &lt;code&gt;@ObjectBinding&lt;/code&gt; 的一种更智能、更简单的方法。而不是在视图 A 中创建一些数据，然后将其传递给视图 B，然后查看视图 C，然后在最终使用数据之前查看视图 D，我们可以在视图中创建它并将其放入环境（environment）中，这样的话，视图B、C、D将会自动访问它。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; 环境对象必须由祖先视图（ancestor view）提供 &amp;ndash; 如果 SwiftUI 找不到正确类型的环境对象，将会导致崩溃（crash），这也适用于预览，所以要小心。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
+
+&lt;p&gt;例如: 这里有一个可绑定对象，用于存储用户设置:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;import Combine
+import SwiftUI
+​
+class UserSettings: BindableObject {
+    
+    var didChange = PassthroughSubject&amp;lt;Void, Never&amp;gt;()
+    
+    var score = 0 {
+        didSet {
+            didChange.send(())
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;是的，它只存储一个值，但是没关系 &amp;ndash; 重要的是: 当值发生改变时，&lt;code&gt;PassthroughSubject&lt;/code&gt; 会告诉所有使用它（这个值）的的视图进行刷新。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;用户设置&lt;/strong&gt; 是我们可能希望能够在应用程序的任何地方共享的一个合理的数据，这样我们就不再需要手动处理同步。&lt;/p&gt;
+
+&lt;p&gt;因此，当我们的应用程序首次启动时，我们将创建一个 &lt;code&gt;UserSettings&lt;/code&gt; 的实例。以便在我们的应用程序中随处都可以访问共享实例。&lt;/p&gt;
+
+&lt;p&gt;如果打开 &lt;em&gt;Scenedelegate.swift&lt;/em&gt; ，您将在 &lt;code&gt;（_:willConnectTo:options:）&lt;/code&gt;方法：中找到这两行代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;let window = UIWindow(windowScene: windowScene)
+window.rootViewController = UIHostingController(rootView: ContentView())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第二行代码创建我们的初始内容视图（ContentView）并将其显示到屏幕上。这就是我们需要传入我们创建的任何环境对象的地方，以便 SwiftUI 可以在 ContentView 以及它使用的任何其它视图中使用我们创建的环境对象。&lt;/p&gt;
+
+&lt;p&gt;首先，将其添加为 &lt;code&gt;SceneDelegate&lt;/code&gt; 的一个属性:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var settings = UserSettings() 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这会创建一个 &lt;em&gt;settings&lt;/em&gt; 实例，并安全地存储它。现在回到刚才展示的那两行代码，并更改第二行，以便将我们的 &lt;em&gt;settings&lt;/em&gt; 属性作为环境对象传递给 &lt;code&gt;ContentView&lt;/code&gt;，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;window.rootViewController = UIHostingController(rootView: ContentView().environmentObject(settings))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完成后，共享的 &lt;code&gt;UserSettings&lt;/code&gt; 实例可用于 ContentView 以及它承载（hosts）或展现（presents）的任何其它视图。你只需要使用 &lt;code&gt;@EnvironmentObject&lt;/code&gt; 属性包装器创建一个属性，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;@EnvironmentObject var settings: UserSettings
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这不需要使用默认值进行初始化，因为它将自动从环境中读取。&lt;/p&gt;
+
+&lt;p&gt;因此，我们可以创建一个 &lt;code&gt;ContentView&lt;/code&gt; 结构来增加我们的分数设置，甚至使它呈现出一个显示分数设置的 &lt;code&gt;Detailview&lt;/code&gt;，所有这些都不需要创建或传递任何 &lt;code&gt;UserSettings&lt;/code&gt; 的本地实例 &amp;ndash; 它总是使用环境。&lt;/p&gt;
+
+&lt;p&gt;以下是实现这一目标的代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @EnvironmentObject var settings: UserSettings
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Button(action: {
+                    self.settings.score += 1
+                }) {
+                    Text(&amp;quot;Increase score&amp;quot;)
+                }
+                
+                NavigationButton(destination: DetailView()) {
+                    Text(&amp;quot;Show Detail View&amp;quot;)
+                }
+            }
+        }
+    }
+}
+​
+struct DetailView : View {
+    
+    @EnvironmentObject var settings: UserSettings
+    
+    var body: some View {
+        // A text view that reads from the environment settings
+        Text(&amp;quot;Score: \(settings.score)&amp;quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;因此，一旦你将一个对象注入到环境中，你就可以立即在顶层视图中或者在下面的十层视图中使用它——这并不重要。最重要的是，每当任何视图改变环境时，依赖它的所有视图都会自动刷新，从而保持同步。&lt;/p&gt;
+
+&lt;p&gt;如你所见，我们不需要将场景代理（scene delegate）中的 &lt;code&gt;UserSettings&lt;/code&gt; 实例与我们两个视图中的 &lt;code&gt;settings&lt;/code&gt; 属性显式关联 - SwiftUI 会自动发现它在环境中有一个 &lt;code&gt;UserSettings&lt;/code&gt; 实例，因此这就是要使用的实例。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;警告：既然我们的视图依赖于存在的环境对象，那么您还必须更新预览代码以提供一些要使用的示例设置。例如，使用 &lt;code&gt;ContentView().EnvironmentObject(UserSettings())&lt;/code&gt; 进行预览应该可以做到这一点。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
     
     <item>
       <title>4.2_如何使用@ObjectBinding创建对象绑定</title>

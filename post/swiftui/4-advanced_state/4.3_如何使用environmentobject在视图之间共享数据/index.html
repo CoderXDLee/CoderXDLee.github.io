@@ -31,7 +31,7 @@
   <meta name="description" content=" ">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/">
+  <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/">
 
   
 
@@ -96,7 +96,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/">
+  <link rel="canonical" href="https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/">
 
   
   
@@ -108,26 +108,26 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="M X">
-  <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/">
-  <meta property="og:title" content="4.2_如何使用@ObjectBinding创建对象绑定 | M X">
+  <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/">
+  <meta property="og:title" content="4.3_如何使用@EnvironmentObject在视图之间共享数据 | M X">
   <meta property="og:description" content=" "><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://coderxdlee.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-07-29T00:09:24&#43;08:00">
+  <meta property="article:published_time" content="2019-07-29T01:17:25&#43;08:00">
   
-  <meta property="article:modified_time" content="2019-07-29T00:09:24&#43;08:00">
+  <meta property="article:modified_time" content="2019-07-29T01:17:25&#43;08:00">
   
-
-  
-
 
   
 
 
+  
 
 
 
-  <title>4.2_如何使用@ObjectBinding创建对象绑定 | M X</title>
+
+
+  <title>4.3_如何使用@EnvironmentObject在视图之间共享数据 | M X</title>
 
 </head>
 
@@ -380,7 +380,7 @@
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">4.2_如何使用@ObjectBinding创建对象绑定</h1>
+  <h1 itemprop="name">4.3_如何使用@EnvironmentObject在视图之间共享数据</h1>
 
   
 
@@ -389,8 +389,8 @@
 
 
 
-<meta content="2019-07-29 00:09:24 &#43;0800 CST" itemprop="datePublished">
-<meta content="2019-07-29 00:09:24 &#43;0800 CST" itemprop="dateModified">
+<meta content="2019-07-29 01:17:25 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-29 01:17:25 &#43;0800 CST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -432,7 +432,7 @@
   
   
   <span class="middot-divider"></span>
-  <a href="/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/#disqus_thread"></a>
+  <a href="/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/#disqus_thread"></a>
   <script id="dsq-count-scr" src="https://M%20X.disqus.com/count.js" async></script>
   
 
@@ -457,7 +457,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/&amp;text=4.2_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@ObjectBinding%e5%88%9b%e5%bb%ba%e5%af%b9%e8%b1%a1%e7%bb%91%e5%ae%9a" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/&amp;text=4.3_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@EnvironmentObject%e5%9c%a8%e8%a7%86%e5%9b%be%e4%b9%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e6%95%b0%e6%8d%ae" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -470,7 +470,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/&amp;t=4.2_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@ObjectBinding%e5%88%9b%e5%bb%ba%e5%af%b9%e8%b1%a1%e7%bb%91%e5%ae%9a" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/&amp;t=4.3_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@EnvironmentObject%e5%9c%a8%e8%a7%86%e5%9b%be%e4%b9%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e6%95%b0%e6%8d%ae" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
       </li>
@@ -483,7 +483,7 @@
       
       
       <li>
-        <a href="mailto:?subject=4.2_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@ObjectBinding%e5%88%9b%e5%bb%ba%e5%af%b9%e8%b1%a1%e7%bb%91%e5%ae%9a&amp;body=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=4.3_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@EnvironmentObject%e5%9c%a8%e8%a7%86%e5%9b%be%e4%b9%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e6%95%b0%e6%8d%ae&amp;body=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -496,7 +496,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/&amp;title=4.2_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@ObjectBinding%e5%88%9b%e5%bb%ba%e5%af%b9%e8%b1%a1%e7%bb%91%e5%ae%9a" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/&amp;title=4.3_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@EnvironmentObject%e5%9c%a8%e8%a7%86%e5%9b%be%e4%b9%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e6%95%b0%e6%8d%ae" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -509,7 +509,7 @@
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=4.2_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@ObjectBinding%e5%88%9b%e5%bb%ba%e5%af%b9%e8%b1%a1%e7%bb%91%e5%ae%9a%20https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=4.3_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@EnvironmentObject%e5%9c%a8%e8%a7%86%e5%9b%be%e4%b9%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e6%95%b0%e6%8d%ae%20https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -522,7 +522,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/&amp;title=4.2_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@ObjectBinding%e5%88%9b%e5%bb%ba%e5%af%b9%e8%b1%a1%e7%bb%91%e5%ae%9a" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://coderxdlee.github.io/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/&amp;title=4.3_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8@EnvironmentObject%e5%9c%a8%e8%a7%86%e5%9b%be%e4%b9%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e6%95%b0%e6%8d%ae" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -562,23 +562,25 @@
 
 <!-- more -->
 
-<h3 id="1-两件重要的事情">1. 两件重要的事情</h3>
+<h3 id="1-简介">1. 简介</h3>
 
-<p>当使用对象绑定时，我们需要处理两个细微不同的东西:</p>
+<p>对于应该与整个应用程序中所有视图共享的数据，SwiftUI 为我们提供了 <code>@EnvironmentObject</code> 。这使我们可以在任何需要的地方共享模型数据，同时确保当模型数据发生变化时，我们的视图自动保持更新。</p>
 
-<ul>
-<li>BindableObject 协议，用于一些可以存储数据的类。</li>
-<li>@ObjectBinding 属性包装器，在视图中用于存储可绑定对象实例。</li>
-</ul>
+<p>可以将 <code>@EnvironmentObject</code> 看作是在多个视图中使用 <code>@ObjectBinding</code> 的一种更智能、更简单的方法。而不是在视图 A 中创建一些数据，然后将其传递给视图 B，然后查看视图 C，然后在最终使用数据之前查看视图 D，我们可以在视图中创建它并将其放入环境（environment）中，这样的话，视图B、C、D将会自动访问它。</p>
+
+<blockquote>
+<p><strong>注意:</strong> 环境对象必须由祖先视图（ancestor view）提供 &ndash; 如果 SwiftUI 找不到正确类型的环境对象，将会导致崩溃（crash），这也适用于预览，所以要小心。</p>
+</blockquote>
 
 <h3 id="2-示例">2. 示例</h3>
 
-<p>举个例子，这是一个遵循 <code>BindableObject</code> 协议的 <code>UserSettings</code> 类:</p>
+<p>例如: 这里有一个可绑定对象，用于存储用户设置:</p>
 
 <pre><code class="language-swift">import Combine
 import SwiftUI
-
+​
 class UserSettings: BindableObject {
+    
     var didChange = PassthroughSubject&lt;Void, Never&gt;()
     
     var score = 0 {
@@ -589,49 +591,79 @@ class UserSettings: BindableObject {
 }
 </code></pre>
 
-<p>这段代码代码量很小，但是却包含了相当多的知识点，接下来我们逐一解释:</p>
+<p>是的，它只存储一个值，但是没关系 &ndash; 重要的是: 当值发生改变时，<code>PassthroughSubject</code> 会告诉所有使用它（这个值）的的视图进行刷新。</p>
 
-<ul>
-<li>第一: <code>didChange</code>是 <code>PassthroughSubject</code> 的一个实例。
+<p><strong>用户设置</strong> 是我们可能希望能够在应用程序的任何地方共享的一个合理的数据，这样我们就不再需要手动处理同步。</p>
 
-<ul>
-<li>这个类来自 <code>Combine</code> 框架，我们需要添加 <code>import Combine</code> 以使我们的代码能够编译。</li>
-<li><em>passthrough subject</em> 的工作很简单: 每当我们想要告诉世界我们的对象发生了变化，我们就要求  <em>passthrough subject</em> 为我们做这件事情。它被称为 <em>pass through</em> ，因为我们传递给它的值实际上会传递给任何正在观察变化对象的视图。</li>
-<li><code>PassthroughSubject</code> 在技术上被称为 <em>publisher</em> ，因为它对世界发布了变化的公告。</li>
-</ul></li>
-<li>第二: <code>PassthroughSubject</code> 是 <code>Void</code> 和 <code>Never</code> 的泛型。
+<p>因此，当我们的应用程序首次启动时，我们将创建一个 <code>UserSettings</code> 的实例。以便在我们的应用程序中随处都可以访问共享实例。</p>
 
-<ul>
-<li>第一个参数 <code>Void</code> 意味着 &ldquo;<strong>我不发送任何值</strong>&ldquo;。在 SwiftUI 的情况下，我们不需要发送值，因为我们想要的是视图刷新 - 它将自动从 <code>@ObjectBinding</code> 状态中获取新数据。</li>
-<li>第二个参数 <code>Never</code>，意味着 &ldquo;<strong>我永远不会抛出错误</strong>&ldquo;。如果你想，你可以定义一个自定义的错误类型，如 <code>NetworkError</code>，并将其发送，但是通常会发现在可绑定对象内部本地处理错误。</li>
-</ul></li>
-<li>第三: 我们在 <code>UserSettings</code> 的 <em>score</em> 属性上附加了一个 <code>didSet</code> 属性观察器，这样我们就可以在该值发生变化时运行代码。 在我们的示例代码中，每当得分发生变化时，我们都会调用 <code>didChange.send(())</code>，这就是告诉 <code>didChange</code> 发布者发布我们的数据已更改的消息，以便任何订阅的视图都可以刷新。</li>
-</ul>
+<p>如果打开 <em>Scenedelegate.swift</em> ，您将在 <code>（_:willConnectTo:options:）</code>方法：中找到这两行代码</p>
 
-<p>我们可以在这样的视图中使用 <code>UserSettings</code>类:</p>
+<pre><code class="language-swift">let window = UIWindow(windowScene: windowScene)
+window.rootViewController = UIHostingController(rootView: ContentView())
+</code></pre>
 
-<pre><code class="language-swift">struct ContentView: View {
+<p>第二行代码创建我们的初始内容视图（ContentView）并将其显示到屏幕上。这就是我们需要传入我们创建的任何环境对象的地方，以便 SwiftUI 可以在 ContentView 以及它使用的任何其它视图中使用我们创建的环境对象。</p>
+
+<p>首先，将其添加为 <code>SceneDelegate</code> 的一个属性:</p>
+
+<pre><code class="language-swift">var settings = UserSettings() 
+</code></pre>
+
+<p>这会创建一个 <em>settings</em> 实例，并安全地存储它。现在回到刚才展示的那两行代码，并更改第二行，以便将我们的 <em>settings</em> 属性作为环境对象传递给 <code>ContentView</code>，如下所示:</p>
+
+<pre><code class="language-swift">window.rootViewController = UIHostingController(rootView: ContentView().environmentObject(settings))
+</code></pre>
+
+<p>完成后，共享的 <code>UserSettings</code> 实例可用于 ContentView 以及它承载（hosts）或展现（presents）的任何其它视图。你只需要使用 <code>@EnvironmentObject</code> 属性包装器创建一个属性，如下所示:</p>
+
+<pre><code class="language-swift">@EnvironmentObject var settings: UserSettings
+</code></pre>
+
+<p>这不需要使用默认值进行初始化，因为它将自动从环境中读取。</p>
+
+<p>因此，我们可以创建一个 <code>ContentView</code> 结构来增加我们的分数设置，甚至使它呈现出一个显示分数设置的 <code>Detailview</code>，所有这些都不需要创建或传递任何 <code>UserSettings</code> 的本地实例 &ndash; 它总是使用环境。</p>
+
+<p>以下是实现这一目标的代码:</p>
+
+<pre><code class="language-swift">struct ContentView : View {
     
-    @ObjectBinding var settings = UserSettings()
+    @EnvironmentObject var settings: UserSettings
     
     var body: some View {
-        VStack {
-            Text(&quot;Your score is \(settings.score)&quot;)
-            Button(action: {
-                self.settings.score += 1
-            }) {
-                Text(&quot;Increase Score&quot;)
+        NavigationView {
+            VStack {
+                Button(action: {
+                    self.settings.score += 1
+                }) {
+                    Text(&quot;Increase score&quot;)
+                }
+                
+                NavigationButton(destination: DetailView()) {
+                    Text(&quot;Show Detail View&quot;)
+                }
             }
         }
     }
 }
+​
+struct DetailView : View {
+    
+    @EnvironmentObject var settings: UserSettings
+    
+    var body: some View {
+        // A text view that reads from the environment settings
+        Text(&quot;Score: \(settings.score)&quot;)
+    }
+}
 </code></pre>
 
-<p>正如你所看到的，除了使用带有 <code>@ObjectBinding</code> 属性包装器的 <em>settings</em> 之外，其他所有内容都或多或少看起来相同 - SwiftUI 负责处理我们的所有实现细节。
-但是有一个重要区别: <em>settings</em> 属性未声明为 <code>private</code>。 这是因为绑定对象可以被多个视图使用，因此通常会公开共享它。</p>
+<p>因此，一旦你将一个对象注入到环境中，你就可以立即在顶层视图中或者在下面的十层视图中使用它——这并不重要。最重要的是，每当任何视图改变环境时，依赖它的所有视图都会自动刷新，从而保持同步。</p>
+
+<p>如你所见，我们不需要将场景代理（scene delegate）中的 <code>UserSettings</code> 实例与我们两个视图中的 <code>settings</code> 属性显式关联 - SwiftUI 会自动发现它在环境中有一个 <code>UserSettings</code> 实例，因此这就是要使用的实例。</p>
 
 <blockquote>
-<p>警告: 当您使用 publisher 宣布您的对象已更改时，这必须在主线程上发生。</p>
+<p>警告：既然我们的视图依赖于存在的环境对象，那么您还必须更新预览代码以提供一些要使用的示例设置。例如，使用 <code>ContentView().EnvironmentObject(UserSettings())</code> 进行预览应该可以做到这一点。</p>
 </blockquote>
 
     </div>
@@ -766,6 +798,8 @@ class UserSettings: BindableObject {
         <h3>Related</h3>
         <ul>
           
+          <li><a href="/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/">4.2_如何使用@ObjectBinding创建对象绑定</a></li>
+          
           <li><a href="/post/swiftui/4-advanced_state/4.1_objectbinding_state_environmentobject%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/">4.1_@ObjectBinding、@State 和 @EnvironmentObject三者之间的区别</a></li>
           
         </ul>
@@ -781,15 +815,8 @@ class UserSettings: BindableObject {
   
   
   <div class="post-nav-item">
-    <div class="meta-nav">Next</div>
-    <a href="/post/swiftui/4-advanced_state/4.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8environmentobject%E5%9C%A8%E8%A7%86%E5%9B%BE%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE/" rel="next">4.3_如何使用@EnvironmentObject在视图之间共享数据</a>
-  </div>
-  
-  
-  
-  <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="/post/swiftui/4-advanced_state/4.1_objectbinding_state_environmentobject%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev">4.1_@ObjectBinding、@State 和 @EnvironmentObject三者之间的区别</a>
+    <a href="/post/swiftui/4-advanced_state/4.2_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8objectbinding%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%BB%91%E5%AE%9A/" rel="prev">4.2_如何使用@ObjectBinding创建对象绑定</a>
   </div>
   
 </div>

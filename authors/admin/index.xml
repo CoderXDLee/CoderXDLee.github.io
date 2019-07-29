@@ -7,10 +7,20 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 29 Jul 2019 01:40:08 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jul 2019 00:23:02 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>5.2_如何创建静态项列表</title>
+      <link>https://coderxdlee.github.io/post/swiftui/5-list/5.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%9D%99%E6%80%81%E9%A1%B9%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Tue, 30 Jul 2019 00:23:02 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%9D%99%E6%80%81%E9%A1%B9%E5%88%97%E8%A1%A8/</guid>
+      <description>&lt;!-- more --&gt;
+</description>
+    </item>
     
     <item>
       <title>5.1_使用List</title>
@@ -20,11 +30,11 @@
       <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.1_%E4%BD%BF%E7%94%A8list/</guid>
       <description>&lt;!-- more --&gt;
 
-&lt;p&gt;SwiftUI 的 &lt;code&gt;List&lt;/code&gt; 视图类似于 &lt;code&gt;UITableView&lt;/code&gt;，它可以根据您的需要显示静态或动态表视图单元格。 但是，它使用起来要简单得多:&lt;/p&gt;
+&lt;p&gt;SwiftUI 的 &lt;code&gt;List&lt;/code&gt; 视图类似于 &lt;code&gt;UITableView&lt;/code&gt;，它可以根据您的需要显示静态或动态表视图单元格(table view cells)。 但是，它使用起来要简单得多:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;我们不需要在 storyboard 中创建 &lt;em&gt;prototype cell&lt;/em&gt; ;&lt;/li&gt;
-&lt;li&gt;也不需要在代码中注册它们;&lt;/li&gt;
+&lt;li&gt;我们不需要在 storyboard 中创建原型cell( &lt;em&gt;prototype cell&lt;/em&gt; );&lt;/li&gt;
+&lt;li&gt;也不需要在代码中注册 Cell;&lt;/li&gt;
 &lt;li&gt;我们不需要告诉它有多少行;&lt;/li&gt;
 &lt;li&gt;我们不需要手动出列(dequeue)和配置单元格等等。&lt;/li&gt;
 &lt;/ul&gt;
@@ -2116,7 +2126,7 @@ struct ContentView_Previews : PreviewProvider {
     <item>
       <title></title>
       <link>https://coderxdlee.github.io/authors/admin/</link>
-      <pubDate>Mon, 29 Jul 2019 01:40:08 +0800</pubDate>
+      <pubDate>Tue, 30 Jul 2019 00:23:02 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;

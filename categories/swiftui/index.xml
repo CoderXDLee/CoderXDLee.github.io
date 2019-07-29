@@ -19,6 +19,19 @@
       
       <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.1_%E4%BD%BF%E7%94%A8list/</guid>
       <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 的 &lt;code&gt;List&lt;/code&gt; 视图类似于 &lt;code&gt;UITableView&lt;/code&gt;，它可以根据您的需要显示静态或动态表视图单元格。 但是，它使用起来要简单得多:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;我们不需要在 storyboard 中创建 &lt;em&gt;prototype cell&lt;/em&gt; ;&lt;/li&gt;
+&lt;li&gt;也不需要在代码中注册它们;&lt;/li&gt;
+&lt;li&gt;我们不需要告诉它有多少行;&lt;/li&gt;
+&lt;li&gt;我们不需要手动出列(dequeue)和配置单元格等等。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;相反，SwiftUI 的列表是为可组合性而设计的 - 旨在能够从较小的东西构建更大的东西。 因此，SwiftUI 不需要一个手动配置单元的大视图控制器，而是让我们构建小视图，知道如何将自己配置为列表行，然后使用它们。&lt;/p&gt;
+
+&lt;p&gt;在代码大小方面（如果没有其他的话），差异是惊人的——您可以删除几乎所有的表视图代码，仍然可以获得与您习惯的相同的出色外观和感觉。&lt;/p&gt;
 </description>
     </item>
     

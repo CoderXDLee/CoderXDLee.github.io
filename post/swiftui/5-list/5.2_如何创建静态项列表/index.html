@@ -424,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -559,6 +559,36 @@
 
     <div class="article-style" itemprop="articleBody">
       <!-- more -->
+
+<p>要创建静态项目列表，首先需要定义列表中每行的外观。 这是一个与其他视图一样的视图，因此您可以编写如下的视图:</p>
+
+<pre><code class="language-swift">struct RestaurantRow : View {
+    
+    var name: String
+    
+    var body: some View {
+        Text(&quot;Restaurant: \(name)&quot;)
+    }
+}
+</code></pre>
+
+<p>既然已经定义了每一行的外观，那么就可以创建一个 <code>List</code>，根据需要创建任意数量的行，如下所示:</p>
+
+<pre><code class="language-swift">struct ContentView : View {
+    var body: some View {
+        List {
+            RestaurantRow(name: &quot;Joe's Original&quot;)
+            RestaurantRow(name: &quot;The Real Joe's Original&quot;)
+            RestaurantRow(name: &quot;Original Joe's&quot;)
+        }
+    }
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/5_2_list_static_items_list.gif" alt="5_2_list_static_items_list" title="static list" />
+当该代码运行时，您将在表中看到三行，就像您在 UIKit 中使用 <code>UITableView</code> 一样。
+您不需要使每一行使用相同的视图类型，因此您可以根据需要混合和匹配行视图。</p>
 
     </div>
 

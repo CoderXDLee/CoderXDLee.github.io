@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 30 Jul 2019 22:26:03 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jul 2019 23:55:31 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>5.4_如何让用户从列表中删除行</title>
+      <link>https://coderxdlee.github.io/post/swiftui/5-list/5.4_%E5%A6%82%E4%BD%95%E8%AE%A9%E7%94%A8%E6%88%B7%E4%BB%8E%E5%88%97%E8%A1%A8%E4%B8%AD%E5%88%A0%E9%99%A4%E8%A1%8C/</link>
+      <pubDate>Tue, 30 Jul 2019 23:55:31 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.4_%E5%A6%82%E4%BD%95%E8%AE%A9%E7%94%A8%E6%88%B7%E4%BB%8E%E5%88%97%E8%A1%A8%E4%B8%AD%E5%88%A0%E9%99%A4%E8%A1%8C/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>5.3_如何创建动态项目列表</title>
@@ -20,47 +29,60 @@
       <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.3_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/</guid>
       <description>&lt;!-- more --&gt;
 
-&lt;p&gt;为了处理动态项目，您必须首先告诉 SwiftUI 如何识别哪个项目是哪个。 这是使用Identifiable协议完成的，该协议只有一个要求：某种类型的 id，SwiftUI可以使用它来查看哪个项目是哪个。
-例如，您可以创建一个 Restaurant 结构体，该结构表示餐馆具有ID和name，ID是一个随机标识符，以便SwiftUI知道哪个是哪个：
-struct Restaurant: Identifiable {
+&lt;p&gt;为了处理动态项目，我们必须首先告诉 SwiftUI 如何识别哪个项目是哪个。 这是使用 &lt;code&gt;Identifiable&lt;/code&gt; 协议完成的，该协议只有一个要求: 某种类型的 id 值，SwiftUI 可以使用它来查看哪个项目是哪个。
+例如，我们可以创建一个 &lt;code&gt;Restaurant&lt;/code&gt; 结构体，该结构表示餐馆具有 ID 和 name ，ID 是一个随机标识符，以便 SwiftUI 知道哪个是哪个:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct Restaurant: Identifiable {
     var id = UUID()
     var name: String
 }
-接下来，您将定义列表行的外观。在我们的例子中，我们将定义一个Restaurantrow视图，该视图存储一个餐厅并在文本视图中打印其名称：
-struct RestaurantRow : View {&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var restaurant: Restaurant
-
-var body: some View {
-    Text(&amp;quot;Come and eat at \(restaurant.name)&amp;quot;)
-}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;}
-最后，我们可以创建一个列表视图来显示所有内容。这意味着创建一些示例数据，将其放入数组中，然后将其传递到要呈现的列表中：
-struct ContentView : View {&lt;/p&gt;
+&lt;p&gt;接下来，我们将定义列表行的外观。在我们的例子中，我们将定义一个 &lt;code&gt;Restaurantrow&lt;/code&gt; 视图，该视图存储一个餐厅并在文本视图中打印其名称:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;var body: some View {
-
-    let first = Restaurant(name: &amp;quot;Joe&#39;s Original&amp;quot;)
-    let second = Restaurant(name: &amp;quot;The Real Joe&#39;s Original&amp;quot;)
-    let third = Restaurant(name: &amp;quot;Original Joe&#39;s&amp;quot;)
-    let restaurants = [first, second, third]
-
-    return List(restaurants) { restaurant in
-        RestaurantRow(restaurant: restaurant)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct RestaurantRow : View {
+    
+    var restaurant: Restaurant
+    
+    var body: some View {
+        Text(&amp;quot;Come and eat at \(restaurant.name)&amp;quot;)
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;}
-其中大部分只是创建数据——最后一部分是实际操作的地方：
-return List(restaurants) { restaurant in
+&lt;p&gt;最后，我们可以创建一个列表视图来显示所有内容。这意味着创建一些示例数据，将其放入数组中，然后将其传递到要呈现的列表中:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    var body: some View {
+        
+        let first = Restaurant(name: &amp;quot;Joe&#39;s Original&amp;quot;)
+        let second = Restaurant(name: &amp;quot;The Real Joe&#39;s Original&amp;quot;)
+        let third = Restaurant(name: &amp;quot;Original Joe&#39;s&amp;quot;)
+        let restaurants = [first, second, third]
+        
+        return List(restaurants) { restaurant in
+            RestaurantRow(restaurant: restaurant)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中大部分只是创建数据——最后一部分是实际操作的地方:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;return List(restaurants) { restaurant in
     RestaurantRow(restaurant: restaurant)
 }
-它从restaurants数组创建一个列表，对数组中的每个项目执行一次闭包。每次执行闭包时，餐厅的输入都将由数组中的一个项目填充，因此我们使用它来创建一个Restaurantrow。
-事实上，在这种小case下，我们可以使代码更短:
-return List(restaurants, rowContent: RestaurantRow.init)&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;它从 restaurants 数组创建一个列表，对数组中的每个项目执行一次闭包。每次执行闭包时，餐厅的输入都将由数组中的一个项目填充，因此我们使用它来创建一个 Restaurantrow。
+事实上，在这种小case下，我们可以使代码更短:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;return List(restaurants, rowContent: RestaurantRow.init)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/5_3_list_dynamic_items_list.gif&#34; alt=&#34;5_3_list_dynamic_items_list&#34; title=&#34;Dynamic list&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

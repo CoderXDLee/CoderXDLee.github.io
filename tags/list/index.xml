@@ -19,6 +19,49 @@
       
       <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.5_%E5%A6%82%E4%BD%95%E8%AE%A9%E7%94%A8%E6%88%B7%E7%A7%BB%E5%8A%A8%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%A1%8C/</guid>
       <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 为我们提供了简单地列表挂钩（hooks），让我们可以移动行(rows)，尽管 WWDC 上演示的一些功能在当前的测试版中实际上不可用，所以我们需要一个变通的解决方法。
+我们可以将 &lt;code&gt;onMove(perform:)&lt;/code&gt; 修饰符附加到列表中的项目，并让它在移动操作发生时调用我们选择的方法。 该方法需要接受 source IndexSet 和 destination Int，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;func move(from source: IndexSet, to destination: Int) {
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;移动多个项目时，最好先移动后一个项目，这样可以避免移动其他项目并混淆索引
+例如，我们可以创建一个 ContentView 结构，它设置一个由三个用户名字符串组成的数组，并要求SwiftUI在调用 &lt;code&gt;move()&lt;/code&gt;方法时移动它们。为了激活“移动”（即显示拖动手柄），它还向导航视图添加了一个编辑按钮，以便用户切换编辑模式。
+这是代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State var users = [&amp;quot;Paul&amp;quot;, &amp;quot;Taylor&amp;quot;, &amp;quot;Adele&amp;quot;]
+    
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(users, id: \.self, content: { user in
+                    Text(user)
+                })
+                .onMove(perform: move)
+            }
+            .navigationBarItems(trailing: EditButton())
+        }
+    }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        // sort the indexes low to high
+        let reverseSource = source.sorted()
+        
+        // then loop from the back to avoid reordering problems
+        for index in reverseSource.reversed() {
+            // for each item, remove it and insert it at the destination
+            users.insert(users.remove(at: index), at: destination)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/5_5_list_move_row.gif&#34; alt=&#34;5_5_list_move_row&#34; title=&#34;Move row&#34; /&gt;
+在WWDC会话演示中，他们的 &lt;code&gt;move()&lt;/code&gt; 方法只是一行代码，因为它在 Swift 数组上使用了一个对我们不可用的扩展——希望它很快就会到来！&lt;/p&gt;
 </description>
     </item>
     

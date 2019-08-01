@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content=" ">
 
   
   <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/5-list/5.8_%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E5%88%86%E7%BB%84%E5%88%97%E8%A1%A8/">
@@ -110,7 +110,7 @@
   <meta property="og:site_name" content="M X">
   <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/5-list/5.8_%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E5%88%86%E7%BB%84%E5%88%97%E8%A1%A8/">
   <meta property="og:title" content="5.8_如何制作分组列表 | M X">
-  <meta property="og:description" content=""><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
+  <meta property="og:description" content=" "><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://coderxdlee.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-08-01T23:22:15&#43;08:00">
@@ -396,6 +396,18 @@
 
   
   
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">M X</a></span>
+
+  </div>
+  
+  
 
   
   <span class="article-date">
@@ -412,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -425,6 +437,11 @@
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/swiftui/">SwiftUI</a></span>
   
 
   
@@ -541,7 +558,33 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
+      <!-- more -->
+
+<p>SwiftUI 的 List 支持 <em>grouped</em> 或 <em>plain</em> 样式，就像 <code>UITableView</code> 一样。默认为 <em>plain</em> 样式，但如果要改为 <em>grouped</em> 样式，则应使用 列表 的 <code>.listStyle(.grouped)</code> 修饰符。
+例如，这里定义了一个示例行，并将其放置在分组列表中：</p>
+
+<pre><code class="language-swift">struct ExampleRow : View {
+    var body: some View {
+        Text(&quot;Example Row&quot;)
+    }
+}
+
+struct ContentView : View {
+    var body: some View {
+        List {
+            Section(header: Text(&quot;Examples&quot;)) {
+                ExampleRow()
+                ExampleRow()
+                ExampleRow()
+            }
+        }.listStyle(.grouped)
+    }
+}
+</code></pre>
+
+<p>运行效果:
+<img src="img/5_8_list_grouped_style.gif" alt="5_8_list_grouped_style" title="List - grouped style" /></p>
+
     </div>
 
     
@@ -549,6 +592,12 @@
 
     
 
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/list/">List</a>
+  
+</div>
+
 
 
     
@@ -561,6 +610,10 @@
 
 
 
+  
+  
+    
+  
   
 
 
@@ -658,6 +711,24 @@
 
 
       
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/swiftui/5-list/5.7_%E5%A6%82%E4%BD%95%E5%90%91%E5%88%97%E8%A1%A8%E4%B8%AD%E6%B7%BB%E5%8A%A0sections/">5.7_如何向列表中添加sections</a></li>
+          
+          <li><a href="/post/swiftui/5-list/5.6_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8editbutton%E5%9C%A8%E5%88%97%E8%A1%A8%E4%B8%8A%E5%90%AF%E7%94%A8%E7%BC%96%E8%BE%91/">5.6_如何使用EditButton在列表上启用编辑</a></li>
+          
+          <li><a href="/post/swiftui/5-list/5.5_%E5%A6%82%E4%BD%95%E8%AE%A9%E7%94%A8%E6%88%B7%E7%A7%BB%E5%8A%A8%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%A1%8C/">5.5_如何让用户移动列表中的行</a></li>
+          
+          <li><a href="/post/swiftui/5-list/5.4_%E5%A6%82%E4%BD%95%E8%AE%A9%E7%94%A8%E6%88%B7%E4%BB%8E%E5%88%97%E8%A1%A8%E4%B8%AD%E5%88%A0%E9%99%A4%E8%A1%8C/">5.4_如何让用户从列表中删除行</a></li>
+          
+          <li><a href="/post/swiftui/5-list/5.3_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/">5.3_如何创建动态项目列表</a></li>
+          
+        </ul>
+      </div>
       
     
 

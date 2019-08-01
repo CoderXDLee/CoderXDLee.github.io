@@ -7,10 +7,161 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Wed, 31 Jul 2019 00:26:20 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 23:23:26 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>5.9_如何使用隐式叠加</title>
+      <link>https://coderxdlee.github.io/post/swiftui/5-list/5.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E9%9A%90%E5%BC%8F%E5%8F%A0%E5%8A%A0/</link>
+      <pubDate>Thu, 01 Aug 2019 23:23:26 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E9%9A%90%E5%BC%8F%E5%8F%A0%E5%8A%A0/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;如果创建一个动态列表并在每行中放置多个内容，会发生什么情况？SwiftUI 的解决方案简单、灵活，并且在默认情况下为我们提供了良好的行为: 它创建了一个隐式的 &lt;code&gt;HStack&lt;/code&gt; 来保存您的项目，因此它们会自动进行水平布局。
+例如，如果我们想要创建一行，其中左侧有一张小图片，剩余的空间分配给一个文本字段，那么我们将从一个结构开始，这样保存数据:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct User: Identifiable {
+    var id = UUID()
+    var username = &amp;quot;Anonymous&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我已经给出了这两个默认值，以便简化示例。
+完成后，我们可以创建一个包含三个用户的数组，并在动态列表中显示它们，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    let users = [User(), User(), User()]
+
+    var body: some View {
+        List(users) { user in
+            Image(&amp;quot;paul-hudson&amp;quot;)
+                .resizable()
+                .frame(width: 40, height: 40)
+            Text(user.username)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/5_9_list_implicit_stacking.gif&#34; alt=&#34;5_9_list_implicit_stacking&#34; title=&#34;Implicit stacking&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>5.8_如何制作分组列表</title>
+      <link>https://coderxdlee.github.io/post/swiftui/5-list/5.8_%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E5%88%86%E7%BB%84%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Thu, 01 Aug 2019 23:22:15 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.8_%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E5%88%86%E7%BB%84%E5%88%97%E8%A1%A8/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 的 List 支持 &lt;em&gt;grouped&lt;/em&gt; 或 &lt;em&gt;plain&lt;/em&gt; 样式，就像 &lt;code&gt;UITableView&lt;/code&gt; 一样。默认为 &lt;em&gt;plain&lt;/em&gt; 样式，但如果要改为 &lt;em&gt;grouped&lt;/em&gt; 样式，则应使用 列表 的 &lt;code&gt;.listStyle(.grouped)&lt;/code&gt; 修饰符。
+例如，这里定义了一个示例行，并将其放置在分组列表中：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ExampleRow : View {
+    var body: some View {
+        Text(&amp;quot;Example Row&amp;quot;)
+    }
+}
+
+struct ContentView : View {
+    var body: some View {
+        List {
+            Section(header: Text(&amp;quot;Examples&amp;quot;)) {
+                ExampleRow()
+                ExampleRow()
+                ExampleRow()
+            }
+        }.listStyle(.grouped)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/5_8_list_grouped_style.gif&#34; alt=&#34;5_8_list_grouped_style&#34; title=&#34;List - grouped style&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>5.7_如何向列表中添加sections</title>
+      <link>https://coderxdlee.github.io/post/swiftui/5-list/5.7_%E5%A6%82%E4%BD%95%E5%90%91%E5%88%97%E8%A1%A8%E4%B8%AD%E6%B7%BB%E5%8A%A0sections/</link>
+      <pubDate>Thu, 01 Aug 2019 23:21:13 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.7_%E5%A6%82%E4%BD%95%E5%90%91%E5%88%97%E8%A1%A8%E4%B8%AD%E6%B7%BB%E5%8A%A0sections/</guid>
+      <description>&lt;p&gt;SwiftUI 的列表视图内置了对 &lt;em&gt;sections&lt;/em&gt; 和 &lt;em&gt;section headers&lt;/em&gt; 的支持，就像 UIKit 中的 &lt;code&gt;UITableView&lt;/code&gt; 一样。若要给某些 cells 添加一个 _section_，首先在其周围放置一个 &lt;code&gt;Section&lt;/code&gt;，也可以添加 &lt;em&gt;header&lt;/em&gt; 和 _footer_。
+举个例子，这里有一行包含提醒应用的任务数据：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct TaskRow: View {
+    var body: some View {
+        Text(&amp;quot;Task data goes here&amp;quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们要做的是创建一个列表视图，它有两个Sections：一个用于重要任务，另一个用于次要任务。这是它的样子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    var body: some View {
+        List {
+            Section(header: Text(&amp;quot;Important task&amp;quot;)) {
+                TaskRow()
+                TaskRow()
+                TaskRow()
+            }
+            Section(header: Text(&amp;quot;Other task&amp;quot;)) {
+                TaskRow()
+                TaskRow()
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/5_7_list_sections.gif&#34; alt=&#34;5_7_list_sections&#34; title=&#34;List sections&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>5.6_如何使用EditButton在列表上启用编辑</title>
+      <link>https://coderxdlee.github.io/post/swiftui/5-list/5.6_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8editbutton%E5%9C%A8%E5%88%97%E8%A1%A8%E4%B8%8A%E5%90%AF%E7%94%A8%E7%BC%96%E8%BE%91/</link>
+      <pubDate>Wed, 31 Jul 2019 00:40:13 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/5-list/5.6_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8editbutton%E5%9C%A8%E5%88%97%E8%A1%A8%E4%B8%8A%E5%90%AF%E7%94%A8%E7%BC%96%E8%BE%91/</guid>
+      <description>&lt;p&gt;如果您已配置 SwiftUI 列表视图以支持删除或编辑其项目，则可以允许用户通过在某个地方添加 &lt;code&gt;EditButton&lt;/code&gt; 来切换列表视图的编辑模式。
+例如，这个 ContentView 结构定义了一个用户数组，附加了一个 &lt;code&gt;OnDelete()&lt;/code&gt; 方法，然后在导航栏中添加了一个编辑按钮:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State var users = [&amp;quot;Paul&amp;quot;, &amp;quot;Taylor&amp;quot;, &amp;quot;Adele&amp;quot;]
+    
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(users.identified(by: \.self)) { user in
+                    Text(user)
+                }
+                .onDelete(perform: delete)
+            }
+            .navigationBarItems(trailing: EditButton())
+        }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        if let first = offsets.first {
+            users.remove(at: first)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行后，您会发现您可以点击编辑按钮来启用或禁用列表中项目的编辑模式。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>5.5_如何让用户移动列表中的行</title>
@@ -2318,7 +2469,7 @@ struct ContentView_Previews : PreviewProvider {
     <item>
       <title></title>
       <link>https://coderxdlee.github.io/authors/admin/</link>
-      <pubDate>Wed, 31 Jul 2019 00:26:20 +0800</pubDate>
+      <pubDate>Thu, 01 Aug 2019 23:23:26 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;

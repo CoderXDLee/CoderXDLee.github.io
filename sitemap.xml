@@ -4,7 +4,58 @@
   
   <url>
     <loc>https://coderxdlee.github.io/authors/admin/</loc>
-    <lastmod>2019-08-01T23:23:26+08:00</lastmod>
+    <lastmod>2019-08-02T00:37:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/post/swiftui/6-forms/6.2_%E5%9F%BA%E6%9C%AC%E8%A1%A8%E5%8D%95%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2019-08-02T00:37:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/authors/</loc>
+    <lastmod>2019-08-02T00:37:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/categories/</loc>
+    <lastmod>2019-08-02T00:37:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/tags/forms/</loc>
+    <lastmod>2019-08-02T00:37:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/</loc>
+    <lastmod>2019-08-02T00:37:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/post/</loc>
+    <lastmod>2019-08-02T00:37:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/categories/swiftui/</loc>
+    <lastmod>2019-08-02T00:37:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/tags/</loc>
+    <lastmod>2019-08-02T00:37:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/post/swiftui/6-forms/6.1_%E8%A1%A8%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2019-08-02T00:21:32+08:00</lastmod>
   </url>
   
   <url>
@@ -13,42 +64,7 @@
   </url>
   
   <url>
-    <loc>https://coderxdlee.github.io/authors/</loc>
-    <lastmod>2019-08-01T23:23:26+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://coderxdlee.github.io/categories/</loc>
-    <lastmod>2019-08-01T23:23:26+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://coderxdlee.github.io/tags/list/</loc>
-    <lastmod>2019-08-01T23:23:26+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://coderxdlee.github.io/</loc>
-    <lastmod>2019-08-01T23:23:26+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://coderxdlee.github.io/post/</loc>
-    <lastmod>2019-08-01T23:23:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coderxdlee.github.io/categories/swiftui/</loc>
-    <lastmod>2019-08-01T23:23:26+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://coderxdlee.github.io/tags/</loc>
     <lastmod>2019-08-01T23:23:26+08:00</lastmod>
     <priority>0</priority>
   </url>

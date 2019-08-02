@@ -7,10 +7,77 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Fri, 02 Aug 2019 15:04:09 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 15:27:01 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/categories/swiftui/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>6.6_显示或隐藏表单行</title>
+      <link>https://coderxdlee.github.io/post/swiftui/6-forms/6.6_%E6%98%BE%E7%A4%BA%E6%88%96%E9%9A%90%E8%97%8F%E8%A1%A8%E5%8D%95%E8%A1%8C/</link>
+      <pubDate>Fri, 02 Aug 2019 15:27:01 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/6-forms/6.6_%E6%98%BE%E7%A4%BA%E6%88%96%E9%9A%90%E8%97%8F%E8%A1%A8%E5%8D%95%E8%A1%8C/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 允许我们可以根据需要在表单中添加和删除项目，当我们希望调整基于先前选项可见的选项列表时，特别有用。&lt;/p&gt;
+
+&lt;p&gt;例如，这会显示单个 &lt;em&gt;toggle&lt;/em&gt; ，提示用户是否要显示更多高级选项。启用该 &lt;em&gt;toggle&lt;/em&gt; 后，会出现第二个 &lt;em&gt;toggle&lt;/em&gt; ，允许他们启用日志记录:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State var showingAdvancedOptions = false
+    @State var enableLogging = false
+    
+    var body: some View {
+        Form {
+            Section {
+                Toggle(isOn: $showingAdvancedOptions) {
+                    Text(&amp;quot;Show advanced options&amp;quot;)
+                }
+                
+                if showingAdvancedOptions {
+                    Toggle(isOn: $enableLogging) {
+                        Text(&amp;quot;Enable logging&amp;quot;)
+                    }
+                }
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/6.6_form_show_hide.gif&#34; alt=&#34;6.6_form_show_hide&#34; title=&#34;Form show or hide&#34; /&gt;
+与其他绑定一样，可以要求 SwiftUI 对绑定更改导致的视图更改使用隐式动画，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State var showingAdvancedOptions = false
+    @State var enableLogging = false
+    
+    var body: some View {
+        Form {
+            Section {
+                Toggle(isOn: $showingAdvancedOptions.animation()) {
+                    Text(&amp;quot;Showing Advanced Options&amp;quot;)
+                }
+            }
+            
+            if showingAdvancedOptions {
+                Toggle(isOn: $enableLogging) {
+                    Text(&amp;quot;Enable Logging&amp;quot;)
+                }
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/6.6_form_show_hide_animation.gif&#34; alt=&#34;6.6_form_show_hide_animation&#34; title=&#34;Form show or hide with animation&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>6.5_启用和禁用表单中的元素</title>

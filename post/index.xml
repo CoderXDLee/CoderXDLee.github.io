@@ -7,10 +7,64 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Fri, 02 Aug 2019 12:01:16 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 13:49:59 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>6.4_表单中选择器的使用</title>
+      <link>https://coderxdlee.github.io/post/swiftui/6-forms/6.4_%E8%A1%A8%E5%8D%95%E4%B8%AD%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 02 Aug 2019 13:49:59 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/6-forms/6.4_%E8%A1%A8%E5%8D%95%E4%B8%AD%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;在表单内部，SwiftUI 的 &lt;code&gt;选择器视图&lt;/code&gt; 具有特殊的行为，可根据我们使用它们的平台自动进行调整。在 iOS 上，这种行为尤其令人印象深刻，因为选择器可以折叠到一个列表行，该行导航到一个新的可能选项列表中——这是处理许多选项的一种非常自然的方式。&lt;/p&gt;
+
+&lt;p&gt;例如，这将创建一个带有选择器的表单，并为其项使用数组：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    var strengths = [&amp;quot;Mild&amp;quot;, &amp;quot;Medium&amp;quot;, &amp;quot;Mature&amp;quot;]
+    @State var selectedStrength = 0
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    Picker(selection: $selectedStrength, label: Text(&amp;quot;Text strength&amp;quot;)) {
+                        ForEach(0..&amp;lt;strengths.count) {
+                            Text(self.strengths[$0]).tag($0)
+                        }
+                    }
+                }
+            }
+            .navigationBarTitle(Text(&amp;quot;Select your cheese&amp;quot;))
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/6.4_form_pickers.gif&#34; alt=&#34;6.4_form_pickers&#34; title=&#34;Form pickers&#34; /&gt;
+表单中的选择器
+在 iOS 上，这将显示为一个单独的列表行，您可以点击该行进入一个新屏幕，显示所有可能的选项—— Mild、Medium 和 Mature。您当前的选择旁边将有一个复选标记，当您选择一个新选项时，它将返回上一个屏幕，并显示当前的选项。&lt;/p&gt;
+
+&lt;p&gt;如果要禁用此行为，可以使用.PickerStyle(.wheel)修饰符强制选取器采用其常规样式，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Picker(selection: $selectedStrength, label: Text(&amp;quot;Text strength&amp;quot;)) {
+    ForEach(0..&amp;lt;strengths.count) {
+        Text(self.strengths[$0]).tag($0)
+    }
+}
+.pickerStyle(WheelPickerStyle())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/6.4_form_pickers_wheel.gif&#34; alt=&#34;6.4_form_pickers_wheel&#34; title=&#34;Picker with wheel style&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>6.3_将表单分成几个sections</title>
@@ -79,11 +133,13 @@
     var body: some View {
         NavigationView {
             Form {
-                SegmentedControl(selection: $selectedColor) {
+                Picker(selection: $selectedColor, label: Text(&amp;quot;&amp;quot;)) {
                     ForEach(0..&amp;lt;colors.count) {
                         Text(self.colors[$0]).tag($0)
                     }
                 }
+                .pickerStyle(SegmentedPickerStyle())
+                
                 Toggle(isOn: $enableLogging) {
                     Text(&amp;quot;Enable logging!&amp;quot;)
                 }

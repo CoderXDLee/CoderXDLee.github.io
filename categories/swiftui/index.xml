@@ -7,10 +7,67 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Fri, 02 Aug 2019 13:49:59 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 15:04:09 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/categories/swiftui/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>6.5_启用和禁用表单中的元素</title>
+      <link>https://coderxdlee.github.io/post/swiftui/6-forms/6.5_%E5%90%AF%E7%94%A8%E5%92%8C%E7%A6%81%E7%94%A8%E8%A1%A8%E5%8D%95%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Fri, 02 Aug 2019 15:04:09 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/6-forms/6.5_%E5%90%AF%E7%94%A8%E5%92%8C%E7%A6%81%E7%94%A8%E8%A1%A8%E5%8D%95%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 允许我们通过使用 &lt;code&gt;disabled()&lt;/code&gt; 修饰符来禁用表单的任何部分甚至整个表单。这需要一个布尔值来定义是否应禁止使用该元素。表单元素的样式会自动更新以反映其状态-例如，&lt;em&gt;buttons&lt;/em&gt; 和  &lt;em&gt;toggles&lt;/em&gt; 变为灰色。&lt;/p&gt;
+
+&lt;p&gt;例如，这将创建一个包含两个 sections 的表单：一个section 包含 Toggle ，另一个部分包含仅在切换打开时才启用的 Button：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+    
+    @State var agreedToTerms = false
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    Toggle(isOn: $agreedToTerms) {
+                        Text(&amp;quot;Agree to terms and conditions&amp;quot;)
+                    }
+                }
+                Section {
+                    Button(action: {
+                        // show next screen here
+                    }) {
+                        Text(&amp;quot;Continue&amp;quot;)
+                    }
+                    .disabled(!agreedToTerms)
+                }
+            }
+            .navigationBarTitle(Text(&amp;quot;Welcome&amp;quot;))
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行效果:
+&lt;img src=&#34;img/6.5_form_enable_disable.gif&#34; alt=&#34;6.5_form_enable_disable&#34; title=&#34;Form enable and disable&#34; /&gt;
+如您所见，只需将禁用（!agreeToTerms）添加到修改器列表中即可禁用该按钮。&lt;/p&gt;
+
+&lt;p&gt;与许多其他SwiftIUI修饰符一样，您可以提升 &lt;code&gt;disabled()&lt;/code&gt;，以便它在 Section 上运行，甚至在整个表单上运行，这取决于您想要的行为——例如，只需移动 &lt;code&gt;disabled(!agreedToTerms)&lt;/code&gt; 使它位于该 section 之后:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Section {
+    Button(action: {
+        // show next screen here
+    }) {
+        Text(&amp;quot;Continue&amp;quot;)
+    }
+}
+.disabled(!agreedToTerms)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>6.4_表单中选择器的使用</title>

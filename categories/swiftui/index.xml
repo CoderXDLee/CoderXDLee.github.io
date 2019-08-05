@@ -7,10 +7,57 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 05 Aug 2019 15:23:39 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 15:54:28 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/categories/swiftui/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>8.3_如何向alert_buttons添加actions</title>
+      <link>https://coderxdlee.github.io/post/swiftui/8-alerts_and_action_sheets/8.3_%E5%A6%82%E4%BD%95%E5%90%91alert_buttons%E6%B7%BB%E5%8A%A0actions/</link>
+      <pubDate>Mon, 05 Aug 2019 15:54:28 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/8-alerts_and_action_sheets/8.3_%E5%A6%82%E4%BD%95%E5%90%91alert_buttons%E6%B7%BB%E5%8A%A0actions/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;基本的 SwiftUI alert 如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Alert(title: Text(&amp;quot;Important message&amp;quot;), message: Text(&amp;quot;Wear sunscreen&amp;quot;), dismissButton: .default(Text(&amp;quot;Got it!&amp;quot;)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是，我们经常需要将操作附加到按钮上，以便在点击按钮时执行特定操作。要做到这一点，请在按钮上附加一个闭包，当按钮被点击时闭包将被调用，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State private var showAlert = false
+    
+    var body: some View {
+        Button(action: {
+            self.showAlert = true
+        }, label: {
+            Text(&amp;quot;Show alert&amp;quot;)
+        })
+        .alert(isPresented: $showAlert,
+               content: {
+                Alert(title: Text(&amp;quot;Are you sure you want to delete this?&amp;quot;),
+                      message: Text(&amp;quot;There is no undo.&amp;quot;),
+                      primaryButton: .destructive(Text(&amp;quot;Delete&amp;quot;), action: {
+                        print(&amp;quot;Deleting...&amp;quot;)
+                      }),
+                      secondaryButton: .cancel())
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/8.3_add_actions_to_alert_buttons.gif&#34; alt=&#34;8.3_add_actions_to_alert_buttons&#34; title=&#34;Add actions to alert buttons&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;提示: 在预览视图中，点击 &lt;code&gt;Delete&lt;/code&gt; 按钮，控制台没有日志输出。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
     
     <item>
       <title>8.2_如何显示一个alert</title>

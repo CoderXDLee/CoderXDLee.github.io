@@ -18,9 +18,15 @@
       <pubDate>Fri, 02 Aug 2019 18:18:22 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/7-container/7.2_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E5%B5%8C%E5%85%A5%E8%A7%86%E5%9B%BE/</guid>
-      <description>&lt;!-- more --&gt;
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
 
 &lt;p&gt;SwiftUI 中的 &lt;code&gt;NavigationView&lt;/code&gt; 几乎等同于 UIKit 中的 &lt;code&gt;UINavigationController&lt;/code&gt;，因为它不仅可以呈现内容，而且它能够处理视图之间的导航，并在屏幕顶部放置一个导航栏。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-嵌入文本视图&#34;&gt;2. 嵌入文本视图&lt;/h3&gt;
 
 &lt;p&gt;接下来，我们以最简单的形式，将文本视图放入导航视图中，如下所示:&lt;/p&gt;
 
@@ -34,21 +40,32 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;效果预览:
-&lt;img src=&#34;img/navigationview_embed_text_no_navigationbar.png&#34; alt=&#34;navigationview_embed_text_no_navigationbar&#34; title=&#34;Embed a text in  the navigationView&#34; /&gt;
-但是这样，顶部的导航栏为空。因此，通常在嵌入的内容上使用 &lt;code&gt;navigationBarTitle()&lt;/code&gt; 修饰符，因此，我们可以在屏幕顶部添加标题，如下所示:&lt;/p&gt;
+&lt;img src=&#34;img/navigationview_embed_text_no_navigationbar.png&#34; alt=&#34;navigationview_embed_text_no_navigationbar&#34; title=&#34;Embed a text in  the navigationView&#34; /&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
-    var body: some View {
-        NavigationView {
-            Text(&amp;quot;Hello SwiftUI&amp;quot;)
-                .navigationBarTitle(&amp;quot;Welcome&amp;quot;)
-        }
-    }
+&lt;h3 id=&#34;3-设置导航栏标题&#34;&gt;3. 设置导航栏标题&lt;/h3&gt;
+
+&lt;p&gt;但是这样，顶部的导航栏为空。因此，通常在嵌入的内容上使用 &lt;code&gt;navigationBarTitle()&lt;/code&gt; 修饰符，因此，我们可以在屏幕顶部添加标题，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;NavigationView {
+    Text(&amp;quot;Hello SwiftUI&amp;quot;)
+        .navigationBarTitle(Text(&amp;quot;Welcome&amp;quot;))
 }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;效果预览:
 &lt;img src=&#34;img/navigationview_embed_text_has_navigationbar.png&#34; alt=&#34;navigationview_embed_text_has_navigationbar&#34; title=&#34;Embed a text in the navigationView which has a navigationBar&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-自定义导航标题&#34;&gt;4. 自定义导航标题&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;navigationBarTitle()&lt;/code&gt; 修饰符为我们提供了一些自定义选项。&lt;/p&gt;
+
+&lt;p&gt;例如: 默认情况下，它将从呈现它的任何视图继承大型标题显示模式，或者如果它是初始视图，那么它将使用大型标题。但是，如果我们想强制启用或禁用大标题，那么我们应该使用 &lt;code&gt;inline&lt;/code&gt; 参数，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.navigationBarTitle(Text(&amp;quot;Welcome&amp;quot;), displayMode: .inline)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/navigationview_navigationbar_inline.png&#34; alt=&#34;navigationview_navigationbar_inline&#34; title=&#34;Display mode is inline.&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

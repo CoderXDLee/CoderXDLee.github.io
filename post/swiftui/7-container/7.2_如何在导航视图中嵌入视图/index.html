@@ -558,9 +558,15 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <!-- more -->
+      
+
+<!-- more -->
+
+<h3 id="1-简介">1. 简介</h3>
 
 <p>SwiftUI 中的 <code>NavigationView</code> 几乎等同于 UIKit 中的 <code>UINavigationController</code>，因为它不仅可以呈现内容，而且它能够处理视图之间的导航，并在屏幕顶部放置一个导航栏。</p>
+
+<h3 id="2-嵌入文本视图">2. 嵌入文本视图</h3>
 
 <p>接下来，我们以最简单的形式，将文本视图放入导航视图中，如下所示:</p>
 
@@ -574,21 +580,32 @@
 </code></pre>
 
 <p>效果预览:
-<img src="img/navigationview_embed_text_no_navigationbar.png" alt="navigationview_embed_text_no_navigationbar" title="Embed a text in  the navigationView" />
-但是这样，顶部的导航栏为空。因此，通常在嵌入的内容上使用 <code>navigationBarTitle()</code> 修饰符，因此，我们可以在屏幕顶部添加标题，如下所示:</p>
+<img src="img/navigationview_embed_text_no_navigationbar.png" alt="navigationview_embed_text_no_navigationbar" title="Embed a text in  the navigationView" /></p>
 
-<pre><code class="language-swift">struct ContentView: View {
-    var body: some View {
-        NavigationView {
-            Text(&quot;Hello SwiftUI&quot;)
-                .navigationBarTitle(&quot;Welcome&quot;)
-        }
-    }
+<h3 id="3-设置导航栏标题">3. 设置导航栏标题</h3>
+
+<p>但是这样，顶部的导航栏为空。因此，通常在嵌入的内容上使用 <code>navigationBarTitle()</code> 修饰符，因此，我们可以在屏幕顶部添加标题，如下所示:</p>
+
+<pre><code class="language-swift">NavigationView {
+    Text(&quot;Hello SwiftUI&quot;)
+        .navigationBarTitle(Text(&quot;Welcome&quot;))
 }
 </code></pre>
 
 <p>效果预览:
 <img src="img/navigationview_embed_text_has_navigationbar.png" alt="navigationview_embed_text_has_navigationbar" title="Embed a text in the navigationView which has a navigationBar" /></p>
+
+<h3 id="4-自定义导航标题">4. 自定义导航标题</h3>
+
+<p><code>navigationBarTitle()</code> 修饰符为我们提供了一些自定义选项。</p>
+
+<p>例如: 默认情况下，它将从呈现它的任何视图继承大型标题显示模式，或者如果它是初始视图，那么它将使用大型标题。但是，如果我们想强制启用或禁用大标题，那么我们应该使用 <code>inline</code> 参数，如下所示:</p>
+
+<pre><code>.navigationBarTitle(Text(&quot;Welcome&quot;), displayMode: .inline)
+</code></pre>
+
+<p>效果预览:
+<img src="img/navigationview_navigationbar_inline.png" alt="navigationview_navigationbar_inline" title="Display mode is inline." /></p>
 
     </div>
 

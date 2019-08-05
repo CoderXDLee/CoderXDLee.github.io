@@ -7,10 +7,66 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Fri, 02 Aug 2019 15:27:01 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 18:18:22 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>7.2_如何在导航视图中嵌入视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/7-container/7.2_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E5%B5%8C%E5%85%A5%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Fri, 02 Aug 2019 18:18:22 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/7-container/7.2_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E5%B5%8C%E5%85%A5%E8%A7%86%E5%9B%BE/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 中的 &lt;code&gt;NavigationView&lt;/code&gt; 几乎等同于 UIKit 中的 &lt;code&gt;UINavigationController&lt;/code&gt;，因为它不仅可以呈现内容，而且它能够处理视图之间的导航，并在屏幕顶部放置一个导航栏。&lt;/p&gt;
+
+&lt;p&gt;接下来，我们以最简单的形式，将文本视图放入导航视图中，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/navigationview_embed_text_no_navigationbar.png&#34; alt=&#34;navigationview_embed_text_no_navigationbar&#34; title=&#34;Embed a text in  the navigationView&#34; /&gt;
+但是这样，顶部的导航栏为空。因此，通常在嵌入的内容上使用 &lt;code&gt;navigationBarTitle()&lt;/code&gt; 修饰符，因此，我们可以在屏幕顶部添加标题，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+                .navigationBarTitle(&amp;quot;Welcome&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/navigationview_embed_text_has_navigationbar.png&#34; alt=&#34;navigationview_embed_text_has_navigationbar&#34; title=&#34;Embed a text in the navigationView which has a navigationBar&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>7.1_使用容器</title>
+      <link>https://coderxdlee.github.io/post/swiftui/7-container/7.1_%E4%BD%BF%E7%94%A8%E5%AE%B9%E5%99%A8/</link>
+      <pubDate>Fri, 02 Aug 2019 18:06:43 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/7-container/7.1_%E4%BD%BF%E7%94%A8%E5%AE%B9%E5%99%A8/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 设计为开箱即用，这意味着我们可以根据需要将一个视图放在另一个视图中。&lt;/p&gt;
+
+&lt;p&gt;这在处理我们习惯的主要容器视图（如导航控制器和选项卡栏控制器）时特别有用。我们可以将想要的任何视图直接放置到另一个容器视图中，Swiftui将自动调整其布局。&lt;/p&gt;
+
+&lt;p&gt;在这方面，Swiftui自己的容器—— &lt;code&gt;NavigationView&lt;/code&gt;、&lt;code&gt;TabbedView&lt;/code&gt;、&lt;code&gt;Group&lt;/code&gt; 等等——与我们用自己的视图组合制作的容器没有什么不同。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>6.6_显示或隐藏表单行</title>
@@ -235,7 +291,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/6.4_form_sections.gif&#34; alt=&#34;6.4_form_sections&#34; title=&#34;Form sections&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/6.3_form_sections.gif&#34; alt=&#34;6.3_form_sections&#34; title=&#34;Form sections&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -7,10 +7,56 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 05 Aug 2019 11:54:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 15:23:39 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/categories/swiftui/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>8.2_如何显示一个alert</title>
+      <link>https://coderxdlee.github.io/post/swiftui/8-alerts_and_action_sheets/8.2_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E4%B8%80%E4%B8%AAalert/</link>
+      <pubDate>Mon, 05 Aug 2019 15:23:39 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/8-alerts_and_action_sheets/8.2_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E4%B8%80%E4%B8%AAalert/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;创建一个基本的 SwiftUI alert 的代码如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Alert(title: Text(&amp;quot;Important message&amp;quot;), message: Text(&amp;quot;Wear sunscreen&amp;quot;), dismissButton: .default(Text(&amp;quot;Got it!&amp;quot;)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;它定义了一个标题和消息，就像我们在 &lt;code&gt;UIAlertController&lt;/code&gt; 中看到的那样，然后添加了一个带有默认样式的 dismiss 按钮和文本 &amp;ldquo;Got it!&amp;ldquo;。&lt;/p&gt;
+
+&lt;p&gt;要显示该 alert，我们需要定义某种可绑定条件，以确定 alert 是否可见。然后将其作为演示附加到主视图中，在 alert 条件变为 true 的时候，立即显示 alert。&lt;/p&gt;
+
+&lt;p&gt;例如: 下面的代码创建一个 &lt;code&gt;showingAlert&lt;/code&gt; 的布尔值，用于跟踪是否应该显示 &amp;ldquo;sunscreen message&amp;rdquo;，在点击按钮时将该布尔值设置为 true，然后使用该布尔值创建并附加一个 alert 视图，以便在点击按钮时显示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State private var showingAlert = false
+    
+    var body: some View {
+        Button(action: {
+            self.showingAlert = true
+        }, label: {
+            Text(&amp;quot;Show alert&amp;quot;)
+        })
+        .alert(isPresented: $showingAlert,
+               content: {
+                Alert(title: Text(&amp;quot;Important message&amp;quot;), message: Text(&amp;quot;Wear sunscreen&amp;quot;), dismissButton: .default(Text(&amp;quot;Got it!&amp;quot;)))
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果演示:
+&lt;img src=&#34;img/8.2_show_alert.gif&#34; alt=&#34;8.2_show_alert&#34; title=&#34;Show a alert&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;提示:&lt;/strong&gt; 通过这种方式展示一个 alert，当按下关闭按钮时，会自动将 &lt;code&gt;showingAlert&lt;/code&gt; 设置回 false。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
     
     <item>
       <title>8.1_使用presentations</title>

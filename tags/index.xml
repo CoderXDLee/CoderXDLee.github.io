@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 05 Aug 2019 16:14:42 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 16:58:35 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Presenting views</title>
+      <link>https://coderxdlee.github.io/tags/presenting-views/</link>
+      <pubDate>Mon, 05 Aug 2019 16:58:35 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/tags/presenting-views/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Alerts and action sheets</title>

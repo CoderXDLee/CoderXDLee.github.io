@@ -7,10 +7,44 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Fri, 02 Aug 2019 18:18:22 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 11:06:31 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>7.3_如何给导航视图添加bar_items</title>
+      <link>https://coderxdlee.github.io/post/swiftui/7-container/7.3_%E5%A6%82%E4%BD%95%E7%BB%99%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E6%B7%BB%E5%8A%A0bar_items/</link>
+      <pubDate>Mon, 05 Aug 2019 11:06:31 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/7-container/7.3_%E5%A6%82%E4%BD%95%E7%BB%99%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E6%B7%BB%E5%8A%A0bar_items/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;通过 &lt;code&gt;navigationBarItems()&lt;/code&gt; 修饰符，我们可以在导航视图的 &lt;em&gt;前缘(leading)&lt;/em&gt; 和 &lt;em&gt;后缘(trailing)&lt;/em&gt;  添加 &lt;strong&gt;bar items&lt;/strong&gt;。这些 &lt;strong&gt;bar items&lt;/strong&gt; 可能是一个可点击的按钮，但没有任何限制 - 您可以添加任何类型的视图。&lt;/p&gt;
+
+&lt;p&gt;例如: 我们可以在导航视图的后缘(trailing)添加一个 &lt;strong&gt;帮助按钮&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+                .navigationBarTitle(Text(&amp;quot;Welcome&amp;quot;))
+            .navigationBarItems(trailing:
+                Button(action: {
+                    print(&amp;quot;Help tapped!&amp;quot;)
+                }, label: {
+                    Text(&amp;quot;Help&amp;quot;)
+                })
+            )
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/navigationview_add_bar_items.png&#34; alt=&#34;navigationview_add_bar_items&#34; title=&#34;Add bar items.&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>7.2_如何在导航视图中嵌入视图</title>

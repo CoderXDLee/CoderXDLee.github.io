@@ -7,10 +7,85 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 05 Aug 2019 11:06:31 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 11:22:27 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>7.4_如何将视图组合在一起</title>
+      <link>https://coderxdlee.github.io/post/swiftui/7-container/7.4_%E5%A6%82%E4%BD%95%E5%B0%86%E8%A7%86%E5%9B%BE%E7%BB%84%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7/</link>
+      <pubDate>Mon, 05 Aug 2019 11:22:27 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/7-container/7.4_%E5%A6%82%E4%BD%95%E5%B0%86%E8%A7%86%E5%9B%BE%E7%BB%84%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;如果我们需要将多个视图作为一个视图，例如: 一起转换。那么，我们应该使用 SwiftUI 的 &lt;code&gt;Group&lt;/code&gt; 视图。这一点尤为重要，因为出于底层的技术原因，我们一次性最多只能向父视图添加十个子视图。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text(&amp;quot;line - 0&amp;quot;)
+            Text(&amp;quot;line - 1&amp;quot;)
+            Text(&amp;quot;line - 2&amp;quot;)
+            Text(&amp;quot;line - 3&amp;quot;)
+            Text(&amp;quot;line - 4&amp;quot;)
+            Text(&amp;quot;line - 5&amp;quot;)
+            Text(&amp;quot;line - 6&amp;quot;)
+            Text(&amp;quot;line - 7&amp;quot;)
+            Text(&amp;quot;line - 8&amp;quot;)
+            Text(&amp;quot;line - 9&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/group_10_lines.png&#34; alt=&#34;group_10_lines&#34; title=&#34;Show 10 lines&#34; /&gt;
+一切正常，但是，当我们尝试添加第11行文本的时候，就会报错:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Ambiguous reference to member &#39;buildBlock&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;错误预览:
+&lt;img src=&#34;img/grouo_11_lines_error.png&#34; alt=&#34;grouo_11_lines_error&#34; title=&#34;When show the 11th line, throw a error&#34; /&gt;
+后面是一串这样的错误信息:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;ContentView.swift:10:16: Found this candidate (SwiftUI.ViewBuilder)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这是因为 SwiftUI 的视图构建系统中有各种各样的代码设计，可以让我们添加1个视图、2个视图、2个视图、3个视图、4个视图、5个视图、6个视图、7个视图、8个视图、9个视图和10个视图，但是不适用于11个或更多视图 - 这不起作用。&lt;/p&gt;
+
+&lt;p&gt;幸运的是，我们可以像这样使用 &lt;code&gt;group&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {
+            Group {
+                Text(&amp;quot;line - 0&amp;quot;)
+                Text(&amp;quot;line - 1&amp;quot;)
+                Text(&amp;quot;line - 2&amp;quot;)
+                Text(&amp;quot;line - 3&amp;quot;)
+                Text(&amp;quot;line - 4&amp;quot;)
+                Text(&amp;quot;line - 5&amp;quot;)
+            }
+            Group {
+                Text(&amp;quot;line - 6&amp;quot;)
+                Text(&amp;quot;line - 7&amp;quot;)
+                Text(&amp;quot;line - 8&amp;quot;)
+                Text(&amp;quot;line - 9&amp;quot;)
+                Text(&amp;quot;line - 10&amp;quot;)
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/group_11_lines.png&#34; alt=&#34;group_11_lines&#34; title=&#34;Group 11 lines&#34; /&gt;
+这产生了完全相同的结果，现在我们可以超过10个视图的限制，因为 &lt;code&gt;VStack&lt;/code&gt; 中只包含两个视图——两个组。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>7.3_如何给导航视图添加bar_items</title>
@@ -2884,7 +2959,7 @@ struct ContentView_Previews : PreviewProvider {
     <item>
       <title></title>
       <link>https://coderxdlee.github.io/authors/admin/</link>
-      <pubDate>Mon, 05 Aug 2019 11:06:31 +0800</pubDate>
+      <pubDate>Mon, 05 Aug 2019 11:22:27 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;

@@ -7,10 +7,62 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 05 Aug 2019 15:54:28 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 16:14:42 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/alerts-and-action-sheets/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>8.4_如何显示一个action_sheet</title>
+      <link>https://coderxdlee.github.io/post/swiftui/8-alerts_and_action_sheets/8.4_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E4%B8%80%E4%B8%AAaction_sheet/</link>
+      <pubDate>Mon, 05 Aug 2019 16:14:42 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/8-alerts_and_action_sheets/8.4_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E4%B8%80%E4%B8%AAaction_sheet/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 为我们提供了 &lt;code&gt;ActionSheet&lt;/code&gt; 视图，用于创建供用户选择的操作表。但是，我们确实需要确保在它被解除时重置我们的状态，否则，我们将无法再次显示它。&lt;/p&gt;
+
+&lt;p&gt;稍后，我们再展示所有代码，现在我们首先将其分解，因为这并不容易。&lt;/p&gt;
+
+&lt;p&gt;首先，我们需要定义一个属性来跟踪是否需要显示操作表:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;@State private var showingSheet = false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来，我们应该创建一个属性来存储操作表。这需要标题和消息文本，但也应该提供一个按钮数组。如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var sheet = ActionSheet(title: Text(&amp;quot;Action&amp;quot;),
+                        message: Text(&amp;quot;Quote mark&amp;quot;),
+                        buttons: [.default(Text(&amp;quot;Show sheet&amp;quot;))])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完成后，我们可以使用显示工作表的演示文稿将操作表附加到视图中，或者根据showsSheet的值执行任何操作，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State private var showingSheet = false
+    var sheet = ActionSheet(title: Text(&amp;quot;Action&amp;quot;),
+                            message: Text(&amp;quot;Quote mark&amp;quot;),
+                            buttons: [.default(Text(&amp;quot;Show sheet&amp;quot;))])
+        
+        
+    var body: some View {
+        Button(action: {
+            self.showingSheet = true
+        }, label: {
+            Text(&amp;quot;Woo&amp;quot;)
+        })
+        .actionSheet(isPresented: $showingSheet, content: {
+            self.sheet
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/8.4_show_action_sheet.gif&#34; alt=&#34;8.4_show_action_sheet&#34; title=&#34;Show an action sheet&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>8.3_如何向alert_buttons添加actions</title>

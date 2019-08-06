@@ -7,10 +7,69 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 10:07:51 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 10:17:54 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/transforming-views/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.5_如何在视图周围绘制边框</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.5_%E5%A6%82%E4%BD%95%E5%9C%A8%E8%A7%86%E5%9B%BE%E5%91%A8%E5%9B%B4%E7%BB%98%E5%88%B6%E8%BE%B9%E6%A1%86/</link>
+      <pubDate>Tue, 06 Aug 2019 10:17:54 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.5_%E5%A6%82%E4%BD%95%E5%9C%A8%E8%A7%86%E5%9B%BE%E5%91%A8%E5%9B%B4%E7%BB%98%E5%88%B6%E8%BE%B9%E6%A1%86/</guid>
+      <description>
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 为我们提供了一个专用的 &lt;code&gt;border&lt;/code&gt; 修改器，用于在视图周围绘制边框。根据我们是要指定笔划宽度(a stroke width)还是圆角半径(a corner radius)，它有一些变化，因此下面是几个示例:&lt;/p&gt;
+
+&lt;h3 id=&#34;2-绘制1个点的边框&#34;&gt;2. 绘制1个点的边框&lt;/h3&gt;
+
+&lt;p&gt;下面的代码在文本视图周围绘制1个点的黑色边框:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .border(Color.black)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.5_border_1_point.png&#34; alt=&#34;10.5_border_1_point&#34; title=&#34;This adds a simple 1-point black border around a text view&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-先添加填充再绘制边框&#34;&gt;3. 先添加填充再绘制边框&lt;/h3&gt;
+
+&lt;p&gt;如果要使边框不位于视图边缘，请先添加一些填充：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .padding()
+            .border(Color.black)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.5_border_with_padding.png&#34; alt=&#34;10.5_border_with_padding&#34; title=&#34;Add some padding first, then add border&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-添加4个点的红色边框&#34;&gt;4. 添加4个点的红色边框&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .padding()
+            .border(Color.red, width: 4)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.5_border_4_point_red.png&#34; alt=&#34;10.5_border_4_point_red&#34; title=&#34;This adds a 4 point red border&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.4_如何堆叠修改器以创建更高级的效果</title>

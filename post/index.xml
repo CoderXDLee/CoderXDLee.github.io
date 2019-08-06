@@ -7,10 +7,68 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 12:38:22 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 13:13:23 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.10_如何向上或向下缩放视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.10_%E5%A6%82%E4%BD%95%E5%90%91%E4%B8%8A%E6%88%96%E5%90%91%E4%B8%8B%E7%BC%A9%E6%94%BE%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Tue, 06 Aug 2019 13:13:23 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.10_%E5%A6%82%E4%BD%95%E5%90%91%E4%B8%8A%E6%88%96%E5%90%91%E4%B8%8B%E7%BC%A9%E6%94%BE%E8%A7%86%E5%9B%BE/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI的 &lt;code&gt;scaleEffect()&lt;/code&gt; 修改器允许我们自由地增大或减小视图的大小。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-放大视图&#34;&gt;2. 放大视图&lt;/h3&gt;
+
+&lt;p&gt;例如，我们可以将文本视图设置为常规大小的五倍，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Up we go&amp;quot;)
+            .scaleEffect(5)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/10.10_scale_up_5.png&#34; alt=&#34;10.10_scale_up_5&#34; title=&#34;Make a text view five times its regular size&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-独立缩放xy&#34;&gt;3. 独立缩放XY&lt;/h3&gt;
+
+&lt;p&gt;如果需要，可以独立缩放X和Y尺寸，从而可以挤压以下视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Up we go&amp;quot;)
+            .scaleEffect(x: 1, y: 5)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/10.10_scale_x_y.png&#34; alt=&#34;10.10_scale_x_y&#34; title=&#34;Scale the X and Y dimensions independently&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-设置锚点&#34;&gt;4. 设置锚点&lt;/h3&gt;
+
+&lt;p&gt;如果您想要更多控制，可以为此缩放指定锚点，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Up we go&amp;quot;)
+            .scaleEffect(2, anchor: UnitPoint(x: 1, y: 1))
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/10.10_scale_with_anchor.png&#34; alt=&#34;10.10_scale_with_anchor&#34; title=&#34;Specify an anchor&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.9_如何在3D中旋转视图</title>

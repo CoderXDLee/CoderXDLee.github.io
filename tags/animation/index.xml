@@ -7,10 +7,140 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 17:36:12 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 18:11:29 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/animation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>11.5_如何添加和删除带有转换的视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/11-animation/11.5_%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%88%A0%E9%99%A4%E5%B8%A6%E6%9C%89%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Tue, 06 Aug 2019 18:11:29 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/11-animation/11.5_%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%88%A0%E9%99%A4%E5%B8%A6%E6%9C%89%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%A7%86%E5%9B%BE/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;我们可以使用常规的 Swift 条件在设计中包含或排除某个视图。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-默认动画-fade&#34;&gt;1. 默认动画 - fade&lt;/h3&gt;
+
+&lt;p&gt;例如，当点击按钮时，这会添加或删除一些详细信息文本:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var showDetails = false
+
+    var body: some View {
+        VStack {
+            Button(action: {
+                withAnimation {
+                    self.showDetails.toggle()
+                }
+            }, label: {
+                Text(&amp;quot;Tap to show details&amp;quot;)
+            })
+
+            if showDetails {
+                Text(&amp;quot;Details go here.&amp;quot;)
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.5_show_details_by_click_button.gif&#34; alt=&#34;11.5_show_details_by_click_button&#34; title=&#34;Show details&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-使用-transition-控制视图从底部滑入&#34;&gt;2. 使用 transition 控制视图从底部滑入&lt;/h3&gt;
+
+&lt;p&gt;默认情况下，SwiftUI 使用 &lt;code&gt;fade淡入淡出动画&lt;/code&gt; 来插入或删除视图，但如果需要，可以通过将&lt;code&gt;transition()&lt;/code&gt; 修改器附加到视图来更改它。
+例如，我们可以将详细信息文本视图从底部滑入或滑出，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var showDetails = false
+
+    var body: some View {
+        VStack {
+            Button(action: {
+                withAnimation {
+                    self.showDetails.toggle()
+                }
+            }, label: {
+                Text(&amp;quot;Tap to show details&amp;quot;)
+            })
+
+            if showDetails {
+                Text(&amp;quot;Details go here.&amp;quot;)
+                    .transition(.move(edge: .bottom))
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.5_show_details_from_bottom.gif&#34; alt=&#34;11.5_show_details_from_bottom&#34; title=&#34;Show details from bottom&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-使用-transaction-slide&#34;&gt;3. 使用 transaction(.slide)&lt;/h3&gt;
+
+&lt;p&gt;还有 &lt;code&gt;.slide&lt;/code&gt; 过渡，它导致视图从其前导中动画化并在其后缘上动画化:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var showDetails = false
+
+    var body: some View {
+        VStack {
+            Button(action: {
+                withAnimation {
+                    self.showDetails.toggle()
+                }
+            }, label: {
+                Text(&amp;quot;Tap to show details&amp;quot;)
+            })
+
+            if showDetails {
+                Text(&amp;quot;Details go here.&amp;quot;)
+                    .transition(.slide)
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.5_show_details_transaction_slide.gif&#34; alt=&#34;11.5_show_details_transaction_slide&#34; title=&#34;Show details with transaction.slide&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-设置-transition-scale&#34;&gt;4. 设置 transition(.scale)&lt;/h3&gt;
+
+&lt;p&gt;以及 &lt;code&gt;.scale&lt;/code&gt; 转换，它使视图在进入时从零缩放到全尺寸，然后在退出时返回到零：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var showDetails = false
+
+    var body: some View {
+        VStack {
+            Button(action: {
+                withAnimation {
+                    self.showDetails.toggle()
+                }
+            }, label: {
+                Text(&amp;quot;Tap to show details&amp;quot;)
+            })
+
+            if showDetails {
+                Text(&amp;quot;Details go here.&amp;quot;)
+                    .transition(.scale)
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.5_show_details_transaction_scale.gif&#34; alt=&#34;11.5_show_details_transaction_scale&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>11.4_如何创建显式动画</title>

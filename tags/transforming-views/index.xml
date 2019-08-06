@@ -7,10 +7,38 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 15:37:49 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 15:49:19 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/transforming-views/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.16_如何将视图混合在一起</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.16_%E5%A6%82%E4%BD%95%E5%B0%86%E8%A7%86%E5%9B%BE%E6%B7%B7%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7/</link>
+      <pubDate>Tue, 06 Aug 2019 15:49:19 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.16_%E5%A6%82%E4%BD%95%E5%B0%86%E8%A7%86%E5%9B%BE%E6%B7%B7%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;将一个视图放在另一个视图上时，可以使用 &lt;code&gt;blendMode()&lt;/code&gt; 修改器控制它们重叠的方式。 这包含多种可以将颜色混合在一起的方法，例如使用它们的差异或使用颜色刻录 - 如果您之前使用过 Core Graphics 或类似 Photoshop，这些方法会很熟悉。&lt;/p&gt;
+
+&lt;p&gt;为了证明这一点，我们可以创建一个内部有两个图像的 &lt;code&gt;ZStack&lt;/code&gt; ，其中第二个具有 &lt;code&gt;.multiply&lt;/code&gt; 混合模式，以便使其后面的颜色变暗:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        ZStack {
+            Image(&amp;quot;stripes&amp;quot;)
+            Image(&amp;quot;example-image&amp;quot;)
+                .blendMode(.multiply)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.16_blend.png&#34; alt=&#34;10.16_blend&#34; title=&#34;Blend two image view with multiply mode&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.15_如何模糊视图</title>

@@ -7,10 +7,104 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 11:01:10 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 11:16:22 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.8_如何旋转视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.8_%E5%A6%82%E4%BD%95%E6%97%8B%E8%BD%AC%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Tue, 06 Aug 2019 11:16:22 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.8_%E5%A6%82%E4%BD%95%E6%97%8B%E8%BD%AC%E8%A7%86%E5%9B%BE/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI的 &lt;code&gt;rotationEffect()&lt;/code&gt; 修改器让我们可以使用度数或弧度自由旋转视图。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-使用角度旋转视图&#34;&gt;2. 使用角度旋转视图&lt;/h3&gt;
+
+&lt;p&gt;例如，如果我们想将某些文本旋转-90度以使其向上读取，我们可以使用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Up we go&amp;quot;)
+            .rotationEffect(.degrees(-90))
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.8_rotate_90_degree.png&#34; alt=&#34;10.8_rotate_90_degree&#34; title=&#34;Rotate a text by -90 degrees so that it reads upwards&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-使用弧度旋转视图&#34;&gt;3. 使用弧度旋转视图&lt;/h3&gt;
+
+&lt;p&gt;如果我们更喜欢使用弧度，只需传入 &lt;code&gt;.radians()&lt;/code&gt; 作为参数，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Up we go&amp;quot;)
+            .rotationEffect(.radians(.pi))
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.8_rotate_pi.png&#34; alt=&#34;10.8_rotate_pi&#34; title=&#34;Using radians&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-使用滑块交互&#34;&gt;4. 使用滑块交互&lt;/h3&gt;
+
+&lt;p&gt;视图旋转速度如此之快，以至于实际上是自由的，所以如果需要，甚至可以使用滑块进行交互:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State private var rotation: Double = 0
+    
+    var body: some View {
+        VStack {
+            Slider(value: $rotation, in: 0...360, step: 1) { _ in
+                print(self.rotation)
+            }
+            Text(&amp;quot;Up we go&amp;quot;)
+                .rotationEffect(.degrees(rotation))
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.8_rotate_by_slider.gif&#34; alt=&#34;10.8_rotate_by_slider&#34; title=&#34;Rotate a view by a slider&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;5-设置旋转锚点&#34;&gt;5. 设置旋转锚点&lt;/h3&gt;
+
+&lt;p&gt;默认情况下，视图围绕其中心旋转，但如果要从特定点固定旋转，则可以为其添加额外参数。 例如，如果你想让旋转器围绕视图的左上角旋转旋转，你可以这样写：&lt;/p&gt;
+
+&lt;p&gt;默认情况下，视图围绕其中心旋转，但如果要从特定点固定旋转，可以为此添加一个额外参数。例如，如果要使上方的滑块围绕视图左上角旋转，可以编写以下命令:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State private var rotation: Double = 0
+    
+    var body: some View {
+        VStack {
+            Slider(value: $rotation, in: 0...360, step: 1) { _ in
+                print(self.rotation)
+            }
+            Text(&amp;quot;Up we go&amp;quot;)
+                .rotationEffect(.degrees(rotation), anchor: UnitPoint(x: 0, y: 0))
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.8_rotate_by_slider_with_anchor.gif&#34; alt=&#34;10.8_rotate_by_slider_with_anchor&#34; title=&#34;Rotate a text by slider with an anchor&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.7_如何剪裁视图使其只有部分可见</title>
@@ -3667,7 +3761,7 @@ struct ContentView_Previews : PreviewProvider {
     <item>
       <title></title>
       <link>https://coderxdlee.github.io/authors/admin/</link>
-      <pubDate>Tue, 06 Aug 2019 11:01:10 +0800</pubDate>
+      <pubDate>Tue, 06 Aug 2019 11:16:22 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;

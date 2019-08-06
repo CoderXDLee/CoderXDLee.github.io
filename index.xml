@@ -7,10 +7,75 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 15:49:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 15:59:46 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.17_如何通过着色和去饱和度等调整视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.17_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E7%9D%80%E8%89%B2%E5%92%8C%E5%8E%BB%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%AD%89%E8%B0%83%E6%95%B4%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Tue, 06 Aug 2019 15:59:46 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.17_%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E7%9D%80%E8%89%B2%E5%92%8C%E5%8E%BB%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%AD%89%E8%B0%83%E6%95%B4%E8%A7%86%E5%9B%BE/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 允许我们通过使用各种修改器来调整视图的亮度、色调、色调、饱和度等等来精细地控制视图的外观。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-给图像视图着色&#34;&gt;1. 给图像视图着色&lt;/h3&gt;
+
+&lt;p&gt;例如，下面代码会创建一个图像视图并将整个事物着色为红色:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Image(&amp;quot;avatar&amp;quot;)
+            .resizable()
+            .frame(width: 300, height: 300)
+            .colorMultiply(.red)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.17_colormultiply_red.png&#34; alt=&#34;10.17_colormultiply_red&#34; title=&#34;Set colorMultiply to red&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-调整视图饱和度&#34;&gt;2. 调整视图饱和度&lt;/h3&gt;
+
+&lt;p&gt;我们可以将视图的饱和度调整为任意数量，其中0.0为完全灰色，1.0为其原始颜色:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Image(&amp;quot;avatar&amp;quot;)
+        .resizable()
+        .frame(width: 300, height: 300)
+            .saturation(0.5)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.17_saturation_0.5.png&#34; alt=&#34;10.17_saturation_0.5&#34; title=&#34;Set saturation to 0.5&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-动态调整视图对比度&#34;&gt;3. 动态调整视图对比度&lt;/h3&gt;
+
+&lt;p&gt;甚至可以使用 &lt;code&gt;contrast()&lt;/code&gt; 修改器动态调整视图的对比度。如果值为0.0，则不会产生对比度（浅灰色图像），1.0将提供原始图像，高于1.0的所有内容都会添加对比度。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Image(&amp;quot;avatar&amp;quot;)
+        .resizable()
+        .frame(width: 300, height: 300)
+            .contrast(0.5)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.17_contract_0.5.png&#34; alt=&#34;10.17_contract_0.5&#34; title=&#34;Set contrast to 0.5&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.16_如何将视图混合在一起</title>

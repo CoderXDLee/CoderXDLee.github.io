@@ -7,10 +7,40 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 05 Aug 2019 17:40:40 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 18:11:53 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/presenting-views/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>9.3_如何使用PresentationLink呈现新视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/9-presenting_views/9.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8presentationlink%E5%91%88%E7%8E%B0%E6%96%B0%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Mon, 05 Aug 2019 18:11:53 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/9-presenting_views/9.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8presentationlink%E5%91%88%E7%8E%B0%E6%96%B0%E8%A7%86%E5%9B%BE/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 的 &lt;code&gt;PresentationLink&lt;/code&gt; 用于以现有视图控制器的基础上以模态方式呈现新视图控制器，例如在 &lt;code&gt;UIViewController&lt;/code&gt; 上调用 &lt;code&gt;present()&lt;/code&gt;。 要使用一个，给它一些要显示的内容（一些文本、一个图像等）加上一个目的地，然后让 SwiftUI 处理其余的内容。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;提示: 在beta 1和beta 2中，它被命名为 &lt;code&gt;PresentationButton&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;例如，如果我们有这样的详细视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct DetailView: View {
+    var body: some View {
+        Text(&amp;quot;Detail&amp;quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后你我们可以这样呈现:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>9.2_点击列表行时如何push新视图</title>

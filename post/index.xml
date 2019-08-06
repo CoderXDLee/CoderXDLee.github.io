@@ -7,10 +7,136 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 05 Aug 2019 17:40:40 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 09:17:27 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.2_如何调整视图的位置</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.2_%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 06 Aug 2019 09:17:27 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.2_%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%8D%E7%BD%AE/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;所有视图在层次结构中都有一个自然位置，但是我们可以通过 &lt;code&gt;offset()&lt;/code&gt; 修改器相对于其自然位置来移动它们。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;重要说明:&lt;/strong&gt; 使用 &lt;code&gt;offset()&lt;/code&gt; 将导致视图相对于其自然位置进行移动，但是不会影响其它视图的位置。这意味着我们可以使一个视图与另一个视图重叠，因为通常情况下它们可能彼此相邻，而这可能不是我们想要的。&lt;/p&gt;
+
+&lt;p&gt;例如，在这个 &lt;code&gt;VStack&lt;/code&gt; 中，我们可以使用 &lt;code&gt;offset()&lt;/code&gt; 将第二个项目向下移动15个点，以便它开始与第三个项目重叠:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text(&amp;quot;Home&amp;quot;)
+            Text(&amp;quot;Options&amp;quot;)
+                .offset(y: 15)
+            Text(&amp;quot;Help&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.2_adjust_position_2nd_item_in_vstack.png&#34; alt=&#34;10.2_adjust_position_2nd_item_in_vstack&#34; title=&#34;Set offset.y = 15 for the 2nd item&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通常，我们可以使用 &lt;code&gt;padding()&lt;/code&gt; 和 &lt;code&gt;offset()&lt;/code&gt; 来得到我们期望的结果，因为这样可以移动一个视图，同时挑着做那个它旁边的视图以使其匹配。&lt;/p&gt;
+
+&lt;p&gt;例如: 我们将第二个项目向下移动15个点，但在其底边添加15个填充点，使其不会与下面的文本视图重叠:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text(&amp;quot;Home&amp;quot;)
+            Text(&amp;quot;Options&amp;quot;)
+                .offset(y: 15)
+                .padding(.bottom, 15)
+            Text(&amp;quot;Help&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.2_adjust_position_using_padding.png&#34; alt=&#34;10.2_adjust_position_using_padding&#34; title=&#34;Set padding.bottom = 15&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>10.1_如何为视图提供自定义frame</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.1_%E5%A6%82%E4%BD%95%E4%B8%BA%E8%A7%86%E5%9B%BE%E6%8F%90%E4%BE%9B%E8%87%AA%E5%AE%9A%E4%B9%89frame/</link>
+      <pubDate>Tue, 06 Aug 2019 00:19:31 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.1_%E5%A6%82%E4%BD%95%E4%B8%BA%E8%A7%86%E5%9B%BE%E6%8F%90%E4%BE%9B%E8%87%AA%E5%AE%9A%E4%B9%89frame/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;默认情况下，视图只占用自己所需的空间，但是如果我们想要更改它，可以使用 &lt;code&gt;frame()&lt;/code&gt; 修饰符告诉 SwiftUI 我们想要的尺寸范围(size range)。&lt;/p&gt;
+
+&lt;p&gt;例如，可以创建一个具有 &lt;code&gt;200x200&lt;/code&gt; 可点击区域的按钮，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Button(action: {
+            print(&amp;quot;Button tapped&amp;quot;)
+        }, label: {
+            Text(&amp;quot;Welcome&amp;quot;)
+                .frame(minWidth: 0, maxWidth: 200, minHeight: 0, maxHeight: 200, alignment: .center)
+                .font(.largeTitle)
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.1_frame_200wh_button.png&#34; alt=&#34;10.1_frame_200wh_button&#34; title=&#34;Create a 200 * 200 button&#34; /&gt;
+或者，我们可以通过指定一个 frame 来使文本视图填充整个屏幕，这个 frame 的最小宽度和最小高度为0，最大宽度和最大高度是无穷大。如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Please login&amp;quot;)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                .font(.largeTitle)
+                .foregroundColor(Color.white)
+                .background(Color.red)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.1_frame_fill_screen_text.png&#34; alt=&#34;10.1_frame_fill_screen_text&#34; title=&#34;Create a text which fills the screen&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>9.3_如何使用PresentationLink呈现新视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/9-presenting_views/9.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8presentationlink%E5%91%88%E7%8E%B0%E6%96%B0%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Mon, 05 Aug 2019 18:11:53 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/9-presenting_views/9.3_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8presentationlink%E5%91%88%E7%8E%B0%E6%96%B0%E8%A7%86%E5%9B%BE/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 的 &lt;code&gt;PresentationLink&lt;/code&gt; 用于以现有视图控制器的基础上以模态方式呈现新视图控制器，例如在 &lt;code&gt;UIViewController&lt;/code&gt; 上调用 &lt;code&gt;present()&lt;/code&gt;。 要使用一个，给它一些要显示的内容（一些文本、一个图像等）加上一个目的地，然后让 SwiftUI 处理其余的内容。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;提示: 在beta 1和beta 2中，它被命名为 &lt;code&gt;PresentationButton&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;例如，如果我们有这样的详细视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct DetailView: View {
+    var body: some View {
+        Text(&amp;quot;Detail&amp;quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后你我们可以这样呈现:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>9.2_点击列表行时如何push新视图</title>

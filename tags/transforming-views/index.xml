@@ -7,10 +7,39 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 14:19:22 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 14:35:43 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/transforming-views/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.13_如何调整视图的强调色</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.13_%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E8%A7%86%E5%9B%BE%E7%9A%84%E5%BC%BA%E8%B0%83%E8%89%B2/</link>
+      <pubDate>Tue, 06 Aug 2019 14:35:43 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.13_%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E8%A7%86%E5%9B%BE%E7%9A%84%E5%BC%BA%E8%B0%83%E8%89%B2/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;iOS 使用 &lt;code&gt;tints colors&lt;/code&gt; 为应用程序提供协调的主题，SwiftUI 中的 &lt;code&gt;accent colors&lt;/code&gt; 也提供了相同的功能。就像在 UIKit 中一样，当您设置一个视图的 &lt;code&gt;accent color&lt;/code&gt; 时，它会影响其中的所有内容，因此如果您设置顶级控件的 &lt;code&gt;accent color&lt;/code&gt;，那么一切都会变色。&lt;/p&gt;
+
+&lt;p&gt;例如，下面代码会在 &lt;code&gt;VStack&lt;/code&gt; 中创建一个按钮，然后给它一个橙色的强调颜色:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {
+            Button(action: {}, label: {
+                Text(&amp;quot;Tap here&amp;quot;)
+            })
+        }
+        .accentColor(Color.orange)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.13_accent_color.png&#34; alt=&#34;10.13_accent_color&#34; title=&#34;Set accent color&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.12_如何调整视图的不透明度</title>

@@ -7,10 +7,70 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 16:16:55 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 16:58:50 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>11.2_如何创建弹性动画</title>
+      <link>https://coderxdlee.github.io/post/swiftui/11-animation/11.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%BC%B9%E6%80%A7%E5%8A%A8%E7%94%BB/</link>
+      <pubDate>Tue, 06 Aug 2019 16:58:50 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/11-animation/11.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%BC%B9%E6%80%A7%E5%8A%A8%E7%94%BB/</guid>
+      <description>
+
+&lt;p&gt;SwiftUI 内置了对弹性动画的支持，这些动画可以移动到目标点，越过一点，然后反弹。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-简单演示&#34;&gt;1. 简单演示&lt;/h3&gt;
+
+&lt;p&gt;如果只单独使用 &lt;code&gt;.spring()&lt;/code&gt;，而没有参数，则会得到一个合理的默认值。因此，下面代码将创建一个弹性动画，每次点击按钮时，它将旋转45度:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var angle: Double = 0
+
+    var body: some View {
+        Button(action: {
+            self.angle += 45
+        }, label: {
+            Text(&amp;quot;Tap here!&amp;quot;)
+                .padding()
+                .rotationEffect(.degrees(angle))
+                .animation(.spring())
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.2_spring_animation_rotate_button.gif&#34; alt=&#34;11.2_spring_animation_rotate_button&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-细粒度控制弹性动画&#34;&gt;2. 细粒度控制弹性动画&lt;/h3&gt;
+
+&lt;p&gt;如果我们想要对弹性动画进行细粒度的控制，可以发送任何我们感兴趣的参数: 对象的质量、弹簧的刚度、弹性减慢的速度以及它在启动时开始移动的速度。&lt;/p&gt;
+
+&lt;p&gt;例如，下面代码会创建一个弹性阻尼非常低的按钮，这意味着它会在达到目标角度之前长时间反弹:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var angle: Double = 0
+
+    var body: some View {
+        Button(action: {
+            self.angle += 45
+        }, label: {
+            Text(&amp;quot;Tap here!&amp;quot;)
+                .padding()
+                .rotationEffect(.degrees(angle))
+                .animation(.interpolatingSpring(mass: 1, stiffness: 1, damping: 0.1, initialVelocity: 10))
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.2_interpolatingspring_animation_rotate_button.gif&#34; alt=&#34;11.2_interpolatingspring_animation_rotate_button&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>11.1_如何创建基本动画</title>
@@ -18,7 +78,110 @@
       <pubDate>Tue, 06 Aug 2019 16:16:55 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/11-animation/11.1_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%9F%BA%E6%9C%AC%E5%8A%A8%E7%94%BB/</guid>
-      <description>&lt;!-- more --&gt;
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 通过其 &lt;code&gt;animation()&lt;/code&gt; 修改器内置了对动画的支持。 要使用此修改器，请将其放在视图的任何其它修改器之后，并告诉它我们想要什么样的动画。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-缩放动画&#34;&gt;2. 缩放动画&lt;/h3&gt;
+
+&lt;p&gt;例如，下面代码创建一个按钮，每次按下它时，其缩放效果会增加1:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State private var scale: CGFloat = 1
+    
+    var body: some View {
+        Button(action: {
+            self.scale += 1
+        }, label: {
+            Text(&amp;quot;Tap here!&amp;quot;)
+            .scaleEffect(scale)
+                .animation(.default)
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.1_animation_default_scale_button.gif&#34; alt=&#34;11.1_animation_default_scale_button&#34; title=&#34;Scale a button using the default animation&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-设置动画持续时间&#34;&gt;2. 设置动画持续时间&lt;/h3&gt;
+
+&lt;p&gt;如果需要，我们可以为动画指定精确的持续时间。 例如，下面代码会在三秒钟内激活缩放效果:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State private var scale: CGFloat = 1
+    
+    var body: some View {
+        Button(action: {
+            self.scale += 1
+        }, label: {
+            Text(&amp;quot;Tap here!&amp;quot;)
+            .scaleEffect(scale)
+                .animation(.linear(duration: 3))
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.1_animation_linear_scale_button_3s.gif&#34; alt=&#34;11.1_animation_linear_scale_button_3s&#34; title=&#34;Set a linear animation with 3s duration&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-曲线动画&#34;&gt;3. 曲线动画&lt;/h3&gt;
+
+&lt;p&gt;我们也可以指定曲线动画，在 &lt;code&gt;.easeIn&lt;/code&gt;, &lt;code&gt;.easeOut&lt;/code&gt;, &lt;code&gt;.easeInOut&lt;/code&gt;, and &lt;code&gt;.custom&lt;/code&gt; 之间进行选择，后者允许我们指定自己的控制点。&lt;/p&gt;
+
+&lt;p&gt;例如，下面代码会激活缩放效果，使其开始慢并逐渐变快:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    
+    @State private var scale: CGFloat = 1
+    
+    var body: some View {
+        Button(action: {
+            self.scale += 1
+        }, label: {
+            Text(&amp;quot;Tap here!&amp;quot;)
+            .scaleEffect(scale)
+                .animation(.easeIn)
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.1_animation_easein_scale_button.gif&#34; alt=&#34;11.1_animation_easein_scale_button&#34; title=&#34;Set a easeIn animation&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-设置多个动画变量&#34;&gt;4. 设置多个动画变量&lt;/h3&gt;
+
+&lt;p&gt;我们可以为许多其他修改器设置动画，例如2D和3D旋转，不透明度，边框等。 例如，下面代码会使按钮旋转并在每次点击时增加其边框:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var angle: Double = 0
+    @State private var borderThickness: CGFloat = 1
+
+    var body: some View {
+        Button(action: {
+            self.angle += 45
+            self.borderThickness += 1
+        }, label: {
+            Text(&amp;quot;Tap here&amp;quot;)
+                .padding()
+                .border(Color.red, width: borderThickness)
+                .rotationEffect(.degrees(angle))
+                .animation(.default)
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/11.1_animation_default_multi_var.gif&#34; alt=&#34;11.1_animation_default_multi_var&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

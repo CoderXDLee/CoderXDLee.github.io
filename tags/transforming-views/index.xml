@@ -7,10 +7,37 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 13:13:23 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 14:06:51 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/transforming-views/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.11_如何给视图设置圆角</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.11_%E5%A6%82%E4%BD%95%E7%BB%99%E8%A7%86%E5%9B%BE%E8%AE%BE%E7%BD%AE%E5%9C%86%E8%A7%92/</link>
+      <pubDate>Tue, 06 Aug 2019 14:06:51 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.11_%E5%A6%82%E4%BD%95%E7%BB%99%E8%A7%86%E5%9B%BE%E8%AE%BE%E7%BD%AE%E5%9C%86%E8%A7%92/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;通过 &lt;code&gt;cornerRadius()&lt;/code&gt; 修改器，我们可以给任何 SwiftUI 视图设置圆角。这需要一个简单地值来限定如何明确地成圆。&lt;/p&gt;
+
+&lt;p&gt;因此，我们可以创建一个25点圆角的文本视图，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Round me&amp;quot;)
+            .padding()
+            .background(Color.red)
+            .cornerRadius(20)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.11_round_the_corner_25.png&#34; alt=&#34;10.11_round_the_corner_25&#34; title=&#34;Round the corner&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.10_如何向上或向下缩放视图</title>
@@ -66,7 +93,8 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;img/10.10_scale_with_anchor.png&#34; alt=&#34;10.10_scale_with_anchor&#34; title=&#34;Specify an anchor&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/10.10_scale_with_anchor.png&#34; alt=&#34;10.10_scale_with_anchor&#34; title=&#34;Specify an anchor&#34; /&gt;
+这使得文本视图两倍于常规大小，从右下角缩放。&lt;/p&gt;
 </description>
     </item>
     

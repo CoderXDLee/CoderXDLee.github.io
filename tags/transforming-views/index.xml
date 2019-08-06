@@ -7,10 +7,98 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 09:17:27 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 10:07:51 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/transforming-views/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.4_如何堆叠修改器以创建更高级的效果</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.4_%E5%A6%82%E4%BD%95%E5%A0%86%E5%8F%A0%E4%BF%AE%E6%94%B9%E5%99%A8%E4%BB%A5%E5%88%9B%E5%BB%BA%E6%9B%B4%E9%AB%98%E7%BA%A7%E7%9A%84%E6%95%88%E6%9E%9C/</link>
+      <pubDate>Tue, 06 Aug 2019 10:07:51 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.4_%E5%A6%82%E4%BD%95%E5%A0%86%E5%8F%A0%E4%BF%AE%E6%94%B9%E5%99%A8%E4%BB%A5%E5%88%9B%E5%BB%BA%E6%9B%B4%E9%AB%98%E7%BA%A7%E7%9A%84%E6%95%88%E6%9E%9C/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;我们添加到视图中的每个修改器都会调整其前面的内容，并且可以多次重复使用修改器。&lt;/p&gt;
+
+&lt;p&gt;例如，我们可以在文本视图周围添加填充和背景色，然后添加更多的填充和不同的背景色，然后添加更多的填充和第三种背景色，所有这些都可以产生特定的效果:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Forecast: Sun&amp;quot;)
+            .font(.largeTitle)
+            .foregroundColor(Color.white)
+            .padding()
+            .background(Color.red)
+            .padding()
+            .background(Color.orange)
+            .padding()
+            .background(Color.yellow)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.4_stack_modifiers.png&#34; alt=&#34;10.4_stack_modifiers&#34; title=&#34;Stack modifiers&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>10.3_如何为视图周围的填充设置颜色</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.3_%E5%A6%82%E4%BD%95%E4%B8%BA%E8%A7%86%E5%9B%BE%E5%91%A8%E5%9B%B4%E7%9A%84%E5%A1%AB%E5%85%85%E8%AE%BE%E7%BD%AE%E9%A2%9C%E8%89%B2/</link>
+      <pubDate>Tue, 06 Aug 2019 09:46:19 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.3_%E5%A6%82%E4%BD%95%E4%B8%BA%E8%A7%86%E5%9B%BE%E5%91%A8%E5%9B%B4%E7%9A%84%E5%A1%AB%E5%85%85%E8%AE%BE%E7%BD%AE%E9%A2%9C%E8%89%B2/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;padding()&lt;/code&gt; 修饰符允许我们在视图周围添加一些空间，&lt;code&gt;background()&lt;/code&gt; 修饰符允许我们设置背景颜色。 但是，我们使用它们的方式很重要，因此明确我们的目标以获得最佳结果非常重要。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-先着色后填充&#34;&gt;2. 先着色后填充&lt;/h3&gt;
+
+&lt;p&gt;例如，下面的代码将创建一个具有黑色背景和白色前景的文本视图，然后向其添加系统默认填充:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .background(Color.black)
+            .foregroundColor(Color.white)
+            .padding()
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.3_backgroudcolor_foregroundcolor_padding.png&#34; alt=&#34;10.3_backgroudcolor_foregroundcolor_padding&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-先填充后着色&#34;&gt;3. 先填充后着色&lt;/h3&gt;
+
+&lt;p&gt;例如，下面的代码将为文本视图添加系统默认填充，然后再为其设置红色背景和白色前景:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .padding()
+            .background(Color.red)
+            .foregroundColor(Color.white)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.3_padding_backgroudcolor_foregroundcolor.png&#34; alt=&#34;10.3_padding_backgroudcolor_foregroundcolor&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-总结&#34;&gt;4. 总结&lt;/h3&gt;
+
+&lt;p&gt;这两段代码可能看起来很相似，但是它们会产生不同的结果，因为应用修饰符的顺序很重要。在第二个示例中，视图先被填充，然后被着色，这意味着填充也被着色为红色。与此相反，第一个示例是先着色，然后填充，因此填充保持未着色。&lt;/p&gt;
+
+&lt;p&gt;因此，如果我们希望某些文本的背景色比文本本身更宽，请确保使用第二个代码示例 – 先填充后着色。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.2_如何调整视图的位置</title>

@@ -7,10 +7,40 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 14:35:43 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 15:16:56 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.14_如何用另一个视图遮罩一个视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.14_%E5%A6%82%E4%BD%95%E7%94%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%81%AE%E7%BD%A9%E4%B8%80%E4%B8%AA%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Tue, 06 Aug 2019 15:16:56 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.14_%E5%A6%82%E4%BD%95%E7%94%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%81%AE%E7%BD%A9%E4%B8%80%E4%B8%AA%E8%A7%86%E5%9B%BE/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 为我们提供了 &lt;code&gt;mask()&lt;/code&gt; 修改器，用于将一个图像作为另一个视图的蒙版，这意味着我们可以使用文本来作为图像的蒙版，或使用图像作为图像的蒙版，或更多。&lt;/p&gt;
+
+&lt;p&gt;例如，下面代码会创建一个 &lt;code&gt;300x300&lt;/code&gt; 的条纹图像，然后使用文本 &amp;ldquo;SWIFT!&amp;rdquo; 对其进行遮罩，以便字母充当图像的剪切区域:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Image(&amp;quot;stripes&amp;quot;)
+            .resizable()
+            .frame(width: 300, height: 300)
+            .mask(
+                Text(&amp;quot;SWIFT!&amp;quot;)
+                    .font(Font.system(size: 72, weight: .black, design: .serif))
+            )
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.14_mask_image_with_text.png&#34; alt=&#34;10.14_mask_image_with_text&#34; title=&#34;Mask a image view with a text view&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.13_如何调整视图的强调色</title>

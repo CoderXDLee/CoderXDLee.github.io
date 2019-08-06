@@ -7,10 +7,58 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 15:16:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 15:37:49 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.15_如何模糊视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.15_%E5%A6%82%E4%BD%95%E6%A8%A1%E7%B3%8A%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Tue, 06 Aug 2019 15:37:49 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.15_%E5%A6%82%E4%BD%95%E6%A8%A1%E7%B3%8A%E8%A7%86%E5%9B%BE/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;blur()&lt;/code&gt; 修改器允许我们根据自己的选择对视图应用实时高斯模糊。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-给图像设置模糊&#34;&gt;2. 给图像设置模糊&lt;/h3&gt;
+
+&lt;p&gt;例如: 下面代码会创建一个 &lt;code&gt;300x300&lt;/code&gt; 的个人资料图片，然后添加一个20点的高斯模糊:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Image(&amp;quot;avatar&amp;quot;)
+            .resizable()
+            .frame(width: 300, height: 300)
+            .blur(radius: 20)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.15_blur_20_radius.png&#34; alt=&#34;10.15_blur_20_radius&#34; title=&#34;Set a blur for a image view&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-给文本设置模糊&#34;&gt;3. 给文本设置模糊&lt;/h3&gt;
+
+&lt;p&gt;我们可以模糊我们想要的任何内容，包括文本视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Welcome to my SwiftUI app&amp;quot;)
+            .blur(radius: 2)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.15_set_blur_for_text.png&#34; alt=&#34;10.15_set_blur_for_text&#34; title=&#34;Set a blur for a text view&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.14_如何用另一个视图遮罩一个视图</title>

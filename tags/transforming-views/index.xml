@@ -7,10 +7,52 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 11:16:22 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 12:38:22 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/transforming-views/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.9_如何在3D中旋转视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.9_%E5%A6%82%E4%BD%95%E5%9C%A83d%E4%B8%AD%E6%97%8B%E8%BD%AC%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Tue, 06 Aug 2019 12:38:22 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.9_%E5%A6%82%E4%BD%95%E5%9C%A83d%E4%B8%AD%E6%97%8B%E8%BD%AC%E8%A7%86%E5%9B%BE/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 的 &lt;code&gt;rotation3DEffect()&lt;/code&gt; 修改器让我们可以在三维空间中旋转视图，几乎不需要任何代码就可以创建漂亮的效果。&lt;/p&gt;
+
+&lt;p&gt;这个修改器接受两个参数:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;旋转的角度（以度或弧度为单位）。&lt;/li&gt;
+&lt;li&gt;加上包含X，Y和Z轴的元组，围绕该轴执行旋转。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;重要提示&lt;/strong&gt;: 如果你以前从未进行过三维旋转，那么你应该将X/Y/Z轴视为视图中的扦子。X轴是水平的，所以如果你在X轴上旋转，就像是在你的视图中放置一个水平的扦子 — 任何旋转都会使顶部或底部更近或更远，但不会调整前缘和后缘。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-围绕x轴旋转视图&#34;&gt;2. 围绕X轴旋转视图&lt;/h3&gt;
+
+&lt;p&gt;因此，如果要围绕X轴将某些文本旋转45度（这将导致文本顶部比底部看得更远），可以编写以下命令:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello SwiftUI&amp;quot;)
+            .font(.largeTitle)
+            .foregroundColor(.yellow)
+            .rotation3DEffect(.degrees(-45), axis: (x: 1, y: 0, z: 0))
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.9_rotate_in_3D_x_axis.png&#34; alt=&#34;10.9_rotate_in_3D_x_axis&#34; title=&#34;Rotate a text by x axis in 3D&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.8_如何旋转视图</title>

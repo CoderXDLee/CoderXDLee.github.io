@@ -7,10 +7,37 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 14:06:51 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 14:19:22 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10.12_如何调整视图的不透明度</title>
+      <link>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.12_%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E8%A7%86%E5%9B%BE%E7%9A%84%E4%B8%8D%E9%80%8F%E6%98%8E%E5%BA%A6/</link>
+      <pubDate>Tue, 06 Aug 2019 14:19:22 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/10-transforming_views/10.12_%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E8%A7%86%E5%9B%BE%E7%9A%84%E4%B8%8D%E9%80%8F%E6%98%8E%E5%BA%A6/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;通过 &lt;code&gt;opacity()&lt;/code&gt; 修改器，我们可以将任何 SwiftUI 视图设置成部分或全部透明。它接收 &lt;em&gt;0(完全不可见)&lt;/em&gt; 到 &lt;em&gt;1(完全不透明)&lt;/em&gt; 之间的值。就像 UIKit 中 &lt;code&gt;UIView&lt;/code&gt; 的 &lt;code&gt;alpha&lt;/code&gt; 属性一样。&lt;/p&gt;
+
+&lt;p&gt;例如: 下面代码创建一个带有红色背景的文本视图，然后给它30％的不透明度:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Now you see me&amp;quot;)
+            .padding()
+            .background(Color.red)
+            .opacity(0.3)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/10.12_opacity.png&#34; alt=&#34;10.12_opacity&#34; title=&#34;Set opacity is 0.3&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>10.11_如何给视图设置圆角</title>
@@ -3889,7 +3916,7 @@ struct ContentView_Previews : PreviewProvider {
     <item>
       <title></title>
       <link>https://coderxdlee.github.io/authors/admin/</link>
-      <pubDate>Tue, 06 Aug 2019 14:06:51 +0800</pubDate>
+      <pubDate>Tue, 06 Aug 2019 14:19:22 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;

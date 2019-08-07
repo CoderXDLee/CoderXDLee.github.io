@@ -7,10 +7,68 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Wed, 07 Aug 2019 15:44:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 16:46:10 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>12.2_如何将文本视图组合在一起</title>
+      <link>https://coderxdlee.github.io/post/swiftui/12-composing_views/12.2_%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%87%E6%9C%AC%E8%A7%86%E5%9B%BE%E7%BB%84%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7/</link>
+      <pubDate>Wed, 07 Aug 2019 16:46:10 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/12-composing_views/12.2_%E5%A6%82%E4%BD%95%E5%B0%86%E6%96%87%E6%9C%AC%E8%A7%86%E5%9B%BE%E7%BB%84%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 的文本视图会重载 &lt;code&gt;+&lt;/code&gt; 运算符，以便我们可以将它们组合在一起以创建新的文本视图。&lt;/p&gt;
+
+&lt;p&gt;当我们需要在视图中使用不同的格式时，这很有用，因为我们可以使每个文本视图看起来完全符合我们的要求，然后将它们连接在一起以创建单个组合文本视图。 更好的是，&lt;code&gt;VoiceOver&lt;/code&gt; 在阅读它们时会自动将它们识别为单个文本。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-组合3个文本视图-不同字体&#34;&gt;2. 组合3个文本视图 - 不同字体&lt;/h3&gt;
+
+&lt;p&gt;例如，下面代码会创建三个文本视图，然后使用 &lt;code&gt;+&lt;/code&gt; 将它们连接到要返回的单个文本视图中:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;SwiftUI&amp;quot;)
+            .font(.largeTitle)
+        + Text(&amp;quot;is &amp;quot;)
+            .font(.headline)
+        + Text(&amp;quot;awesome&amp;quot;)
+            .font(.footnote)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/12.2_combine_three_text_views.png&#34; alt=&#34;12.2_combine_three_text_views&#34; title=&#34;Combine three text views&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-组合3个文本视图-不同文本颜色&#34;&gt;3. 组合3个文本视图 - 不同文本颜色&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;SwiftUI &amp;quot;)
+            .foregroundColor(.red)
+        + Text(&amp;quot;is &amp;quot;)
+            .foregroundColor(.orange)
+        + Text(&amp;quot;awesome&amp;quot;)
+            .foregroundColor(.blue)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/12.2_combine_three_text_views_different_foregroundcolor.png&#34; alt=&#34;12.2_combine_three_text_views_different_foregroundcolor&#34; title=&#34;Combine three text views with different foreground colors&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;: 像这样组合文本视图与我们在 SwiftUI 中组合字符串一样接近。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
     
     <item>
       <title>12.1_如何创建和撰写自定义视图</title>
@@ -4730,7 +4788,7 @@ struct ContentView_Previews : PreviewProvider {
     <item>
       <title></title>
       <link>https://coderxdlee.github.io/authors/admin/</link>
-      <pubDate>Wed, 07 Aug 2019 15:44:51 +0800</pubDate>
+      <pubDate>Wed, 07 Aug 2019 16:46:10 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;

@@ -424,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -558,7 +558,44 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <!-- more -->
+      
+
+<!-- more -->
+
+<h3 id="1-简介">1. 简介</h3>
+
+<p>如果您发现自己不断地将同一组修改器附加到一个视图上（例如，给它一个背景色、一些填充、一个特定的字体等等），那么您可以通过创建一个封装所有这些更改的自定义视图修改器来避免重复。所以，与其说“让它变红，使用大字体”等等，你可以说“让它看起来像一个警告”，然后应用一组预先制作的修改器。</p>
+
+<p>如果要创建自己的结构，请定义符合 <code>ViewModifier</code> 协议的结构。 此协议要求您接受 <code>body（content:)</code> 方法，该方法可以根据需要转换某种内容，并返回结果。</p>
+
+<h3 id="2-实践">2. 实践</h3>
+
+<p>例如，我们将创建一个新的 <code>PrimaryLabel</code> 修改器，用于添加填充，红色背景，白色文本和大字体:</p>
+
+<pre><code class="language-swift">struct PrimaryLabel: ViewModifier {
+    
+    func body(content: Content) -&gt; some View {
+        content
+            .padding()
+            .background(Color.red)
+            .foregroundColor(.white)
+            .font(.largeTitle)
+    }
+}
+</code></pre>
+
+<p>要在我们的一个视图中使用它，请添加 <code>.modifier（PrimaryLabel())</code>修饰符，如下所示:</p>
+
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        Text(&quot;Hello SwiftUI&quot;)
+            .modifier(PrimaryLabel())
+    }
+}
+</code></pre>
+
+<p>效果预览:
+<img src="img/12.4_custom_view_modifier.png" alt="12.4_custom_view_modifier" title="Custom view modifier" /></p>
 
     </div>
 

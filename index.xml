@@ -7,10 +7,135 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Wed, 07 Aug 2019 15:14:58 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 15:44:51 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>12.1_如何创建和撰写自定义视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/12-composing_views/12.1_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%92%8C%E6%92%B0%E5%86%99%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE/</link>
+      <pubDate>Wed, 07 Aug 2019 15:44:51 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/12-composing_views/12.1_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%92%8C%E6%92%B0%E5%86%99%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;SwiftUI 的核心原则之一是组合，这意味着它是为我们设计的，可以创建许多小视图，然后将它们组合在一起以创建更大的视图。 这使得我们能够大规模地重用视图，这意味着我们的工作量减少了。 更好的是，组合小的子视图几乎没有运行时开销，因此我们可以自由地使用它们。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-实践&#34;&gt;2. 实践&lt;/h3&gt;
+
+&lt;p&gt;关键是要从小做起，逐步提升。&lt;/p&gt;
+
+&lt;h4 id=&#34;第1步-定义-user-模型&#34;&gt;第1步: 定义 &lt;code&gt;User&lt;/code&gt; 模型&lt;/h4&gt;
+
+&lt;p&gt;例如，许多应用程序必须与看起来像这样的用户一起工作:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct User {
+    var name: String
+    var jobTitle: String
+    var emailAddress: String
+    var profilePicture: String
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;第2步-定义-profilepicture-视图&#34;&gt;第2步: 定义 &lt;code&gt;ProfilePicture&lt;/code&gt; 视图&lt;/h4&gt;
+
+&lt;p&gt;如果我们希望在应用程序中为用户配置文件图片提供一致的设计，可以创建一个具有圆形的100x100图像视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ProfilePicture: View {
+    var imageName: String
+
+    var body: some View {
+        Image(imageName)
+            .resizable()
+            .frame(width: 100, height: 100)
+            .clipShape(Circle())
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;第3步-定义-emailaddress-视图&#34;&gt;第3步: 定义 &lt;code&gt;EmailAddress&lt;/code&gt; 视图&lt;/h4&gt;
+
+&lt;p&gt;我们的设计师可能会告诉我们，只要看到电子邮件地址，我们就应该在其旁边显示一个小信封图标作为视觉提示，这样我们就可以创建一个 &lt;code&gt;EmailAddress&lt;/code&gt; 视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct EmailAdress: View {
+    var address: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: &amp;quot;envelope&amp;quot;)
+            Text(address)
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;第4步-定义-userdetail-视图&#34;&gt;第4步: 定义 &lt;code&gt;UserDetail&lt;/code&gt; 视图&lt;/h4&gt;
+
+&lt;p&gt;在显示用户的详细信息时，我们可以创建一个视图，该视图的名称和职务格式整齐，并使用我们的&lt;code&gt;EmailAddress&lt;/code&gt; 视图通过其电子邮件地址进行备份，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct UserDetail: View {
+    var user: User
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(user.name)
+                .font(.largeTitle)
+                .foregroundColor(Color.red)
+            Text(user.jobTitle)
+                .foregroundColor(Color.gray)
+            EmailAdress(address: user.emailAddress)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;第5步-定义-userview-视图&#34;&gt;第5步: 定义 &lt;code&gt;UserView&lt;/code&gt; 视图&lt;/h4&gt;
+
+&lt;p&gt;我们甚至可以创建一个更大的视图，将 &lt;code&gt;ProfilePicture&lt;/code&gt; 放在 &lt;code&gt;UserDetail&lt;/code&gt; 旁边，以便为用户提供单一的可视化表示，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct UserView: View {
+    var user: User
+    
+    var body: some View {
+        VStack {
+            ProfilePicture(imageName: user.profilePicture)
+            UserDetail(user: user)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;第6步-组合&#34;&gt;第6步: 组合&lt;/h4&gt;
+
+&lt;p&gt;有了这种结构，我们现在有几种方式向用户展示：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;只是他们的照片&lt;/li&gt;
+&lt;li&gt;只是他们的电邮地址&lt;/li&gt;
+&lt;li&gt;只是他们的工作细节&lt;/li&gt;
+&lt;li&gt;在同一时间展示所有信息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;更重要的是，这意味着当涉及到使用所有这些工作时，我们的主要内容视图不必担心用户的外观或应如何对待它们 - 所有这些工作都融入到我们较小的视图中。&lt;/p&gt;
+
+&lt;p&gt;这意味着我们可以使用示例用户创建一个 &lt;code&gt;UserView&lt;/code&gt; 并使其正常工作:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    let user = User(name: &amp;quot;M X&amp;quot;, jobTitle: &amp;quot;Admin, M X WEBSITE&amp;quot;, emailAddress: &amp;quot;test@gmail.com&amp;quot;, profilePicture: &amp;quot;avatar&amp;quot;)
+    var body: some View {
+        UserView(user: user)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/12.1_composing_views.png&#34; alt=&#34;12.1_composing_views&#34; title=&#34;Composing views&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>11.7_如何创建非对称转换</title>

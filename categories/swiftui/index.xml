@@ -7,10 +7,60 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 06 Aug 2019 18:11:29 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 15:14:58 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/categories/swiftui/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>11.7_如何创建非对称转换</title>
+      <link>https://coderxdlee.github.io/post/swiftui/11-animation/11.7_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%9D%9E%E5%AF%B9%E7%A7%B0%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Wed, 07 Aug 2019 15:14:58 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/11-animation/11.7_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%9D%9E%E5%AF%B9%E7%A7%B0%E8%BD%AC%E6%8D%A2/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 允许我们在添加视图时指定一个转换，在删除视图时指定另一个转换，所有转换都使用  &lt;code&gt;asymmetric()&lt;/code&gt; 转换类型完成。&lt;/p&gt;
+
+&lt;p&gt;例如，我们可以创建一个使用非对称过渡的文本视图，以便在添加时从前缘移入，并在移除时向下移动到底边，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;Details go here.&amp;quot;).transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .bottom)))
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>11.6_如何组合transactions</title>
+      <link>https://coderxdlee.github.io/post/swiftui/11-animation/11.6_%E5%A6%82%E4%BD%95%E7%BB%84%E5%90%88transactions/</link>
+      <pubDate>Wed, 07 Aug 2019 09:43:38 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/11-animation/11.6_%E5%A6%82%E4%BD%95%E7%BB%84%E5%90%88transactions/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;添加或删除视图时，SwiftUI 允许我们使用 &lt;code&gt;combined(with:)&lt;/code&gt; 方法组合 &lt;strong&gt;转换&lt;/strong&gt; 以创建新的动画样式。&lt;/p&gt;
+
+&lt;p&gt;例如，我们可以同时将视图移动（一次转换）和淡入淡出（第二次转换），如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;Details go here...&amp;quot;)
+    .transition(AnyTransition.opacity.combined(with: .slide))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为了使组合转换更易于使用和重用，我们可以在 &lt;code&gt;AnyTransition&lt;/code&gt; 上将它们创建为扩展，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;extension AnyTransition {
+    static var moveAndScale: AnyTransition {
+        AnyTransition.move(edge: .bottom).combined(with: .scale)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;有了这个，我们现在可以使用以下内容添加或删除文本视图:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;Details go here...&amp;quot;)
+    .transition(.moveAndScale)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>11.5_如何添加和删除带有转换的视图</title>

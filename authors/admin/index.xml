@@ -7,10 +7,49 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Thu, 08 Aug 2019 09:42:15 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Aug 2019 10:02:39 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>13.4_如何在导航视图中预览布局</title>
+      <link>https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Thu, 08 Aug 2019 10:02:39 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/</guid>
+      <description>&lt;!-- more --&gt;
+
+&lt;p&gt;如果我们设计了一个视图，我们知道它将作为导航堆栈的一部分显示，但本身不包含导航视图，那么默认情况下，我们将看不到它的导航栏标题或按钮。&lt;/p&gt;
+
+&lt;p&gt;幸运的是，我们可以将视图添加到预览中的导航视图中——这模拟了在顶部有一个导航栏，而实际上没有为实时代码添加一个导航栏，因此我们可以准确地看到它的外观。&lt;/p&gt;
+
+&lt;p&gt;例如，此视图没有导航视图，但配置为在作为一个视图的一部分呈现时以特定方式显示 - 即从另一个视图推送:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello World&amp;quot;)
+            .navigationBarTitle(Text(&amp;quot;Welcome&amp;quot;))
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;要在导航视图中预览，只需在预览中的内容视图周围添加 &lt;code&gt;NavigationView&lt;/code&gt;，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;#if DEBUG
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            ContentView()
+        }
+    }
+}
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这使我们可以准确地查看视图的外观，而无需修改视图的实际布局。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>13.3_如何在不同设备中预览布局</title>
@@ -5097,7 +5136,7 @@ struct ContentView_Previews : PreviewProvider {
     <item>
       <title></title>
       <link>https://coderxdlee.github.io/authors/admin/</link>
-      <pubDate>Thu, 08 Aug 2019 09:42:15 +0800</pubDate>
+      <pubDate>Thu, 08 Aug 2019 10:02:39 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/authors/admin/</guid>
       <description>&lt;ul&gt;

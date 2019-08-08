@@ -31,7 +31,7 @@
   <meta name="description" content=" ">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/">
+  <link rel="alternate" hreflang="en-us" href="https://coderxdlee.github.io/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/">
 
   
 
@@ -96,7 +96,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/">
+  <link rel="canonical" href="https://coderxdlee.github.io/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/">
 
   
   
@@ -108,26 +108,26 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="M X">
-  <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/">
-  <meta property="og:title" content="13.4_如何在导航视图中预览布局 | M X">
+  <meta property="og:url" content="https://coderxdlee.github.io/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/">
+  <meta property="og:title" content="13.5_如何使用Instruments来分析SwiftUI代码并识别缓慢的布局 | M X">
   <meta property="og:description" content=" "><meta property="og:image" content="https://coderxdlee.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://coderxdlee.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-08-08T10:02:39&#43;08:00">
+  <meta property="article:published_time" content="2019-08-08T10:14:06&#43;08:00">
   
-  <meta property="article:modified_time" content="2019-08-08T10:02:39&#43;08:00">
+  <meta property="article:modified_time" content="2019-08-08T10:14:06&#43;08:00">
   
-
-  
-
 
   
 
 
+  
 
 
 
-  <title>13.4_如何在导航视图中预览布局 | M X</title>
+
+
+  <title>13.5_如何使用Instruments来分析SwiftUI代码并识别缓慢的布局 | M X</title>
 
 </head>
 
@@ -380,7 +380,7 @@
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">13.4_如何在导航视图中预览布局</h1>
+  <h1 itemprop="name">13.5_如何使用Instruments来分析SwiftUI代码并识别缓慢的布局</h1>
 
   
 
@@ -389,8 +389,8 @@
 
 
 
-<meta content="2019-08-08 10:02:39 &#43;0800 CST" itemprop="datePublished">
-<meta content="2019-08-08 10:02:39 &#43;0800 CST" itemprop="dateModified">
+<meta content="2019-08-08 10:14:06 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-08-08 10:14:06 &#43;0800 CST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -424,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    2 min read
   </span>
   
 
@@ -432,7 +432,7 @@
   
   
   <span class="middot-divider"></span>
-  <a href="/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/#disqus_thread"></a>
+  <a href="/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/#disqus_thread"></a>
   <script id="dsq-count-scr" src="https://M%20X.disqus.com/count.js" async></script>
   
 
@@ -457,7 +457,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/&amp;text=13.4_%e5%a6%82%e4%bd%95%e5%9c%a8%e5%af%bc%e8%88%aa%e8%a7%86%e5%9b%be%e4%b8%ad%e9%a2%84%e8%a7%88%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://coderxdlee.github.io/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/&amp;text=13.5_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8Instruments%e6%9d%a5%e5%88%86%e6%9e%90SwiftUI%e4%bb%a3%e7%a0%81%e5%b9%b6%e8%af%86%e5%88%ab%e7%bc%93%e6%85%a2%e7%9a%84%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -470,7 +470,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/&amp;t=13.4_%e5%a6%82%e4%bd%95%e5%9c%a8%e5%af%bc%e8%88%aa%e8%a7%86%e5%9b%be%e4%b8%ad%e9%a2%84%e8%a7%88%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://coderxdlee.github.io/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/&amp;t=13.5_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8Instruments%e6%9d%a5%e5%88%86%e6%9e%90SwiftUI%e4%bb%a3%e7%a0%81%e5%b9%b6%e8%af%86%e5%88%ab%e7%bc%93%e6%85%a2%e7%9a%84%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
       </li>
@@ -483,7 +483,7 @@
       
       
       <li>
-        <a href="mailto:?subject=13.4_%e5%a6%82%e4%bd%95%e5%9c%a8%e5%af%bc%e8%88%aa%e8%a7%86%e5%9b%be%e4%b8%ad%e9%a2%84%e8%a7%88%e5%b8%83%e5%b1%80&amp;body=https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=13.5_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8Instruments%e6%9d%a5%e5%88%86%e6%9e%90SwiftUI%e4%bb%a3%e7%a0%81%e5%b9%b6%e8%af%86%e5%88%ab%e7%bc%93%e6%85%a2%e7%9a%84%e5%b8%83%e5%b1%80&amp;body=https://coderxdlee.github.io/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -496,7 +496,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/&amp;title=13.4_%e5%a6%82%e4%bd%95%e5%9c%a8%e5%af%bc%e8%88%aa%e8%a7%86%e5%9b%be%e4%b8%ad%e9%a2%84%e8%a7%88%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://coderxdlee.github.io/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/&amp;title=13.5_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8Instruments%e6%9d%a5%e5%88%86%e6%9e%90SwiftUI%e4%bb%a3%e7%a0%81%e5%b9%b6%e8%af%86%e5%88%ab%e7%bc%93%e6%85%a2%e7%9a%84%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -509,7 +509,7 @@
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=13.4_%e5%a6%82%e4%bd%95%e5%9c%a8%e5%af%bc%e8%88%aa%e8%a7%86%e5%9b%be%e4%b8%ad%e9%a2%84%e8%a7%88%e5%b8%83%e5%b1%80%20https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=13.5_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8Instruments%e6%9d%a5%e5%88%86%e6%9e%90SwiftUI%e4%bb%a3%e7%a0%81%e5%b9%b6%e8%af%86%e5%88%ab%e7%bc%93%e6%85%a2%e7%9a%84%e5%b8%83%e5%b1%80%20https://coderxdlee.github.io/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -522,7 +522,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://coderxdlee.github.io/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/&amp;title=13.4_%e5%a6%82%e4%bd%95%e5%9c%a8%e5%af%bc%e8%88%aa%e8%a7%86%e5%9b%be%e4%b8%ad%e9%a2%84%e8%a7%88%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://coderxdlee.github.io/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/&amp;title=13.5_%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8Instruments%e6%9d%a5%e5%88%86%e6%9e%90SwiftUI%e4%bb%a3%e7%a0%81%e5%b9%b6%e8%af%86%e5%88%ab%e7%bc%93%e6%85%a2%e7%9a%84%e5%b8%83%e5%b1%80" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -558,36 +558,138 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <!-- more -->
+      
 
-<p>如果我们设计了一个视图，我们知道它将作为导航堆栈的一部分显示，但本身不包含导航视图，那么默认情况下，我们将看不到它的导航栏标题或按钮。</p>
+<!-- more -->
 
-<p>幸运的是，我们可以将视图添加到预览中的导航视图中——这模拟了在顶部有一个导航栏，而实际上没有为实时代码添加一个导航栏，因此我们可以准确地看到它的外观。</p>
+<h3 id="1-简介">1. 简介</h3>
 
-<p>例如，此视图没有导航视图，但配置为在作为一个视图的一部分呈现时以特定方式显示 - 即从另一个视图推送:</p>
+<p>Xcode 的 <code>Instruments</code> 工具为 SwiftUI 提供了一套出色的分析功能，允许我们确定重新绘制视图的频率、计算视图主体的缓慢次数，甚至可以确定状态随时间的变化情况。</p>
 
-<pre><code class="language-swift">struct ContentView: View {
-    var body: some View {
-        Text(&quot;Hello World&quot;)
-            .navigationBarTitle(Text(&quot;Welcome&quot;))
-    }
+<h3 id="2-准备工作">2. 准备工作</h3>
+
+<p>首先，我们需要一些能够提供我们在 <code>Instruments</code> 中可以看到的有趣结果的东西。所以，这段代码创建了一个计时器，它每隔0.01秒触发一次，并且有一个显示随机UUID的Body视图和一个按钮，每当点击它时会增加它显示的值:</p>
+
+<pre><code class="language-swift">import Combine
+import SwiftUI
+
+class FrequentUpdater: ObservableObject, Identifiable {
+   var didChange = PassthroughSubject&lt;Void, Never&gt;()
+   var timer: Timer?
+
+   init() {
+      timer = Timer.scheduledTimer(
+         withTimeInterval: 0.01,
+         repeats: true
+      ) { _ in
+         self.didChange.send(())
+      }
+   }
+}
+
+struct ContentView : View {
+   @ObservedObject var updater = FrequentUpdater()
+   @State var tapCount = 0
+
+   var body: some View {
+      VStack {
+         Text(&quot;\(UUID().uuidString)&quot;)
+
+         Button(action: {
+            self.tapCount += 1
+         }) {
+            Text(&quot;Tap count: \(tapCount)&quot;)
+         }
+      }
+   }
 }
 </code></pre>
 
-<p>要在导航视图中预览，只需在预览中的内容视图周围添加 <code>NavigationView</code>，如下所示:</p>
+<p>如果我们在模拟器中运行该代码，我们将看到它不断重绘，因为它的值始终在变化。</p>
 
-<pre><code class="language-swift">#if DEBUG
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ContentView()
-        }
-    }
-}
-#endif
-</code></pre>
+<blockquote>
+<p><strong>注意</strong>: 这是一个专门设计的压力测试，旨在使 SwiftUI 做很多工作，以便 Instruments 向我们展示有趣的数据 - 我们不想在实际应用中使用上述代码。</p>
+</blockquote>
 
-<p>这使我们可以准确地查看视图的外观，而无需修改视图的实际布局。</p>
+<h3 id="3-检测我们的代码">3. 检测我们的代码</h3>
+
+<p>现在按 <code>Cmd + I</code> 通过 Instruments 运行代码，然后选择 SwiftUI instruments。
+<img src="img/13.5_instruments_template.png" alt="13.5_instruments_template" />
+出现时，按录制按钮使其启动应用程序并开始观看。 现在让它运行几秒钟，同时单击按钮十次左右，然后在仪器中按停止 - 我们有足够的数据可以使用。</p>
+
+<p>默认情况下，SwiftUI仪器会告诉我们很多事情:</p>
+
+<ul>
+<li>在这段时间内创建了多少个视图以及创建这些视图需要多长时间（&rdquo;View Body&rdquo;）。</li>
+<li>视图的属性是什么以及它们随时间的变化（&rdquo;View Properties&rdquo;）。</li>
+<li>发生了多少个核心动画提交（&rdquo;Core Animation Commits&rdquo;）。</li>
+<li>每个函数调用所用的确切时间（&rdquo;Time Profiler&rdquo;）。</li>
+</ul>
+
+<p>这些工具中的每一个都可以帮助我们诊断和解决 SwiftUI 应用程序中的性能问题，因此值得花时间尝试一下。</p>
+
+<p>对于我们的小压力测试沙箱，您将看到 <code>View Body</code>，<code>View Properties</code> 和 <code>Core Animation Commits</code> 的纯色墙，这是一个直接的红旗。 它告诉我们，SwiftUI 不仅要不断重新创建我们的视图，而且我们的属性也在不断变化，因此 Core Animation 必须加班加点才能跟上。</p>
+
+<p>效果预览:
+<img src="img/13.5_instruments_swiftui.png" alt="13.5_instruments_swiftui" /></p>
+
+<h3 id="4-监控主题调用">4. 监控主题调用</h3>
+
+<p>如果我们选择 <code>View Body</code> 轨道 - 这是 instruments 列表中的第一行 - 我们应该能够看到 instruments 将结果分解为 <code>SwiftUI</code> 和 <code>我们的项目</code>，前者是原始类型，如文本视图和按钮，后者包含我们的自定义视图类型。 在我们的例子中，这意味着 &ldquo;ContentView&rdquo; 应该出现在自定义视图中，因为这是我们视图的名称。</p>
+
+<p>现在，在这里我们将看不到一个完美的代码到 SwiftUI 视图的一对一映射，因为 SwiftUI 会积极地折叠其视图层次结构，以尽可能少地进行工作。所以，不要期望在代码中看到任何 <code>VStack</code> 创建——这对于这个应用程序来说是免费的。</p>
+
+<p>在这个屏幕上，重要的数字是 <code>计数(Count)</code>和 <code>平均持续时间(Avg Duration)</code> - 每件事创建的次数，以及花费的时间。 因为这是一个压力测试我们应该看到非常高的数字，但我们的布局是微不足道的，所以平均持续时间可能是几十微秒。</p>
+
+<p>效果预览:
+<img src="img/13.5_instruments_monitoring_body_invocations.png" alt="13.5_instruments_monitoring_body_invocations" title="Monitoring body invocations" /></p>
+
+<h3 id="5-跟踪状态变化">5. 跟踪状态变化</h3>
+
+<p>接下来，选择 <code>View Properties</code> 轨道，这是 instruments 列表中的第二行。 这将显示所有视图的所有属性，包括其当前值和所有先前值。</p>
+
+<p>我们的示例应用程序有一个按钮，通过在数字中给一个数字加1来更改其标签，并且在此工具中可见 - 请查看视图类型 ContentView 和 属性类型 <code>@State&lt;Int&gt;</code>。</p>
+
+<p>遗憾的是，<code>Instruments</code> 还没有（还能）向我们展示那里的确切属性名称，如果你跟踪了几个整数状态，这可能会更加令人困惑。然而，它确实有一个不同的技巧：在记录窗口的顶部是一个标记当前视图位置的箭头，如果你拖动它，你会看到应用程序状态随时间的变化 - 每次你点击按钮，你会看到状态整数上升一个，你可以前进和后退来看它发生。</p>
+
+<p>这可以解锁大量的功能，因为它可以让我们直接看到状态变化导致慢速重绘或其他工作 - 这几乎就像是在时间机器中，您可以在运行期间的每个点检查应用程序的确切状态。
+<img src="img/13.5_instruments_tracking_state_changes.png" alt="13.5_instruments_tracking_state_changes" title="Tracking state changes" /></p>
+
+<h3 id="6-识别缓慢绘制">6. 识别缓慢绘制</h3>
+
+<p>虽然 SwiftUI 能够直接下载到 Metal 以提高性能，但大多数情况下它更喜欢使用 <code>Core Animation</code> 进行渲染。 这意味着我们会自动从 Instruments 获取内置的 <code>Core Animation分析工具</code>，包括检测昂贵提交的能力。</p>
+
+<p>当多个更改一起放入一个组（称为事务）时，Core Animation 的效果最佳。 我们在一个事务中有效地堆叠了一系列工作，然后要求CA继续渲染工作 - 称为提交事务。</p>
+
+<p>因此，当 Instruments 向我们展示昂贵的 Core Animation 提交时，它真正向我们展示的是SwiftUI 因为更新而被迫重绘屏幕上的像素的次数。 理论上，这应该只在我们的应用程序的实际状态导致不同的视图层次结构时发生，因为 SwiftUI 应该能够将我们的 body 属性的新输出与先前的输出进行比较。
+<img src="img/13.5_instruments_identifying_slow_draws.png" alt="13.5_instruments_identifying_slow_draws" title="Identifying slow draws" /></p>
+
+<h3 id="7-查找缓慢的函数调用">7. 查找缓慢的函数调用</h3>
+
+<p>最后一个重要的轨道是最后一个，<code>Time Profiler</code>，它向我们展示了在代码的每个部分花费了多少时间。 这与乐器中的常规时间分析器完全相同，但如果您之前没有尝试过，那么您至少需要知道：</p>
+
+<ul>
+<li>右边的扩展细节窗口显示了默认情况下最重的堆栈跟踪，这是运行时间最长的一段代码。亮代码（白色或黑色，取决于您的MacOS颜色方案）是您编写的代码；暗代码（灰色）是系统库代码。</li>
+<li>在左边，您可以看到所有创建的线程，以及让您深入到它们调用的函数和那些被调用的函数的公开指示器，等等。大部分工作将在“开始”中进行。</li>
+<li>为了避免混乱，您可能需要单击底部的调用树按钮，然后选择隐藏系统库。这只会显示您编写的代码，但是如果您的问题是您使用的系统库不好，这可能没有帮助。</li>
+<li>为了直接了解具体的细节，您还可以单击Call Tree并选择Invert Call Tree来翻转内容，这样叶子函数（位于树的末尾）就会显示在顶部，而披露指标现在可以让您向下钻取（向上钻取？）调用它们的函数。</li>
+</ul>
+
+<p>虽然时间分析器对于识别性能问题非常有用，但通常仅查看最重的堆栈跟踪将突出显示最大的问题。</p>
+
+<p><img src="img/13.5_instruments_looking_for_slow_function_calls.png" alt="13.5_instruments_looking_for_slow_function_calls" title="Looking for slow function calls" /></p>
+
+<h3 id="8-最后的提示">8. 最后的提示</h3>
+
+<p>在您收取配置自己的代码之前，有一些事情需要注意：</p>
+
+<ul>
+<li>在检查应用程序性能的一小部分时，您应该单击并拖动相关范围，以便仅查看该应用程序部分的统计信息。这使您可以专注于特定操作的性能，例如响应按下按钮。</li>
+<li>即使你在仪器中看到纯色条，它们只是从远处看起来那样 - 你可以通过按住 Cmd 并按 - 和+来查看更多细节</li>
+<li>要获得最准确的数字，请始终在真实设备上进行配置。</li>
+<li>如果要通过分析代码进行更改，请始终一次进行一项更改。如果你进行两次更改，可能会使你的性能提高20％而另一种会降低10％，但是将它们合在一起意味着你可能会认为它们整体性能提高了10％。</li>
+<li>Instruments 在发布模式下运行您的代码，从而实现 Swift 的所有优化。这也会影响您添加到代码中的任何调试标志，因此请小心。</li>
+</ul>
 
     </div>
 
@@ -721,6 +823,8 @@ struct ContentView_Previews: PreviewProvider {
         <h3>Related</h3>
         <ul>
           
+          <li><a href="/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/">13.4_如何在导航视图中预览布局</a></li>
+          
           <li><a href="/post/swiftui/13-tooling/13.3_%E5%A6%82%E4%BD%95%E5%9C%A8%E4%B8%8D%E5%90%8C%E8%AE%BE%E5%A4%87%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/">13.3_如何在不同设备中预览布局</a></li>
           
           <li><a href="/post/swiftui/13-tooling/13.2_%E5%A6%82%E4%BD%95%E5%9C%A8light%E5%92%8Cdark%E6%A8%A1%E5%BC%8F%E4%B8%8B%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/">13.2_如何在light和dark模式下预览布局</a></li>
@@ -740,15 +844,8 @@ struct ContentView_Previews: PreviewProvider {
   
   
   <div class="post-nav-item">
-    <div class="meta-nav">Next</div>
-    <a href="/post/swiftui/13-tooling/13.5_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8instruments%E6%9D%A5%E5%88%86%E6%9E%90swiftui%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%93%E6%85%A2%E7%9A%84%E5%B8%83%E5%B1%80/" rel="next">13.5_如何使用Instruments来分析SwiftUI代码并识别缓慢的布局</a>
-  </div>
-  
-  
-  
-  <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="/post/swiftui/13-tooling/13.3_%E5%A6%82%E4%BD%95%E5%9C%A8%E4%B8%8D%E5%90%8C%E8%AE%BE%E5%A4%87%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/" rel="prev">13.3_如何在不同设备中预览布局</a>
+    <a href="/post/swiftui/13-tooling/13.4_%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AF%BC%E8%88%AA%E8%A7%86%E5%9B%BE%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/" rel="prev">13.4_如何在导航视图中预览布局</a>
   </div>
   
 </div>

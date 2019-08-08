@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>13.1_如何在light和dark模式下预览布局</title>
-      <link>https://coderxdlee.github.io/post/swiftui/13-tooling/13.1_%E5%A6%82%E4%BD%95%E5%9C%A8light%E5%92%8Cdark%E6%A8%A1%E5%BC%8F%E4%B8%8B%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/</link>
+      <title>13.2_如何在light和dark模式下预览布局</title>
+      <link>https://coderxdlee.github.io/post/swiftui/13-tooling/13.2_%E5%A6%82%E4%BD%95%E5%9C%A8light%E5%92%8Cdark%E6%A8%A1%E5%BC%8F%E4%B8%8B%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/</link>
       <pubDate>Wed, 07 Aug 2019 18:25:14 +0800</pubDate>
       
-      <guid>https://coderxdlee.github.io/post/swiftui/13-tooling/13.1_%E5%A6%82%E4%BD%95%E5%9C%A8light%E5%92%8Cdark%E6%A8%A1%E5%BC%8F%E4%B8%8B%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/</guid>
+      <guid>https://coderxdlee.github.io/post/swiftui/13-tooling/13.2_%E5%A6%82%E4%BD%95%E5%9C%A8light%E5%92%8Cdark%E6%A8%A1%E5%BC%8F%E4%B8%8B%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/</guid>
       <description>&lt;!-- more --&gt;
 
 &lt;p&gt;Apple的大多数操作系统都支持亮模式和暗模式用户界面，因此 SwiftUI 内置支持此功能也就不足为奇了。&lt;/p&gt;

@@ -7,10 +7,106 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Wed, 07 Aug 2019 18:25:14 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Aug 2019 09:42:15 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>13.3_如何在不同设备中预览布局</title>
+      <link>https://coderxdlee.github.io/post/swiftui/13-tooling/13.3_%E5%A6%82%E4%BD%95%E5%9C%A8%E4%B8%8D%E5%90%8C%E8%AE%BE%E5%A4%87%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Thu, 08 Aug 2019 09:42:15 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/13-tooling/13.3_%E5%A6%82%E4%BD%95%E5%9C%A8%E4%B8%8D%E5%90%8C%E8%AE%BE%E5%A4%87%E4%B8%AD%E9%A2%84%E8%A7%88%E5%B8%83%E5%B1%80/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;Xcode 的 SwiftUI 预览允许我们使用 &lt;code&gt;.previewDevice()&lt;/code&gt; 修改器同时以多种屏幕尺寸显示我们的设计。 这需要提供设备的确切名称，如 Xcode 的目的地菜单中所示，例如， &amp;ldquo;iPhone XS Max&amp;rdquo;。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-在-iphone-se-上预览&#34;&gt;2. 在 iPhone SE 上预览&lt;/h3&gt;
+
+&lt;p&gt;例如，下面代码显示了 iPhone SE上的预览:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello World&amp;quot;)
+            .background(Color.red)
+    }
+}
+
+#if DEBUG
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+           ContentView()
+              .previewDevice(PreviewDevice(rawValue: &amp;quot;iPhone SE&amp;quot;))
+        }
+    }
+}
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/13.3_preview_in_device_iphonese_without_devicename.png&#34; alt=&#34;13.3_preview_in_device_iphonese&#34; title=&#34;&amp;quot;Preview in iPhone SE without device name&amp;quot;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-显示设备名称&#34;&gt;3. 显示设备名称&lt;/h3&gt;
+
+&lt;p&gt;使用特定设备进行预览时，我们可能会发现添加 &lt;code&gt;.previewDisplayName()&lt;/code&gt; 修改器非常有用，它允许我们在预览窗口中的设备下添加名称。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello World&amp;quot;)
+            .background(Color.red)
+    }
+}
+
+#if DEBUG
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+           ContentView()
+              .previewDevice(PreviewDevice(rawValue: &amp;quot;iPhone SE&amp;quot;))
+              .previewDisplayName(&amp;quot;iPhone SE&amp;quot;)
+        }
+    }
+}
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/13.3_preview_in_device_iphonese_with_devicename.png&#34; alt=&#34;13.3_preview_in_device_iphonese_with_devicename&#34; title=&#34;Preview in iPhone SE with device name&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-创建多个设备的预览&#34;&gt;4. 创建多个设备的预览&lt;/h3&gt;
+
+&lt;p&gt;例如，下面代码会为两个不同的设备创建两个预览，添加每个设备的名称以明确发生了什么:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        Text(&amp;quot;Hello World&amp;quot;)
+            .background(Color.red)
+    }
+}
+
+#if DEBUG
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ContentView()
+                .previewDevice(PreviewDevice(rawValue: &amp;quot;iPhone SE&amp;quot;))
+                .previewDisplayName(&amp;quot;iPhone SE&amp;quot;)
+            ContentView()
+                .previewDevice(PreviewDevice(rawValue: &amp;quot;iPhone XS Max&amp;quot;))
+                .previewDisplayName(&amp;quot;iPhone XS Max&amp;quot;)
+        }
+    }
+}
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>13.2_如何在light和dark模式下预览布局</title>

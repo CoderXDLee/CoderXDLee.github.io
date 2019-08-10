@@ -7,10 +7,20 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Thu, 08 Aug 2019 10:14:06 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 10 Aug 2019 22:31:10 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>14 SwiftUI的提示和技巧</title>
+      <link>https://coderxdlee.github.io/post/swiftui/14-swift_tips_and_tricks/14-swiftui%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Sat, 10 Aug 2019 22:31:10 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/14-swift_tips_and_tricks/14-swiftui%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7/</guid>
+      <description>&lt;!-- more --&gt;
+</description>
+    </item>
     
     <item>
       <title>13.5_如何使用Instruments来分析SwiftUI代码并识别缓慢的布局</title>

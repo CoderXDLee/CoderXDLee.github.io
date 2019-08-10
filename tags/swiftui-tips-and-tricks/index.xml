@@ -13,12 +13,51 @@
     
     
     <item>
-      <title>14 SwiftUI的提示和技巧</title>
+      <title>14_SwiftUI的提示和技巧</title>
       <link>https://coderxdlee.github.io/post/swiftui/14-swift_tips_and_tricks/14-swiftui%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Sat, 10 Aug 2019 22:31:10 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/14-swift_tips_and_tricks/14-swiftui%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7/</guid>
-      <description>&lt;!-- more --&gt;
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;SwiftUI 拥有强大的标题功能，但也有许多较小的提示和技巧可以帮助我们编写更好的应用程序。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-恢复实时预览-resume-the-live-preview&#34;&gt;1. 恢复实时预览(Resume the live preview)&lt;/h3&gt;
+
+&lt;p&gt;在编写代码时对我们的布局进行实时预览是 Xcode 的一个很好的功能，但是我们通常会看到它暂停了，因为我们做了很多更改，而 Xcode 无法跟上。
+这是 SwiftUI 开发者最重要的键盘快捷键: 按 &lt;code&gt;Option + Cmd + P&lt;/code&gt; 可立即重新加载预览窗口，并恢复其实时更新，而不是一直通过触摸板来按 &lt;code&gt;Resume&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-使-state-私有化-make-state-private&#34;&gt;2. 使 &lt;code&gt;@State&lt;/code&gt; 私有化(Make @State private)&lt;/h3&gt;
+
+&lt;h3 id=&#34;3-具有常量绑定的原型-prototype-with-constant-bindings&#34;&gt;3. 具有常量绑定的原型(Prototype with constant bindings)&lt;/h3&gt;
+
+&lt;h3 id=&#34;4-显示测试视图-presenting-test-views&#34;&gt;4. 显示测试视图(Presenting test views)&lt;/h3&gt;
+
+&lt;h3 id=&#34;5-超过10个视图限制-go-past-the-10-view-limit&#34;&gt;5. 超过10个视图限制(Go past the 10 view limit)&lt;/h3&gt;
+
+&lt;h3 id=&#34;6-使用语义颜色-use-semantic-colors&#34;&gt;6. 使用语义颜色(Use semantic colors)&lt;/h3&gt;
+
+&lt;h3 id=&#34;7-依靠自适应填充-rely-on-adaptive-padding&#34;&gt;7. 依靠自适应填充(Rely on adaptive padding)&lt;/h3&gt;
+
+&lt;h3 id=&#34;8-合并文本视图-combine-text-views&#34;&gt;8. 合并文本视图(Combine text views)&lt;/h3&gt;
+
+&lt;h3 id=&#34;9-如何使-print-工作-how-to-make-print-work&#34;&gt;9. 如何使 &lt;code&gt;print()&lt;/code&gt; 工作(How to make print() work)&lt;/h3&gt;
+
+&lt;h3 id=&#34;10-依赖隐式-hstack-relying-on-the-implicit-hstack&#34;&gt;10. 依赖隐式 &lt;code&gt;HStack&lt;/code&gt;(Relying on the implicit HStack)&lt;/h3&gt;
+
+&lt;h3 id=&#34;11-分割大视图-splitting-up-large-views&#34;&gt;11. 分割大视图(Splitting up large views)&lt;/h3&gt;
+
+&lt;h3 id=&#34;12-更好的预览-better-previewing&#34;&gt;12. 更好的预览(Better previewing)&lt;/h3&gt;
+
+&lt;h3 id=&#34;13-创建自定义修改器-create-custom-modifiers&#34;&gt;13. 创建自定义修改器(Create custom modifiers)&lt;/h3&gt;
+
+&lt;h3 id=&#34;14-轻松设置更改动画-animate-changes-easily&#34;&gt;14.轻松设置更改动画(Animate changes easily)&lt;/h3&gt;
+
+&lt;h3 id=&#34;15-从绑定中发布新值-publishing-new-values-from-a-binding&#34;&gt;15. 从绑定中发布新值(Publishing new values from a binding)&lt;/h3&gt;
+
+&lt;h3 id=&#34;16&#34;&gt;16.&lt;/h3&gt;
 </description>
     </item>
     

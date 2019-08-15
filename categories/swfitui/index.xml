@@ -830,7 +830,7 @@ struct ContentView_Previews : PreviewProvider {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/large_title_font.png&#34; alt=&#34;large_title_font_text&#34; title=&#34;largeTitle font&#34; /&gt;
+&lt;img src=&#34;img/1.3_text_font_large_title.png&#34; alt=&#34;1.3_text_font_large_title&#34; title=&#34;A text with font largeTitle&#34; /&gt;
 我们现在在文本视图下面使用了两个修饰符，这没关系 - 你可以将它们堆叠起来，并且它们都会生效。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-文本对齐&#34;&gt;2. 文本对齐&lt;/h3&gt;
@@ -844,7 +844,7 @@ struct ContentView_Previews : PreviewProvider {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/center_alignment.png&#34; alt=&#34;center_alignment_text&#34; title=&#34;center alignment&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.3_text_alignment_center.png&#34; alt=&#34;1.3_text_alignment_center&#34; title=&#34;center alignment&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;3-字体颜色&#34;&gt;3. 字体颜色&lt;/h3&gt;
 
@@ -855,7 +855,7 @@ struct ContentView_Previews : PreviewProvider {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/foregroundcolor_text.png&#34; alt=&#34;foregroundcolor_text&#34; title=&#34;foreground color&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.3_text_foregroundcolor.png&#34; alt=&#34;1.3_text_foregroundcolor&#34; title=&#34;foreground color&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;4-背景&#34;&gt;4. 背景&lt;/h3&gt;
 
@@ -867,7 +867,7 @@ struct ContentView_Previews : PreviewProvider {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/backgroundcolor_text.png&#34; alt=&#34;backgroundcolor_text&#34; title=&#34;background color&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.3_text_backgroundcolor.png&#34; alt=&#34;1.3_text_backgroundcolor&#34; title=&#34;background color&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;5-行间距&#34;&gt;5. 行间距&lt;/h3&gt;
 
@@ -880,7 +880,7 @@ struct ContentView_Previews : PreviewProvider {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/line_spacing_text.png&#34; alt=&#34;line_spacing_text&#34; title=&#34;line spacing&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.3_text_line_spacing.png&#34; alt=&#34;1.3_text_line_spacing&#34; title=&#34;line spacing&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

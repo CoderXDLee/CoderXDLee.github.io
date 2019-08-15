@@ -5097,69 +5097,94 @@ struct ContentView_Previews : PreviewProvider {
 
 &lt;!-- more --&gt;
 
-&lt;p&gt;文本视图不仅在外观方面给了我们一个可预见的广泛控制，而且还设计成与苹果的核心技术（如 &lt;code&gt;Dynamic Type&lt;/code&gt;）无缝配合。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Text&lt;/code&gt; 不仅在外观方面可以让我们进行可预测的广泛控制，而且它们还可以与 &lt;code&gt;Dynamic Type&lt;/code&gt; 等苹果的核心技术无缝协作。&lt;/p&gt;
 
-&lt;h3 id=&#34;1-字体&#34;&gt;1. 字体&lt;/h3&gt;
+&lt;h3 id=&#34;1-设置字体&#34;&gt;1. 设置字体&lt;/h3&gt;
 
 &lt;p&gt;默认情况下，文本视图有一个 &lt;code&gt;Body&lt;/code&gt; 动态类型样式，但是我们可以通过以下方式调用 &lt;code&gt;.font()&lt;/code&gt;，从其它 &lt;em&gt;sizes&lt;/em&gt; 和 &lt;em&gt;weights&lt;/em&gt; 进行选择:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
-    .lineLimit(nil)
-    .font(.largeTitle)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 1.设置字体
+        Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
+            .lineLimit(nil)
+            .font(.largeTitle)
+    }
+}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/1.3_text_font_large_title.png&#34; alt=&#34;1.3_text_font_large_title&#34; title=&#34;A text with font largeTitle&#34; /&gt;
-我们现在在文本视图下面使用了两个修饰符，这没关系 - 你可以将它们堆叠起来，并且它们都会生效。&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.3_text_font_large_title.png&#34; alt=&#34;1.3_text_font_large_title&#34; title=&#34;Set a font for text&#34; /&gt;
+我们现在在文本视图下面使用了两个修改器，这没关系 - 你可以将它们堆叠起来，并且它们都会生效。&lt;/p&gt;
 
-&lt;h3 id=&#34;2-文本对齐&#34;&gt;2. 文本对齐&lt;/h3&gt;
+&lt;h3 id=&#34;2-设置文本对齐方式&#34;&gt;2. 设置文本对齐方式&lt;/h3&gt;
 
 &lt;p&gt;特别是，现在我们有多行文本，我们需要调整文本的对齐方式，使其居中，如下所示:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
-    .lineLimit(nil)
-    .font(.largeTitle)
-    .multilineTextAlignment(.center)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 2.设置文本对齐方式
+        Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
+            .lineLimit(nil)
+            .font(.largeTitle)
+            .multilineTextAlignment(.center)
+    }
+}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/1.3_text_alignment_center.png&#34; alt=&#34;1.3_text_alignment_center&#34; title=&#34;center alignment&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.3_text_alignment_center.png&#34; alt=&#34;1.3_text_alignment_center&#34; title=&#34;Set center alignment for text&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;3-字体颜色&#34;&gt;3. 字体颜色&lt;/h3&gt;
+&lt;h3 id=&#34;3-设置字体颜色&#34;&gt;3. 设置字体颜色&lt;/h3&gt;
 
-&lt;p&gt;我们可以通过 &lt;code&gt;.foregroundColor()&lt;/code&gt; 修饰符来设置文本颜色，如下所示:&lt;/p&gt;
+&lt;p&gt;我们可以通过 &lt;code&gt;.foregroundColor()&lt;/code&gt; 修改器来设置文本颜色，如下所示:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;The best laid plans&amp;quot;)
-    .foregroundColor(Color.red)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 3. 设置字体颜色
+        Text(&amp;quot;The best laid plans&amp;quot;)
+            .foregroundColor(Color.red)
+    }
+}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/1.3_text_foregroundcolor.png&#34; alt=&#34;1.3_text_foregroundcolor&#34; title=&#34;foreground color&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.3_text_foregroundcolor.png&#34; alt=&#34;1.3_text_foregroundcolor&#34; title=&#34;Set a foreground color for text&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;4-背景&#34;&gt;4. 背景&lt;/h3&gt;
 
 &lt;p&gt;我们可以使用 &lt;code&gt;.background()&lt;/code&gt; 来设置背景颜色，但是它不仅仅可以用来设置背景颜色，也可以设置背景视图。无论如何，为了给我们的文本视图设置一个黄色背景，代码如下:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;The best laid plans&amp;quot;)
-    .foregroundColor(Color.red)
-    .background(Color.yellow)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 4. 设置背景颜色
+        Text(&amp;quot;The best laid plans&amp;quot;)
+            .foregroundColor(Color.red)
+            .background(Color.yellow)
+    }
+}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/1.3_text_backgroundcolor.png&#34; alt=&#34;1.3_text_backgroundcolor&#34; title=&#34;background color&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.3_text_backgroundcolor.png&#34; alt=&#34;1.3_text_backgroundcolor&#34; title=&#34;Set a background color for text&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;5-行间距&#34;&gt;5. 行间距&lt;/h3&gt;
+&lt;h3 id=&#34;5-设置行间距&#34;&gt;5. 设置行间距&lt;/h3&gt;
 
 &lt;p&gt;我们可以设置多行文本的行间距，行间距默认值为0，表示没有额外的行间距，但是我们可以通过以下方式在行与行之间指定一个值来添加额外的行间距。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
-    .lineLimit(nil)
-    .font(.largeTitle)
-    .lineSpacing(50)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 5.设置行间距
+        Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
+            .lineLimit(nil)
+            .font(.largeTitle)
+            .lineSpacing(50)
+    }
+}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/1.3_text_line_spacing.png&#34; alt=&#34;1.3_text_line_spacing&#34; title=&#34;line spacing&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.3_text_line_spacing.png&#34; alt=&#34;1.3_text_line_spacing&#34; title=&#34;Set a line spacing for text&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

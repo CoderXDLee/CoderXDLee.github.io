@@ -424,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    2 min read
   </span>
   
 
@@ -562,50 +562,51 @@
 
 <!-- more -->
 
-<blockquote>
-<p><strong>小贴士</strong>: 你可能认为本章是完全可以略读的，但除非你是一个 Swift 天才，否则你应该读到最后再确定。</p>
-</blockquote>
-
 <h3 id="1-简介">1. 简介</h3>
 
 <p><img src="img/1.1_swiftui_basic_template.png" alt="1.1_swiftui_basic_template" />
-如图，自 Xcode 11 之后，基本的 <em>Single View App</em> 模板为我们提供以下内容:</p>
+如图，自 Xcode 11 之后，基本的 单一视图应用程序(Single View App)模板 为我们提供以下内容:</p>
 
 <ul>
 <li><code>AppDelegate.swift</code>
 
 <ul>
-<li>它负责监视外部事件。例如: 如果另一个应用程序试图向我们发送要一个要打开的文件。</li>
+<li>它负责监视外部事件。</li>
+<li>例如: 如果另一个应用程序试图向我们发送要一个要打开的文件。</li>
 </ul></li>
 <li><code>SceneDelegate.swift</code>
 
 <ul>
-<li>它负责管理应用程序的显示方式。例如: 让多个实例同时运行，或者当一个实例移动到后台时采取操作/措施。</li>
+<li>它负责管理应用程序的显示方式。</li>
+<li>例如: 让多个实例同时运行，或者当一个实例移动到后台时采取操作/措施。</li>
 </ul></li>
 <li><code>ContentView.swift</code>
 
 <ul>
-<li>它是我们的初始用户界面。如果这是一个 UIKit 项目，它就相当于是 Xcode 提供给我们的 <em>ViewController</em> 类。</li>
+<li>它是我们最初的用户界面。</li>
+<li>如果这是一个 UIKit 项目，它就相当于 Xcode 提供给我们的 <strong>ViewController</strong> 类。</li>
 </ul></li>
 <li><code>Assets.xcassets</code>
 
 <ul>
-<li>它是项目的资产目录。存储着我们项目中使用的所有图像和颜色。</li>
+<li>它是项目的资产目录。</li>
+<li>存储着我们项目中使用的所有图像和颜色。</li>
 </ul></li>
 <li><code>LaunchScreen.storyboard</code>
 
 <ul>
-<li>它是应用加载时显示的屏幕。</li>
+<li>它是在我们的应用加载时显示的屏幕。</li>
 </ul></li>
 <li><code>Info.plist</code>
 
 <ul>
-<li>它是一个属性列表文件，用于存储应用程序的系统级设置。例如: 应该在 iOS 主屏幕的图标下面显示什么名称。</li>
+<li>它是一个属性列表文件，用于存储应用程序的系统级设置。</li>
+<li>例如: 应该在 iOS 主屏幕上的图标下面显示什么名称。</li>
 </ul></li>
 <li><code>Preview content</code><br />
 
 <ul>
-<li>它是一个名为 <em>Preview content</em> 的组，其中包含另一个名为 <em>Preview Assests</em> 的资产目录。</li>
+<li>它是一个名为 <strong>Preview content</strong> 的组，其中包含另一个名为 <strong>Preview Assests</strong> 的资产目录。</li>
 </ul></li>
 </ul>
 
@@ -613,56 +614,62 @@
 
 <h3 id="2-查看-scenedelegate">2. 查看 SceneDelegate</h3>
 
-<p>我们真正关心的是 <code>ContentView.swift</code>，  事实上，这是唯一重要的部分。这是我们应用程序的主要功能，在这里我们可以立即开始尝试各种 <code>SwiftUI</code> 代码。</p>
+<p>事实上，我们真正关心的、也是唯一重要的部分是 <code>ContentView.swift</code>。这是我们应用程序的主要功能，在这里我们可以立即开始尝试各种 <code>SwiftUI</code> 代码。</p>
 
-<p>是什么让 <em>ContentView.swift</em> 显示在屏幕上？<br />
-上面提到: <code>SceneDelegate.swift</code> 负责管理应用程序的显示方式。那么，我们打开 <code>SceneDelegate.swift</code>，就会看到下面的代码:</p>
+<p>不过，我们首先要弄清楚的是: 是什么让 <em>ContentView.swift</em> 显示在屏幕上?
+上面我们提到: <code>SceneDelegate.swift</code> 负责管理应用程序的显示方式。那么，我们打开 <code>SceneDelegate.swift</code>，就会看到下面的代码:</p>
 
-<pre><code class="language-swift">let window = UIWindow(windowScene: windowScene)
-window.rootViewController = UIHostingController(rootView: ContentView())
-self.window = window
-window.makeKeyAndVisible()
+<pre><code class="language-swift">// Create the SwiftUI view that provides the window contents.
+let contentView = ContentView()
+
+// Use a UIHostingController as window root view controller.
+if let windowScene = scene as? UIWindowScene {
+    let window = UIWindow(windowScene: windowScene)
+    window.rootViewController = UIHostingController(rootView: contentView)
+    self.window = window
+    window.makeKeyAndVisible()
+}
 </code></pre>
 
-<p>这段代码创建了一个新的 <code>ContentView</code> 实例（这是我们即将看到的主要功能），并将其放在 <code>window</code> 中，以便在屏幕上显示。通过显示 <code>ContentView</code> 的第一个实例，可以有效地引导我们的应用程序，并从那里结束 - 你想做什么？</p>
+<p>这段代码创建了一个新的 <code>ContentView</code> 实例（这是我们即将看到的主要功能），并将其放置在窗口中，以便在屏幕上显示。通过显示 <code>ContentView</code> 的第一个实例，可以有效地引导我们的应用程序，并从那里结束 - 那么接下来你想做什么？</p>
 
 <h3 id="3-查看-contentview">3. 查看 ContentView</h3>
 
-<p>打开  <code>ContentView.swift</code> ，让我们看看实际的 SwiftUI 代码。可以看到这样的代码:</p>
+<p>打开  <code>ContentView.swift</code> ，让我们看看一些实际的 SwiftUI 代码。我们应该可以看到这样的代码:</p>
 
 <pre><code class="language-swift">import SwiftUI
 
-struct ContentView : View {
+struct ContentView: View {
     var body: some View {
         Text(&quot;Hello World&quot;)
     }
 }
 
-#if DEBUG
-struct ContentView_Previews : PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
-#endif
 </code></pre>
 
+<p>这不是很多代码，但它实际上包含了大量代码。</p>
+
 <ul>
-<li><p>首先，请注意，<code>ContentView</code> 是一个结构体。熟悉 UIKit 的开发人员知道 - 我们从用户界面的所有值类型的不可变性和简单性中获益巨大！</p></li>
+<li><p>首先，请注意，<code>ContentView</code> 是一个结构体。熟悉 UIKit 的开发人员都知道 - 我们从用户界面的所有值类型的不变性和简单性中获益巨大！</p></li>
 
-<li><p>其次，<code>ContentView</code> 遵守 <code>View</code> 协议。我们想在 SwiftUI 中显示的所有内容都需要遵守 <code>View</code> 协议，这实际上只意味着一件事: 我们需要一个名为 <code>body</code> 的属性来返回某种 <code>View</code>。</p></li>
+<li><p>其次，<code>ContentView</code> 遵守 <code>View</code> 协议。我们想在 SwiftUI 中显示的所有内容都需要遵守 <code>View</code> 协议，这实际上只意味着一件事: 我们需要一个名为 <code>body</code> 的属性来返回 <code>some View</code>。</p></li>
 
-<li><p>第三，<code>body</code> 的返回类型是 <code>some View</code>。<code>some</code> 关键字是在 Swift 5.1 中新增的，是一个名为 <strong>不透明返回类型（opaque return types）</strong> 功能的一部分，在这种情况下，它的意思是 将返回某种视图，但 SwiftUI 不需要知道（或关心）什么。</p></li>
+<li><p>第三，<code>body</code> 的返回类型是 <code>some View</code>。<code>some</code> 关键字是在 Swift 5.1 中新引入的，是一个名为 <strong>不透明返回类型（opaque return types）</strong> 功能的一部分，在这种情况下，它的意思是 将返回某种视图，但 SwiftUI 不需要知道（或关心）什么。</p></li>
 </ul>
 
 <blockquote>
-<p><strong>重要说明:</strong> 返回 <code>some View</code> 意味着 <code>body</code> 属性将返回遵守 <code>View</code> 协议的内容。我们不能返回很多东西或忘记返回任何东西 &ndash; Swift 编译器将拒绝构建代码。要清楚，我们的视图正文必须返回一个子视图。</p>
+<p><strong>重要说明:</strong> 返回 <code>some View</code> 意味着 <code>body</code> 属性将返回遵守 <code>View</code> 协议的内容。我们不能返回很多东西或忘记返回任何东西，否则，Swift 编译器将拒绝构建我们的代码。为了清楚起见，我们的视图 body 必须始终返回一个子视图。</p>
 </blockquote>
 
 <ul>
 <li><p>第四，body 属性中有 <code>Text(&quot;hello world&quot;)</code>，它创建了文本内容为 &ldquo;hello world&rdquo; 的标签。</p></li>
 
-<li><p>最后，在 ContentView 下面的是一个类似但不同的 struct，称为 <code>ContentView_Previews</code>。它不遵守 <code>View</code> 协议，因为它专门用于在 Xcode 中显示 视图预览（Preview），而不是在真实 app 中显示在屏幕上。这就是为什么你会看到它在 <code>#if DEBUG</code> 和 <code>#endif</code> 之间 - 当我们的应用程序在调试环境中运行时，这段代码只构建在 成品（finished product）中，因为它在生产应用程序（Production app）中没有意义。</p></li>
+<li><p>最后，在 ContentView 下面的是一个类似但不同的 struct，称为 <code>ContentView_Previews</code>。它不遵守 <code>View</code> 协议，因为它专门用于在 Xcode 中显示 视图预览（Preview），而不是在真正的应用程序中显示在屏幕上。这就是为什么你会看到它在 <code>#if DEBUG</code> 和 <code>#endif</code> 之间 - 当我们的应用程序在调试环境中运行时，这段代码只构建在 成品（finished product）中，因为它在生产应用程序（Production app）中没有意义。</p></li>
 </ul>
 
     </div>
@@ -942,7 +949,7 @@ struct ContentView_Previews : PreviewProvider {
     
     
     
-    <script src="/js/academic.min.4e51017b38c7ebaadd7e25fc9503f88c.js"></script>
+    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
 
     
 

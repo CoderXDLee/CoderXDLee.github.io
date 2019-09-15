@@ -614,7 +614,7 @@
 <p>效果预览:
 <img src="img/1.3_text_foregroundcolor.png" alt="1.3_text_foregroundcolor" title="Set a foreground color for text" /></p>
 
-<h3 id="4-背景">4. 背景</h3>
+<h3 id="4-设置背景颜色">4. 设置背景颜色</h3>
 
 <p>我们可以使用 <code>.background()</code> 来设置背景颜色，但是它不仅仅可以用来设置背景颜色，也可以设置背景视图。无论如何，为了给我们的文本视图设置一个黄色背景，代码如下:</p>
 
@@ -639,7 +639,6 @@
     var body: some View {
         // 5.设置行间距
         Text(&quot;This is an extremely long string that will never fit even the widest of Phones&quot;)
-            .lineLimit(nil)
             .font(.largeTitle)
             .lineSpacing(50)
     }

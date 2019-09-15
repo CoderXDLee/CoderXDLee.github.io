@@ -773,15 +773,14 @@ return Image(uiImage: image)
       <pubDate>Wed, 24 Jul 2019 15:43:29 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.4_%E5%A6%82%E4%BD%95%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%87%E6%9C%AC%E8%A7%86%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC/</guid>
-      <description>&lt;p&gt;SwiftUI 的文本视图有一个可选的 &lt;code&gt;formatter&lt;/code&gt; 参数，可以让我们用来自定义数据在标签（label）内的显示方式。这一点很重要，因为在我们的程序中发生某些事情时，通常会为我们更新值，因此通过附加 &lt;code&gt;formatter&lt;/code&gt;， SwiftUI 可以确保我们的数据以我们期望的方式来正确显示。&lt;/p&gt;
+      <description>&lt;p&gt;SwiftUI 的文本视图有一个可选的 &lt;code&gt;formatter&lt;/code&gt; 参数，允许我们自定义数据在标签（label）中的显示方式。这一点很重要，因为在我们的程序中发生某些事情时，通常会为我们更新值，因此通过附加 &lt;code&gt;formatter&lt;/code&gt;， SwiftUI 可以确保我们的数据以我们期望的方式来正确显示。&lt;/p&gt;
 
-&lt;p&gt;例如，这定义了一个日期格式（date formatter）化程序，并使用它来确保 任务日期 以人类可读的形式显示:&lt;/p&gt;
+&lt;p&gt;例如，我们定义了一个日期格式化程序（date formatter），并使用它来确保 任务日期 以人类可读的形式显示:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;import SwiftUI
 
-struct ContentView : View {
-    
-    static let taskDateFormatter: DateFormatter = {
+struct ContentView: View {
+    static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         return formatter
@@ -790,20 +789,18 @@ struct ContentView : View {
     var dueDate = Date()
     
     var body: some View {
-        Text(&amp;quot;Task due date: \(dueDate, formatter: Self.taskDateFormatter)&amp;quot;)
+        Text(&amp;quot;Task due date: \(dueDate, formatter: Self.taskDateFormat)&amp;quot;)
     }
 }
 
-#if DEBUG
-struct ContentView_Previews : PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
-#endif
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
+&lt;p&gt;效果预览:
 &lt;img src=&#34;img/date_formatter_text.png&#34; alt=&#34;date_formatter&#34; title=&#34;date formatter&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
@@ -870,7 +867,7 @@ struct ContentView_Previews : PreviewProvider {
 &lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.3_text_foregroundcolor.png&#34; alt=&#34;1.3_text_foregroundcolor&#34; title=&#34;Set a foreground color for text&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;4-背景&#34;&gt;4. 背景&lt;/h3&gt;
+&lt;h3 id=&#34;4-设置背景颜色&#34;&gt;4. 设置背景颜色&lt;/h3&gt;
 
 &lt;p&gt;我们可以使用 &lt;code&gt;.background()&lt;/code&gt; 来设置背景颜色，但是它不仅仅可以用来设置背景颜色，也可以设置背景视图。无论如何，为了给我们的文本视图设置一个黄色背景，代码如下:&lt;/p&gt;
 
@@ -895,7 +892,6 @@ struct ContentView_Previews : PreviewProvider {
     var body: some View {
         // 5.设置行间距
         Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
-            .lineLimit(nil)
             .font(.largeTitle)
             .lineSpacing(50)
     }

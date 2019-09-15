@@ -4996,7 +4996,7 @@ SwiftUI 的 &lt;code&gt;Image&lt;/code&gt; 能够以不同的方式进行缩放�
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/load_image_from_bundle.png&#34; alt=&#34;load_image_from_bundle&#34; title=&#34;load image from buldle&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.5_load_image_from_bundle.png&#34; alt=&#34;1.5_load_image_from_bundle.png&#34; title=&#34;load image from buldle&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-从-system-icons-加载&#34;&gt;2. 从 System icons 加载&lt;/h3&gt;
 
@@ -5006,7 +5006,7 @@ SwiftUI 的 &lt;code&gt;Image&lt;/code&gt; 能够以不同的方式进行缩放�
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/load_image_from_systemicon.png&#34; alt=&#34;load_image_from_systemicon&#34; title=&#34;load image from system icons&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.5_load_image_from_systemicon.png&#34; alt=&#34;1.5_load_image_from_systemicon&#34; title=&#34;load image from system icons&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;3-从-uiimage-加载&#34;&gt;3. 从 UIImage 加载&lt;/h3&gt;
 
@@ -5020,9 +5020,9 @@ return Image(uiImage: image)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/load_image_from_uiimage.png&#34; alt=&#34;load_image_from_uiimage&#34; title=&#34;load image from uiimage&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.5_load_image_from_uiimage.png&#34; alt=&#34;1.5_load_image_from_uiimage&#34; title=&#34;load image from uiimage&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;4-foregroundcolor&#34;&gt;4. foregroundColor&lt;/h3&gt;
+&lt;h3 id=&#34;4-通过-foregroundcolor-给系统图标着色&#34;&gt;4. 通过 foregroundColor 给系统图标着色&lt;/h3&gt;
 
 &lt;p&gt;如果你使用的是 系统图标集，则返回的图像是 &lt;code&gt;可缩放&lt;/code&gt; 和 &lt;code&gt;可着色&lt;/code&gt; 的，这意味着你可以使用 &lt;code&gt;foregroundColor()&lt;/code&gt; 修改器对图像着色。&lt;/p&gt;
 
@@ -5031,9 +5031,9 @@ return Image(uiImage: image)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/foreground_color_image.png&#34; alt=&#34;foreground_color_image&#34; title=&#34;set foreground color for system icon&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.5_foreground_color_image.png&#34; alt=&#34;1.5_foreground_color_image&#34; title=&#34;set foreground color for system icon&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;5-动态文本样式&#34;&gt;5. 动态文本样式&lt;/h3&gt;
+&lt;h3 id=&#34;5-通过给系统图标设置动态文本样式来放大图像&#34;&gt;5. 通过给系统图标设置动态文本样式来放大图像&lt;/h3&gt;
 
 &lt;p&gt;这意味着你可以通过匹配任何 &lt;code&gt;Dynamic Type&lt;/code&gt; 文本样式，来要求 SwiftUI 放大图像:&lt;/p&gt;
 
@@ -5042,7 +5042,7 @@ return Image(uiImage: image)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/font_largetitle_image.png&#34; alt=&#34;font_largetitle_image&#34; title=&#34;set font as largeTitle for system icons&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.5_font_largetitle_image.png&#34; alt=&#34;1.5_font_largetitle_image&#34; title=&#34;set font as largeTitle for system icons&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

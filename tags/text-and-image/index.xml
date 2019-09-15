@@ -358,7 +358,7 @@ struct ContentView_Previews : PreviewProvider {
 
 &lt;!-- more --&gt;
 
-&lt;p&gt;&lt;code&gt;Text&lt;/code&gt; 不仅在外观方面可以让我们进行可预测的广泛控制，而且它们还可以与 &lt;code&gt;Dynamic Type&lt;/code&gt; 等苹果的核心技术无缝协作。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Text&lt;/code&gt; 不仅在外观方面可以让我们进行可预测的广泛控制，而且它们还可以与 &lt;code&gt;Dynamic Type&lt;/code&gt; 等 Apple 的核心技术无缝协作。&lt;/p&gt;
 
 &lt;h3 id=&#34;1-设置字体&#34;&gt;1. 设置字体&lt;/h3&gt;
 
@@ -366,9 +366,8 @@ struct ContentView_Previews : PreviewProvider {
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     var body: some View {
-        // 1.设置字体
-        Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
-            .lineLimit(nil)
+        // 1. 设置字体
+        Text(&amp;quot;This is an extremely long text string that will never fit even the widest of Phones&amp;quot;)
             .font(.largeTitle)
     }
 }
@@ -386,7 +385,6 @@ struct ContentView_Previews : PreviewProvider {
     var body: some View {
         // 2.设置文本对齐方式
         Text(&amp;quot;This is an extremely long string that will never fit even the widest of Phones&amp;quot;)
-            .lineLimit(nil)
             .font(.largeTitle)
             .multilineTextAlignment(.center)
     }
@@ -404,7 +402,7 @@ struct ContentView_Previews : PreviewProvider {
     var body: some View {
         // 3. 设置字体颜色
         Text(&amp;quot;The best laid plans&amp;quot;)
-            .foregroundColor(Color.red)
+            .foregroundColor(.red)
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -420,7 +418,7 @@ struct ContentView_Previews : PreviewProvider {
     var body: some View {
         // 4. 设置背景颜色
         Text(&amp;quot;The best laid plans&amp;quot;)
-            .foregroundColor(Color.red)
+            .foregroundColor(.red)
             .background(Color.yellow)
     }
 }

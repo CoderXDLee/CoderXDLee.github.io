@@ -562,7 +562,7 @@
 
 <!-- more -->
 
-<p><code>Text</code> 不仅在外观方面可以让我们进行可预测的广泛控制，而且它们还可以与 <code>Dynamic Type</code> 等苹果的核心技术无缝协作。</p>
+<p><code>Text</code> 不仅在外观方面可以让我们进行可预测的广泛控制，而且它们还可以与 <code>Dynamic Type</code> 等 Apple 的核心技术无缝协作。</p>
 
 <h3 id="1-设置字体">1. 设置字体</h3>
 
@@ -570,9 +570,8 @@
 
 <pre><code class="language-swift">struct ContentView: View {
     var body: some View {
-        // 1.设置字体
-        Text(&quot;This is an extremely long string that will never fit even the widest of Phones&quot;)
-            .lineLimit(nil)
+        // 1. 设置字体
+        Text(&quot;This is an extremely long text string that will never fit even the widest of Phones&quot;)
             .font(.largeTitle)
     }
 }
@@ -590,7 +589,6 @@
     var body: some View {
         // 2.设置文本对齐方式
         Text(&quot;This is an extremely long string that will never fit even the widest of Phones&quot;)
-            .lineLimit(nil)
             .font(.largeTitle)
             .multilineTextAlignment(.center)
     }
@@ -608,7 +606,7 @@
     var body: some View {
         // 3. 设置字体颜色
         Text(&quot;The best laid plans&quot;)
-            .foregroundColor(Color.red)
+            .foregroundColor(.red)
     }
 }
 </code></pre>
@@ -624,7 +622,7 @@
     var body: some View {
         // 4. 设置背景颜色
         Text(&quot;The best laid plans&quot;)
-            .foregroundColor(Color.red)
+            .foregroundColor(.red)
             .background(Color.yellow)
     }
 }

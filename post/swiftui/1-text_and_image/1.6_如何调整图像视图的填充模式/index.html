@@ -560,42 +560,52 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<p><img src="img/ba_xian_tai.png" alt="ba_xian_tai" />
-SwiftUI 的 <code>Image</code> 能够以不同的方式进行缩放，就像 <code>UIImageView</code> 的 <em>content mode</em> 一样。</p>
+<p><img src="img/1.6_ba_xian_tai.png" alt="1.6_ba_xian_tai" />
+SwiftUI 的 <code>Image</code> 视图能够以不同的方式进行缩放，就像 <code>UIImageView</code> 的 <strong>content mode</strong> 一样。</p>
 
 <h3 id="1-默认">1.默认</h3>
 
-<p>默认情况下，图像视图会自动调整其内容的大小，这可能会使它们超出屏幕。</p>
+<p>默认情况下，图像视图会根据其内容自动调整大小，这可能会使它们超出屏幕范围。</p>
 
 <pre><code class="language-swift">Image(&quot;ba_xian_tai&quot;)
 </code></pre>
 
 <p>运行效果:
-<img src="img/the_default_content_mode.png" alt="the_default_content_mode" title="default content mode" /></p>
+<img src="img/1.6_the_default_content_mode.png" alt="1.6_the_default_content_mode" title="default content mode" /></p>
 
-<p>如果添加了 <code>resizable()</code> 修饰符，则图像将自动调整大小，以填充所有可用空间:</p>
+<p>如果添加 <code>resizable()</code> 修饰符，则图像将自动调整大小，以填充所有可用空间:</p>
 
 <pre><code class="language-swift">Image(&quot;ba_xian_tai&quot;)
     .resizable()
 </code></pre>
 
 <p>运行效果:
-<img src="img/resizable_image.png" alt="resizable_image" title="resizable image" />
-然而，这也可能导致图像的原始纵横比失真，因为它将在所有维度上被拉伸任意数量，以使其填充空间。</p>
+<img src="img/1.6_resizable_image.png" alt="1.6_resizable_image" title="resizable image" />
+然而，这也可能导致图像的原始纵横比失真，因为它将在所有维度上被拉伸任意量，以使其填充空间。</p>
 
-<h3 id="2-fill-和-fit">2. .fill 和 .fit</h3>
+<h3 id="2-fill-和-fit">2. <code>.fill</code> 和 <code>.fit</code></h3>
 
-<p>如果要保持其纵横比，应使用 <code>.fill</code> 或 <code>.fit</code>添加一个<code>aspectRatio()</code>修饰符，如下所示：</p>
+<p>如果要保持其纵横比，应使用 <code>.fill</code> 或 <code>.fit</code>添加一个<code>aspectRatio()</code>修饰符，如下所示:</p>
+
+<h4 id="2-1-fill">2.1 fill</h4>
 
 <pre><code class="language-swift">Image(&quot;ba_xian_tai&quot;)
     .resizable()
     .aspectRatio(contentMode: .fill)
 </code></pre>
 
-<p>运行效果:
-<img src="img/fill_content_mode.png" alt="fill_content_mode" title="content mode = .fill" />
-<img src="img/fit_content_mode.png" alt="fit_content_mode" title="content mode = .fit" />
-注意: 在当前的测试版中，有一个bug，<code>.fit</code> 内容模式仍然会导致图像被拉伸。</p>
+<p>效果预览:
+<img src="img/1.6_fill_content_mode.png" alt="1.6_fill_content_mode" title="content mode = .fill" /></p>
+
+<h4 id="2-2-fit">2.2 fit</h4>
+
+<pre><code class="language-swift">Image(&quot;ba_xian_tai&quot;)
+    .resizable()
+    .aspectRatio(contentMode: .fit)
+</code></pre>
+
+<p>效果预览:
+<img src="img/1.6_fit_content_mode.png" alt="1.6_fit_content_mode" title="content mode = .fit" /></p>
 
     </div>
 

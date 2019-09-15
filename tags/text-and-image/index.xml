@@ -198,42 +198,52 @@
       <guid>https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.6_%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E5%9B%BE%E5%83%8F%E8%A7%86%E5%9B%BE%E7%9A%84%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/</guid>
       <description>
 
-&lt;p&gt;&lt;img src=&#34;img/ba_xian_tai.png&#34; alt=&#34;ba_xian_tai&#34; /&gt;
-SwiftUI 的 &lt;code&gt;Image&lt;/code&gt; 能够以不同的方式进行缩放，就像 &lt;code&gt;UIImageView&lt;/code&gt; 的 &lt;em&gt;content mode&lt;/em&gt; 一样。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/1.6_ba_xian_tai.png&#34; alt=&#34;1.6_ba_xian_tai&#34; /&gt;
+SwiftUI 的 &lt;code&gt;Image&lt;/code&gt; 视图能够以不同的方式进行缩放，就像 &lt;code&gt;UIImageView&lt;/code&gt; 的 &lt;strong&gt;content mode&lt;/strong&gt; 一样。&lt;/p&gt;
 
 &lt;h3 id=&#34;1-默认&#34;&gt;1.默认&lt;/h3&gt;
 
-&lt;p&gt;默认情况下，图像视图会自动调整其内容的大小，这可能会使它们超出屏幕。&lt;/p&gt;
+&lt;p&gt;默认情况下，图像视图会根据其内容自动调整大小，这可能会使它们超出屏幕范围。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Image(&amp;quot;ba_xian_tai&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/the_default_content_mode.png&#34; alt=&#34;the_default_content_mode&#34; title=&#34;default content mode&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.6_the_default_content_mode.png&#34; alt=&#34;1.6_the_default_content_mode&#34; title=&#34;default content mode&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;如果添加了 &lt;code&gt;resizable()&lt;/code&gt; 修饰符，则图像将自动调整大小，以填充所有可用空间:&lt;/p&gt;
+&lt;p&gt;如果添加 &lt;code&gt;resizable()&lt;/code&gt; 修饰符，则图像将自动调整大小，以填充所有可用空间:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Image(&amp;quot;ba_xian_tai&amp;quot;)
     .resizable()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/resizable_image.png&#34; alt=&#34;resizable_image&#34; title=&#34;resizable image&#34; /&gt;
-然而，这也可能导致图像的原始纵横比失真，因为它将在所有维度上被拉伸任意数量，以使其填充空间。&lt;/p&gt;
+&lt;img src=&#34;img/1.6_resizable_image.png&#34; alt=&#34;1.6_resizable_image&#34; title=&#34;resizable image&#34; /&gt;
+然而，这也可能导致图像的原始纵横比失真，因为它将在所有维度上被拉伸任意量，以使其填充空间。&lt;/p&gt;
 
-&lt;h3 id=&#34;2-fill-和-fit&#34;&gt;2. .fill 和 .fit&lt;/h3&gt;
+&lt;h3 id=&#34;2-fill-和-fit&#34;&gt;2. &lt;code&gt;.fill&lt;/code&gt; 和 &lt;code&gt;.fit&lt;/code&gt;&lt;/h3&gt;
 
-&lt;p&gt;如果要保持其纵横比，应使用 &lt;code&gt;.fill&lt;/code&gt; 或 &lt;code&gt;.fit&lt;/code&gt;添加一个&lt;code&gt;aspectRatio()&lt;/code&gt;修饰符，如下所示：&lt;/p&gt;
+&lt;p&gt;如果要保持其纵横比，应使用 &lt;code&gt;.fill&lt;/code&gt; 或 &lt;code&gt;.fit&lt;/code&gt;添加一个&lt;code&gt;aspectRatio()&lt;/code&gt;修饰符，如下所示:&lt;/p&gt;
+
+&lt;h4 id=&#34;2-1-fill&#34;&gt;2.1 fill&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Image(&amp;quot;ba_xian_tai&amp;quot;)
     .resizable()
     .aspectRatio(contentMode: .fill)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/fill_content_mode.png&#34; alt=&#34;fill_content_mode&#34; title=&#34;content mode = .fill&#34; /&gt;
-&lt;img src=&#34;img/fit_content_mode.png&#34; alt=&#34;fit_content_mode&#34; title=&#34;content mode = .fit&#34; /&gt;
-注意: 在当前的测试版中，有一个bug，&lt;code&gt;.fit&lt;/code&gt; 内容模式仍然会导致图像被拉伸。&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.6_fill_content_mode.png&#34; alt=&#34;1.6_fill_content_mode&#34; title=&#34;content mode = .fill&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;2-2-fit&#34;&gt;2.2 fit&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Image(&amp;quot;ba_xian_tai&amp;quot;)
+    .resizable()
+    .aspectRatio(contentMode: .fit)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.6_fit_content_mode.png&#34; alt=&#34;1.6_fit_content_mode&#34; title=&#34;content mode = .fit&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

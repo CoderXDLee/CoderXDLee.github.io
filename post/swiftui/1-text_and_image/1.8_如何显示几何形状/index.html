@@ -560,35 +560,41 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<p>如果我们想在应用程序中使用简单地几何形状，我们可以直接创建它们，然后根据需要对它们进行着色和定位。</p>
+<p>如果我们想在应用程序中使用简单的几何形状，我们可以直接创建它们，然后根据需要对它们进行着色和定位。</p>
 
 <h3 id="1-矩形">1. 矩形</h3>
 
 <p>例如，如果我们想要一个 <code>200x200</code> 红色矩形，可以使用如下代码:</p>
 
-<pre><code class="language-swift">var body: some View {
-    Rectangle()
-        .fill(Color.red)
-        .frame(width: 200, height: 200)
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        // 1. 200 * 200 红色矩形
+        Rectangle()
+            .fill(Color.red)
+            .frame(width: 200, height: 200)
+    }
 }
 </code></pre>
 
 <p>运行效果:
-<img src="img/square_red_wh200.png" alt="square_red_wh200" title="Square: 200 x 200" /></p>
+<img src="img/1.8_square_red_wh200.png" alt="1.8_square_red_wh200" title="Square: 200 x 200" /></p>
 
 <h3 id="2-圆">2. 圆</h3>
 
 <p>同样，如果你想要一个 <code>50x50</code> 的蓝色圆圈，您可以使用如下代码:</p>
 
-<pre><code class="language-swift">var body: some View {
-    Circle()
-        .fill(Color.blue)
-        .frame(width: 50, height: 50)
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        // 2. 50 * 50 蓝色圆圈
+        Circle()
+            .fill(Color.blue)
+            .frame(width: 50, height: 50)
+    }
 }
 </code></pre>
 
 <p>运行效果:
-<img src="img/circle_blue_r50.png" alt="circle_blue_r50" title="Circle: 50 x 50" /></p>
+<img src="img/1.8_circle_blue_r50.png" alt="1.8_circle_blue_r50" title="Circle: 50 x 50" /></p>
 
     </div>
 

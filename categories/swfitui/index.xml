@@ -548,35 +548,41 @@ var body: some View {
       <guid>https://coderxdlee.github.io/post/swiftui/1-text_and_image/1.8_%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E5%87%A0%E4%BD%95%E5%BD%A2%E7%8A%B6/</guid>
       <description>
 
-&lt;p&gt;如果我们想在应用程序中使用简单地几何形状，我们可以直接创建它们，然后根据需要对它们进行着色和定位。&lt;/p&gt;
+&lt;p&gt;如果我们想在应用程序中使用简单的几何形状，我们可以直接创建它们，然后根据需要对它们进行着色和定位。&lt;/p&gt;
 
 &lt;h3 id=&#34;1-矩形&#34;&gt;1. 矩形&lt;/h3&gt;
 
 &lt;p&gt;例如，如果我们想要一个 &lt;code&gt;200x200&lt;/code&gt; 红色矩形，可以使用如下代码:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    Rectangle()
-        .fill(Color.red)
-        .frame(width: 200, height: 200)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 1. 200 * 200 红色矩形
+        Rectangle()
+            .fill(Color.red)
+            .frame(width: 200, height: 200)
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/square_red_wh200.png&#34; alt=&#34;square_red_wh200&#34; title=&#34;Square: 200 x 200&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.8_square_red_wh200.png&#34; alt=&#34;1.8_square_red_wh200&#34; title=&#34;Square: 200 x 200&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-圆&#34;&gt;2. 圆&lt;/h3&gt;
 
 &lt;p&gt;同样，如果你想要一个 &lt;code&gt;50x50&lt;/code&gt; 的蓝色圆圈，您可以使用如下代码:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    Circle()
-        .fill(Color.blue)
-        .frame(width: 50, height: 50)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 2. 50 * 50 蓝色圆圈
+        Circle()
+            .fill(Color.blue)
+            .frame(width: 50, height: 50)
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/circle_blue_r50.png&#34; alt=&#34;circle_blue_r50&#34; title=&#34;Circle: 50 x 50&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.8_circle_blue_r50.png&#34; alt=&#34;1.8_circle_blue_r50&#34; title=&#34;Circle: 50 x 50&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

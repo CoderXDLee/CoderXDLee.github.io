@@ -566,7 +566,9 @@
 
 <p>例如: 现在，我们要创建一个大字体的文本视图，然后在其后面放置一个 <code>100x100 的图像</code>:</p>
 
-<pre><code class="language-swift">var body: some View {
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        // 1. 设置图像背景
         Text(&quot;Hello SwiftUI&quot;)
             .font(.largeTitle)
             .background(
@@ -578,30 +580,34 @@
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/background_image.png" alt="background_image" title="Set background with image" /></p>
+<p>效果预览:
+<img src="img/1.9_background_image.png" alt="1.9_background_image" title="Set background with image" /></p>
 
 <h3 id="2-给文本视图设置一个红色圆圈作为背景">2. 给文本视图设置一个红色圆圈作为背景</h3>
 
 <p>在 SwiftUI 中，背景 View 并不一定是一个图像，实际上我们可以使用任何类型的视图作为背景。
 例如: 现在将创建相同的文本视图，然后在其后面放置一个 <code>200x200 的红色圆圈</code>:</p>
 
-<pre><code class="language-swift">var body: some View {
-    // 红色圆圈作背景
-    Text(&quot;Hello SwiftUI&quot;)
-        .font(.largeTitle)
-        .background(
-            Circle()
-                .fill(Color.red)
-                .frame(width: 200, height: 200)
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        // 2. 设置红色圆圈背景
+        Text(&quot;Hello SwiftUI&quot;)
+            .font(.largeTitle)
+            .background(
+                Circle()
+                    .fill(Color.red)
+                    .frame(width: 200, height: 200)
         )
+    }
 }
 </code></pre>
+
+<p>效果预览:
+<img src="img/1.9_background_red_circle.png" alt="1.9_background_red_circle" title="Set background with a red circle" /></p>
 
 <p>默认情况下，背景视图会自动占用尽可能多的空间以完全可见，但如果需要，可以使用 <code>clipped(</code>) 修饰符将其剪裁为父视图的大小：</p>
 
 <pre><code class="language-swift">var body: some View {
-    // 红色圆圈作背景
     Text(&quot;Hello SwiftUI&quot;)
         .font(.largeTitle)
         .background(
@@ -612,9 +618,6 @@
         )
 }
 </code></pre>
-
-<p>运行效果:
-<img src="img/background_red_circle.png" alt="background_red_circle" title="Set background with a red circle" /></p>
 
 <p>明确地说，您可以使用任何视图作为背景，例如，如果需要，可以使用另一个文本视图。</p>
 

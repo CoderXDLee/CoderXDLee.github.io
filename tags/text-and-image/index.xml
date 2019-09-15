@@ -134,59 +134,71 @@
 
 &lt;p&gt;我们使用从白色到黑色的线性渐变来渲染文本视图，如下所示:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    Text(&amp;quot;Hello World&amp;quot;)
-        .padding()
-        .foregroundColor(.white)
-        .background(LinearGradient(gradient: Gradient(colors: [.white, .black]), startPoint: .top, endPoint: .bottom), cornerRadius: 0)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 1. 线性渐变: white -&amp;gt; black
+        Text(&amp;quot;Hello World&amp;quot;)
+            .padding()
+            .foregroundColor(.white)
+            .background(LinearGradient(gradient: Gradient(colors: [.white, .black]), startPoint: .top, endPoint: .bottom))
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/gradient_vertical_white_black.png&#34; alt=&#34;gradient_vertical_white_black&#34; title=&#34;vertical gradient: white -&amp;gt; black&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_vertical_white_black.png&#34; alt=&#34;1.7_gradient_vertical_white_black&#34; title=&#34;vertical gradient: white -&amp;gt; black&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;颜色被指定为一个数组，我们可以设置任意多我们想要的颜色 - 默认情况下，SwiftUI 将会平均分配这些颜色。所以，我们也可以这样从 白色 -&amp;gt; 红色 -&amp;gt; 黑色 来设置:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    Text(&amp;quot;Hello World&amp;quot;)
-        .padding()
-        .foregroundColor(.white)
-        .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .top, endPoint: .bottom), cornerRadius: 0)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 2. 线性渐变: white -&amp;gt; red -&amp;gt; black
+        Text(&amp;quot;Hello World&amp;quot;)
+            .padding()
+            .foregroundColor(.white)
+            .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .top, endPoint: .bottom))
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/gradient_vertical_white_red_black.png&#34; alt=&#34;gradient_vertical_white_red_black&#34; title=&#34;vertical gradient: white -&amp;gt; red -&amp;gt; black&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_vertical_white_red_black.png&#34; alt=&#34;1.7_gradient_vertical_white_red_black&#34; title=&#34;vertical gradient: white -&amp;gt; red -&amp;gt; black&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-水平线性渐变&#34;&gt;2. 水平线性渐变&lt;/h3&gt;
 
 &lt;p&gt;要实现一个水平渐变（a horizontal gradient）而不是一个垂直渐变（a vertical one），使用 &lt;code&gt;.leading&lt;/code&gt; 和 &lt;code&gt;.trailing&lt;/code&gt; 来作为 &lt;em&gt;startPoint&lt;/em&gt; 和 &lt;em&gt;endPoint&lt;/em&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    Text(&amp;quot;Hello World&amp;quot;)
-       .padding()
-       .foregroundColor(.white)
-       .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .leading, endPoint: .trailing), cornerRadius: 0)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 3. 水平线性渐变: white -&amp;gt; red -&amp;gt; black
+        Text(&amp;quot;Hello World&amp;quot;)
+            .padding()
+            .foregroundColor(.white)
+            .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .leading, endPoint: .trailing))
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/gradient_horizontal_white_red_black.png&#34; alt=&#34;gradient_horizontal_white_red_black&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_horizontal_white_red_black.png&#34; alt=&#34;1.7_gradient_horizontal_white_red_black&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;3-对角线线性渐变&#34;&gt;3. 对角线线性渐变&lt;/h3&gt;
 
 &lt;p&gt;要实现对角线渐变，可以使用 &lt;code&gt;.topLeading&lt;/code&gt; 和 &lt;code&gt;.bottomTrailing&lt;/code&gt; 作为 &lt;em&gt;startPoint&lt;/em&gt; 和 &lt;em&gt;endPoint&lt;/em&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    Text(&amp;quot;Hello World&amp;quot;)
-        .padding()
-        .foregroundColor(.white)
-        .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .topLeading, endPoint: .bottomTrailing), cornerRadius: 0)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 4. 对角线性渐变: white -&amp;gt; red -&amp;gt; black
+        Text(&amp;quot;Hello World&amp;quot;)
+            .padding()
+            .foregroundColor(.white)
+            .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .topLeading, endPoint: .bottomTrailing))
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/gradient_diagonal.png&#34; alt=&#34;gradient_diagonal&#34; title=&#34;diagonal gradient: white -&amp;gt; red -&amp;gt; black &#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_diagonal.png&#34; alt=&#34;1.7_gradient_diagonal&#34; title=&#34;diagonal gradient: white -&amp;gt; red -&amp;gt; black &#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -208,7 +220,7 @@ SwiftUI 的 &lt;code&gt;Image&lt;/code&gt; 视图能够以不同的方式进行�
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;Image(&amp;quot;ba_xian_tai&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
+&lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.6_the_default_content_mode.png&#34; alt=&#34;1.6_the_default_content_mode&#34; title=&#34;default content mode&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;如果添加 &lt;code&gt;resizable()&lt;/code&gt; 修饰符，则图像将自动调整大小，以填充所有可用空间:&lt;/p&gt;
@@ -217,7 +229,7 @@ SwiftUI 的 &lt;code&gt;Image&lt;/code&gt; 视图能够以不同的方式进行�
     .resizable()
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
+&lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.6_resizable_image.png&#34; alt=&#34;1.6_resizable_image&#34; title=&#34;resizable image&#34; /&gt;
 然而，这也可能导致图像的原始纵横比失真，因为它将在所有维度上被拉伸任意量，以使其填充空间。&lt;/p&gt;
 

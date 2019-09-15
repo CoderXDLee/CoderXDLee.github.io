@@ -801,7 +801,7 @@ struct ContentView_Previews: PreviewProvider {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;效果预览:
-&lt;img src=&#34;img/date_formatter_text.png&#34; alt=&#34;date_formatter&#34; title=&#34;date formatter&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/1.4_date_formatter_text.png&#34; alt=&#34;1.4_date_formatter_text.png&#34; title=&#34;date formatter&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

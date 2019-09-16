@@ -400,9 +400,9 @@ var body: some View {
       <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.1_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vstack%E5%92%8Chstack%E5%88%9B%E5%BB%BAstacks/</guid>
       <description>
 
-&lt;p&gt;SwiftUI 的内容视图 &lt;em&gt;content views&lt;/em&gt; 必须返回一个视图，即我们希望它们显示的视图。当我们想要一次在屏幕上显示多个视图时，我们需要告诉 SwiftUI 如何排列它们，这就是 &lt;code&gt;堆栈（stacks）&lt;/code&gt;的来源。&lt;/p&gt;
+&lt;p&gt;SwiftUI 的内容视图(content views)必须返回一个视图，即我们希望它们显示的视图。当我们想要一次性在屏幕上显示多个视图时，我们需要告诉 SwiftUI 如何排列它们，这就是 &lt;code&gt;堆栈（stacks）&lt;/code&gt;的来源。&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;堆栈（Stacks）&lt;/code&gt; 相当于 UIKit 中的 &lt;em&gt;UIStackView&lt;/em&gt; 。有三种形式:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;堆栈（Stacks）&lt;/code&gt; 相当于 UIKit 中的 &lt;strong&gt;UIStackView&lt;/strong&gt; 。有三种形式:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;水平（HStack）&lt;/li&gt;
@@ -416,16 +416,21 @@ var body: some View {
 
 &lt;p&gt;让我们从一些简单的事情开始，先创建一个文本视图:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    Text(&amp;quot;Hello SwiftUI&amp;quot;)
-        .background(Color.red)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {
+            // 1. 创建一个文本视图
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+                .background(Color.red)
+        }
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/single_text.png&#34; alt=&#34;single_text&#34; title=&#34;A single text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.1_single_text.png&#34; alt=&#34;2.1_single_text&#34; title=&#34;A single text&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;有了一个文本视图，如果我们想在下面再写一个，我们不能只写:&lt;/p&gt;
+&lt;p&gt;如果我们想在下面再放一个文本视图，我们不能只写:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
     Text(&amp;quot;Hello SwiftUI&amp;quot;)
@@ -438,18 +443,21 @@ var body: some View {
 
 &lt;p&gt;那么怎么办呢？我们需要将其放置在 &lt;code&gt;VStack&lt;/code&gt; 中，以便将文本视图放置在彼此上方:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    VStack {
-       Text(&amp;quot;Hello SwiftUI&amp;quot;)
-           .background(Color.red)
-       Text(&amp;quot;Hello M X&amp;quot;)   
-           .background(Color.blue)         
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {
+            // 2. 创建两个文本视图
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+                .background(Color.red)
+            Text(&amp;quot;hello M X&amp;quot;)
+                .background(Color.blue)
+        }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/two_text_in_vstack.png&#34; alt=&#34;two_text_in_vstack&#34; title=&#34;Two texts in VStack&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.1_two_text_in_vstack.png&#34; alt=&#34;2.1_two_text_in_vstack&#34; title=&#34;Two texts in VStack&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;您会注意到 &lt;code&gt;VStack&lt;/code&gt; 放置在屏幕的中心，标签也居中，它们之间有一些自动空间。&lt;/p&gt;
 
@@ -457,18 +465,21 @@ var body: some View {
 
 &lt;p&gt;如果我们希望文本视图并排水平放置，请使用如下方式将 &lt;code&gt;VStack&lt;/code&gt; 替换为 &lt;code&gt;HStack&lt;/code&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    HStack {
-       Text(&amp;quot;Hello SwiftUI&amp;quot;)
-           .background(Color.red)
-       Text(&amp;quot;Hello M X&amp;quot;)   
-           .background(Color.blue)         
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        HStack {
+            // 3. 水平放置
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+                .background(Color.red)
+            Text(&amp;quot;hello M X&amp;quot;)
+                .background(Color.blue)
+        }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/two_text_in_hstack.png&#34; alt=&#34;two_text_in_hstack&#34; title=&#34;Two texts in HStack&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.1_two_text_in_hstack.png&#34; alt=&#34;2.1_two_text_in_hstack&#34; title=&#34;Two texts in HStack&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

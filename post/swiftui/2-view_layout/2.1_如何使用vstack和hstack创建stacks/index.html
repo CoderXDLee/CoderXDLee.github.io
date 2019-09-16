@@ -560,9 +560,9 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<p>SwiftUI 的内容视图 <em>content views</em> 必须返回一个视图，即我们希望它们显示的视图。当我们想要一次在屏幕上显示多个视图时，我们需要告诉 SwiftUI 如何排列它们，这就是 <code>堆栈（stacks）</code>的来源。</p>
+<p>SwiftUI 的内容视图(content views)必须返回一个视图，即我们希望它们显示的视图。当我们想要一次性在屏幕上显示多个视图时，我们需要告诉 SwiftUI 如何排列它们，这就是 <code>堆栈（stacks）</code>的来源。</p>
 
-<p><code>堆栈（Stacks）</code> 相当于 UIKit 中的 <em>UIStackView</em> 。有三种形式:</p>
+<p><code>堆栈（Stacks）</code> 相当于 UIKit 中的 <strong>UIStackView</strong> 。有三种形式:</p>
 
 <ul>
 <li>水平（HStack）</li>
@@ -576,16 +576,21 @@
 
 <p>让我们从一些简单的事情开始，先创建一个文本视图:</p>
 
-<pre><code class="language-swift">var body: some View {
-    Text(&quot;Hello SwiftUI&quot;)
-        .background(Color.red)
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        VStack {
+            // 1. 创建一个文本视图
+            Text(&quot;Hello SwiftUI&quot;)
+                .background(Color.red)
+        }
+    }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/single_text.png" alt="single_text" title="A single text" /></p>
+<p>效果预览:
+<img src="img/2.1_single_text.png" alt="2.1_single_text" title="A single text" /></p>
 
-<p>有了一个文本视图，如果我们想在下面再写一个，我们不能只写:</p>
+<p>如果我们想在下面再放一个文本视图，我们不能只写:</p>
 
 <pre><code class="language-swift">var body: some View {
     Text(&quot;Hello SwiftUI&quot;)
@@ -598,18 +603,21 @@
 
 <p>那么怎么办呢？我们需要将其放置在 <code>VStack</code> 中，以便将文本视图放置在彼此上方:</p>
 
-<pre><code class="language-swift">var body: some View {
-    VStack {
-       Text(&quot;Hello SwiftUI&quot;)
-           .background(Color.red)
-       Text(&quot;Hello M X&quot;)   
-           .background(Color.blue)         
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        VStack {
+            // 2. 创建两个文本视图
+            Text(&quot;Hello SwiftUI&quot;)
+                .background(Color.red)
+            Text(&quot;hello M X&quot;)
+                .background(Color.blue)
+        }
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/two_text_in_vstack.png" alt="two_text_in_vstack" title="Two texts in VStack" /></p>
+<p>效果预览:
+<img src="img/2.1_two_text_in_vstack.png" alt="2.1_two_text_in_vstack" title="Two texts in VStack" /></p>
 
 <p>您会注意到 <code>VStack</code> 放置在屏幕的中心，标签也居中，它们之间有一些自动空间。</p>
 
@@ -617,18 +625,21 @@
 
 <p>如果我们希望文本视图并排水平放置，请使用如下方式将 <code>VStack</code> 替换为 <code>HStack</code>:</p>
 
-<pre><code class="language-swift">var body: some View {
-    HStack {
-       Text(&quot;Hello SwiftUI&quot;)
-           .background(Color.red)
-       Text(&quot;Hello M X&quot;)   
-           .background(Color.blue)         
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        HStack {
+            // 3. 水平放置
+            Text(&quot;Hello SwiftUI&quot;)
+                .background(Color.red)
+            Text(&quot;hello M X&quot;)
+                .background(Color.blue)
+        }
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/two_text_in_hstack.png" alt="two_text_in_hstack" title="Two texts in HStack" /></p>
+<p>效果预览:
+<img src="img/2.1_two_text_in_hstack.png" alt="2.1_two_text_in_hstack" title="Two texts in HStack" /></p>
 
     </div>
 

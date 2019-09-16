@@ -564,77 +564,88 @@
 
 <h3 id="1-系统默认-padding">1. 系统默认 padding</h3>
 
-<p>如果在不传参数的情况下使用 <em>padding()</em> ，您将在所有边上获得系统默认填充，如下所示:</p>
+<p>如果在不传参数的情况下使用 <em>padding()</em> ，我们将在视图的四周获得系统默认填充，如下所示:</p>
 
-<pre><code class="language-swift">var body: some View {
-    VStack {
-        Text(&quot;Hello SwiftUI&quot;)
-            .background(Color.red)
-            .padding()
-        Text(&quot;Hello M X&quot;)
-            .background(Color.blue)
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        VStack {
+            // 1. 系统默认 padding
+            Text(&quot;Hello SwiftUI&quot;)
+                .background(Color.red)
+                .padding()
+            Text(&quot;Hello M X&quot;)
+                .background(Color.blue)
+        }
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/padding_system_default.png" alt="padding_system_default" title="Set padding with system default" />
+<p>效果预览:
+<img src="img/2.3_padding_system_default.png" alt="2.3_padding_system_default" title="Set padding with system default" />
 注意: 这里默认设置了视图四周的填充。</p>
 
 <h3 id="2-只设置一侧系统默认-padding">2. 只设置一侧系统默认 padding</h3>
 
-<p>我们也可以自定义要 apply 的 <em>padding</em> 和位置。因此，我们只希望将系统填充应用于一侧:</p>
+<p>我们也可以自定义要应用的 填充 和 位置。因此，我们只希望将系统填充应用于一侧:</p>
 
-<pre><code class="language-swift">var body: some View {
-    VStack {
-        Text(&quot;Hello SwiftUI&quot;)
-            .background(Color.red)
-            .padding(.bottom)
-        Text(&quot;Hello M X&quot;)
-            .background(Color.blue)
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        VStack {  
+            // 2. 只设置一侧填充
+            Text(&quot;Hello SwiftUI&quot;)
+                .background(Color.red)
+                .padding(.bottom)
+            Text(&quot;Hello M X&quot;)
+                .background(Color.blue)
+        }
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/padding_system_bottom.png" alt="padding_system_bottom" title="Set bottom padding with system default" />
+<p>效果预览:
+<img src="img/2.3_padding_system_bottom.png" alt="2.3_padding_system_bottom" title="Set bottom padding with system default" />
 注意: 这里只设置了底部填充，与上面的例子不同。</p>
 
 <h3 id="3-用具体数值来设置-padding">3. 用具体数值来设置 padding</h3>
 
 <p>我们可能希望控制对所有边应用了多少填充:</p>
 
-<pre><code class="language-swift">var body: some View {
-    VStack {
-        Text(&quot;Hello SwiftUI&quot;)
-            .background(Color.red)
-            .padding(100)
-        Text(&quot;Hello M X&quot;)
-            .background(Color.blue)
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        VStack {  
+            // 2. 只设置一侧填充
+            Text(&quot;Hello SwiftUI&quot;)
+                .background(Color.red)
+                .padding(100)
+            Text(&quot;Hello M X&quot;)
+                .background(Color.blue)
+        }
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/padding_100.png" alt="padding_100" title="Set padding as 100" /></p>
+<p>效果预览:
+<img src="img/2.3_padding_100.png" alt="2.3_padding_100" title="Set padding as 100" /></p>
 
 <h3 id="4-在视图一侧添加特定数量的填充">4. 在视图一侧添加特定数量的填充</h3>
 
 <p>我们也可以将这两者结合起来，在视图的一侧添加特定数量的填充：</p>
 
-<pre><code class="language-swift">var body: some View {
-  VStack {
-      Text(&quot;Hello SwiftUI&quot;)
-          .background(Color.red)
-          .padding(.bottom, 100)
-      Text(&quot;Hello M X&quot;)
-          .background(Color.blue)
-  }
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text(&quot;Hello SwiftUI&quot;)
+                .background(Color.red)
+                .padding(.bottom, 100)
+            Text(&quot;Hello M X&quot;)
+                .background(Color.blue)
+        }
+    }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/padding_bottom_100.png" alt="padding_bottom_100" title="Set bottom padding as 100" /></p>
+<p>效果预览:
+<img src="img/2.3_padding_bottom_100.png" alt="2.3_padding_bottom_100" title="Set bottom padding as 100" /></p>
 
     </div>
 

@@ -228,77 +228,88 @@ var body: some View {
 
 &lt;h3 id=&#34;1-系统默认-padding&#34;&gt;1. 系统默认 padding&lt;/h3&gt;
 
-&lt;p&gt;如果在不传参数的情况下使用 &lt;em&gt;padding()&lt;/em&gt; ，您将在所有边上获得系统默认填充，如下所示:&lt;/p&gt;
+&lt;p&gt;如果在不传参数的情况下使用 &lt;em&gt;padding()&lt;/em&gt; ，我们将在视图的四周获得系统默认填充，如下所示:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    VStack {
-        Text(&amp;quot;Hello SwiftUI&amp;quot;)
-            .background(Color.red)
-            .padding()
-        Text(&amp;quot;Hello M X&amp;quot;)
-            .background(Color.blue)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {
+            // 1. 系统默认 padding
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+                .background(Color.red)
+                .padding()
+            Text(&amp;quot;Hello M X&amp;quot;)
+                .background(Color.blue)
+        }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/padding_system_default.png&#34; alt=&#34;padding_system_default&#34; title=&#34;Set padding with system default&#34; /&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.3_padding_system_default.png&#34; alt=&#34;2.3_padding_system_default&#34; title=&#34;Set padding with system default&#34; /&gt;
 注意: 这里默认设置了视图四周的填充。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-只设置一侧系统默认-padding&#34;&gt;2. 只设置一侧系统默认 padding&lt;/h3&gt;
 
-&lt;p&gt;我们也可以自定义要 apply 的 &lt;em&gt;padding&lt;/em&gt; 和位置。因此，我们只希望将系统填充应用于一侧:&lt;/p&gt;
+&lt;p&gt;我们也可以自定义要应用的 填充 和 位置。因此，我们只希望将系统填充应用于一侧:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    VStack {
-        Text(&amp;quot;Hello SwiftUI&amp;quot;)
-            .background(Color.red)
-            .padding(.bottom)
-        Text(&amp;quot;Hello M X&amp;quot;)
-            .background(Color.blue)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {  
+            // 2. 只设置一侧填充
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+                .background(Color.red)
+                .padding(.bottom)
+            Text(&amp;quot;Hello M X&amp;quot;)
+                .background(Color.blue)
+        }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/padding_system_bottom.png&#34; alt=&#34;padding_system_bottom&#34; title=&#34;Set bottom padding with system default&#34; /&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.3_padding_system_bottom.png&#34; alt=&#34;2.3_padding_system_bottom&#34; title=&#34;Set bottom padding with system default&#34; /&gt;
 注意: 这里只设置了底部填充，与上面的例子不同。&lt;/p&gt;
 
 &lt;h3 id=&#34;3-用具体数值来设置-padding&#34;&gt;3. 用具体数值来设置 padding&lt;/h3&gt;
 
 &lt;p&gt;我们可能希望控制对所有边应用了多少填充:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    VStack {
-        Text(&amp;quot;Hello SwiftUI&amp;quot;)
-            .background(Color.red)
-            .padding(100)
-        Text(&amp;quot;Hello M X&amp;quot;)
-            .background(Color.blue)
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {  
+            // 2. 只设置一侧填充
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+                .background(Color.red)
+                .padding(100)
+            Text(&amp;quot;Hello M X&amp;quot;)
+                .background(Color.blue)
+        }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/padding_100.png&#34; alt=&#34;padding_100&#34; title=&#34;Set padding as 100&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.3_padding_100.png&#34; alt=&#34;2.3_padding_100&#34; title=&#34;Set padding as 100&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;4-在视图一侧添加特定数量的填充&#34;&gt;4. 在视图一侧添加特定数量的填充&lt;/h3&gt;
 
 &lt;p&gt;我们也可以将这两者结合起来，在视图的一侧添加特定数量的填充：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-  VStack {
-      Text(&amp;quot;Hello SwiftUI&amp;quot;)
-          .background(Color.red)
-          .padding(.bottom, 100)
-      Text(&amp;quot;Hello M X&amp;quot;)
-          .background(Color.blue)
-  }
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text(&amp;quot;Hello SwiftUI&amp;quot;)
+                .background(Color.red)
+                .padding(.bottom, 100)
+            Text(&amp;quot;Hello M X&amp;quot;)
+                .background(Color.blue)
+        }
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/padding_bottom_100.png&#34; alt=&#34;padding_bottom_100&#34; title=&#34;Set bottom padding as 100&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.3_padding_bottom_100.png&#34; alt=&#34;2.3_padding_bottom_100&#34; title=&#34;Set bottom padding as 100&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

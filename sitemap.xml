@@ -3,7 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://coderxdlee.github.io/authors/admin/</loc>
+    <lastmod>2019-09-17T10:20:30+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://coderxdlee.github.io/post/flutter/01-getting_started_with_flutter/1.1_introduction_to_flutter/</loc>
+    <lastmod>2019-09-17T10:20:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/authors/</loc>
+    <lastmod>2019-09-17T10:20:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/categories/</loc>
+    <lastmod>2019-09-17T10:20:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/categories/flutter/</loc>
+    <lastmod>2019-09-17T10:20:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coderxdlee.github.io/tags/getting-started-with-flutter/</loc>
     <lastmod>2019-09-17T10:20:30+08:00</lastmod>
   </url>
   
@@ -18,22 +43,12 @@
   </url>
   
   <url>
-    <loc>https://coderxdlee.github.io/authors/admin/</loc>
-    <lastmod>2019-08-10T22:31:10+08:00</lastmod>
+    <loc>https://coderxdlee.github.io/tags/</loc>
+    <lastmod>2019-09-17T10:20:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://coderxdlee.github.io/post/swiftui/14-swift_tips_and_tricks/14-swiftui%E7%9A%84%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2019-08-10T22:31:10+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coderxdlee.github.io/authors/</loc>
-    <lastmod>2019-08-10T22:31:10+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coderxdlee.github.io/categories/</loc>
     <lastmod>2019-08-10T22:31:10+08:00</lastmod>
   </url>
   
@@ -44,11 +59,6 @@
   
   <url>
     <loc>https://coderxdlee.github.io/tags/swiftui-tips-and-tricks/</loc>
-    <lastmod>2019-08-10T22:31:10+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coderxdlee.github.io/tags/</loc>
     <lastmod>2019-08-10T22:31:10+08:00</lastmod>
   </url>
   

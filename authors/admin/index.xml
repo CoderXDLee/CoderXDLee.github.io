@@ -7,10 +7,53 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Sat, 10 Aug 2019 22:31:10 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Sep 2019 10:20:30 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>1.1_Flutter 简介</title>
+      <link>https://coderxdlee.github.io/post/flutter/01-getting_started_with_flutter/1.1_introduction_to_flutter/</link>
+      <pubDate>Tue, 17 Sep 2019 10:20:30 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/flutter/01-getting_started_with_flutter/1.1_introduction_to_flutter/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;h1 id=&#34;1-前言&#34;&gt;1 - 前言&lt;/h1&gt;
+
+&lt;p&gt;自从十年前 iOS 和 Android 平台出现爆发式增长以来，跨平台开发(cross-platform development)一直是移动开发界的一个目标。同时为 iOS 和 Android 编写一个应用程序的能力可以为您的公司和团队节省大量的时间和精力。&lt;/p&gt;
+
+&lt;p&gt;多年来，已经发布了各种用于跨平台开发的工具，包括:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基于 Web 的工具: 如 Adobe 的 &lt;code&gt;PhoneGap&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;强大的框架: 如 Microsoft 的 &lt;code&gt;Xamarin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;较新的工具: 如 Facebook 的 &lt;code&gt;React Native&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;每个工具集都有优缺点，它们在移动行业中都取得了不同程度的成功。&lt;/p&gt;
+
+&lt;p&gt;当然，进入跨平台开发领域的最新框架是来自 Google 的 &lt;code&gt;Flutter&lt;/code&gt;。Flutter 在两个平台上都具有:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;快速的开发周期&lt;/li&gt;
+&lt;li&gt;快速的 UI 渲染&lt;/li&gt;
+&lt;li&gt;独特的 UI 设计&lt;/li&gt;
+&lt;li&gt;原生应用程序性能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;2-介绍&#34;&gt;2 - 介绍&lt;/h1&gt;
+
+&lt;p&gt;Flutter 应用程序是使用 &lt;code&gt;Dart&lt;/code&gt; 编程语言编写的，也是源自 Google，现在是 ECMA 标准。Dart 与其他现代语言（如 &lt;code&gt;Kotlin&lt;/code&gt; 和 &lt;code&gt;Swift&lt;/code&gt;）具有许多相同的特性，可以被编译成&lt;code&gt;Javascript&lt;/code&gt; 代码。&lt;/p&gt;
+
+&lt;p&gt;作为一个跨平台框架，Flutter 与 React Native 最为相似，因为 Flutter 允许一种 &lt;strong&gt;响应式&lt;/strong&gt; 和 &lt;strong&gt;声明式&lt;/strong&gt; 的编程风格。 然而，与 React Native 不同，Flutter 不需要使用 &lt;code&gt;Javascript bridge&lt;/code&gt;，这样就可以改善应用程序启动时间和整体性能。 Dart 通过使用 &lt;code&gt;Ahead-Of-Time&lt;/code&gt; 或 &lt;code&gt;AOT&lt;/code&gt; 编译来实现此目的。&lt;/p&gt;
+
+&lt;p&gt;Dart 的另一个独特之处是它也可以使用 &lt;code&gt;Just-In-Time&lt;/code&gt; 或 &lt;code&gt;JIT&lt;/code&gt; 编译。 使用 Flutter进行 JIT 编译通过允许 &lt;strong&gt;热重载(hot reload)&lt;/strong&gt; 功能在开发期间刷新 UI， 而无需全新的构建，从而改进了开发工作流程。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>14_SwiftUI的提示和技巧</title>

@@ -7,10 +7,176 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Tue, 17 Sep 2019 10:20:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 19 Sep 2019 00:17:27 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>1.2_设置 Flutter 的开发环境</title>
+      <link>https://coderxdlee.github.io/post/flutter/01-getting_started_with_flutter/1.2_setting_up_development_environment/</link>
+      <pubDate>Thu, 19 Sep 2019 00:17:27 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/flutter/01-getting_started_with_flutter/1.2_setting_up_development_environment/</guid>
+      <description>
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;我们可以在 macOS，Linux 或 Windows 上进行 Flutter 开发。 虽然我们可以使用任何带有 &lt;strong&gt;Flutter 工具链&lt;/strong&gt; 的编辑器，但是 &lt;code&gt;IntelliJ IDEA&lt;/code&gt;，&lt;code&gt;Android Studio&lt;/code&gt; 和 &lt;code&gt;Visual Studio Code&lt;/code&gt; 的 IDE 插件可以简化开发周期。 我们将使用 &lt;strong&gt;VS Code&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h1 id=&#34;1-下载-sdk&#34;&gt;1 - 下载 SDK&lt;/h1&gt;
+
+&lt;p&gt;下载开发机器操作系统对应的安装包，以获取 &lt;code&gt;Flutter SDK&lt;/code&gt; 的最新稳定版本。这里，我使用的是 Mac 操作系统:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;macOS Catalina&lt;/li&gt;
+&lt;li&gt;10.15 Beta版(19A558d)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-1-系统要求&#34;&gt;1.1 系统要求&lt;/h2&gt;
+
+&lt;p&gt;要安装和运行 Flutter，我们的开发环境必须满足以下最低要求:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;操作系统: macOS(64位)&lt;/li&gt;
+&lt;li&gt;磁盘空间: 2.8 GB（不包括IDE /工具的磁盘空间）&lt;/li&gt;
+&lt;li&gt;工具: Flutter 依赖于您的环境中可用的这些命令行工具
+
+&lt;ul&gt;
+&lt;li&gt;bash&lt;/li&gt;
+&lt;li&gt;curl&lt;/li&gt;
+&lt;li&gt;git 2.x&lt;/li&gt;
+&lt;li&gt;mkdir&lt;/li&gt;
+&lt;li&gt;rm&lt;/li&gt;
+&lt;li&gt;unzip&lt;/li&gt;
+&lt;li&gt;which&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-2-获取-flutter-sdk&#34;&gt;1.2 获取 Flutter SDK&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-2-1-下载以下安装包以获取-flutter-sdk-的最新稳定版本&#34;&gt;1.2.1 下载以下安装包以获取 Flutter SDK 的最新稳定版本&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://flutter.dev/docs/development/tools/sdk/releases?tab=macos&#34; target=&#34;_blank&#34;&gt;Flutter SDK archive for macOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;我下载的是当前最新版本 &lt;code&gt;flutter_macos_v1.9.1+hotfix.2-stable&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-2-2-在目标位置提取文件&#34;&gt;1.2.2 在目标位置提取文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt; cd ~/development
+ unzip ~/Downloads/flutter_macos_v1.9.1+hotfix.2-stable.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-2-3-将-flutter-工具添加到我们的路径-path&#34;&gt;1.2.3 将 Flutter 工具添加到我们的路径(PATH)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;临时路径&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;export PATH=&amp;quot;$PATH:`pwd`/flutter/bin&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此命令仅为当前终端窗口设置 PATH 变量。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;永久路径&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;export PATH=&amp;quot;$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们可以在命令行更新当前会话的 PATH 变量，如临时路径中所示。 但是，我们可能希望永久更新此变量，以便于我们可以在任何终端会话中运行 flutter 命令。&lt;/p&gt;
+
+&lt;p&gt;为所有终端会话永久修改此变量的步骤是特定于计算机的。通常，您会在打开新窗口时执行的文件中添加一行。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;第1步: 确定放置 Flutter SDK 的目录。第 3 步需要用到。&lt;/li&gt;
+&lt;li&gt;第2步: 为你的 shell 打开或创建 &lt;code&gt;rc&lt;/code&gt; 文件。
+
+&lt;ul&gt;
+&lt;li&gt;macOS Mojave(及更早版本) 默认使用 &lt;code&gt;Bash shell&lt;/code&gt;，因此编辑 &lt;code&gt;$HOME/.bashrc&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;macOS Catalina 默认使用 &lt;code&gt;Z shell&lt;/code&gt;，因此编辑 &lt;code&gt;$HOME/.zshrc&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;如果你使用的是其他 shell，则计算机上的文件路径和文件名将有所不同。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第3步: 添加以下行并将 &lt;code&gt;[PATH_TO_FLUTTER_GIT_DIRECTORY]&lt;/code&gt; 更改为克隆 Flutter 的 git repo 的路径:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;export PATH=&amp;quot;$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我的路径为:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;export PATH=&amp;quot;/Users/devin/development/flutter/bin:$PATH&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第4步: 运行 &lt;code&gt;source $ HOME /.&amp;lt;rc file&amp;gt;&lt;/code&gt; 刷新当前窗口，或打开一个新的终端窗口以自动获取文件。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第5步: 通过运行以下命令验证 &lt;code&gt;flutter/bin&lt;/code&gt; 目录现在位于PATH中:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;echo $PATH
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过运行以下命令验证 flutter 命令是否可用:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;which flutter
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/1.2_echo_$PATH_which_flutter.png&#34; alt=&#34;1.2_echo_$PATH_which_flutter&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;1-2-4-可选操作-预先下载开发二进制文件&#34;&gt;1.2.4 可选操作: 预先下载开发二进制文件&lt;/h3&gt;
+
+&lt;p&gt;Flutter 工具根据需要下载特定平台的开发二进制文件。可以通过运行以下方式提前下载iOS和Android二进制文件:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;flutter precache
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;1-3-执行-flutter-doctor-命令&#34;&gt;1.3 执行 flutter doctor 命令&lt;/h2&gt;
+
+&lt;p&gt;运行以下命令以查看是否需要安装任何依赖项来完成设置（对于详细输出，请添加-v标志）:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;flutter doctor
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/1.2_flutter_doctor.png&#34; alt=&#34;1.2_flutter_doctor&#34; /&gt;
+如图可知，我们需要安装的依赖项如下:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Flutter SDK
+
+&lt;ul&gt;
+&lt;li&gt;我们已经通过之前的步骤安装成功。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Android toolchain
+
+&lt;ul&gt;
+&lt;li&gt;Android SDK 我们可以通过 Android Studio 的 SDK Manager 来下载安装，这里最新版本需要下载 &lt;code&gt;android-29&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Xcode
+
+&lt;ul&gt;
+&lt;li&gt;通过 AppStore 或者 苹果开发者网站&lt;a href=&#34;https://developer.apple.com/download/&#34; target=&#34;_blank&#34;&gt;下载&lt;/a&gt;即可。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Android Studio
+
+&lt;ul&gt;
+&lt;li&gt;Android Studio 官网&lt;a href=&#34;https://developer.android.com/studio&#34; target=&#34;_blank&#34;&gt;下载&lt;/a&gt;即可。&lt;/li&gt;
+&lt;li&gt;需要在 Android Studio 客户端上安装 &lt;code&gt;Flutter plugin&lt;/code&gt; 和 &lt;code&gt;Dart plugin&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;VS Code
+
+&lt;ul&gt;
+&lt;li&gt;Visual Studio Code 官网&lt;a href=&#34;https://code.visualstudio.com/&#34; target=&#34;_blank&#34;&gt;下载&lt;/a&gt;即可。&lt;/li&gt;
+&lt;li&gt;需要在 Visual Studio Code 客户端上安装 &lt;code&gt;Flutter plugin&lt;/code&gt; 和 &lt;code&gt;Dart plugin&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Connected device
+
+&lt;ul&gt;
+&lt;li&gt;iOS 可以通过执行 &lt;code&gt;open -a simulator&lt;/code&gt; 快速打开一个模拟器；Android 可以通过 Android Studio 打开一个 emulator。
+下图表示所有依赖项安装完毕:
+&lt;img src=&#34;img/1.2_flutter_doctor_v_done.png&#34; alt=&#34;1.2_flutter_doctor_v_done&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;至此，Flutter 的开发环境就搭建完成了，接下来，我们就可以进行 flutter 的开发了。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>1.1_Flutter 简介</title>

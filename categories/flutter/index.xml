@@ -134,7 +134,9 @@
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;flutter doctor
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;img/1.2_flutter_doctor.png&#34; alt=&#34;1.2_flutter_doctor&#34; /&gt;
+&lt;p&gt;此命令检查您的环境并向终端窗口显示报告。 Dart SDK 与 Flutter 捆绑在一起; 没有必要单独安装 Dart。 仔细检查输出以了解可能需要安装的其他软件或执行的其他任务（以粗体显示）。
+例如:
+&lt;img src=&#34;img/1.2_flutter_doctor.png&#34; alt=&#34;1.2_flutter_doctor&#34; /&gt;
 如图可知，我们需要安装的依赖项如下:&lt;/p&gt;
 
 &lt;ul&gt;

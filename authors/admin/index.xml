@@ -7,10 +7,99 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Thu, 19 Sep 2019 00:17:27 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Oct 2019 21:27:39 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2.4_如何使用Spacer将视图强制移到堆栈中的一侧</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.4_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8spacer%E5%B0%86%E8%A7%86%E5%9B%BE%E5%BC%BA%E5%88%B6%E7%A7%BB%E5%88%B0%E5%A0%86%E6%A0%88%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BE%A7/</link>
+      <pubDate>Sat, 12 Oct 2019 21:27:39 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.4_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8spacer%E5%B0%86%E8%A7%86%E5%9B%BE%E5%BC%BA%E5%88%B6%E7%A7%BB%E5%88%B0%E5%A0%86%E6%A0%88%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BE%A7/</guid>
+      <description>
+
+&lt;p&gt;默认情况下，SwiftUI 会将其视图居中，这意味着: 如果将三个文本视图放在 VStack 中，则这三个文本视图将垂直居中显示在屏幕上。如果要更改此设置(如果要强制视图朝向屏幕的顶部/底部/左侧/右侧)，则应使用 &lt;code&gt;Spacer&lt;/code&gt; 视图。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-不使用-spacer&#34;&gt;1. 不使用 Spacer&lt;/h3&gt;
+
+&lt;p&gt;例如，我们将一个文本视图放置在 VStack 内，这意味着它将垂直居中:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        
+        // 1. 不使用 Spacer
+        VStack {
+            Text(&amp;quot;Hello World&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.4_default_without_spacer.png&#34; alt=&#34;2.4_default_without_spacer&#34; title=&#34;Without spacer view&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-将文本视图推到父视图的顶部&#34;&gt;2. 将文本视图推到父视图的顶部&lt;/h3&gt;
+
+&lt;p&gt;要将文本视图推到父视图的顶部，我们将在其下面放置一个 &lt;code&gt;Spacer&lt;/code&gt; 视图，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 2. 使用 Spacer 将文本视图推到父视图顶部
+        VStack {
+            Text(&amp;quot;Hello World&amp;quot;)
+            Spacer()
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.4_push_text_to_top.png&#34; alt=&#34;2.4_push_text_to_top&#34; title=&#34;Push text view to super view&#39;s top using spacer view&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-在-hstack-中使用-spacer&#34;&gt;3. 在 HStack 中使用 Spacer&lt;/h3&gt;
+
+&lt;p&gt;如果我们希望在 HStack 的前后边缘上有两段文字，可以使用这样的分隔符:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 3. 在 HStack 中使用 Spacer
+        HStack {
+            Text(&amp;quot;Hello&amp;quot;)
+            Spacer()
+            Text(&amp;quot;World&amp;quot;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.4_using_spacer_in_hstack.png&#34; alt=&#34;2.4_using_spacer_in_hstack&#34; title=&#34;Using spacer view in HStack, to seperate two text views&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-多个-spacer-分割空间&#34;&gt;4. 多个 Spacer 分割空间&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;Spacer&lt;/code&gt; 会自动分割所有剩余空间，这意味着如果您使用多个 Spacer，则可以按不同数量分割空间。&lt;/p&gt;
+
+&lt;p&gt;例如，这将通过在其上放置一个空格，在其后放置两个空格，将文本视图置于其父视图的三分之一以下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 4. 多个 Spacer 分割空间
+        VStack {
+            Spacer()
+            Text(&amp;quot;Hello world.&amp;quot;)
+            Spacer()
+            Spacer()
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.4_using_multi_spacer.png&#34; alt=&#34;2.4_using_multi_spacer&#34; title=&#34;Using multi spacer view to divide up all remaining space&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>1.2_搭建 Flutter 的开发环境</title>
@@ -4748,8 +4837,11 @@ var body: some View {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;效果预览:
-&lt;img src=&#34;img/2.3_padding_system_default.png&#34; alt=&#34;2.3_padding_system_default&#34; title=&#34;Set padding with system default&#34; /&gt;
-注意: 这里默认设置了视图四周的填充。&lt;/p&gt;
+&lt;img src=&#34;img/2.3_padding_system_default.png&#34; alt=&#34;2.3_padding_system_default&#34; title=&#34;Set padding with system default&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;注意: 这里默认设置了视图四周的填充。&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&#34;2-只设置一侧系统默认-padding&#34;&gt;2. 只设置一侧系统默认 padding&lt;/h3&gt;
 
@@ -4770,8 +4862,11 @@ var body: some View {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;效果预览:
-&lt;img src=&#34;img/2.3_padding_system_bottom.png&#34; alt=&#34;2.3_padding_system_bottom&#34; title=&#34;Set bottom padding with system default&#34; /&gt;
-注意: 这里只设置了底部填充，与上面的例子不同。&lt;/p&gt;
+&lt;img src=&#34;img/2.3_padding_system_bottom.png&#34; alt=&#34;2.3_padding_system_bottom&#34; title=&#34;Set bottom padding with system default&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;注意: 这里只设置了底部填充，与上面的例子不同。&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&#34;3-用具体数值来设置-padding&#34;&gt;3. 用具体数值来设置 padding&lt;/h3&gt;
 
@@ -4846,7 +4941,7 @@ var body: some View {
 
 &lt;h3 id=&#34;2-divider&#34;&gt;2. &lt;code&gt;Divider&lt;/code&gt;&lt;/h3&gt;
 
-&lt;p&gt;我们可以在项目之间创建分隔符，以便 SwiftUI 在 &lt;em&gt;stack&lt;/em&gt; 中的每个项目之间进行小的视觉区分，如下所示:&lt;/p&gt;
+&lt;p&gt;我们可以在项目之间创建分隔线，以便 SwiftUI 在 &lt;em&gt;stack&lt;/em&gt; 中的每个项目之间进行较小的视觉区分，如下所示:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     var body: some View {
@@ -4964,8 +5059,11 @@ var body: some View {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;这样的话，编译器会直接报错。
-记住，我们只能返回一个视图，否则代码就不会工作。&lt;/p&gt;
+&lt;p&gt;这样的话，编译器会直接报错。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;记住，我们只能返回一个视图，否则代码就不会工作。&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;那么怎么办呢？我们需要将其放置在 &lt;code&gt;VStack&lt;/code&gt; 中，以便将文本视图放置在彼此上方:&lt;/p&gt;
 
@@ -4985,7 +5083,7 @@ var body: some View {
 &lt;p&gt;效果预览:
 &lt;img src=&#34;img/2.1_two_text_in_vstack.png&#34; alt=&#34;2.1_two_text_in_vstack&#34; title=&#34;Two texts in VStack&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;您会注意到 &lt;code&gt;VStack&lt;/code&gt; 放置在屏幕的中心，标签也居中，它们之间有一些自动空间。&lt;/p&gt;
+&lt;p&gt;您会注意到: &lt;code&gt;VStack&lt;/code&gt; 位于屏幕的中心，标签也居中，并且它们之间有一些自动间隔。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-hstack&#34;&gt;2. HStack&lt;/h3&gt;
 
@@ -5076,6 +5174,9 @@ var body: some View {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.9_background_red_circle_clipped.png&#34; alt=&#34;1.9_background_red_circle_clipped&#34; /&gt;&lt;/p&gt;
+
 &lt;p&gt;明确地说，您可以使用任何视图作为背景，例如，如果需要，可以使用另一个文本视图。&lt;/p&gt;
 </description>
     </item>
@@ -5104,7 +5205,7 @@ var body: some View {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
+&lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.8_square_red_wh200.png&#34; alt=&#34;1.8_square_red_wh200&#34; title=&#34;Square: 200 x 200&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-圆&#34;&gt;2. 圆&lt;/h3&gt;
@@ -5121,7 +5222,7 @@ var body: some View {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
+&lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.8_circle_blue_r50.png&#34; alt=&#34;1.8_circle_blue_r50&#34; title=&#34;Circle: 50 x 50&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
@@ -5205,6 +5306,62 @@ var body: some View {
 
 &lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.7_gradient_diagonal.png&#34; alt=&#34;1.7_gradient_diagonal&#34; title=&#34;diagonal gradient: white -&amp;gt; red -&amp;gt; black &#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-径向渐变&#34;&gt;4. 径向渐变&lt;/h3&gt;
+
+&lt;p&gt;对于其他渐变样式，请尝试 &lt;code&gt;RadialGradient&lt;/code&gt; 或 &lt;code&gt;AngularGradient&lt;/code&gt;。
+例如，这将创建一个从圆心开始到边缘的各种颜色的径向渐变:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 5. 径向渐变
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple])
+        let conic = RadialGradient(gradient: colors, center: .center, startRadius: 50, endRadius: 200)
+        return Circle()
+            .fill(conic)
+            .frame(width: 400, height: 400)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_radial.png&#34; alt=&#34;1.7_gradient_radial&#34; title=&#34;Radial gradient&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;5-角度渐变-圆锥梯度&#34;&gt;5. 角度渐变(圆锥梯度)&lt;/h3&gt;
+
+&lt;p&gt;这就形成一个角梯度（通常称为圆锥梯度），通过各种颜色然后返回到开始循环:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 6. 圆锥梯度
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red])
+        let conic = AngularGradient(gradient: colors, center: .center)
+        return Circle()
+            .fill(conic)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_angular.png&#34; alt=&#34;1.7_gradient_angular&#34; title=&#34;Angular gradient&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;6-角度渐变-圆环&#34;&gt;6. 角度渐变(圆环)&lt;/h3&gt;
+
+&lt;p&gt;由于所有三种渐变类型都符合 &lt;code&gt;ShapeStyle&lt;/code&gt; 协议，因此可以将它们用于背景，填充和笔触。 例如，这使用我们的彩虹圆锥形渐变作为圆的粗内部笔画：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 7. 圆环
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red])
+        let conic = AngularGradient(gradient: colors, center: .center, startAngle: .zero, endAngle: .degrees(360))
+        return Circle()
+            .strokeBorder(conic, lineWidth: 50)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_circle.png&#34; alt=&#34;1.7_gradient_circle&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -5400,7 +5557,7 @@ struct ContentView_Previews: PreviewProvider {
 
 &lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.3_text_font_large_title.png&#34; alt=&#34;1.3_text_font_large_title&#34; title=&#34;Set a font for text&#34; /&gt;
-我们现在在文本视图下面使用了两个修改器，这没关系 - 你可以将它们堆叠起来，并且它们都会生效。&lt;/p&gt;
+我们现在在文本视图下面使用了两个修改器，这没关系 - 我们可以将它们堆叠起来，并且它们都会生效。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-设置文本对齐方式&#34;&gt;2. 设置文本对齐方式&lt;/h3&gt;
 

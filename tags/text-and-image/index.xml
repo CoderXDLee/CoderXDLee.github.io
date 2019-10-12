@@ -79,6 +79,9 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.9_background_red_circle_clipped.png&#34; alt=&#34;1.9_background_red_circle_clipped&#34; /&gt;&lt;/p&gt;
+
 &lt;p&gt;明确地说，您可以使用任何视图作为背景，例如，如果需要，可以使用另一个文本视图。&lt;/p&gt;
 </description>
     </item>
@@ -107,7 +110,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
+&lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.8_square_red_wh200.png&#34; alt=&#34;1.8_square_red_wh200&#34; title=&#34;Square: 200 x 200&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-圆&#34;&gt;2. 圆&lt;/h3&gt;
@@ -124,7 +127,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
+&lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.8_circle_blue_r50.png&#34; alt=&#34;1.8_circle_blue_r50&#34; title=&#34;Circle: 50 x 50&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
@@ -208,6 +211,62 @@
 
 &lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.7_gradient_diagonal.png&#34; alt=&#34;1.7_gradient_diagonal&#34; title=&#34;diagonal gradient: white -&amp;gt; red -&amp;gt; black &#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;4-径向渐变&#34;&gt;4. 径向渐变&lt;/h3&gt;
+
+&lt;p&gt;对于其他渐变样式，请尝试 &lt;code&gt;RadialGradient&lt;/code&gt; 或 &lt;code&gt;AngularGradient&lt;/code&gt;。
+例如，这将创建一个从圆心开始到边缘的各种颜色的径向渐变:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 5. 径向渐变
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple])
+        let conic = RadialGradient(gradient: colors, center: .center, startRadius: 50, endRadius: 200)
+        return Circle()
+            .fill(conic)
+            .frame(width: 400, height: 400)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_radial.png&#34; alt=&#34;1.7_gradient_radial&#34; title=&#34;Radial gradient&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;5-角度渐变-圆锥梯度&#34;&gt;5. 角度渐变(圆锥梯度)&lt;/h3&gt;
+
+&lt;p&gt;这就形成一个角梯度（通常称为圆锥梯度），通过各种颜色然后返回到开始循环:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 6. 圆锥梯度
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red])
+        let conic = AngularGradient(gradient: colors, center: .center)
+        return Circle()
+            .fill(conic)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_angular.png&#34; alt=&#34;1.7_gradient_angular&#34; title=&#34;Angular gradient&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;6-角度渐变-圆环&#34;&gt;6. 角度渐变(圆环)&lt;/h3&gt;
+
+&lt;p&gt;由于所有三种渐变类型都符合 &lt;code&gt;ShapeStyle&lt;/code&gt; 协议，因此可以将它们用于背景，填充和笔触。 例如，这使用我们的彩虹圆锥形渐变作为圆的粗内部笔画：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 7. 圆环
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red])
+        let conic = AngularGradient(gradient: colors, center: .center, startAngle: .zero, endAngle: .degrees(360))
+        return Circle()
+            .strokeBorder(conic, lineWidth: 50)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/1.7_gradient_circle.png&#34; alt=&#34;1.7_gradient_circle&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -403,7 +462,7 @@ struct ContentView_Previews: PreviewProvider {
 
 &lt;p&gt;效果预览:
 &lt;img src=&#34;img/1.3_text_font_large_title.png&#34; alt=&#34;1.3_text_font_large_title&#34; title=&#34;Set a font for text&#34; /&gt;
-我们现在在文本视图下面使用了两个修改器，这没关系 - 你可以将它们堆叠起来，并且它们都会生效。&lt;/p&gt;
+我们现在在文本视图下面使用了两个修改器，这没关系 - 我们可以将它们堆叠起来，并且它们都会生效。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-设置文本对齐方式&#34;&gt;2. 设置文本对齐方式&lt;/h3&gt;
 

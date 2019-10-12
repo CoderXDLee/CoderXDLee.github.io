@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Thu, 19 Sep 2019 00:17:27 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Oct 2019 21:27:39 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>View layout</title>
+      <link>https://coderxdlee.github.io/tags/view-layout/</link>
+      <pubDate>Sat, 12 Oct 2019 21:27:39 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/tags/view-layout/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Getting started with flutter</title>
@@ -126,15 +135,6 @@
       <pubDate>Sun, 28 Jul 2019 20:37:20 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/tags/responding-to-events/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>View layout</title>
-      <link>https://coderxdlee.github.io/tags/view-layout/</link>
-      <pubDate>Fri, 26 Jul 2019 22:12:50 +0800</pubDate>
-      
-      <guid>https://coderxdlee.github.io/tags/view-layout/</guid>
       <description></description>
     </item>
     

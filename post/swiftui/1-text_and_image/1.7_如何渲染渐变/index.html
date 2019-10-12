@@ -424,7 +424,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    2 min read
   </span>
   
 
@@ -631,6 +631,62 @@
 
 <p>效果预览:
 <img src="img/1.7_gradient_diagonal.png" alt="1.7_gradient_diagonal" title="diagonal gradient: white -&gt; red -&gt; black " /></p>
+
+<h3 id="4-径向渐变">4. 径向渐变</h3>
+
+<p>对于其他渐变样式，请尝试 <code>RadialGradient</code> 或 <code>AngularGradient</code>。
+例如，这将创建一个从圆心开始到边缘的各种颜色的径向渐变:</p>
+
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        // 5. 径向渐变
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple])
+        let conic = RadialGradient(gradient: colors, center: .center, startRadius: 50, endRadius: 200)
+        return Circle()
+            .fill(conic)
+            .frame(width: 400, height: 400)
+    }
+}
+</code></pre>
+
+<p>效果预览:
+<img src="img/1.7_gradient_radial.png" alt="1.7_gradient_radial" title="Radial gradient" /></p>
+
+<h3 id="5-角度渐变-圆锥梯度">5. 角度渐变(圆锥梯度)</h3>
+
+<p>这就形成一个角梯度（通常称为圆锥梯度），通过各种颜色然后返回到开始循环:</p>
+
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        // 6. 圆锥梯度
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red])
+        let conic = AngularGradient(gradient: colors, center: .center)
+        return Circle()
+            .fill(conic)
+    }
+}
+</code></pre>
+
+<p>效果预览:
+<img src="img/1.7_gradient_angular.png" alt="1.7_gradient_angular" title="Angular gradient" /></p>
+
+<h3 id="6-角度渐变-圆环">6. 角度渐变(圆环)</h3>
+
+<p>由于所有三种渐变类型都符合 <code>ShapeStyle</code> 协议，因此可以将它们用于背景，填充和笔触。 例如，这使用我们的彩虹圆锥形渐变作为圆的粗内部笔画：</p>
+
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        // 7. 圆环
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red])
+        let conic = AngularGradient(gradient: colors, center: .center, startAngle: .zero, endAngle: .degrees(360))
+        return Circle()
+            .strokeBorder(conic, lineWidth: 50)
+    }
+}
+</code></pre>
+
+<p>效果预览:
+<img src="img/1.7_gradient_circle.png" alt="1.7_gradient_circle" /></p>
 
     </div>
 

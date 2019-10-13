@@ -18,7 +18,43 @@
       <pubDate>Sat, 12 Oct 2019 23:42:35 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.7_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8z%E7%B4%A2%E5%BC%95%E6%9B%B4%E6%94%B9%E8%A7%86%E5%9B%BE%E5%88%86%E5%B1%82%E7%9A%84%E9%A1%BA%E5%BA%8F/</guid>
-      <description></description>
+      <description>
+
+&lt;h3 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h3&gt;
+
+&lt;p&gt;默认情况下，ZStack 使用 painter 的算法对其视图进行分层，以确定视图的深度: 首先放入 ZStack 中的内容会被首先绘制，然后在其上分层后续视图。&lt;/p&gt;
+
+&lt;p&gt;尽管这通常是我们想要的，但有时我们需要更多的控制权 - 例如，我们可能希望在应用运行时将一个视图推到另一个视图的后面，或者在点击某个视图时将其移到最前面。&lt;/p&gt;
+
+&lt;p&gt;要做到这一点，我们需要使用 &lt;code&gt;zIndex()&lt;/code&gt; 修饰符，该修饰符允许我们精确地指定视图在单个 ZStack 中的分层方式。视图的默认z索引为0，但可以提供正值或负值，分别将它们放置在其他视图的上方或下方。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-示例-绿色矩形放置在红色矩形之上&#34;&gt;2. 示例: 绿色矩形放置在红色矩形之上&lt;/h3&gt;
+
+&lt;p&gt;例如，此 ZStack 包含两个重叠的矩形，但是绿色矩形仍然可见，因为它使用的Z索引值为1:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 绿色矩形放置在红色矩形之上
+        ZStack {
+            Rectangle()
+                .fill(Color.green)
+                .frame(width: 50, height: 50)
+                .zIndex(1)
+            Rectangle()
+                .fill(Color.red)
+                .frame(width: 100, height: 100) 
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.7_zIndex_green_red_rectangle.png&#34; alt=&#34;2.7_zIndex_green_red_rectangle&#34; title=&#34;Green rectangle is above on the red rectangle&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;注意: &lt;code&gt;zIndex()&lt;/code&gt; 修饰符仅影响当前 ZStack 内的绘制顺序。 这意味着，如果我们有两个重叠的堆栈，则需要考虑堆栈的Z索引以及堆栈内部的视图。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
     </item>
     
     <item>
@@ -4647,68 +4683,78 @@ SecureField($password)&lt;/p&gt;
     </item>
     
     <item>
-      <title>2.6_如何使用ForEach在循环中创建视图</title>
-      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.6_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8foreach%E5%9C%A8%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE/</link>
+      <title>2.9_如何使用ForEach在循环中创建视图</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8foreach%E5%9C%A8%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE/</link>
       <pubDate>Fri, 26 Jul 2019 00:21:40 +0800</pubDate>
       
-      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.6_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8foreach%E5%9C%A8%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE/</guid>
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.9_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8foreach%E5%9C%A8%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE/</guid>
       <description>
 
-&lt;p&gt;我们通常会发现，我们需要循环一个序列来创建视图，而在 SwiftUI 中，这是通过 &lt;code&gt;ForEach&lt;/code&gt; 来完成的。&lt;/p&gt;
+&lt;p&gt;通常，我们会发现，我们需要遍历一个序列来创建视图，而在 SwiftUI 中，这是通过 &lt;code&gt;ForEach&lt;/code&gt; 来完成的。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;重要提示&lt;/strong&gt;:
-我们很容易一看到 &lt;em&gt;ForEach&lt;/em&gt; 就认为它与 Swift 序列中的 &lt;em&gt;forEach()&lt;/em&gt; 方法相同，但事实并非如你所见。&lt;/p&gt;
+我们很容易一看到 &lt;em&gt;ForEach&lt;/em&gt; 就认为它与 Swift 序列中的 &lt;em&gt;forEach()&lt;/em&gt; 方法相同，但事实并非如此。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;SwiftUI 中的 &lt;code&gt;ForEach&lt;/code&gt; 本身是一个视图结构，这就意味着我们可以根据需要直接从视图 &lt;em&gt;Body&lt;/em&gt; 返回它。&lt;/li&gt;
 &lt;li&gt;我们为它提供一系列项目，可能还需要告诉 SwiftUI 它如何唯一地标识每个项目，以便 SwiftUI 知道如何在值更改时更新它们。&lt;/li&gt;
-&lt;li&gt;我们还传递一个要运行的闭包，来为循环中的每个项创建一个视图。&lt;/li&gt;
-&lt;li&gt;对于范围内的简单循环，您可以将范围直接传递给ForEach。&lt;/li&gt;
+&lt;li&gt;我们还传递一个要运行的闭包，来为循环中的每个项目创建一个视图。&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;对于范围内的简单循环，我们可以将范围直接传递到 ForEach 中，并告诉 Swift 将每个数字用作项目的唯一标识符。&lt;/p&gt;
 
 &lt;h3 id=&#34;1-循环-1-10-创建文本视图&#34;&gt;1. 循环 1&amp;hellip;10 创建文本视图&lt;/h3&gt;
 
-&lt;p&gt;例如，这从10减少到1然后在最后添加一条消息：&lt;/p&gt;
+&lt;p&gt;例如，这从10减少到1，然后在最后添加一条消息：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
-    VStack(alignment: .leading) {
-        ForEach((1...10).reversed()) {
-            Text(&amp;quot;\($0)…&amp;quot;)
-        }
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 1. 循环 1...10 创建文本视图
+        VStack(alignment: .leading) {
+            ForEach((1...10).reversed(), id: \.self, content: {
+                Text(&amp;quot;\($0)...&amp;quot;)
+            })
             
-        Text(&amp;quot;Ready or not, here I come!&amp;quot;)
+            Text(&amp;quot;Ready or not, here I come!&amp;quot;)
+        }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/foreach_create_views.png&#34; alt=&#34;foreach_create_views&#34; title=&#34;Create views using ForEach&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.9_foreach_create_text_views.png&#34; alt=&#34;2.9_foreach_create_text_views&#34; title=&#34;Create text views using ForEach&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;.id(: \.self)&lt;/code&gt; 部分是必需的，这样 SwiftUI 可以唯一地标识数组中的每个元素——这意味着，如果添加或删除一个项，SwiftUI 可以确切地知道是哪一个。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-foreach-colors&#34;&gt;2. ForEach colors&lt;/h3&gt;
 
-&lt;p&gt;对于简单类型数组（如字符串、整数、颜色等）的循环，可以在数组上使用 &lt;code&gt;.identified(by: \.self)&lt;/code&gt;，让 SwiftUI  使用值本身作为标识符。因此，如果您的数组是 &lt;code&gt;[&amp;quot;cat&amp;quot;, &amp;quot;Dog&amp;quot;, &amp;quot;monkey&amp;quot;]&lt;/code&gt;，那么 SwiftUI 会将这些字符串本身作为您的视图的标识符。
-因此，此代码创建一个包含三种颜色的数组，在它们上面循环，并使用每个颜色名称和颜色值创建文本视图：&lt;/p&gt;
+&lt;p&gt;我们可以使用这种方法来创建任何类型的循环。 例如，此代码创建一个由三种颜色组成的数组，将它们全部循环，并使用每种颜色名称和颜色值创建文本视图:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;let colors: [Color] = [.red, .green, .blue]
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     
-var body: some View {
-        
-    VStack {
-        ForEach(colors.identified(by: \.self)) { color in
-            Text(color.description.capitalized)
-                .padding()
-                .background(color)
+    let colors: [Color] = [.red, .green, .blue]
+    
+    var body: some View {
+        // 2. ForEach colors
+        VStack {
+            ForEach(colors, id: \.self) { color in
+                Text(color.description.capitalized)
+                    .padding()
+                    .background(color)
+            }
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/foreach_colors_array.png&#34; alt=&#34;foreach_colors_array&#34; title=&#34;foreach colors&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.9_foreach_colors_array.png&#34; alt=&#34;2.9_foreach_colors_array&#34; title=&#34;foreach colors&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;使用 &lt;code&gt;\.self&lt;/code&gt; 告诉 Swift，每个项目都使用其自己的值进行唯一标识。 因此，如果我们有数组 [1、2、3] 并通过 &lt;code&gt;\.self&lt;/code&gt; 标识每个值，则意味着第一项具有标识符1，第二个2 和 第三个3。&lt;/p&gt;
 
 &lt;h3 id=&#34;3-foreach-custom-type&#34;&gt;3. ForEach custom type&lt;/h3&gt;
 
-&lt;p&gt;如果您的数组中有自定义类型，则应使用  &lt;code&gt;.identified(by:)&lt;/code&gt; 与您的类型中的任何属性唯一标识它。
+&lt;p&gt;如果数组中有自定义类型，则应使用  &lt;code&gt;.id:&lt;/code&gt; 类型内的任何属性对其进行唯一标识。
 例如，这是一个存储测试结果的结构，如下所示：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct Result {
@@ -4717,37 +4763,60 @@ var body: some View {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;它有一个带有 &lt;code&gt;UUID&lt;/code&gt; 的 &lt;code&gt;id&lt;/code&gt; 属性，这意味着它保证是唯一的 - 完美的用于我们的目的。 如果我们想循环一个结果数组，创建一个显示 &lt;code&gt;VStack&lt;/code&gt; 中每个结果的文本视图，那么我们将使用它：&lt;/p&gt;
+&lt;p&gt;它有一个带有 &lt;code&gt;UUID&lt;/code&gt; 的 &lt;code&gt;id&lt;/code&gt; 属性，这意味着它保证是唯一的 - 对于我们的目的而言是完美的。 如果我们要遍历结果数组，创建一个文本视图以显示 &lt;code&gt;VStack&lt;/code&gt; 中每个结果，那么我们可以使用以下方法:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;let results = [Result(score: 8), Result(score: 5), Result(score: 10)]
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+
+    let results = [Result(score: 8), Result(score: 5), Result(score: 10)]
     
-var body: some View {
-    VStack {
-        ForEach(results.identified(by: \.id)) { result in
-            Text(&amp;quot;Result: \(result.score)&amp;quot;)
+    var body: some View {
+        // 3. ForEach custom type
+        VStack {
+            ForEach(results, id: \.id, content: { result in
+                Text(&amp;quot;Result: \(result.score)&amp;quot;)
+            })
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/foreach_custom_type.png&#34; alt=&#34;foreach_custom_type&#34; title=&#34;ForEach custom type&#34; /&gt;
-这告诉 SwiftUI 它可以通过查看它们的 &lt;code&gt;id&lt;/code&gt; 属性来区分 &lt;code&gt;ForEach&lt;/code&gt; 中的视图。
-&lt;strong&gt;提示&lt;/strong&gt;：如果您使 &lt;code&gt;Result&lt;/code&gt; 符合 &lt;code&gt;Identifiable&lt;/code&gt; protocol，您只需编写 &lt;code&gt;ForEach（Result）&lt;/code&gt;。 符合此协议意味着添加唯一标识每个对象的 &lt;code&gt;id&lt;/code&gt; 属性，在我们的示例中我们已经拥有，因此您只需编写 &lt;code&gt;struct Result：Identifiable {&lt;/code&gt;！&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.9_foreach_custom_type.png&#34; alt=&#34;2.9_foreach_custom_type&#34; title=&#34;ForEach custom type&#34; /&gt;
+这告诉 SwiftUI 它可以通过查看它们的 &lt;code&gt;id&lt;/code&gt; 属性来区分 &lt;code&gt;ForEach&lt;/code&gt; 中的视图。&lt;/p&gt;
+
+&lt;p&gt;或者，如果使 Result 符合 &lt;code&gt;Identifiable&lt;/code&gt; 协议，则只需编写 &lt;code&gt;ForEach(results)&lt;/code&gt;。 遵守该协议意味着添加一个 id 属性，该属性唯一地标识每个对象，在我们的情况下，我们已经拥有了它。 因此，此代码实现了相同的结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct Result: Identifiable {
+    var id = UUID()
+    var score: Int
+}
+
+struct ContentView: View {
+    let results = [Result(score: 8), Result(score: 5), Result(score: 10)]
+
+    var body: some View {
+        VStack {
+            ForEach(results) { result in
+                Text(&amp;quot;Result: \(result.score)&amp;quot;)
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
-      <title>2.5_如何返回不同的视图类型</title>
-      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.5_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/</link>
+      <title>2.8_如何返回不同的视图类型</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.8_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/</link>
       <pubDate>Thu, 25 Jul 2019 13:47:21 +0800</pubDate>
       
-      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.5_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/</guid>
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.8_%E5%A6%82%E4%BD%95%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%9E%8B/</guid>
       <description>
 
-&lt;p&gt;当我们从视图的 body 返回 &lt;code&gt;some View&lt;/code&gt; 的时候，Swift 理解这意味着我们有一个特定的返回类型。&lt;/p&gt;
+&lt;p&gt;当我们从视图的 body 返回 &lt;code&gt;some View&lt;/code&gt; 的时候，Swift 会理解为这意味着我们拥有一个特定的返回类型。&lt;/p&gt;
 
-&lt;p&gt;例如: 如果我们想掷硬币并显示 &amp;ldquo;你赢了!&amp;ldquo;，但是我们不能这样写: 要么返回一个 Image，要么返回一个 Text，写着 &amp;ldquo;下次祝你好运&amp;rdquo;:&lt;/p&gt;
+&lt;p&gt;例如: 如果我们想掷硬币并显示 &amp;ldquo;你赢了!&amp;ldquo;的图像，或是一些文字，表示 &amp;ldquo;下次运气更好&amp;rdquo;， 那么我们不能这样写:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: some View {
     if Bool.random() {
@@ -4759,9 +4828,10 @@ var body: some View {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这段代码会报错:
-&lt;img src=&#34;img/error_return_view_type.png&#34; alt=&#34;error_return_view_type&#34; title=&#34;Compilation error&#34; /&gt;
-因为它可能返回 &lt;em&gt;Image&lt;/em&gt; 或者 &lt;em&gt;Text&lt;/em&gt; ，这是不允许的 &amp;ndash;  我们&lt;code&gt;必须精确返回一种类型&lt;/code&gt;。
-有两种方法可以解决这个问题。&lt;/p&gt;
+&lt;img src=&#34;img/2.8_error_return_view_type.png&#34; alt=&#34;2.8_error_return_view_type&#34; title=&#34;Compilation error&#34; /&gt;
+因为它可能返回 &lt;em&gt;Image&lt;/em&gt; 或者 &lt;em&gt;Text&lt;/em&gt; ，这是不允许的 &amp;ndash;  我们&lt;code&gt;必须精确返回一种类型&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;有两种方法可以解决这个问题。&lt;/p&gt;
 
 &lt;h3 id=&#34;1-group&#34;&gt;1. Group&lt;/h3&gt;
 
@@ -4779,11 +4849,11 @@ var body: some View {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/return_image.png&#34; alt=&#34;return_image&#34; title=&#34;Return an image or a text&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/2.8_return_view_in_group.png&#34; alt=&#34;2.8_return_view_in_group&#34; title=&#34;Return an image or a text in a group.&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;2-anyview&#34;&gt;2. AnyView&lt;/h3&gt;
 
-&lt;p&gt;第二种方法，SwiftUI 提供了一个名为 &lt;code&gt;AnyView&lt;/code&gt; 的类型，我们可以返回这种类型:&lt;/p&gt;
+&lt;p&gt;第二种方法，SwiftUI 提供了一个名为 &lt;code&gt;AnyView&lt;/code&gt; 的类型擦除包装器，我们可以返回这种类型:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;var body: AnyView {
     if Bool.random() {
@@ -4794,8 +4864,11 @@ var body: some View {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;如果你还没有听说过这个概念，它会强制让 Swift 忘记 &lt;code&gt;AnyView&lt;/code&gt; 中包含的特定类型，让它们看起来像是一样的东西。但这有性能成本，所以不要经常使用它。
-尽管 &lt;code&gt;Group&lt;/code&gt; 和 &lt;code&gt;AnyView&lt;/code&gt; 都为我们的布局实现了相同的结果，但通常最好使用 &lt;code&gt;Group&lt;/code&gt;，因为它对 SwiftUI 更有效。&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.8_return_view_in_anyView.png&#34; alt=&#34;2.8_return_view_in_anyView.png&#34; title=&#34;Return an image or a text in an anyView.&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果你还没有听说过这个概念，它会强制让 Swift 忘记 &lt;code&gt;AnyView&lt;/code&gt; 中包含的特定类型，让它们看起来像是一样的东西。但这会降低性能，所以请不要经常使用它。
+尽管 &lt;code&gt;Group&lt;/code&gt; 和 &lt;code&gt;AnyView&lt;/code&gt; 都为我们实现了相同的布局效果，但通常最好使用 &lt;code&gt;Group&lt;/code&gt;，因为它对 SwiftUI 效率更高。&lt;/p&gt;
 </description>
     </item>
     

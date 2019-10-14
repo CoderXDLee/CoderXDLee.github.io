@@ -7,10 +7,49 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 14 Oct 2019 23:30:07 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2019 23:51:29 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2.12_如何使用GeometryReader提供相对大小</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.12_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8geometryreader%E6%8F%90%E4%BE%9B%E7%9B%B8%E5%AF%B9%E5%A4%A7%E5%B0%8F/</link>
+      <pubDate>Mon, 14 Oct 2019 23:51:29 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.12_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8geometryreader%E6%8F%90%E4%BE%9B%E7%9B%B8%E5%AF%B9%E5%A4%A7%E5%B0%8F/</guid>
+      <description>
+
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
+
+&lt;p&gt;尽管通常最好让 SwiftUI 使用堆栈执行自动布局，但也可以使用 &lt;code&gt;GeometryReader&lt;/code&gt; 提供相对于其容器的视图尺寸。 例如，如果我们希望两个视图占用屏幕上可用宽度的一半，则无法使用硬编码值，因为我们无法提前知道屏幕的宽度。&lt;/p&gt;
+
+&lt;p&gt;为了解决这个问题，&lt;code&gt;GeometryReader&lt;/code&gt; 为我们提供了一个输入值，告诉我们可用的宽度和高度，然后我们可以在需要的任何计算中使用它。 因此，要使两个视图占据相等的宽度，我们可以将可用空间分成两半，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        GeometryReader { geometry in
+            HStack(spacing: 0) {
+                Text(&amp;quot;Left&amp;quot;)
+                    .frame(width: geometry.size.width / 2, height: 50)
+                    .background(Color.orange)
+                Text(&amp;quot;Right&amp;quot;)
+                    .frame(width: geometry.size.width / 2, height: 50)
+                    .background(Color.yellow)
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.12_geometry_reader.png&#34; alt=&#34;2.12_geometry_reader&#34; title=&#34;Use GeometryReader&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;注意: GeometryReader 并未考虑视图层次结构中更下方的任何偏移量或间距，这就是为什么 HStack 上没有间距的原因–如果我们在其中允许间距，则视图对于可用空间会有点太大 。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
     
     <item>
       <title>2.11_如何给视图自定义Frame</title>

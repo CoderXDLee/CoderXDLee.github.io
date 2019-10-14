@@ -4243,19 +4243,19 @@ SecureField($password)&lt;/p&gt;
     </item>
     
     <item>
-      <title>2.7_如何使用size_classes创建不同的布局</title>
-      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.7_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8size_classes%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B8%83%E5%B1%80/</link>
+      <title>2.10_如何使用size_classes创建不同的布局</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.10_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8size_classes%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B8%83%E5%B1%80/</link>
       <pubDate>Fri, 26 Jul 2019 16:52:17 +0800</pubDate>
       
-      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.7_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8size_classes%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B8%83%E5%B1%80/</guid>
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.10_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8size_classes%E5%88%9B%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B8%83%E5%B1%80/</guid>
       <description>&lt;!-- more --&gt;
 
 &lt;p&gt;SwiftUI 通过在环境中暴露 &lt;em&gt;size classes&lt;/em&gt; 来原生支持它。如果要使用它，我们首先需要创建一个 &lt;code&gt;@Environment&lt;/code&gt; 对象来存储其值，如下所示:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;@Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;@Environment(\.horizontalSizeClass) var horizontalSizeClass
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;然后在我们需要时检查该属性的值，查找 &lt;code&gt;.compact&lt;/code&gt; 或 &lt;code&gt;.regular&lt;/code&gt;，如下所示:&lt;/p&gt;
+&lt;p&gt;然后我们可以根据需要检查该属性的值，查找 &lt;code&gt;.compact&lt;/code&gt; 或 &lt;code&gt;.regular&lt;/code&gt;，如下所示:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;if horizontalSizeClass == .compact {
     return Text(&amp;quot;Compact&amp;quot;)
@@ -4268,7 +4268,7 @@ SecureField($password)&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
         if horizontalSizeClass == .compact {
@@ -4283,11 +4283,13 @@ SecureField($password)&lt;/p&gt;
 &lt;p&gt;运行效果:&lt;/p&gt;
 
 &lt;p&gt;(1) 正向竖屏
-&lt;img src=&#34;img/size_classes_compact.png&#34; alt=&#34;size_classes_compact&#34; title=&#34;Text - Compact&#34; /&gt;
+&lt;img src=&#34;img/2.10_size_classes_compact.png&#34; alt=&#34;2.10_size_classes_compact&#34; title=&#34;Text - Compact&#34; /&gt;
 (2) 横屏 - 刘海在右侧
-&lt;img src=&#34;img/size_classes_regular01.png&#34; alt=&#34;size_classes_regular01&#34; title=&#34;Text - Regular01&#34; /&gt;
+&lt;img src=&#34;img/2.10_size_classes_regular01.png&#34; alt=&#34;2.10_size_classes_regular01&#34; title=&#34;Text - Regular01&#34; /&gt;
 (3) 横屏 - 刘海在左侧
-&lt;img src=&#34;img/size_classes_regular02.png&#34; alt=&#34;size_classes_regular02&#34; title=&#34;Text - Regular02&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;img/2.10_size_classes_regular02.png&#34; alt=&#34;2.10_size_classes_regular02&#34; title=&#34;Text - Regular02&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SizeClass 是通过将 VStack 或 HStack 用于内容来使用户界面智能地适应可用空间的好方法。 例如，如果我们有很多空间，则可以水平放置东西，但在空间有限时切换到垂直布局。&lt;/p&gt;
 </description>
     </item>
     

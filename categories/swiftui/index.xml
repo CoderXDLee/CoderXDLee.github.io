@@ -7,10 +7,68 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Sat, 10 Aug 2019 22:31:10 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2019 23:30:07 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/categories/swiftui/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2.11_如何给视图自定义Frame</title>
+      <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.11_%E5%A6%82%E4%BD%95%E7%BB%99%E8%A7%86%E5%9B%BE%E8%87%AA%E5%AE%9A%E4%B9%89frame/</link>
+      <pubDate>Mon, 14 Oct 2019 23:30:07 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.11_%E5%A6%82%E4%BD%95%E7%BB%99%E8%A7%86%E5%9B%BE%E8%87%AA%E5%AE%9A%E4%B9%89frame/</guid>
+      <description>
+
+&lt;p&gt;默认情况下，视图仅占用所需的空间，但是如果要更改视图，可以使用 &lt;code&gt;frame()&lt;/code&gt; 修饰符告诉 SwiftUI 我们想要的大小范围。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-创建-200x200-可点击区域的按钮&#34;&gt;1. 创建 200x200 可点击区域的按钮&lt;/h3&gt;
+
+&lt;p&gt;例如，我们可以创建一个具有 200x200 可点击区域的按钮，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 1. 创建 200x200 可点击区域的按钮
+        Button(action: {
+            print(&amp;quot;Button tapped!&amp;quot;)
+        }, label: {
+            Text(&amp;quot;Welcome&amp;quot;)
+            .frame(minWidth: 0, maxWidth: 200, minHeight: 0, maxHeight: 200)
+                .font(.largeTitle)
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.11_custom_frame_200_200_rectangle.png&#34; alt=&#34;2.11_custom_frame_200_200_rectangle&#34; title=&#34;Create a 200 * 200 rectangle.&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-指定-frame-使文本视图填充整个屏幕&#34;&gt;2. 指定 frame 使文本视图填充整个屏幕&lt;/h3&gt;
+
+&lt;p&gt;我们可以通过指定一个框架来使文本视图填充整个屏幕（减去安全区域），该框架的最小宽度和高度为零，最大宽度和高度为无穷大，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 2. 指定 frame 使文本视图填充整个屏幕
+        Text(&amp;quot;Please log in&amp;quot;)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .foregroundColor(.white)
+            .background(Color.red)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.11_custom_frame_text_fill_fullscreen.png&#34; alt=&#34;2.11_custom_frame_text_fill_fullscreen&#34; title=&#34;Set a frame to make text view fill the full screen.&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;注意: 如果要使视图进入安全区域，请确保添加 &lt;code&gt;.edgesIgnoringSafeArea(.all)&lt;/code&gt;修饰符。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/2.11_custom_frame_edge_ignore_safe_area.png&#34; alt=&#34;2.11_custom_frame_edge_ignore_safe_area&#34; title=&#34;Add .edgesIgnoringSafeArea all&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>14_SwiftUI的提示和技巧</title>

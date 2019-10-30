@@ -560,24 +560,22 @@
     <div class="article-style" itemprop="articleBody">
       <!-- more -->
 
-<p>SwiftUI 的 <code>TextField</code> 支持占位符文本，就像 <code>UITextField</code> 一样 &ndash; 当 TextField 为空时在 TextField 中显示灰色文本。要么使用提示（”Enter your password“），要么显示一些示例数据。</p>
+<p>SwiftUI 的 <code>TextField</code> 支持占位符文本，就像 <code>UITextField</code> 一样 &ndash; 当 TextField 为空时在 TextField 中显示灰色文本。要么使用提示（&rdquo;Enter your password&rdquo;），要么显示一些示例数据。</p>
 
 <p>要设置 placeholder，请将其作为 TextField 初始化设置的一部分传入，如下所示:</p>
 
-<pre><code class="language-swift">struct ContentView : View {
-    
-    @State var emailAddress = &quot;&quot;
-    
+<pre><code class="language-swift">struct ContentView: View {
+    @State private var emailAddress = &quot;&quot;
     var body: some View {
-        TextField($emailAddress, placeholder: Text(&quot;test@gmail.com&quot;))
-            .textFieldStyle(.roundedBorder)
+        TextField(&quot;test@gmail.com&quot;, text: $emailAddress)
             .padding()
+            .textFieldStyle(RoundedBorderTextFieldStyle())
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/textfield_placeholder.png &quot;Set a placeholder for text field" alt="textfield_placeholder" />
+<p>效果预览:
+<img src="img/3.6_textfield_placeholder.png" alt="3.6_textfield_placeholder" title="Set a placeholder for text field" />
 这将在 TextField 中显示占位文本 <code>test@gmail.com</code>，而 TextField 为空，但一旦用户在其中键入内容，占位文本就会消失。</p>
 
     </div>

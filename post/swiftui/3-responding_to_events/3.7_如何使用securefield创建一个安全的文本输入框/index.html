@@ -563,25 +563,21 @@
 <p>SwiftUI 的 <code>SecureTextField</code> 的工作方式与常规的 <code>TextField</code> 完全相同，只是为了保护隐私而屏蔽了字符。当然，它绑定的底层值（underlying value）仍然是一个普通的字符串，因此你可以根据需要检查它。
 下面是一个示例，创建了一个绑定到本地 <code>@State</code>  属性的 <code>SecureField</code>，以便我们显示键入的内容:</p>
 
-<pre><code class="language-swift">struct ContentView : View {
-    
-    @State private var password = &quot;&quot;
-    
+<pre><code class="language-swift">struct ContentView: View {
+    @State private var password: String = &quot;&quot;
     var body: some View {
         VStack {
-            SecureField($password, placeholder: Text(&quot;Enter your password:&quot;))
+            SecureField(&quot;Enter your password&quot;, text: $password)
                 .padding()
-            Text(&quot;Your entered: \(password)&quot;)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Text(&quot;You entered: \(password)&quot;)
         }
     }
 }
 </code></pre>
 
 <p>运行效果:
-<img src="img/securefield_enter_password.gif" alt="securefield_enter_password" title="enter a password" /></p>
-
-<p>提示: 在 beta1 和 beta2 中，你应该使用:
-SecureField($password)</p>
+<img src="img/3.7_securefield_enter_password.gif" alt="3.7_securefield_enter_password.gif" title="Enter a password" /></p>
 
     </div>
 

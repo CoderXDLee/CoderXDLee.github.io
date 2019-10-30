@@ -4408,25 +4408,21 @@ struct DetailView : View {
 &lt;p&gt;SwiftUI 的 &lt;code&gt;SecureTextField&lt;/code&gt; 的工作方式与常规的 &lt;code&gt;TextField&lt;/code&gt; 完全相同，只是为了保护隐私而屏蔽了字符。当然，它绑定的底层值（underlying value）仍然是一个普通的字符串，因此你可以根据需要检查它。
 下面是一个示例，创建了一个绑定到本地 &lt;code&gt;@State&lt;/code&gt;  属性的 &lt;code&gt;SecureField&lt;/code&gt;，以便我们显示键入的内容:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
-    
-    @State private var password = &amp;quot;&amp;quot;
-    
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var password: String = &amp;quot;&amp;quot;
     var body: some View {
         VStack {
-            SecureField($password, placeholder: Text(&amp;quot;Enter your password:&amp;quot;))
+            SecureField(&amp;quot;Enter your password&amp;quot;, text: $password)
                 .padding()
-            Text(&amp;quot;Your entered: \(password)&amp;quot;)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Text(&amp;quot;You entered: \(password)&amp;quot;)
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;运行效果:
-&lt;img src=&#34;img/securefield_enter_password.gif&#34; alt=&#34;securefield_enter_password&#34; title=&#34;enter a password&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;提示: 在 beta1 和 beta2 中，你应该使用:
-SecureField($password)&lt;/p&gt;
+&lt;img src=&#34;img/3.7_securefield_enter_password.gif&#34; alt=&#34;3.7_securefield_enter_password.gif&#34; title=&#34;Enter a password&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -4438,24 +4434,22 @@ SecureField($password)&lt;/p&gt;
       <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.6_%E5%A6%82%E4%BD%95%E7%BB%99textfield%E6%B7%BB%E5%8A%A0%E5%8D%A0%E4%BD%8D%E7%AC%A6/</guid>
       <description>&lt;!-- more --&gt;
 
-&lt;p&gt;SwiftUI 的 &lt;code&gt;TextField&lt;/code&gt; 支持占位符文本，就像 &lt;code&gt;UITextField&lt;/code&gt; 一样 &amp;ndash; 当 TextField 为空时在 TextField 中显示灰色文本。要么使用提示（”Enter your password“），要么显示一些示例数据。&lt;/p&gt;
+&lt;p&gt;SwiftUI 的 &lt;code&gt;TextField&lt;/code&gt; 支持占位符文本，就像 &lt;code&gt;UITextField&lt;/code&gt; 一样 &amp;ndash; 当 TextField 为空时在 TextField 中显示灰色文本。要么使用提示（&amp;rdquo;Enter your password&amp;rdquo;），要么显示一些示例数据。&lt;/p&gt;
 
 &lt;p&gt;要设置 placeholder，请将其作为 TextField 初始化设置的一部分传入，如下所示:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
-    
-    @State var emailAddress = &amp;quot;&amp;quot;
-    
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var emailAddress = &amp;quot;&amp;quot;
     var body: some View {
-        TextField($emailAddress, placeholder: Text(&amp;quot;test@gmail.com&amp;quot;))
-            .textFieldStyle(.roundedBorder)
+        TextField(&amp;quot;test@gmail.com&amp;quot;, text: $emailAddress)
             .padding()
+            .textFieldStyle(RoundedBorderTextFieldStyle())
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/textfield_placeholder.png &amp;quot;Set a placeholder for text field&#34; alt=&#34;textfield_placeholder&#34; /&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.6_textfield_placeholder.png&#34; alt=&#34;3.6_textfield_placeholder&#34; title=&#34;Set a placeholder for text field&#34; /&gt;
 这将在 TextField 中显示占位文本 &lt;code&gt;test@gmail.com&lt;/code&gt;，而 TextField 为空，但一旦用户在其中键入内容，占位文本就会消失。&lt;/p&gt;
 </description>
     </item>
@@ -4468,8 +4462,9 @@ SecureField($password)&lt;/p&gt;
       <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.5_%E5%A6%82%E4%BD%95%E7%BB%99textfield%E6%B7%BB%E5%8A%A0%E8%BE%B9%E6%A1%86/</guid>
       <description>&lt;!-- more --&gt;
 
-&lt;p&gt;SwiftUI 的 &lt;code&gt;TextField&lt;/code&gt; 视图默认没有样式，这意味着在屏幕上它是一个空白区域。如果这样就符合你想要的风格，那就太好了，你已经完成了。但是，我们大多时候更愿意在 &lt;code&gt;TextField&lt;/code&gt; 周围添加边框，以使其更清晰。
-如果想获得我们习惯使用的 UITextField 的圆角矩形样式，我们应该使用 &lt;code&gt;.textFieldStyle(RoundedBorderTextFieldStyle())&lt;/code&gt; 修饰符，如下所示:&lt;/p&gt;
+&lt;p&gt;SwiftUI 的 &lt;code&gt;TextField&lt;/code&gt; 视图默认没有样式，这意味着在屏幕上它是一个空白区域。如果这样就符合你想要的风格，那就太好了，你已经完成了。但是，我们大多时候更希望在 &lt;code&gt;TextField&lt;/code&gt; 周围添加边框，以使其更清晰。&lt;/p&gt;
+
+&lt;p&gt;如果想获得我们习惯使用的 UITextField 的圆角矩形样式，我们应该使用 &lt;code&gt;.textFieldStyle(RoundedBorderTextFieldStyle())&lt;/code&gt; 修饰符，如下所示:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     @State private var name = &amp;quot;&amp;quot;

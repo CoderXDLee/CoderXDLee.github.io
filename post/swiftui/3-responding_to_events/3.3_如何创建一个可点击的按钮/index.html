@@ -568,18 +568,22 @@
 
 <ul>
 <li>在显示内容方面 SwiftUI 的按钮更为灵活</li>
-<li>SwiftUI 的按钮使用 <code>闭包</code> 来实现其 action，而 UIButton 使用的是 <code>target/action</code> 系统</li>
+<li>SwiftUI 的按钮使用 <code>闭包</code> 来实现其 action，而 UIButton 使用的是旧的 <code>target/action</code> 系统</li>
 </ul>
 
 <h3 id="2-button-初体验">2. Button 初体验</h3>
 
 <p>那么，如何创建一个 SwiftUI 的按钮呢?，我们可以从以下代码开始:</p>
 
-<pre><code class="language-swift">Button(action: {
-    // your action here
-            
-}) {
-    Text(&quot;Button title&quot;)
+<pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        // 1. 创建一个 SwiftUI 按钮
+        Button(action: {
+            // your action here
+        }, label: {
+            Text(&quot;Button title&quot;)
+        })
+    }
 }
 </code></pre>
 
@@ -589,45 +593,61 @@
 
 <p>例如: 我们可以创建一个按钮，在点击按钮时显示或隐藏一些详细信息:</p>
 
-<pre><code class="language-swift">struct ContentView : View {
+<pre><code class="language-swift">struct ContentView: View {
     
-    @State var showDetails = false
+    @State private var showDetails = false
     
     var body: some View {
+        
+        // 2. 点击按钮，显示或隐藏详细信息
         VStack {
             Button(action: {
-               self.showDetails.toggle()
-            }) {
-                Text(&quot;Show detail information&quot;)
-            }
+                self.showDetails.toggle()
+            }, label: {
+                Text(&quot;Show details&quot;)
+            })
             
             if showDetails {
-                Text(&quot;You should follow me on M X Website&quot;)
+                Text(&quot;You should follow me on https://coderxdlee.github.io/&quot;)
                     .font(.largeTitle)
-                    .lineLimit(nil)
             }
         }
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/button_show_detail_information.gif" alt="button_show_detail_information" title="Click button to show detail information" /></p>
+<p>效果预览:
+<img src="img/3.3_button_show_detail_information.gif" alt="3.3_button_show_detail_information" title="Click button to show detail information" /></p>
 
 <h3 id="4-提示">4. 提示</h3>
 
-<p>在学习框架时最常做的事情是分散调用 <code>print()</code>，这样我们就可以看到什么时候发生了什么事情。 如果我们想通过按钮 action 来尝试，首先应右键单击预览画布中的播放按钮，然后选择 <strong>调试预览</strong>，以便调用 <code>print()</code> 工作。
+<p>在学习框架时，最常做的事情是分散调用 <code>print()</code>，这样我们就可以看到什么时候发生了什么事情。 如果我们想通过按钮 action 来尝试，首先应右键单击预览画布中的播放按钮，然后选择 <strong>调试预览</strong>，以便调用 <code>print()</code> 工作。
 按钮内的标题可以是任何类型的视图，因此您可以创建这样的图像按钮:</p>
 
-<pre><code class="language-swift">Button(action: {
-    self.showDetails.toggle()
-}) {
-    Image(&quot;example-image&quot;)
+<pre><code class="language-swift">struct ContentView: View {
+    
+    @State private var showDetails = false
+    
+    var body: some View {
+        // 2. 点击按钮，显示或隐藏详细信息
+        VStack {
+            Button(action: {
+                self.showDetails.toggle()
+            }, label: {
+                Image(&quot;example-image&quot;)
+            })
+            
+            if showDetails {
+                Text(&quot;You should follow me on https://coderxdlee.github.io/&quot;)
+                    .font(.largeTitle)
+            }
+        }
+    }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/button_image_show_detail.gif" alt="button_image_show_detail" title="Set an image for button" /></p>
+<p>效果预览:
+<img src="img/3.3_button_image_show_detail.gif" alt="3.3_button_image_show_detail" title="Set an image for button" /></p>
 
     </div>
 

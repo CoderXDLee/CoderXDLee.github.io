@@ -601,43 +601,48 @@ SecureField($password)&lt;/p&gt;
     </item>
     
     <item>
-      <title>3.2_如何创建拨动开关</title>
-      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E6%8B%A8%E5%8A%A8%E5%BC%80%E5%85%B3/</link>
+      <title>3.2_如何创建 Toggle</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BAtoggle/</link>
       <pubDate>Sat, 27 Jul 2019 15:55:42 +0800</pubDate>
       
-      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E6%8B%A8%E5%8A%A8%E5%BC%80%E5%85%B3/</guid>
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.2_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BAtoggle/</guid>
       <description>&lt;!-- more --&gt;
 
-&lt;p&gt;SwiftUI 中的 &lt;code&gt;toggle&lt;/code&gt; 允许用户在 &lt;strong&gt;true&lt;/strong&gt; 和 &lt;strong&gt;false&lt;/strong&gt; 之间移动，就像 UIKit 中的 &lt;code&gt;UISwitch&lt;/code&gt; 一样。&lt;/p&gt;
+&lt;p&gt;SwiftUI 中的 &lt;code&gt;toggle&lt;/code&gt; 允许用户在 &lt;strong&gt;true&lt;/strong&gt; 和 &lt;strong&gt;false&lt;/strong&gt; 的状态之间进行切换，就像 UIKit 中的 &lt;code&gt;UISwitch&lt;/code&gt; 一样。&lt;/p&gt;
 
 &lt;p&gt;例如:&lt;/p&gt;
 
-&lt;p&gt;我们可以创建一个 &lt;em&gt;toggle&lt;/em&gt; ，然后根据 &lt;em&gt;toggle&lt;/em&gt; 是否启动来决定显示或者不显示消息。但是我们不希望手动跟踪 &lt;em&gt;toggle&lt;/em&gt; 的状态 &amp;ndash; 我们希望 SwiftUI 为我们做这件事。
-与以往不同，在这里，我们应该定义一个 &lt;code&gt;@State Boolean&lt;/code&gt; 属性，用于存储 toggle 的当前值。然后我们可以使用它来显示或隐藏其它视图。&lt;/p&gt;
+&lt;p&gt;我们可以创建一个 &lt;em&gt;toggle&lt;/em&gt; ，然后根据是否启用 &lt;em&gt;toggle&lt;/em&gt; 来决定显示或者不显示消息。但是我们不希望手动跟踪 &lt;em&gt;toggle&lt;/em&gt; 的状态 &amp;ndash; 我们希望 SwiftUI 为我们做这件事。&lt;/p&gt;
+
+&lt;p&gt;与以往不同，在这里，我们应该定义一个 &lt;code&gt;@State Boolean&lt;/code&gt; 属性，用于存储 toggle 的当前值。然后我们可以根据需要使用它来显示或隐藏其它视图。&lt;/p&gt;
 
 &lt;p&gt;例如:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     
-    @State var showGreeting = true
+    @State private var showGreeting: Bool = true
     
     var body: some View {
         VStack {
             Toggle(isOn: $showGreeting) {
-                Text(&amp;quot;Show welcome message!&amp;quot;)
+                Text(&amp;quot;Show welcome message&amp;quot;)
             }.padding()
             
             if showGreeting {
-                Text(&amp;quot;Hello world&amp;quot;)
+                Text(&amp;quot;Hello world!&amp;quot;)
             }
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/toggle_show_welcomemessage.gif&#34; alt=&#34;toggle_show_welcomemessage&#34; title=&#34;Show welcome message&#34; /&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.2_how_to_create_a_toggle.gif&#34; alt=&#34;3.2_how_to_create_a_toggle&#34; title=&#34;Show welcome message&#34; /&gt;
 这段代码，只有当 &lt;code&gt;showGreeting&lt;/code&gt; 为 &lt;em&gt;true&lt;/em&gt; 时才会返回文本视图，这意味着当 &lt;code&gt;showGreeting&lt;/code&gt; 为 &lt;em&gt;false&lt;/em&gt; 时，&lt;code&gt;VStack&lt;/code&gt; 的大小会减小 - 它的堆栈中没有第二个视图。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;注意: 使用 &lt;code&gt;@State&lt;/code&gt; 时，Apple建议我们使用 &lt;code&gt;private&lt;/code&gt; 访问控制修饰符标记属性，以明确表明此状态属于本地视图，而不在其他地方使用。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -653,27 +658,27 @@ SecureField($password)&lt;/p&gt;
 
 &lt;h3 id=&#34;1-概念&#34;&gt;1. 概念&lt;/h3&gt;
 
-&lt;p&gt;&lt;code&gt;所有应用程序都会改变状态。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;所有应用程序都会更改状态。&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;例如:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;用户可能点击了一个按钮来显示更多信息&lt;/li&gt;
-&lt;li&gt;用户可能已经在文本框中输入了一些文本&lt;/li&gt;
+&lt;li&gt;用户点击了一个按钮来显示更多信息&lt;/li&gt;
+&lt;li&gt;用户在文本框中输入了一些文本&lt;/li&gt;
 &lt;li&gt;用户从日期选择器中选择了一个日期&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;所有涉及应用程序 &lt;strong&gt;从一种状态转变到另一种状态&lt;/strong&gt; 的事情，都叫做应用程序改变状态。&lt;/p&gt;
+&lt;p&gt;所有涉及应用程序 &lt;strong&gt;从一种状态转变到另一种状态&lt;/strong&gt; 的事情，都叫做应用程序更改状态。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-问题所在&#34;&gt;2. 问题所在&lt;/h3&gt;
 
-&lt;p&gt;状态的问题在于它是混乱的: &lt;strong&gt;当它发生变化时，我们需要发现变化并更新我们的布局来匹配变化&lt;/strong&gt;。 这个一开始听起来可能很简单，但是随着我们的状态的不断增长，它就会变得越来越难 - 因为这个时候，我们很容易忘记更新一件事，或者更新顺序出错，以致于用户界面状态达不到预期效果。&lt;/p&gt;
+&lt;p&gt;状态的问题在于它是混乱的: &lt;strong&gt;当它发生变化时，我们需要发现变化并更新我们的布局来匹配变化&lt;/strong&gt;。 这个一开始听起来可能很简单，但是随着我们的状态不断增长，它就会变得越来越难 - 因为这个时候，我们很容易忘记更新一件事，或者更新顺序出错，以致于用户界面状态达不到预期效果。&lt;/p&gt;
 
 &lt;h3 id=&#34;3-swiftui-如何破解&#34;&gt;3. SwiftUI 如何破解？&lt;/h3&gt;
 
 &lt;p&gt;SwiftUI 通过 &lt;strong&gt;从控件中移除状态&lt;/strong&gt; 来解决这个问题。&lt;/p&gt;
 
-&lt;p&gt;当我们向视图添加属性时，这些属性实际上是惰性的 - 当然，它们有值，但是更改这些值并不会做任何事情。 但是如果我们在这些属性之前添加了特殊的&lt;code&gt;@State&lt;/code&gt; 来包装属性，SwiftUI将自动监视属性变化并更新使用该属性的视图的任何部分。&lt;/p&gt;
+&lt;p&gt;当我们向视图添加属性时，这些属性实际上是惰性的 - 当然，它们有值，但是更改这些值不会有任何作用。 但是如果我们在这些属性之前添加了特殊的&lt;code&gt;@State&lt;/code&gt; 来包装属性，SwiftUI 将自动监视属性变化并更新使用该状态的视图的任何部分。&lt;/p&gt;
 
 &lt;p&gt;示例代码:&lt;/p&gt;
 
@@ -685,14 +690,14 @@ SecureField($password)&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;当涉及到某种状态时 - 例如，当切换开关（toggle switch）改变时告诉状态属性改变。
-&lt;strong&gt;这里需要注意的是&lt;/strong&gt;: 我们不能直接引用这个属性属性。这是因为 Swift 会认为我们现在所指的是&lt;code&gt;&amp;quot;属性当前的值&amp;quot;&lt;/code&gt;，而不是说 &lt;code&gt;&amp;quot;请注意这件事情(属性状态变化)&amp;quot;&lt;/code&gt;。幸运的是，SwiftUI 的解决方案是在属性名称前放置一个&lt;code&gt;美元符号($)&lt;/code&gt;，这样的话，我们就可以引用属性本身而不是它当前的值。&lt;/p&gt;
+&lt;strong&gt;这里需要注意的是&lt;/strong&gt;: 我们不能直接引用这个属性。这是因为 Swift 会认为我们现在所指的是&lt;code&gt;&amp;quot;属性当前的值&amp;quot;&lt;/code&gt;，而不是说 &lt;code&gt;&amp;quot;请注意这件事情(属性状态变化)&amp;quot;&lt;/code&gt;。幸运的是，SwiftUI 的解决方案是在属性名称前放置一个&lt;code&gt;美元符号($)&lt;/code&gt;，这样的话，我们就可以引用属性本身而不是它当前的值。&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;当然，这里一开始理解起有点令人困惑，但在当我们学习一两个示例之后就会理解，非常简单。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;最后，请记住，SwiftUI 是声明性的，这意味着我们预先告诉它所有可能状态的所有布局，并让它知道当属性发生变化时如何在它们之间移动。我们称之为 &lt;strong&gt;&lt;em&gt;绑定（binding）&lt;/em&gt;&lt;/strong&gt; - 要求 SwiftUI 同步UI控件和底层属性之间的更改。
-如果你已经习惯了一种更为迫切的编程风格，那么使用 state 一开始会让你头疼一些，但不要担心 - 一旦你完成了它，你就很明确了。&lt;/p&gt;
+&lt;p&gt;最后，请记住，SwiftUI 是声明性的，这意味着我们预先将所有可能状态的所有布局都告诉了它，并让它知道当属性发生变化时如何在它们之间移动。我们称之为 &lt;strong&gt;&lt;em&gt;绑定（binding）&lt;/em&gt;&lt;/strong&gt; - 要求 SwiftUI 同步 UI 控件和基础属性之间的更改。
+如果你已经习惯了一种更强制性的编程风格，那么使用 state 一开始会让你感到头疼，但是请相信我 - 一旦你了解了它，一切都会一帆风顺。&lt;/p&gt;
 </description>
     </item>
     

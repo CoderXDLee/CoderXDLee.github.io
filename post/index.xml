@@ -4469,21 +4469,20 @@ SecureField($password)&lt;/p&gt;
       <description>&lt;!-- more --&gt;
 
 &lt;p&gt;SwiftUI 的 &lt;code&gt;TextField&lt;/code&gt; 视图默认没有样式，这意味着在屏幕上它是一个空白区域。如果这样就符合你想要的风格，那就太好了，你已经完成了。但是，我们大多时候更愿意在 &lt;code&gt;TextField&lt;/code&gt; 周围添加边框，以使其更清晰。
-如果想获得我们习惯使用的 UITextField 的圆角矩形样式，我们应该使用 &lt;code&gt;.textFieldStyle(.roundedBorder)&lt;/code&gt; 修饰符，如下所示:&lt;/p&gt;
+如果想获得我们习惯使用的 UITextField 的圆角矩形样式，我们应该使用 &lt;code&gt;.textFieldStyle(RoundedBorderTextFieldStyle())&lt;/code&gt; 修饰符，如下所示:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
-    
-    @State var text = &amp;quot;&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var name = &amp;quot;&amp;quot;
     var body: some View {
-        TextField($text, placeholder: Text(&amp;quot;Enter some text&amp;quot;))
+        TextField(&amp;quot;Enter your name&amp;quot;, text: $name)
             .padding()
-            .textFieldStyle(.roundedBorder)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/textfield_style_rounded_border.png&#34; alt=&#34;textfield_style_rounded_border&#34; title=&#34;textFieldStyle is roundedBorder style&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.5_textfield_style_rounded_border.png&#34; alt=&#34;3.5_textfield_style_rounded_border&#34; title=&#34;textFieldStyle is roundedBorder style&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

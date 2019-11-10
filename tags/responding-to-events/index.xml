@@ -396,8 +396,9 @@ struct DetailView : View {
       <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.7_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8securefield%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%AE%89%E5%85%A8%E7%9A%84%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5%E6%A1%86/</guid>
       <description>&lt;!-- more --&gt;
 
-&lt;p&gt;SwiftUI 的 &lt;code&gt;SecureTextField&lt;/code&gt; 的工作方式与常规的 &lt;code&gt;TextField&lt;/code&gt; 完全相同，只是为了保护隐私而屏蔽了字符。当然，它绑定的底层值（underlying value）仍然是一个普通的字符串，因此你可以根据需要检查它。
-下面是一个示例，创建了一个绑定到本地 &lt;code&gt;@State&lt;/code&gt;  属性的 &lt;code&gt;SecureField&lt;/code&gt;，以便我们显示键入的内容:&lt;/p&gt;
+&lt;p&gt;SwiftUI 的 &lt;code&gt;SecureField&lt;/code&gt; 与常规的 &lt;code&gt;TextField&lt;/code&gt; 的工作原理几乎相同，不同之处在于，出于保护隐私的目的而屏蔽了文本框中的字符。当然，将其绑定到的基础值仍然是一个纯字符串，因此我们可以根据需要进行检查。&lt;/p&gt;
+
+&lt;p&gt;这里有一个示例，创建了一个绑定到本地 &lt;code&gt;@State&lt;/code&gt;  属性的 &lt;code&gt;SecureField&lt;/code&gt;，以便我们可以显示键入文本框中的内容:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     @State private var password: String = &amp;quot;&amp;quot;
@@ -412,7 +413,7 @@ struct DetailView : View {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
+&lt;p&gt;效果预览:
 &lt;img src=&#34;img/3.7_securefield_enter_password.gif&#34; alt=&#34;3.7_securefield_enter_password.gif&#34; title=&#34;Enter a password&#34; /&gt;&lt;/p&gt;
 </description>
     </item>

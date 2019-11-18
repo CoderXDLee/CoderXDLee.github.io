@@ -115,7 +115,7 @@
   
   <meta property="article:published_time" content="2019-07-27T23:40:23&#43;08:00">
   
-  <meta property="article:modified_time" content="2019-07-27T23:40:23&#43;08:00">
+  <meta property="article:modified_time" content="2019-11-18T21:30:37&#43;08:00">
   
 
   
@@ -390,7 +390,7 @@
 
 
 <meta content="2019-07-27 23:40:23 &#43;0800 CST" itemprop="datePublished">
-<meta content="2019-07-27 23:40:23 &#43;0800 CST" itemprop="dateModified">
+<meta content="2019-11-18 21:30:37 &#43;0800 CST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -414,8 +414,10 @@
     
     
       
+          Last updated on
+      
     
-    <time>Jul 27, 2019</time>
+    <time>Nov 18, 2019</time>
   </span>
   
 
@@ -564,35 +566,33 @@
 
 <h3 id="1-简介">1. 简介</h3>
 
-<p>SwiftUI 的 <code>Slider</code> 视图的工作原理与 <code>UISlider</code> 非常相似，尽管您需要将其绑定到某个地方，以便存储其值。
-当我们创建它时，可以提供多种参数，但我们可能最关心的是:</p>
+<p>SwiftUI 中的 <code>Slider</code> 视图与 <code>UISlider</code> 的工作原理非常相似，不同之处在于，我们需要将其绑定到某个状态属性(@State)，以便存储其值。</p>
+
+<p>当我们创建它时，可以提供多种参数，但我们最关心的可能是以下参数:</p>
 
 <ul>
-<li><code>Value</code>:  要绑定到的值是多少</li>
-<li><code>From and To</code>: 滑块的范围</li>
-<li><code>By</code>: 移动滑块时要更改多少值</li>
+<li><code>value</code>:  将其绑定到的 Double 值</li>
+<li><code>in</code>: Slider 的范围</li>
+<li><code>by</code>: 移动 Slider 时要更改多少值</li>
 </ul>
 
 <h3 id="2-示例">2. 示例</h3>
 
-<p>例如: 我们创建一个绑定到  Celsius 属性的滑块，然后在滑块移动时更新文本视图，以便在 <strong>Celsius(摄氏温度)</strong> 和 <strong>Fahrenheit(华氏温度)</strong> 之间进行转换:</p>
+<p>例如: 我们将创建一个 Slider，并将其绑定到状态属性 <code>celsius</code>，然后随着 Slider 的移动更新文本视图，以便在 <strong>Celsius(摄氏温度)</strong> 和 <strong>Fahrenheit(华氏温度)</strong> 之间进行转换:</p>
 
-<pre><code class="language-swift">struct ContentView : View {
-    
-    @State var celsius: Double = 0
-    
+<pre><code class="language-swift">struct ContentView: View {
+    @State private var celsius: Double = 0
     var body: some View {
         VStack {
-            Slider(value: $celsius, from: -100, through: 100, by: 0.1)
-                .padding()
+            Slider(value: $celsius, in: -100...1000, step: 0.1)
             Text(&quot;\(celsius) Celsius is \(celsius * 9 / 5 + 32) Fahrenheit&quot;)
         }
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/slider_celsius_to_fahrenheit.gif" alt="slider_celsius_to_fahrenheit" title="celsius to fahrenheit" /></p>
+<p>效果预览:
+<img src="img/3.8_slider_celsius_to_fahrenheit.gif" alt="3.8_slider_celsius_to_fahrenheit" title="celsius to fahrenheit" /></p>
 
     </div>
 
@@ -750,7 +750,7 @@
   
   <div class="post-nav-item">
     <div class="meta-nav">Next</div>
-    <a href="/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%80%89%E6%8B%A9%E5%99%A8picker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/" rel="next">3.9_如何创建选择器Picker并从中读取值</a>
+    <a href="/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BApicker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/" rel="next">3.9_如何创建Picker并从中读取值</a>
   </div>
   
   

@@ -115,7 +115,7 @@
   
   <meta property="article:published_time" content="2019-07-28T00:28:44&#43;08:00">
   
-  <meta property="article:modified_time" content="2019-07-28T00:28:44&#43;08:00">
+  <meta property="article:modified_time" content="2019-11-18T22:26:19&#43;08:00">
   
 
   
@@ -390,7 +390,7 @@
 
 
 <meta content="2019-07-28 00:28:44 &#43;0800 CST" itemprop="datePublished">
-<meta content="2019-07-28 00:28:44 &#43;0800 CST" itemprop="dateModified">
+<meta content="2019-11-18 22:26:19 &#43;0800 CST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -414,8 +414,10 @@
     
     
       
+          Last updated on
+      
     
-    <time>Jul 28, 2019</time>
+    <time>Nov 18, 2019</time>
   </span>
   
 
@@ -564,13 +566,13 @@
 
 <h3 id="1-初识">1. 初识</h3>
 
-<p>SwiftUI 中的 <code>DatePicker</code> 视图类似于 UIkit 中的 <code>UIDatePicker</code>，它提供了各种选项来控制它的外观和工作方式。和所有存储值的控件一样，它也需要绑定到应用程序中的某种状态。</p>
+<p>SwiftUI 中的 <code>DatePicker</code> 视图类似于 UIkit 中的 <code>UIDatePicker</code>，它提供了各种选项用来控制它的外观和工作方式。和所有存储值的控件一样，它也需要绑定到应用程序中的某种状态属性。</p>
 
 <h3 id="2-示例">2. 示例</h3>
 
-<p>例如: 我们创建一个绑定到 <code>birthDate</code> 属性的日期选择器，然后显示日期选择器的值，如下所示:</p>
+<p>例如: 我们将创建一个日期选择器，并将其绑定到 <code>birthDate</code> 属性，允许用户选择现在之前的任何日期，然后按设置显示日期选择器的值，如下所示:</p>
 
-<pre><code class="language-swift">struct ContentView : View {
+<pre><code class="language-swift">struct ContentView: View {
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -578,23 +580,28 @@
         return formatter
     }
     
-    @State var birthDate = Date()
+    @State private var birthDate = Date()
     
     var body: some View {
         VStack {
-            DatePicker($birthDate,
-                       maximumDate: Date(),
-                       displayedComponents: .date)
-            Text(&quot;Date is \(birthDate, formatter: dateFormatter)&quot;)
+            DatePicker(selection: $birthDate,
+                       in: ...Date(),
+                       displayedComponents: .date) {
+                Text(&quot;Select a date&quot;)
+            }
+            Text(&quot;Date is: \(birthDate, formatter: dateFormatter)&quot;)
         }
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/datepicker_select_birthdate.gif" alt="datepicker_select_birthdate" title="Select birth date" />
-可以看到我已经将 <strong>DisplayedComponents</strong> 设置为 .Date，但您也可以使用 <code>.hourAndMinute</code>来获取时间数据。
-我还使用 <em>maximumDate</em> 来阻止人们在将来指定出生日期，但是您可以指定 <em>minimumDate</em> 来阻止人们指定早于您选择的日期。</p>
+<p>效果预览:
+<img src="img/3.10_date_picker_select_birthdate.gif" alt="3.10_date_picker_select_birthdate" title="Select a birth date" /></p>
+
+<p>可以看到我已经将 <strong>DisplayedComponents</strong> 设置为 <code>.Date</code>，但您也可以使用 <code>.hourAndMinute</code>来获取时间数据。</p>
+
+<p>使用 <code>in：... Date()</code> 将日期范围指定为直到当前日期(包括当前日期)的所有内容，但不包含之后的任何内容。
+也可以使用 <code>in：Date()...</code> 进行相反的操作（即允许从现在开始的日期），但是如果需要的话，也可以使用精确范围。</p>
 
     </div>
 
@@ -728,7 +735,7 @@
         <h3>Related</h3>
         <ul>
           
-          <li><a href="/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%80%89%E6%8B%A9%E5%99%A8picker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/">3.9_如何创建选择器Picker并从中读取值</a></li>
+          <li><a href="/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BApicker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/">3.9_如何创建Picker并从中读取值</a></li>
           
           <li><a href="/post/swiftui/3-responding_to_events/3.8_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BAslider%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/">3.8_如何创建Slider并从中读取值</a></li>
           
@@ -759,7 +766,7 @@
   
   <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%80%89%E6%8B%A9%E5%99%A8picker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/" rel="prev">3.9_如何创建选择器Picker并从中读取值</a>
+    <a href="/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BApicker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/" rel="prev">3.9_如何创建Picker并从中读取值</a>
   </div>
   
 </div>

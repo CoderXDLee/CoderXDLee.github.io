@@ -3892,13 +3892,13 @@ struct DetailView : View {
 
 &lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
 
-&lt;p&gt;SwiftUI 中的 &lt;code&gt;DatePicker&lt;/code&gt; 视图类似于 UIkit 中的 &lt;code&gt;UIDatePicker&lt;/code&gt;，它提供了各种选项来控制它的外观和工作方式。和所有存储值的控件一样，它也需要绑定到应用程序中的某种状态。&lt;/p&gt;
+&lt;p&gt;SwiftUI 中的 &lt;code&gt;DatePicker&lt;/code&gt; 视图类似于 UIkit 中的 &lt;code&gt;UIDatePicker&lt;/code&gt;，它提供了各种选项用来控制它的外观和工作方式。和所有存储值的控件一样，它也需要绑定到应用程序中的某种状态属性。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
 
-&lt;p&gt;例如: 我们创建一个绑定到 &lt;code&gt;birthDate&lt;/code&gt; 属性的日期选择器，然后显示日期选择器的值，如下所示:&lt;/p&gt;
+&lt;p&gt;例如: 我们将创建一个日期选择器，并将其绑定到 &lt;code&gt;birthDate&lt;/code&gt; 属性，允许用户选择现在之前的任何日期，然后按设置显示日期选择器的值，如下所示:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -3906,59 +3906,71 @@ struct DetailView : View {
         return formatter
     }
     
-    @State var birthDate = Date()
+    @State private var birthDate = Date()
     
     var body: some View {
         VStack {
-            DatePicker($birthDate,
-                       maximumDate: Date(),
-                       displayedComponents: .date)
-            Text(&amp;quot;Date is \(birthDate, formatter: dateFormatter)&amp;quot;)
+            DatePicker(selection: $birthDate,
+                       in: ...Date(),
+                       displayedComponents: .date) {
+                Text(&amp;quot;Select a date&amp;quot;)
+            }
+            Text(&amp;quot;Date is: \(birthDate, formatter: dateFormatter)&amp;quot;)
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/datepicker_select_birthdate.gif&#34; alt=&#34;datepicker_select_birthdate&#34; title=&#34;Select birth date&#34; /&gt;
-可以看到我已经将 &lt;strong&gt;DisplayedComponents&lt;/strong&gt; 设置为 .Date，但您也可以使用 &lt;code&gt;.hourAndMinute&lt;/code&gt;来获取时间数据。
-我还使用 &lt;em&gt;maximumDate&lt;/em&gt; 来阻止人们在将来指定出生日期，但是您可以指定 &lt;em&gt;minimumDate&lt;/em&gt; 来阻止人们指定早于您选择的日期。&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.10_date_picker_select_birthdate.gif&#34; alt=&#34;3.10_date_picker_select_birthdate&#34; title=&#34;Select a birth date&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到我已经将 &lt;strong&gt;DisplayedComponents&lt;/strong&gt; 设置为 &lt;code&gt;.Date&lt;/code&gt;，但您也可以使用 &lt;code&gt;.hourAndMinute&lt;/code&gt;来获取时间数据。&lt;/p&gt;
+
+&lt;p&gt;使用 &lt;code&gt;in：... Date()&lt;/code&gt; 将日期范围指定为直到当前日期(包括当前日期)的所有内容，但不包含之后的任何内容。
+也可以使用 &lt;code&gt;in：Date()...&lt;/code&gt; 进行相反的操作（即允许从现在开始的日期），但是如果需要的话，也可以使用精确范围。&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>3.9_如何创建选择器Picker并从中读取值</title>
-      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%80%89%E6%8B%A9%E5%99%A8picker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/</link>
+      <title>3.9_如何创建Picker并从中读取值</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BApicker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/</link>
       <pubDate>Sat, 27 Jul 2019 23:56:24 +0800</pubDate>
       
-      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E9%80%89%E6%8B%A9%E5%99%A8picker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/</guid>
-      <description>&lt;!-- more --&gt;
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.9_%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BApicker%E5%B9%B6%E4%BB%8E%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%80%BC/</guid>
+      <description>
 
-&lt;p&gt;SwiftUI 的 &lt;code&gt;Picker&lt;/code&gt; 视图将 UIPicker 和 UITableView 结合在一起。同时也适应其它操作系统上的其它样式。最棒的是我们真的不需要关系它是如何工作的 &amp;ndash; SwiftUI 可以很好的自动适应它的环境。
-与大多数其它控件一样，必须将 picker 附加到某种 state，以跟踪 picker 的选择。例如: 这会创建一个 colors 数组和一个存储所选颜色的整数，然后将其与 picker，Text 视图一起使用，以便您可以看到正在读取的值:&lt;/p&gt;
+&lt;!-- more --&gt;
+
+&lt;h2 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h2&gt;
+
+&lt;p&gt;SwiftUI 中的 &lt;code&gt;Picker&lt;/code&gt; 视图可以将 &lt;code&gt;UIPicker&lt;/code&gt; 和 &lt;code&gt;UITableView&lt;/code&gt; 结合在一起。同时还可以适应其它操作系统上的其它样式。很好的一点是，我们真的不需要关心它的工作原理 &amp;ndash; SwiftUI 在自动适应环境方面做得很好。&lt;/p&gt;
+
+&lt;p&gt;与大多数其它控件一样，我们必须将 Picker 附加到某种状态属性，以跟踪 picker 的选择。&lt;/p&gt;
+
+&lt;h2 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h2&gt;
+
+&lt;p&gt;例如: 我们将创建一个 colors 数组和一个存储所选颜色的整数，然后将其与 Picker，Text 视图一起使用，以便我们可以看到正在读取的值:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     
-    var colors = [&amp;quot;Red&amp;quot;, &amp;quot;Orange&amp;quot;, &amp;quot;Yellow&amp;quot;, &amp;quot;Green&amp;quot;]
+    var colors = [&amp;quot;Red&amp;quot;, &amp;quot;Green&amp;quot;, &amp;quot;Blue&amp;quot;, &amp;quot;Tartan&amp;quot;]
     @State private var selectedColor = 0
     
     var body: some View {
         VStack {
             Picker(selection: $selectedColor, label: Text(&amp;quot;Please choose a color&amp;quot;)) {
                 ForEach(0..&amp;lt;colors.count) {
-                    Text(self.colors[$0]).tag($0)
+                    Text(self.colors[$0])
                 }
             }
-            Text(&amp;quot;You selected: \(colors[selectedColor]) &amp;quot;)
+            Text(&amp;quot;You selected: \(colors[selectedColor])&amp;quot;)
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/picker_select_color.gif&#34; alt=&#34;picker_select_color&#34; title=&#34;Selected color&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注意: 将选择器视图放在某个内容中非常重要，以确保它在iOS上以默认的轮子样式显示。&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.9_picker_select_color.gif&#34; alt=&#34;3.9_picker_select_color&#34; title=&#34;Selected color&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -3974,35 +3986,33 @@ struct DetailView : View {
 
 &lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
 
-&lt;p&gt;SwiftUI 的 &lt;code&gt;Slider&lt;/code&gt; 视图的工作原理与 &lt;code&gt;UISlider&lt;/code&gt; 非常相似，尽管您需要将其绑定到某个地方，以便存储其值。
-当我们创建它时，可以提供多种参数，但我们可能最关心的是:&lt;/p&gt;
+&lt;p&gt;SwiftUI 中的 &lt;code&gt;Slider&lt;/code&gt; 视图与 &lt;code&gt;UISlider&lt;/code&gt; 的工作原理非常相似，不同之处在于，我们需要将其绑定到某个状态属性(@State)，以便存储其值。&lt;/p&gt;
+
+&lt;p&gt;当我们创建它时，可以提供多种参数，但我们最关心的可能是以下参数:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Value&lt;/code&gt;:  要绑定到的值是多少&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;From and To&lt;/code&gt;: 滑块的范围&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;By&lt;/code&gt;: 移动滑块时要更改多少值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;value&lt;/code&gt;:  将其绑定到的 Double 值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;in&lt;/code&gt;: Slider 的范围&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;by&lt;/code&gt;: 移动 Slider 时要更改多少值&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
 
-&lt;p&gt;例如: 我们创建一个绑定到  Celsius 属性的滑块，然后在滑块移动时更新文本视图，以便在 &lt;strong&gt;Celsius(摄氏温度)&lt;/strong&gt; 和 &lt;strong&gt;Fahrenheit(华氏温度)&lt;/strong&gt; 之间进行转换:&lt;/p&gt;
+&lt;p&gt;例如: 我们将创建一个 Slider，并将其绑定到状态属性 &lt;code&gt;celsius&lt;/code&gt;，然后随着 Slider 的移动更新文本视图，以便在 &lt;strong&gt;Celsius(摄氏温度)&lt;/strong&gt; 和 &lt;strong&gt;Fahrenheit(华氏温度)&lt;/strong&gt; 之间进行转换:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
-    
-    @State var celsius: Double = 0
-    
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    @State private var celsius: Double = 0
     var body: some View {
         VStack {
-            Slider(value: $celsius, from: -100, through: 100, by: 0.1)
-                .padding()
+            Slider(value: $celsius, in: -100...1000, step: 0.1)
             Text(&amp;quot;\(celsius) Celsius is \(celsius * 9 / 5 + 32) Fahrenheit&amp;quot;)
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/slider_celsius_to_fahrenheit.gif&#34; alt=&#34;slider_celsius_to_fahrenheit&#34; title=&#34;celsius to fahrenheit&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.8_slider_celsius_to_fahrenheit.gif&#34; alt=&#34;3.8_slider_celsius_to_fahrenheit&#34; title=&#34;celsius to fahrenheit&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

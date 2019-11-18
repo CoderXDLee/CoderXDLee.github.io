@@ -3829,54 +3829,52 @@ struct DetailView : View {
 
 &lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
 
-&lt;p&gt;SwiftUI中 的 &lt;code&gt;SegmentedControl&lt;/code&gt; 与 UIKit中的 &lt;code&gt;UISegmentedControl&lt;/code&gt; 的工作方式类似，但是它需要绑定到某种状态（state），并且必须确保为每个分段（segment）提供一个 tag 标记，以便能够识别它。&lt;strong&gt;分段(Segments) 可以是文本或者图片，其它任何东西都会自动失败&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;SwiftUI中 的 &lt;code&gt;Picker&lt;/code&gt; 还可以用来创建与 UIKit 中的 &lt;code&gt;UISegmentedControl&lt;/code&gt; 等效的分段控件，尽管它需要绑定到某个状态属性，并且必须确保为每个分段提供一个标记，以便可以对其进行识别。分段可以是文本或者图片，其它任何内容都会自动失败。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
 
 &lt;p&gt;我们将创建一个分段控件，该控件使用 &lt;code&gt;favoriteColor&lt;/code&gt; 作为状态属性，并且在下面添加一个文本视图，用于显示所选的任何值:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
-    
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     @State private var favoriteColor = 0
-    
     var body: some View {
         VStack {
-            SegmentedControl(selection: $favoriteColor) {
+            Picker(selection: $favoriteColor, label: Text(&amp;quot;What&#39;s your favorite color&amp;quot;)) {
                 Text(&amp;quot;Red&amp;quot;).tag(0)
                 Text(&amp;quot;Green&amp;quot;).tag(1)
                 Text(&amp;quot;Blue&amp;quot;).tag(2)
-            }
+            }.pickerStyle(SegmentedPickerStyle())
             Text(&amp;quot;Value: \(favoriteColor)&amp;quot;)
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/segmented_control_favoritecolor.gif&#34; alt=&#34;segmented_control_favoritecolor&#34; title=&#34;Select a favorite color&#34; /&gt;
-不过，在本例中，我们最好创建一个数组来存储各种颜色，然后使用 &lt;em&gt;foreach&lt;/em&gt; 在内部使用循环创建文本视图:&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.11_segmented_control_favoritecolor.gif&#34; alt=&#34;3.11_segmented_control_favoritecolor&#34; title=&#34;Select a favorite color&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;不过，在本例中，我们最好创建一个数组来存储各种颜色，然后使用 &lt;em&gt;foreach&lt;/em&gt; 在内部使用循环创建文本视图:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
     
     @State private var favoriteColor = 0
-
     var colors = [&amp;quot;Red&amp;quot;, &amp;quot;Green&amp;quot;, &amp;quot;Blue&amp;quot;]
     
     var body: some View {
         VStack {
-            SegmentedControl(selection: $favoriteColor) {
-                ForEach(0..&amp;lt;colors.count) { index in
-                    Text(self.colors[index]).tag(index)
+            Picker(selection: $favoriteColor, label: Text(&amp;quot;What&#39;s your favorite color&amp;quot;)) {
+                ForEach(0..&amp;lt;colors.count) {
+                    Text(&amp;quot;\(self.colors[$0])&amp;quot;).tag($0)
                 }
-            }
+            }.pickerStyle(SegmentedPickerStyle())
             Text(&amp;quot;Value: \(colors[favoriteColor])&amp;quot;)
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/segmented_control_favoritecolor_string.gif&#34; alt=&#34;segmented_control_favoritecolor_string&#34; title=&#34;select a favorite color, display with string&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.11_segmented_control_favoritecolor_string.gif&#34; alt=&#34;3.11_segmented_control_favoritecolor_string&#34; title=&#34;select a favorite color, display with string&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

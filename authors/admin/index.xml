@@ -4033,18 +4033,19 @@ class UserSettings: BindableObject {
 
 &lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
 
-&lt;p&gt;SwiftUI 以 &lt;code&gt;onAppear()&lt;/code&gt; 和 &lt;code&gt;onDisappear()&lt;/code&gt; 的形式为我们提供了 UIKit 的&lt;code&gt;viewDidAppear()&lt;/code&gt; 和 &lt;code&gt;viewDidDisappear()&lt;/code&gt; 的等价物。 您可以将任何代码附加到您想要的这两个事件，SwiftUI 将在它们发生时执行它们。&lt;/p&gt;
+&lt;p&gt;SwiftUI 以 &lt;code&gt;onAppear()&lt;/code&gt; 和 &lt;code&gt;onDisappear()&lt;/code&gt; 的形式为我们提供了 UIKit 的&lt;code&gt;viewDidAppear()&lt;/code&gt; 和 &lt;code&gt;viewDidDisappear()&lt;/code&gt; 的等效项。 我们可以将任何代码附加到所需的这两个事件，SwiftUI 将在它们发生时执行它们。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
 
-&lt;p&gt;注意：在当前的beta版本， onAppear() 工作得很好，但 onDisappear() 似乎没有被调用。
-例如: 我们创建两个使用 onAppear() 和 onDisappear() 来打印消息的视图，并使用导航按钮在两者之间移动：&lt;/p&gt;
+&lt;p&gt;例如: 我们创建两个视图，使用 &lt;code&gt;onAppear()&lt;/code&gt; 和 &lt;code&gt;onDisappear()&lt;/code&gt; 来打印消息，并带有一个导航连接在两个视图之间移动：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     var body: some View {
         NavigationView {
-            NavigationLink(destination: DetailView()) {
-                Text(&amp;quot;Hello World&amp;quot;)
+            VStack {
+                NavigationLink(destination: DetailView()) {
+                    Text(&amp;quot;Hello world&amp;quot;)
+                }
             }
         }.onAppear {
             print(&amp;quot;ContentView appeared!&amp;quot;)
@@ -4054,21 +4055,21 @@ class UserSettings: BindableObject {
     }
 }
 
-struct DetailView : View {
+struct DetailView: View {
     var body: some View {
         VStack {
             Text(&amp;quot;Second View&amp;quot;)
         }.onAppear {
-            print(&amp;quot;DetailView appeared!&amp;quot;)
+                print(&amp;quot;DetailView appeared!&amp;quot;)
         }.onDisappear {
-            print(&amp;quot;DetailView disappeared!&amp;quot;)
+                print(&amp;quot;DetailView disappeared!&amp;quot;)
         }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/3_14_live_event_appear_disappear.gif&#34; alt=&#34;3_14_live_event_appear_disappear&#34; title=&#34;onAppear and onDisappear&#34; /&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3_14_lifecycle_event_appear_disappear.gif&#34; alt=&#34;3_14_lifecycle_event_appear_disappear&#34; title=&#34;onAppear and onDisappear&#34; /&gt;
 当代码运行时，我们应该能够在两个视图之间移动，并看到 Xcode 调试控制台中打印的消息。&lt;/p&gt;
 </description>
     </item>
@@ -4125,9 +4126,9 @@ struct DetailView : View {
     var body: some View {
         Image(&amp;quot;example-image&amp;quot;)
             .gesture(
-                LongPressGesture(minimumDuration: 2.0)
-                    .onEnded({ (_) in
-                            print(&amp;quot;LongPressed!&amp;quot;)
+                LongPressGesture(minimumDuration: 2)
+                    .onEnded({ _ in
+                        print(&amp;quot;Pressed!&amp;quot;)
                     })
             )
     }
@@ -4147,7 +4148,7 @@ struct DetailView : View {
         Image(&amp;quot;example-image&amp;quot;)
             .gesture(
                 DragGesture(minimumDistance: 50)
-                    .onEnded({ (_) in
+                    .onEnded({ _ in
                         print(&amp;quot;Dragged!&amp;quot;)
                     })
             )

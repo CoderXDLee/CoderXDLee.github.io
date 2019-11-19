@@ -115,7 +115,7 @@
   
   <meta property="article:published_time" content="2019-07-28T20:37:20&#43;08:00">
   
-  <meta property="article:modified_time" content="2019-07-28T20:47:11&#43;08:00">
+  <meta property="article:modified_time" content="2019-11-19T10:33:26&#43;08:00">
   
 
   
@@ -390,7 +390,7 @@
 
 
 <meta content="2019-07-28 20:37:20 &#43;0800 CST" itemprop="datePublished">
-<meta content="2019-07-28 20:47:11 &#43;0800 CST" itemprop="dateModified">
+<meta content="2019-11-19 10:33:26 &#43;0800 CST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -417,7 +417,7 @@
           Last updated on
       
     
-    <time>Jul 28, 2019</time>
+    <time>Nov 19, 2019</time>
   </span>
   
 
@@ -566,18 +566,19 @@
 
 <h3 id="1-简介">1. 简介</h3>
 
-<p>SwiftUI 以 <code>onAppear()</code> 和 <code>onDisappear()</code> 的形式为我们提供了 UIKit 的<code>viewDidAppear()</code> 和 <code>viewDidDisappear()</code> 的等价物。 您可以将任何代码附加到您想要的这两个事件，SwiftUI 将在它们发生时执行它们。</p>
+<p>SwiftUI 以 <code>onAppear()</code> 和 <code>onDisappear()</code> 的形式为我们提供了 UIKit 的<code>viewDidAppear()</code> 和 <code>viewDidDisappear()</code> 的等效项。 我们可以将任何代码附加到所需的这两个事件，SwiftUI 将在它们发生时执行它们。</p>
 
 <h3 id="2-示例">2. 示例</h3>
 
-<p>注意：在当前的beta版本， onAppear() 工作得很好，但 onDisappear() 似乎没有被调用。
-例如: 我们创建两个使用 onAppear() 和 onDisappear() 来打印消息的视图，并使用导航按钮在两者之间移动：</p>
+<p>例如: 我们创建两个视图，使用 <code>onAppear()</code> 和 <code>onDisappear()</code> 来打印消息，并带有一个导航连接在两个视图之间移动：</p>
 
-<pre><code class="language-swift">struct ContentView : View {
+<pre><code class="language-swift">struct ContentView: View {
     var body: some View {
         NavigationView {
-            NavigationLink(destination: DetailView()) {
-                Text(&quot;Hello World&quot;)
+            VStack {
+                NavigationLink(destination: DetailView()) {
+                    Text(&quot;Hello world&quot;)
+                }
             }
         }.onAppear {
             print(&quot;ContentView appeared!&quot;)
@@ -587,21 +588,21 @@
     }
 }
 
-struct DetailView : View {
+struct DetailView: View {
     var body: some View {
         VStack {
             Text(&quot;Second View&quot;)
         }.onAppear {
-            print(&quot;DetailView appeared!&quot;)
+                print(&quot;DetailView appeared!&quot;)
         }.onDisappear {
-            print(&quot;DetailView disappeared!&quot;)
+                print(&quot;DetailView disappeared!&quot;)
         }
     }
 }
 </code></pre>
 
-<p>运行效果:
-<img src="img/3_14_live_event_appear_disappear.gif" alt="3_14_live_event_appear_disappear" title="onAppear and onDisappear" />
+<p>效果预览:
+<img src="img/3_14_lifecycle_event_appear_disappear.gif" alt="3_14_lifecycle_event_appear_disappear" title="onAppear and onDisappear" />
 当代码运行时，我们应该能够在两个视图之间移动，并看到 Xcode 调试控制台中打印的消息。</p>
 
     </div>

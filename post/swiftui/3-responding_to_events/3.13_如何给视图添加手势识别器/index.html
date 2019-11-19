@@ -115,7 +115,7 @@
   
   <meta property="article:published_time" content="2019-07-28T19:59:32&#43;08:00">
   
-  <meta property="article:modified_time" content="2019-07-28T20:32:53&#43;08:00">
+  <meta property="article:modified_time" content="2019-11-19T10:17:35&#43;08:00">
   
 
   
@@ -390,7 +390,7 @@
 
 
 <meta content="2019-07-28 19:59:32 &#43;0800 CST" itemprop="datePublished">
-<meta content="2019-07-28 20:32:53 &#43;0800 CST" itemprop="dateModified">
+<meta content="2019-11-19 10:17:35 &#43;0800 CST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -417,7 +417,7 @@
           Last updated on
       
     
-    <time>Jul 28, 2019</time>
+    <time>Nov 19, 2019</time>
   </span>
   
 
@@ -566,28 +566,26 @@
 
 <h3 id="1-简介">1. 简介</h3>
 
-<p>任何 SwiftUI  视图都可以附加手势识别器，而这些手势识别器又可以附加闭包，在识别器被激活时执行闭包。</p>
+<p>我们可以给任何 SwiftUI  视图附加手势识别器，而这些手势识别器又可以附加闭包，这些闭包将在识别器被激活时运行。</p>
 
 <h3 id="2-示例">2. 示例</h3>
 
-<p>有几个手势识别器可供使用，这里我们提供其中几个的代码示例，以帮助入门 - 我们将看到它们有多相似。</p>
+<p>有几个手势识别器可供使用，这里将提供其中几个手势识别器的代码示例，以帮助入门 - 我们将看到它们有多相似。</p>
 
 <h4 id="2-1-tapgesture-点击手势">2.1 <code>TapGesture</code> 点击手势</h4>
 
-<p>创建 TapGesture 时，可以指定触发手势所需的 点击次数，然后附加将在手势发生时运行的 <code>onEnded</code> 闭包。</p>
+<p>创建 TapGesture 时，我们可以指定触发手势所需的点击次数，然后附加一个 <code>onEnded</code> 闭包，该闭包将在手势发生时运行。</p>
 
 <p>例如，我们来创建一个每次点击时都会变大的图像:</p>
 
 <pre><code class="language-swift">struct ContentView: View {
-    
-    @State private var scale: Length = 1
-    
+    @State private var scale: CGFloat = 1.0
     var body: some View {
         Image(&quot;example-image&quot;)
             .scaleEffect(scale)
             .gesture(
                 TapGesture()
-                    .onEnded({ (_) in
+                    .onEnded({
                         self.scale += 0.1
                     })
             )
@@ -595,7 +593,7 @@
 }
 </code></pre>
 
-<p>运行效果:
+<p>效果预览:
 <img src="img/3_13_tap_gesture_scale_image.gif" alt="3_13_tap_gesture_scale_image" title="Tap to scale a image" /></p>
 
 <h4 id="2-2-longpressgesture-长按手势">2.2 <code>LongPressGesture</code> 长按手势</h4>
@@ -617,7 +615,7 @@
 }
 </code></pre>
 
-<p>运行效果:
+<p>效果预览:
 <img src="img/3_13_long_press_gesture_duration_2s.gif" alt="3_13_long_press_gesture_duration_2s" title="Long pressed!" /></p>
 
 <h4 id="2-3-draggesture-拖拽手势">2.3 <code>DragGesture</code> 拖拽手势</h4>
@@ -638,7 +636,8 @@
 }
 </code></pre>
 
-<p><img src="img/3_13_drag_gesture_distance_50.gif" alt="3_13_drag_gesture_distance_50" title="Drag gesture" /></p>
+<p>效果预览
+<img src="img/3_13_drag_gesture_distance_50.gif" alt="3_13_drag_gesture_distance_50" title="Drag gesture" /></p>
 
     </div>
 

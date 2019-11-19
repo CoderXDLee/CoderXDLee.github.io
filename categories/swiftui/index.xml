@@ -3771,49 +3771,49 @@ struct DetailView : View {
     </item>
     
     <item>
-      <title>3.12_如何设置tap和double Tap手势</title>
-      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEtap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</link>
+      <title>3.12_如何读取tap和double Tap手势</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E8%AF%BB%E5%8F%96tap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</link>
       <pubDate>Sun, 28 Jul 2019 18:38:38 +0800</pubDate>
       
-      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEtap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</guid>
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.12_%E5%A6%82%E4%BD%95%E8%AF%BB%E5%8F%96tap%E5%92%8Cdouble-tap%E6%89%8B%E5%8A%BF/</guid>
       <description>
 
 &lt;!-- more --&gt;
 
-&lt;h3 id=&#34;1-初识&#34;&gt;1. 初识&lt;/h3&gt;
+&lt;h3 id=&#34;1-简介&#34;&gt;1. 简介&lt;/h3&gt;
 
-&lt;p&gt;任何 SwiftUI 视图都可以附加 &lt;code&gt;点击操作(tap action)&lt;/code&gt;，我们可以指定在触发操作之前应该接收多少次点击。&lt;/p&gt;
+&lt;p&gt;我们可以给任何 SwiftUI 视图附加 &lt;code&gt;点击操作(tap action)&lt;/code&gt;，并且可以指定在触发操作之前应该接收的点击次数。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-示例&#34;&gt;2. 示例&lt;/h3&gt;
 
 &lt;p&gt;例如: 我们创建一个文本视图，在点击时将打印消息:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
     var body: some View {
         Text(&amp;quot;Tap me!&amp;quot;)
-            .tapAction {
-                print(&amp;quot;Tapped&amp;quot;)
+            .onTapGesture {
+                print(&amp;quot;Tapped!&amp;quot;)
             }
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/tap_gesture_tap_text.gif&#34; alt=&#34;tap_gesture_tap_text&#34; title=&#34;Tap a text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.12_tap_gesture_tap_a_text.gif&#34; alt=&#34;3.12_tap_gesture_tap_a_text&#34; title=&#34;Tap a text&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;再创建一个图像视图，当双击时将打印消息:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView : View {
     var body: some View {
-        Image(&amp;quot;example-img&amp;quot;)
-            .tapAction(count: 2) {
+        Image(&amp;quot;example-image&amp;quot;)
+            .onTapGesture(count: 2) {
                 print(&amp;quot;Double tapped!&amp;quot;)
             }
     }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;运行效果:
-&lt;img src=&#34;img/tap_gesture_double_tap_image.gif&#34; alt=&#34;tap_gesture_double_tap_image&#34; title=&#34;Double tapped!&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.12_tap_gesture_double_tap_a_image.gif&#34; alt=&#34;3.12_tap_gesture_double_tap_a_image&#34; title=&#34;Double tapped!&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

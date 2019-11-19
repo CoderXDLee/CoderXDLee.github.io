@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>M X ©{year}</copyright>
-    <lastBuildDate>Mon, 14 Oct 2019 23:51:29 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Nov 2019 18:01:19 +0800</lastBuildDate>
     
 	    <atom:link href="https://coderxdlee.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Responding to events</title>
+      <link>https://coderxdlee.github.io/tags/responding-to-events/</link>
+      <pubDate>Tue, 19 Nov 2019 18:01:19 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/tags/responding-to-events/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>View layout</title>
@@ -126,15 +135,6 @@
       <pubDate>Mon, 29 Jul 2019 01:17:25 +0800</pubDate>
       
       <guid>https://coderxdlee.github.io/tags/advanced-state/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Responding to events</title>
-      <link>https://coderxdlee.github.io/tags/responding-to-events/</link>
-      <pubDate>Sun, 28 Jul 2019 20:37:20 +0800</pubDate>
-      
-      <guid>https://coderxdlee.github.io/tags/responding-to-events/</guid>
       <description></description>
     </item>
     

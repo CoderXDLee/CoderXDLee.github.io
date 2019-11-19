@@ -12,6 +12,90 @@
     
     
     <item>
+      <title>3.16_如何在TextField中禁用自动更正</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.16_%E5%A6%82%E4%BD%95%E5%9C%A8textfield%E4%B8%AD%E7%A6%81%E7%94%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%AD%A3/</link>
+      <pubDate>Tue, 19 Nov 2019 18:01:19 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.16_%E5%A6%82%E4%BD%95%E5%9C%A8textfield%E4%B8%AD%E7%A6%81%E7%94%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%AD%A3/</guid>
+      <description>&lt;p&gt;默认情况下，SwiftUI 的 &lt;code&gt;TextField&lt;/code&gt; 会启用自动更正功能，这在大多数情况下都是我们所需要的。 但是，如果要禁用它，可以使用 &lt;code&gt;disableAutocorrection()&lt;/code&gt; 修饰符来实现，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.15_如何禁用Button和NavigationLink中图像的叠加颜色</title>
+      <link>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.15_%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8button%E5%92%8Cnavigationlink%E4%B8%AD%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8F%A0%E5%8A%A0%E9%A2%9C%E8%89%B2/</link>
+      <pubDate>Tue, 19 Nov 2019 16:39:10 +0800</pubDate>
+      
+      <guid>https://coderxdlee.github.io/post/swiftui/3-responding_to_events/3.15_%E5%A6%82%E4%BD%95%E7%A6%81%E7%94%A8button%E5%92%8Cnavigationlink%E4%B8%AD%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8F%A0%E5%8A%A0%E9%A2%9C%E8%89%B2/</guid>
+      <description>&lt;p&gt;默认情况下，在 &lt;code&gt;NavigationLink&lt;/code&gt; 或 &lt;code&gt;Button&lt;/code&gt; 内部绘制的图像几乎不会表现出预期的效果: 整个图像将被不透明的蓝色或视图中带有任何强调色的颜色覆盖。&lt;/p&gt;
+
+&lt;p&gt;有两种方法可以解决这个问题；选择哪种方法取决于我们想要的行为(behavior)。&lt;/p&gt;
+
+&lt;p&gt;首先，可以将 &lt;code&gt;buttonStyle()&lt;/code&gt; 修饰符与 &lt;code&gt;PlainButtonStyle()&lt;/code&gt;一起使用，如下所示:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 1. NavigationLink
+        NavigationView {
+            NavigationLink(destination: Text(&amp;quot;Detail view here&amp;quot;)) {
+                Image(&amp;quot;example-image&amp;quot;)
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.15_overlay_color_image_inside_navigationlink.png&#34; alt=&#34;3.15_overlay_color_image_inside_navigationlink&#34; title=&#34;Overlay color image inside navigation link&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;或像这样的普通按钮:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 2. Button
+        Button(action: {
+            // your action here
+        }) {
+            Image(&amp;quot;example-image&amp;quot;)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.15_overlay_color_image_inside_button.png&#34; alt=&#34;3.15_overlay_color_image_inside_button&#34; title=&#34;Overlay color image inside button&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;使用该修饰符后，我们的原始图像将按预期显示。&lt;/p&gt;
+
+&lt;p&gt;或者，我们也可以使用 &lt;code&gt;renderingMode()&lt;/code&gt; 模式修饰符来获得略有不同的结果:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-swift&#34;&gt;struct ContentView: View {
+    var body: some View {
+        // 3. renderingMode
+        NavigationView {
+            NavigationLink(destination: Text(&amp;quot;Detail view here&amp;quot;)) {
+                Image(&amp;quot;example-image&amp;quot;)
+                    .renderingMode(.original)
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&#34;img/3.15_overlay_color_image_inside_navigationlink_renderingmode.png&#34; alt=&#34;3.15_overlay_color_image_inside_navigationlink_renderingmode&#34; title=&#34;Using renderingMode&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;区别是微妙的，但很重要: 如果在列表中使用 Button，则使用 &lt;code&gt;.buttonStyle(PlainButtonStyle())&lt;/code&gt; 意味着只能轻按按钮内容周围的空格，而如果使用 &lt;code&gt;.renderingMode(.original)&lt;/code&gt;，则整个单元格仍可轻敲。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>2.12_如何使用GeometryReader提供相对大小</title>
       <link>https://coderxdlee.github.io/post/swiftui/2-view_layout/2.12_%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8geometryreader%E6%8F%90%E4%BE%9B%E7%9B%B8%E5%AF%B9%E5%A4%A7%E5%B0%8F/</link>
       <pubDate>Mon, 14 Oct 2019 23:51:29 +0800</pubDate>
